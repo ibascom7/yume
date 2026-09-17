@@ -4,6 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
+// Active-underline color and hover background per class color
+const navColors: Record<string, { underline: string; hoverBg: string }> = {
+  red: { underline: "#dc2626", hoverBg: "hover:bg-red-100" },
+  blue: { underline: "#2563eb", hoverBg: "hover:bg-blue-100" },
+  purple: { underline: "#9333ea", hoverBg: "hover:bg-purple-100" },
+  green: { underline: "#22c55e", hoverBg: "hover:bg-green-100" },
+  orange: { underline: "#ea580c", hoverBg: "hover:bg-orange-100" },
+};
+
 export default function NotesLayout({
   children,
 }: {
@@ -14,14 +23,16 @@ export default function NotesLayout({
   const classes = [
     { name: "Abstract Algebra", href: "/notes/algebra", color: "red" },
     { name: "Intermediate Analysis", href: "/notes/intermediate-analysis", color: "blue" },
-    { name: "Data Programming", href: "/notes/complex-analysis", color: "green" },
+    { name: "Real Analysis", href: "/notes/real-analysis", color: "purple" },
+    { name: "Complex Analysis", href: "/notes/complex-analysis", color: "green" },
+    { name: "Linear Algebra", href: "/notes/linear-algebra", color: "orange" },
   ];
 
   return (
     <div className="min-h-screen bg-white text-black flex flex-col">
       {/* Top Navigation Bar */}
       <nav className="border-b border-gray-300 px-2 sm:px-4 py-2 sm:py-3">
-        <div className="flex items-center gap-2 sm:gap-6">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-6">
           <Link
             href="/"
             className="hover:opacity-70 transition-opacity"
@@ -37,11 +48,11 @@ export default function NotesLayout({
           <Link href="/notes" className="text-lg sm:text-xl font-bold hover:opacity-70 transition-opacity">
             Notes
           </Link>
-          <div className="flex gap-1 sm:gap-4 ml-auto text-sm sm:text-base">
+          {/* On narrow screens the class links drop to their own row and wrap */}
+          <div className="flex flex-wrap gap-1 sm:gap-4 basis-full sm:basis-auto sm:ml-auto text-sm sm:text-base">
             {classes.map((cls) => {
               const isActive = pathname.startsWith(cls.href);
-              const underlineColor = cls.color === "red" ? "#dc2626" : cls.color === "blue" ? "#2563eb" : "#22c55e";
-              const hoverBg = cls.color === "red" ? "hover:bg-red-100" : cls.color === "blue" ? "hover:bg-blue-100" : "hover:bg-green-100";
+              const { underline: underlineColor, hoverBg } = navColors[cls.color];
 
               return (
                 <Link

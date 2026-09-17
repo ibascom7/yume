@@ -45,3 +45,17 @@ body {
     padding: 0.5em 0 !important;
   }
 }
+
+/* Bubble pop on the notes index: the film swells and vanishes, droplets scatter from the rim */
+@keyframes bubble-pop {
+  0%   { transform: scale(1);    opacity: 1; }
+  30%  { transform: scale(1.1);  opacity: 1; }
+  55%  { transform: scale(1.16); opacity: 0; }
+  100% { transform: scale(1.16); opacity: 0; }
+}
+
+@keyframes bubble-droplet {
+  0%   { transform: translate(-50%, -50%) translate(var(--sx), var(--sy)) scale(1);   opacity: 1; }
+  65%  { opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(0.55); opacity: 0; }
+}
