@@ -72,7 +72,7 @@ export default function NotesPage() {
       content: [
         { label: "theorems", count: 0 },
         { label: "definitions", count: 0 },
-        { label: "articles", count: 0 },
+        { label: "exercises", count: 0 },
       ],
       color: "#22c55e", // green-500
     },
