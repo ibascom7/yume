@@ -33,7 +33,7 @@ export default async function ExercisesPage({
     //   chapter: 1,
     //   section: 1,
     //   homework: 1, // if it was assigned; a problem can have a homework, a chapter/section, or both
-    //   title: "1.1.1",
+    //   title: "Exercise title",
     //   problem: `\\text{Problem...}`,
     //   solution: `\\text{Solution...}`,
     //   // or multiple parts:
@@ -64,6 +64,9 @@ export default async function ExercisesPage({
           title={exercise.title}
           problem={exercise.problem}
           solution={exercise.solution}
+          chapter={exercise.chapter}
+          section={exercise.section}
+          homework={exercise.homework}
           id={`exercise-${exercise.number}`}
         />
       ))}

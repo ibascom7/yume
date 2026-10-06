@@ -20,7 +20,7 @@ export default async function DefinitionsPage({
     //   number: 1,
     //   chapter: 1,
     //   section: 1,
-    //   term: "1.1.1 Term",
+    //   term: "Term",
     //   definition: `\\text{Definition...}`,
     // },
   ];
@@ -44,6 +44,8 @@ export default async function DefinitionsPage({
           number={def.number}
           term={def.term}
           definition={def.definition}
+          chapter={def.chapter}
+          section={def.section}
           id={`definition-${def.number}`}
         />
       ))}

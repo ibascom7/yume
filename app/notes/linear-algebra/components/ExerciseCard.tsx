@@ -3,13 +3,15 @@
 import { useState } from "react";
 import { processLatexLinks } from "./latexLinkHelper";
 import TrustedBlockMath from "./TrustedBlockMath";
+import LocationBadges from "@/app/components/LocationBadges";
+import type { ChapterRef, HomeworkRef } from "@/app/components/notesFilter";
 
 interface Solution {
   title?: string;
   content: string;
 }
 
-interface ExerciseCardProps {
+interface ExerciseCardProps extends ChapterRef, HomeworkRef {
   number: number;
   title: string;
   problem: string;
@@ -17,7 +19,16 @@ interface ExerciseCardProps {
   id?: string;
 }
 
-export default function ExerciseCard({ number, title, problem, solution, id }: ExerciseCardProps) {
+export default function ExerciseCard({
+  number,
+  title,
+  problem,
+  solution,
+  chapter,
+  section,
+  homework,
+  id,
+}: ExerciseCardProps) {
   const [isSolutionOpen, setIsSolutionOpen] = useState(false);
 
   // Normalize solution to array format
@@ -32,11 +43,14 @@ export default function ExerciseCard({ number, title, problem, solution, id }: E
       <div className="flex items-start justify-between gap-2 sm:gap-4">
         <div className="flex-1 min-w-0">
           <div
-            className={`mb-2 sm:mb-3 text-sm sm:text-base ${solution ? "cursor-pointer hover:opacity-75 transition-opacity" : ""}`}
+            className={`flex flex-wrap items-center gap-x-2 gap-y-1 mb-2 sm:mb-3 text-sm sm:text-base ${solution ? "cursor-pointer hover:opacity-75 transition-opacity" : ""}`}
             onClick={() => solution && setIsSolutionOpen(!isSolutionOpen)}
           >
-            <span className="font-bold text-orange-600">Exercise {number}. </span>
-            <span className="font-semibold text-black">{title}</span>
+            <div>
+              <span className="font-bold text-orange-600">Exercise {number}. </span>
+              <span className="font-semibold text-black">{title}</span>
+            </div>
+            <LocationBadges chapter={chapter} section={section} homework={homework} />
           </div>
           <div className="text-black text-sm sm:text-base ml-0 sm:ml-[6em]">
             <TrustedBlockMath math={processLatexLinks(problem)} />

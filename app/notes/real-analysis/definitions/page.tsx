@@ -15,12 +15,20 @@ export default async function DefinitionsPage({
   // Homework only applies to exercises, so ignore it when it carries over from that tab
   const { chapter, section } = await searchParams;
   const definitions: Definition[] = [
+    // Example card: replace with your own
+    {
+      number: 1,
+      chapter: 1,
+      section: 1,
+      term: "Example Term",
+      definition: `\\text{Definition of the term, in LaTeX.}`,
+    },
     // Template:
     // {
     //   number: 1,
     //   chapter: 1,
     //   section: 1,
-    //   term: "1.1.1 Term",
+    //   term: "Term",
     //   definition: `\\text{Definition...}`,
     // },
   ];
@@ -44,6 +52,8 @@ export default async function DefinitionsPage({
           number={def.number}
           term={def.term}
           definition={def.definition}
+          chapter={def.chapter}
+          section={def.section}
           id={`definition-${def.number}`}
         />
       ))}

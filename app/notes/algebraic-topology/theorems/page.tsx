@@ -27,7 +27,7 @@ export default async function TheoremsPage({
     //   number: 1,
     //   chapter: 1,
     //   section: 1,
-    //   title: "1.1.1 Theorem Name",
+    //   title: "Theorem name",
     //   statement: `\\text{Statement...}`,
     //   proof: `\\text{Proof...}`,
     //   // or multiple proofs:
@@ -59,6 +59,8 @@ export default async function TheoremsPage({
           statement={theorem.statement}
           description={theorem.description}
           proof={theorem.proof}
+          chapter={theorem.chapter}
+          section={theorem.section}
           id={`theorem-${theorem.number}`}
         />
       ))}

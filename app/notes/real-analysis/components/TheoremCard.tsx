@@ -3,13 +3,15 @@
 import { useState } from "react";
 import { processLatexLinks } from "./latexLinkHelper";
 import TrustedBlockMath from "./TrustedBlockMath";
+import LocationBadges from "@/app/components/LocationBadges";
+import type { ChapterRef } from "@/app/components/notesFilter";
 
 interface Proof {
   title?: string;
   content: string;
 }
 
-interface TheoremCardProps {
+interface TheoremCardProps extends ChapterRef {
   number: number;
   title: string;
   statement: string;
@@ -18,7 +20,16 @@ interface TheoremCardProps {
   id?: string;
 }
 
-export default function TheoremCard({ number, title, statement, description, proof, id }: TheoremCardProps) {
+export default function TheoremCard({
+  number,
+  title,
+  statement,
+  description,
+  proof,
+  chapter,
+  section,
+  id,
+}: TheoremCardProps) {
   const [isProofOpen, setIsProofOpen] = useState(false);
 
   // Normalize proof to array format
@@ -33,11 +44,14 @@ export default function TheoremCard({ number, title, statement, description, pro
       <div className="flex items-start justify-between gap-2 sm:gap-4">
         <div className="flex-1 min-w-0">
           <div
-            className={`mb-2 sm:mb-3 text-sm sm:text-base ${proof ? 'cursor-pointer hover:opacity-75 transition-opacity' : ''}`}
+            className={`flex flex-wrap items-center gap-x-2 gap-y-1 mb-2 sm:mb-3 text-sm sm:text-base ${proof ? 'cursor-pointer hover:opacity-75 transition-opacity' : ''}`}
             onClick={() => proof && setIsProofOpen(!isProofOpen)}
           >
-            <span className="font-bold text-purple-600">Theorem {number}. </span>
-            <span className="font-semibold text-black">{title}</span>
+            <div>
+              <span className="font-bold text-purple-600">Theorem {number}. </span>
+              <span className="font-semibold text-black">{title}</span>
+            </div>
+            <LocationBadges chapter={chapter} section={section} />
           </div>
           <div className="text-black text-sm sm:text-base ml-0 sm:ml-[6em]">
             <TrustedBlockMath math={processLatexLinks(statement)} />
