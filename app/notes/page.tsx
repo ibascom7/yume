@@ -67,8 +67,8 @@ export default function NotesPage() {
       color: "#a855f7", // purple-500
     },
     {
-      name: "Complex Analysis",
-      href: "/notes/complex-analysis",
+      name: "Topology",
+      href: "/notes/topology",
       content: [
         { label: "theorems", count: 0 },
         { label: "definitions", count: 0 },

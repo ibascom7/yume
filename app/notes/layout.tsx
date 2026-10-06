@@ -24,7 +24,7 @@ export default function NotesLayout({
     { name: "Abstract Algebra", href: "/notes/algebra", color: "red" },
     { name: "Intermediate Analysis", href: "/notes/intermediate-analysis", color: "blue" },
     { name: "Real Analysis", href: "/notes/real-analysis", color: "purple" },
-    { name: "Complex Analysis", href: "/notes/complex-analysis", color: "green" },
+    { name: "Topology", href: "/notes/topology", color: "green" },
     { name: "Linear Algebra", href: "/notes/linear-algebra", color: "orange" },
   ];
 
