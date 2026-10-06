@@ -1,4 +1,4 @@
-import type { Chapter } from "@/app/components/chapters";
+import type { Chapter } from "@/app/components/notesFilter";
 
 // Textbook chapters and sections shown in the filter above each tab.
 // Tag theorems, definitions, and exercises with matching `chapter` and `section` numbers.

@@ -1,5 +1,5 @@
 import DefinitionCard from "../components/DefinitionCard";
-import { chapterFilterLabel, filterByChapter, type ChapterFilterParams, type ChapterRef } from "@/app/components/chapters";
+import { filterByChapter, filterLabel, type ChapterRef, type NotesFilterParams } from "@/app/components/notesFilter";
 
 interface Definition extends ChapterRef {
   number: number;
@@ -10,9 +10,10 @@ interface Definition extends ChapterRef {
 export default async function DefinitionsPage({
   searchParams,
 }: {
-  searchParams: Promise<ChapterFilterParams>;
+  searchParams: Promise<NotesFilterParams>;
 }) {
-  const filter = await searchParams;
+  // Homework only applies to exercises, so ignore it when it carries over from that tab
+  const { chapter, section } = await searchParams;
   const definitions: Definition[] = [
     // Template:
     // {
@@ -24,8 +25,8 @@ export default async function DefinitionsPage({
     // },
   ];
 
-  const visible = filterByChapter(definitions, filter);
-  const filterLabel = chapterFilterLabel(filter);
+  const visible = filterByChapter(definitions, { chapter, section });
+  const label = filterLabel({ chapter, section });
 
   return (
     <div>
@@ -34,8 +35,8 @@ export default async function DefinitionsPage({
           Catalog of Definitions from Algebraic Topology.
         </p>
       </div>
-      {visible.length === 0 && filterLabel && (
-        <p className="text-gray-500 text-sm sm:text-base">Nothing from {filterLabel} yet.</p>
+      {visible.length === 0 && label && (
+        <p className="text-gray-500 text-sm sm:text-base">Nothing from {label} yet.</p>
       )}
       {visible.map((def) => (
         <DefinitionCard

@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import ChapterFilter from "@/app/components/ChapterFilter";
+import NotesFilter from "@/app/components/NotesFilter";
 import { chapters } from "./chapters";
+import { homeworks } from "./homeworks";
 
 const tabs = [
   { name: "Theorems", href: "/notes/real-analysis/theorems" },
@@ -57,7 +58,12 @@ function TabsAndFilter() {
         })}
       </div>
 
-      <ChapterFilter chapters={chapters} activeClassName="bg-purple-600 border-purple-600 text-white" />
+      <NotesFilter
+        chapters={chapters}
+        // Only exercises are tagged with homework
+        homeworks={pathname === "/notes/real-analysis/exercises" ? homeworks : []}
+        activeClassName="bg-purple-600 border-purple-600 text-white"
+      />
     </>
   );
 }

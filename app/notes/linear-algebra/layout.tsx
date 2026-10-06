@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import ChapterFilter from "@/app/components/ChapterFilter";
+import NotesFilter from "@/app/components/NotesFilter";
 import { chapters } from "./chapters";
+import { homeworks } from "./homeworks";
 
 const tabs = [
   { name: "Theorems", href: "/notes/linear-algebra/theorems" },
@@ -57,7 +58,12 @@ function TabsAndFilter() {
         })}
       </div>
 
-      <ChapterFilter chapters={chapters} activeClassName="bg-orange-600 border-orange-600 text-white" />
+      <NotesFilter
+        chapters={chapters}
+        // Only exercises are tagged with homework
+        homeworks={pathname === "/notes/linear-algebra/exercises" ? homeworks : []}
+        activeClassName="bg-orange-600 border-orange-600 text-white"
+      />
     </>
   );
 }

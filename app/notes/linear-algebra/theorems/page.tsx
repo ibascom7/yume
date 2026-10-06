@@ -1,5 +1,5 @@
 import TheoremCard from "../components/TheoremCard";
-import { chapterFilterLabel, filterByChapter, type ChapterFilterParams, type ChapterRef } from "@/app/components/chapters";
+import { filterByChapter, filterLabel, type ChapterRef, type NotesFilterParams } from "@/app/components/notesFilter";
 
 interface Proof {
   title?: string;
@@ -17,9 +17,10 @@ interface Theorem extends ChapterRef {
 export default async function TheoremsPage({
   searchParams,
 }: {
-  searchParams: Promise<ChapterFilterParams>;
+  searchParams: Promise<NotesFilterParams>;
 }) {
-  const filter = await searchParams;
+  // Homework only applies to exercises, so ignore it when it carries over from that tab
+  const { chapter, section } = await searchParams;
   const theorems: Theorem[] = [
     // Template:
     // {
@@ -37,8 +38,8 @@ export default async function TheoremsPage({
     // },
   ];
 
-  const visible = filterByChapter(theorems, filter);
-  const filterLabel = chapterFilterLabel(filter);
+  const visible = filterByChapter(theorems, { chapter, section });
+  const label = filterLabel({ chapter, section });
 
   return (
     <div>
@@ -47,8 +48,8 @@ export default async function TheoremsPage({
           Catalog of theorems from Linear Algebra alongside proofs for each.
         </p>
       </div>
-      {visible.length === 0 && filterLabel && (
-        <p className="text-gray-500 text-sm sm:text-base">Nothing from {filterLabel} yet.</p>
+      {visible.length === 0 && label && (
+        <p className="text-gray-500 text-sm sm:text-base">Nothing from {label} yet.</p>
       )}
       {visible.map((theorem) => (
         <TheoremCard

@@ -1,12 +1,19 @@
 import ExerciseCard from "../components/ExerciseCard";
-import { chapterFilterLabel, filterByChapter, type ChapterFilterParams, type ChapterRef } from "@/app/components/chapters";
+import {
+  filterByChapter,
+  filterByHomework,
+  filterLabel,
+  type ChapterRef,
+  type HomeworkRef,
+  type NotesFilterParams,
+} from "@/app/components/notesFilter";
 
 interface Solution {
   title?: string;
   content: string;
 }
 
-interface Exercise extends ChapterRef {
+interface Exercise extends ChapterRef, HomeworkRef {
   number: number;
   title: string;
   problem: string;
@@ -16,7 +23,7 @@ interface Exercise extends ChapterRef {
 export default async function ExercisesPage({
   searchParams,
 }: {
-  searchParams: Promise<ChapterFilterParams>;
+  searchParams: Promise<NotesFilterParams>;
 }) {
   const filter = await searchParams;
   const exercises: Exercise[] = [
@@ -25,6 +32,7 @@ export default async function ExercisesPage({
     //   number: 1,
     //   chapter: 1,
     //   section: 1,
+    //   homework: 1, // if it was assigned; a problem can have a homework, a chapter/section, or both
     //   title: "1.1.1",
     //   problem: `\\text{Problem...}`,
     //   solution: `\\text{Solution...}`,
@@ -36,8 +44,8 @@ export default async function ExercisesPage({
     // },
   ];
 
-  const visible = filterByChapter(exercises, filter);
-  const filterLabel = chapterFilterLabel(filter);
+  const visible = filterByHomework(filterByChapter(exercises, filter), filter);
+  const label = filterLabel(filter);
 
   return (
     <div>
@@ -46,8 +54,8 @@ export default async function ExercisesPage({
           Exercises from Topology with worked solutions.
         </p>
       </div>
-      {visible.length === 0 && filterLabel && (
-        <p className="text-gray-500 text-sm sm:text-base">Nothing from {filterLabel} yet.</p>
+      {visible.length === 0 && label && (
+        <p className="text-gray-500 text-sm sm:text-base">Nothing from {label} yet.</p>
       )}
       {visible.map((exercise) => (
         <ExerciseCard
