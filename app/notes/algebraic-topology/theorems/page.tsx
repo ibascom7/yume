@@ -44,7 +44,7 @@ export default async function TheoremsPage({
     <div>
       <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-200">
         <p className="text-gray-700 text-sm sm:text-base">
-          Catalog of theorems from Real Analysis alongside proofs for each.
+          Catalog of theorems from Algebraic Topology alongside proofs for each.
         </p>
       </div>
       {visible.length === 0 && filterLabel && (

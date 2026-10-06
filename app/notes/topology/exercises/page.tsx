@@ -1,22 +1,30 @@
 import ExerciseCard from "../components/ExerciseCard";
+import { chapterFilterLabel, filterByChapter, type ChapterFilterParams, type ChapterRef } from "@/app/components/chapters";
 
 interface Solution {
   title?: string;
   content: string;
 }
 
-interface Exercise {
+interface Exercise extends ChapterRef {
   number: number;
   title: string;
   problem: string;
   solution?: string | Solution[];
 }
 
-export default function ExercisesPage() {
+export default async function ExercisesPage({
+  searchParams,
+}: {
+  searchParams: Promise<ChapterFilterParams>;
+}) {
+  const filter = await searchParams;
   const exercises: Exercise[] = [
     // Template:
     // {
     //   number: 1,
+    //   chapter: 1,
+    //   section: 1,
     //   title: "1.1.1",
     //   problem: `\\text{Problem...}`,
     //   solution: `\\text{Solution...}`,
@@ -28,6 +36,9 @@ export default function ExercisesPage() {
     // },
   ];
 
+  const visible = filterByChapter(exercises, filter);
+  const filterLabel = chapterFilterLabel(filter);
+
   return (
     <div>
       <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-200">
@@ -35,7 +46,10 @@ export default function ExercisesPage() {
           Exercises from Topology with worked solutions.
         </p>
       </div>
-      {exercises.map((exercise) => (
+      {visible.length === 0 && filterLabel && (
+        <p className="text-gray-500 text-sm sm:text-base">Nothing from {filterLabel} yet.</p>
+      )}
+      {visible.map((exercise) => (
         <ExerciseCard
           key={exercise.number}
           number={exercise.number}

@@ -77,6 +77,16 @@ export default function NotesPage() {
       color: "#22c55e", // green-500
     },
     {
+      name: "Algebraic Topology",
+      href: "/notes/algebraic-topology",
+      content: [
+        { label: "theorems", count: 0 },
+        { label: "definitions", count: 0 },
+        { label: "exercises", count: 0 },
+      ],
+      color: "#14b8a6", // teal-500
+    },
+    {
       name: "Linear Algebra",
       href: "/notes/linear-algebra",
       content: [

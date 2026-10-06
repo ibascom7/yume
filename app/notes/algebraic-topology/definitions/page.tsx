@@ -31,7 +31,7 @@ export default async function DefinitionsPage({
     <div>
       <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-200">
         <p className="text-gray-700 text-sm sm:text-base">
-          Catalog of Definitions from Topology.
+          Catalog of Definitions from Algebraic Topology.
         </p>
       </div>
       {visible.length === 0 && filterLabel && (

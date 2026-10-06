@@ -1,11 +1,12 @@
 import TheoremCard from "../components/TheoremCard";
+import { chapterFilterLabel, filterByChapter, type ChapterFilterParams, type ChapterRef } from "@/app/components/chapters";
 
 interface Proof {
   title?: string;
   content: string;
 }
 
-interface Theorem {
+interface Theorem extends ChapterRef {
   number: number;
   title: string;
   statement: string;
@@ -13,11 +14,18 @@ interface Theorem {
   proof?: string | Proof[];
 }
 
-export default function TheoremsPage() {
+export default async function TheoremsPage({
+  searchParams,
+}: {
+  searchParams: Promise<ChapterFilterParams>;
+}) {
+  const filter = await searchParams;
   const theorems: Theorem[] = [
     // Template:
     // {
     //   number: 1,
+    //   chapter: 1,
+    //   section: 1,
     //   title: "1.1.1 Theorem Name",
     //   statement: `\\text{Statement...}`,
     //   proof: `\\text{Proof...}`,
@@ -29,6 +37,9 @@ export default function TheoremsPage() {
     // },
   ];
 
+  const visible = filterByChapter(theorems, filter);
+  const filterLabel = chapterFilterLabel(filter);
+
   return (
     <div>
       <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-200">
@@ -36,7 +47,10 @@ export default function TheoremsPage() {
           Catalog of theorems from Linear Algebra alongside proofs for each.
         </p>
       </div>
-      {theorems.map((theorem) => (
+      {visible.length === 0 && filterLabel && (
+        <p className="text-gray-500 text-sm sm:text-base">Nothing from {filterLabel} yet.</p>
+      )}
+      {visible.map((theorem) => (
         <TheoremCard
           key={theorem.number}
           number={theorem.number}

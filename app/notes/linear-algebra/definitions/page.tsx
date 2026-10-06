@@ -1,20 +1,31 @@
 import DefinitionCard from "../components/DefinitionCard";
+import { chapterFilterLabel, filterByChapter, type ChapterFilterParams, type ChapterRef } from "@/app/components/chapters";
 
-interface Definition {
+interface Definition extends ChapterRef {
   number: number;
   term: string;
   definition: string;
 }
 
-export default function DefinitionsPage() {
+export default async function DefinitionsPage({
+  searchParams,
+}: {
+  searchParams: Promise<ChapterFilterParams>;
+}) {
+  const filter = await searchParams;
   const definitions: Definition[] = [
     // Template:
     // {
     //   number: 1,
+    //   chapter: 1,
+    //   section: 1,
     //   term: "1.1.1 Term",
     //   definition: `\\text{Definition...}`,
     // },
   ];
+
+  const visible = filterByChapter(definitions, filter);
+  const filterLabel = chapterFilterLabel(filter);
 
   return (
     <div>
@@ -23,7 +34,10 @@ export default function DefinitionsPage() {
           Catalog of Definitions from Linear Algebra.
         </p>
       </div>
-      {definitions.map((def) => (
+      {visible.length === 0 && filterLabel && (
+        <p className="text-gray-500 text-sm sm:text-base">Nothing from {filterLabel} yet.</p>
+      )}
+      {visible.map((def) => (
         <DefinitionCard
           key={def.number}
           number={def.number}

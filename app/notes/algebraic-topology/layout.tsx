@@ -7,12 +7,12 @@ import ChapterFilter from "@/app/components/ChapterFilter";
 import { chapters } from "./chapters";
 
 const tabs = [
-  { name: "Theorems", href: "/notes/topology/theorems" },
-  { name: "Definitions", href: "/notes/topology/definitions" },
-  { name: "Exercises", href: "/notes/topology/exercises" },
+  { name: "Theorems", href: "/notes/algebraic-topology/theorems" },
+  { name: "Definitions", href: "/notes/algebraic-topology/definitions" },
+  { name: "Exercises", href: "/notes/algebraic-topology/exercises" },
 ];
 
-export default function TopologyLayout({
+export default function AlgebraicTopologyLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -47,7 +47,7 @@ function TabsAndFilter() {
               href={query ? `${tab.href}?${query}` : tab.href}
               className={`px-3 sm:px-4 py-2 border-b-2 transition-colors whitespace-nowrap text-sm sm:text-base ${
                 isActive
-                  ? "border-green-600 text-green-600 font-semibold"
+                  ? "border-teal-600 text-teal-600 font-semibold"
                   : "border-transparent text-gray-600 hover:text-black"
               }`}
             >
@@ -57,7 +57,7 @@ function TabsAndFilter() {
         })}
       </div>
 
-      <ChapterFilter chapters={chapters} activeClassName="bg-green-600 border-green-600 text-white" />
+      <ChapterFilter chapters={chapters} activeClassName="bg-teal-600 border-teal-600 text-white" />
     </>
   );
 }

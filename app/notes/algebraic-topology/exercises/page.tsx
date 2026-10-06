@@ -43,7 +43,7 @@ export default async function ExercisesPage({
     <div>
       <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-200">
         <p className="text-gray-700 text-sm sm:text-base">
-          Exercises from Real Analysis with worked solutions.
+          Exercises from Algebraic Topology with worked solutions.
         </p>
       </div>
       {visible.length === 0 && filterLabel && (
