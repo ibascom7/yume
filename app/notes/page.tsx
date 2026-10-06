@@ -2,26 +2,22 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 // Smallest bubble diameter, so labels on empty classes still fit inside the rim
 const MIN_SIZE = 96;
 // Drops that scatter when a bubble pops
 const DROPLET_COUNT = 10;
+// Start navigating once the bubble has swelled, so the page loads while it bursts
+// instead of after the animation (matches the 45% keyframe of bubble-pop)
+const NAVIGATE_AFTER_MS = 120;
 
 export default function NotesPage() {
   const router = useRouter();
   // href of the bubble currently mid-pop, if any
   const [popping, setPopping] = useState<string | null>(null);
-  const navigated = useRef(false);
 
-  const goTo = (href: string) => {
-    if (navigated.current) return;
-    navigated.current = true;
-    router.push(href);
-  };
-
-  // Pop the bubble first, then navigate once the animation finishes
+  // Pop the bubble and navigate partway through, so the flourish overlaps the page load
   const pop = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     // Modified clicks (new tab/window) and reduced-motion users get a plain navigation
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -29,15 +25,15 @@ export default function NotesPage() {
     e.preventDefault();
     if (popping) return;
     setPopping(href);
-    // Safety net in case animationend never fires
-    window.setTimeout(() => goTo(href), 1200);
+    window.setTimeout(() => router.push(href), NAVIGATE_AFTER_MS);
   };
 
   // Calculate content counts for each class
+  // Links go straight to each class's first tab to skip the redirect hop
   const classes = [
     {
       name: "Abstract Algebra",
-      href: "/notes/algebra",
+      href: "/notes/algebra/theorems",
       content: [
         { label: "theorems", count: 34 },
         { label: "definitions", count: 58 },
@@ -47,7 +43,7 @@ export default function NotesPage() {
     },
     {
       name: "Intermediate Analysis",
-      href: "/notes/intermediate-analysis",
+      href: "/notes/intermediate-analysis/theorems",
       content: [
         { label: "theorems", count: 34 },
         { label: "definitions", count: 13 },
@@ -58,7 +54,7 @@ export default function NotesPage() {
     },
     {
       name: "Real Analysis",
-      href: "/notes/real-analysis",
+      href: "/notes/real-analysis/theorems",
       content: [
         { label: "theorems", count: 0 },
         { label: "definitions", count: 0 },
@@ -68,7 +64,7 @@ export default function NotesPage() {
     },
     {
       name: "Topology",
-      href: "/notes/topology",
+      href: "/notes/topology/theorems",
       content: [
         { label: "theorems", count: 0 },
         { label: "definitions", count: 0 },
@@ -78,7 +74,7 @@ export default function NotesPage() {
     },
     {
       name: "Algebraic Topology",
-      href: "/notes/algebraic-topology",
+      href: "/notes/algebraic-topology/theorems",
       content: [
         { label: "theorems", count: 0 },
         { label: "definitions", count: 0 },
@@ -88,7 +84,7 @@ export default function NotesPage() {
     },
     {
       name: "Linear Algebra",
-      href: "/notes/linear-algebra",
+      href: "/notes/linear-algebra/theorems",
       content: [
         { label: "theorems", count: 0 },
         { label: "definitions", count: 0 },
@@ -126,6 +122,8 @@ export default function NotesPage() {
             <Link
               key={cls.href}
               href={cls.href}
+              // Fully prefetch so the page is ready by the time the pop finishes
+              prefetch={true}
               onClick={(e) => pop(e, cls.href)}
               className="flex flex-col items-center gap-4 group"
             >
@@ -140,9 +138,8 @@ export default function NotesPage() {
                     border: `2px solid ${cls.color}`,
                     // Clear center that ramps quickly to the class color right at the edge
                     backgroundImage: `radial-gradient(circle closest-side, transparent 0%, transparent 78%, ${cls.color}1f 90%, ${cls.color}a6 97%, ${cls.color} 100%)`,
-                    animation: isPopping ? "bubble-pop 420ms ease-out forwards" : undefined,
+                    animation: isPopping ? "bubble-pop 260ms ease-out forwards" : undefined,
                   } as React.CSSProperties}
-                  onAnimationEnd={isPopping ? () => goTo(cls.href) : undefined}
                 >
                   <span
                     className={`font-bold text-center ${isSmall ? "text-xs px-2" : "text-sm sm:text-base px-4"}`}
@@ -198,7 +195,7 @@ function Droplets({ size, color }: { size: number; color: string }) {
               "--sy": `${sin * start}px`,
               "--dx": `${cos * end}px`,
               "--dy": `${sin * end}px`,
-              animation: "bubble-droplet 320ms cubic-bezier(0.1, 0.6, 0.3, 1) 100ms both",
+              animation: "bubble-droplet 220ms cubic-bezier(0.1, 0.6, 0.3, 1) 40ms both",
             } as React.CSSProperties}
           />
         );
