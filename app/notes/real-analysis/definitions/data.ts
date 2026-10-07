@@ -106,6 +106,23 @@ export const definitions: Definition[] = [
                  \\forall \\varepsilon > 0,\\ \\exists N \\in \\mathbb{N},\\ \\forall k \\geq N,\\ \\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert < \\varepsilon. \\\\
                  \\text{In this case, we notate this by } \\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}.`,
   },
+  {
+    number: 10,
+    chapter: 4,
+    section: 2,
+    term: "Cauchy Sequence",
+    definition: `\\text{A sequence } (\\mathbf{x}_k) \\subseteq \\mathbb{R}^n \\text{ is Cauchy if} \\\\
+                 \\forall \\varepsilon > 0,\\ \\exists N \\in \\mathbb{N},\\ \\forall k, l \\geq N,\\ \\lVert \\mathbf{x}_k - \\mathbf{x}_l \\rVert < \\varepsilon.`,
+  },
+  {
+    number: 11,
+    chapter: 4,
+    section: 2,
+    term: "Complete",
+    definition: `\\text{A set } S \\subseteq \\mathbb{R}^n \\text{ is complete if every} \\\\
+                 [[definition 10|Cauchy sequence]] \\text{ in } S \\text{ } [[definition 9|converges]] \\text{ to a point in } S. \\\\[0.5em]
+                 (\\mathbf{x}_k) \\subseteq S,\\ (\\mathbf{x}_k) \\text{ Cauchy} \\implies \\exists \\mathbf{a} \\in \\mathbb{R}^n,\\ \\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a} \\in S`,
+  },
   // Template:
   // {
   //   number: 1,
