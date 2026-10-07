@@ -164,7 +164,7 @@ export default function LinkPreviewPopup({ previews }: { previews: LinkPreviews 
         ref={popupRef}
         role="dialog"
         aria-label={preview.heading}
-        className="fixed inset-x-0 bottom-0 z-50 rounded-t-xl border-t border-gray-300 bg-white px-4 pt-3 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-[0_-4px_16px_rgba(0,0,0,0.15)] text-sm after:absolute after:inset-x-0 after:top-full after:h-screen after:bg-white after:content-['']"
+        className="fixed inset-x-0 bottom-0 z-50 rounded-t-xl border-t border-gray-300 bg-white px-4 pt-3 pb-[calc(1rem+env(safe-area-inset-bottom))] shadow-[0_-4px_16px_rgba(0,0,0,0.15)] text-sm"
       >
         <div className="flex items-start justify-between gap-3 mb-1">
           <div className="font-semibold text-black">{preview.heading}</div>

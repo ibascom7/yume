@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -15,6 +15,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Isaiah Bascom",
   description: "Isaiah Bascom fun fun notes good",
+};
+
+// "cover" lets the page draw under the iPhone home-indicator strip, so bottom-pinned UI
+// (like the mobile link preview sheet) reaches the screen edge when the browser bars hide
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
