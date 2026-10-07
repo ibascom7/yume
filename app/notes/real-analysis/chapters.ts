@@ -8,7 +8,7 @@ export const chapters: Chapter[] = [
     title: "Topology of ℝⁿ",
     sections: [
       { number: 1, title: "n-Dimensional Space" },
-      { number: 2, title: "Section title" },
+      { number: 2, title: "Convergence and Completeness in ℝⁿ" },
     ],
   },
 ];

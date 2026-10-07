@@ -23,26 +23,58 @@ export default function NascRtgPage() {
             Projects
           </Link>
           <span className="text-gray-400">/</span>
-          <span className="text-lg sm:text-xl font-bold">NASC-RTG</span>
+          <span className="text-lg sm:text-xl font-bold">Taylor-Couette RL</span>
         </div>
       </nav>
 
       {/* Main content */}
       <main className="flex-1 p-3 sm:p-8">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-6">NASC-RTG Poster</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold mb-2">
+            Taylor-Couette RL Poster
+          </h1>
+          <p className="text-gray-500 mb-6">
+            Isaiah Bascom, Min Wang, Yuhe Wang &middot; presented at NASC-RTG
+          </p>
 
-          {/* Poster: put the file in public/ and replace this box with
-                <Image src="/nasc-rtg-poster.png" alt="NASC-RTG poster" width={1600} height={1200}
-                       className="w-full h-auto rounded-lg border border-gray-300" />
-              or, for a PDF,
-                <iframe src="/nasc-rtg-poster.pdf" className="w-full h-[80vh] rounded-lg border border-gray-300" /> */}
-          <div className="aspect-[4/3] w-full mb-6 rounded-lg border border-dashed border-gray-300 bg-gray-50 flex items-center justify-center text-gray-400">
-            Poster goes here
-          </div>
+          <a href="/nasc-rtg-poster.pdf" target="_blank" rel="noopener noreferrer">
+            <Image
+              src="/nasc-rtg-poster.png"
+              alt="Poster: Reinforcement learning discovered a better way to run a catalytic-wall Taylor-Couette reactor"
+              width={2400}
+              height={1800}
+              priority
+              className="w-full h-auto mb-2 rounded-lg border border-gray-300 hover:opacity-90 transition-opacity"
+            />
+          </a>
+          <p className="text-sm text-gray-500 mb-6">
+            <a
+              href="/nasc-rtg-poster.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-gray-700"
+            >
+              Open the full-resolution PDF
+            </a>
+          </p>
 
           <div className="space-y-4 text-gray-700 text-sm sm:text-base">
-            <p>Write a little about the project here.</p>
+            <p>
+              In a catalytic-wall Taylor-Couette reactor, a reactant-laden liquid
+              flows between a spinning inner cylinder and a stationary catalytic
+              shell. The question: how should the inner cylinder be spun to get
+              the most conversion for the least motor power?
+            </p>
+            <p>
+              We coupled an OpenFOAM simulation of the reactor to a TD3
+              reinforcement learning agent through Gymnasium. Every 10 seconds
+              the agent picks the next pulse (duty, period, and low speed) with
+              the average held at 300 rpm, and is rewarded for conversion minus
+              motor power. Trained on a reactor &#8533; the full height, the
+              policy transferred zero-shot to the full-height reactor, where it
+              beat constant-speed operation: brief stops are better than
+              constant operation.
+            </p>
           </div>
         </div>
       </main>

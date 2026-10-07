@@ -9,11 +9,13 @@ export default function Projects() {
 
   const projects = [
     {
-      name: "NASC-RTG",
+      name: "Taylor-Couette RL Poster",
       id: "project-1",
-      // Thumbnail from public/, e.g. "/nasc-rtg-poster.png"; a gray box shows until it's set
-      image: "",
-      description: "A short summary of the poster.",
+      slug: "nasc-rtg",
+      // Thumbnail from public/; a gray box shows until it's set
+      image: "/nasc-rtg-poster.png",
+      description:
+        "Poster presented at NASC-RTG. We used reinforcement learning (TD3) coupled to an OpenFOAM simulation to find a better way to spin the inner cylinder of a catalytic-wall Taylor-Couette reactor: brief stops beat constant operation, giving more conversion for less motor power.",
     },
   ];
 
@@ -66,7 +68,7 @@ export default function Projects() {
                 className="border border-gray-300 rounded-lg p-3 sm:p-4 bg-white shadow-sm"
               >
                 <Link
-                  href={`/projects/${project.name.toLowerCase().replace(/\s+/g, "-")}`}
+                  href={`/projects/${project.slug}`}
                   className="font-bold text-lg sm:text-xl text-black hover:text-gray-600 transition-colors"
                 >
                   {project.name}

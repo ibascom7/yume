@@ -150,7 +150,12 @@ export const theorems: Theorem[] = [
       },
       {
         title: "Proof",
-        content: `
+        content: `\\text{Let } \\mathbf{x,y} \\in \\mathbb{R}^n. \\text{ We first show the inequality.}
+                  \\text{Note } 
+                  \\text{Observe}
+                  \\begin{aligned}
+                  
+                  \\end{aligned}
         `,
       },
     ],
