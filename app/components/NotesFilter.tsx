@@ -81,7 +81,7 @@ export default function NotesFilter({ chapters, homeworks, activeClassName }: No
                 scroll={false}
                 className={chip(isActive)}
               >
-                {selectedChapter.number}.{section.number} {section.title}
+                {selectedChapter.number}.{section.number}. {section.title}
               </Link>
             );
           })}

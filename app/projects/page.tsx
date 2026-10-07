@@ -9,10 +9,11 @@ export default function Projects() {
 
   const projects = [
     {
-      name: "Influencers",
+      name: "NASC-RTG",
       id: "project-1",
-      image: "/facebook-network.png",
-      description: "Who is the most influential influencer?",
+      // Thumbnail from public/, e.g. "/nasc-rtg-poster.png"; a gray box shows until it's set
+      image: "",
+      description: "A short summary of the poster.",
     },
   ];
 
@@ -73,13 +74,17 @@ export default function Projects() {
                 <hr className="border-gray-300 my-2 sm:my-3" />
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <div className="flex-shrink-0">
-                    <Image
-                      src={project.image}
-                      alt={project.name}
-                      width={150}
-                      height={150}
-                      className="rounded-lg w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] object-cover"
-                    />
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.name}
+                        width={150}
+                        height={150}
+                        className="rounded-lg w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] object-cover"
+                      />
+                    ) : (
+                      <div className="rounded-lg w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] bg-gray-100" />
+                    )}
                   </div>
                   <div className="flex-1">
                     <p className="text-gray-700 text-sm sm:text-base">

@@ -1,11 +1,6 @@
 import DefinitionCard from "../components/DefinitionCard";
-import { filterByChapter, filterLabel, type ChapterRef, type NotesFilterParams } from "@/app/components/notesFilter";
-
-interface Definition extends ChapterRef {
-  number: number;
-  term: string;
-  definition: string;
-}
+import { filterByChapter, filterLabel, type NotesFilterParams } from "@/app/components/notesFilter";
+import { definitions } from "./data";
 
 export default async function DefinitionsPage({
   searchParams,
@@ -14,25 +9,6 @@ export default async function DefinitionsPage({
 }) {
   // Homework only applies to exercises, so ignore it when it carries over from that tab
   const { chapter, section } = await searchParams;
-  const definitions: Definition[] = [
-    // Example card: replace with your own
-    {
-      number: 1,
-      chapter: 1,
-      section: 1,
-      term: "Example Term",
-      definition: `\\text{Definition of the term, in LaTeX.}`,
-    },
-    // Template:
-    // {
-    //   number: 1,
-    //   chapter: 1,
-    //   section: 1,
-    //   term: "Term",
-    //   definition: `\\text{Definition...}`,
-    // },
-  ];
-
   const visible = filterByChapter(definitions, { chapter, section });
   const label = filterLabel({ chapter, section });
 

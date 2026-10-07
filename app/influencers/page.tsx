@@ -177,13 +177,6 @@ export default function Influencers() {
               className="rounded sm:w-7 sm:h-7"
             />
           </Link>
-          <Link
-            href="/projects"
-            className="text-lg sm:text-xl font-bold hover:opacity-70 transition-opacity"
-          >
-            Projects
-          </Link>
-          <span className="text-gray-400">/</span>
           <span className="text-lg sm:text-xl font-bold">Influencers</span>
         </div>
       </nav>

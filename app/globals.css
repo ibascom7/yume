@@ -29,6 +29,9 @@ body {
 .katex-display {
   text-align: left !important;
   margin: 0 !important;
+  /* Math that's wider than the card scrolls sideways instead of being cut off */
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .katex-display > .katex {

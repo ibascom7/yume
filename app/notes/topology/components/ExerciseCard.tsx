@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { processLatexLinks } from "./latexLinkHelper";
-import TrustedBlockMath from "./TrustedBlockMath";
+import TrustedBlockMath from "@/app/components/TrustedBlockMath";
 import LocationBadges from "@/app/components/LocationBadges";
 import type { ChapterRef, HomeworkRef } from "@/app/components/notesFilter";
 

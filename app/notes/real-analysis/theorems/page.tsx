@@ -1,18 +1,6 @@
 import TheoremCard from "../components/TheoremCard";
-import { filterByChapter, filterLabel, type ChapterRef, type NotesFilterParams } from "@/app/components/notesFilter";
-
-interface Proof {
-  title?: string;
-  content: string;
-}
-
-interface Theorem extends ChapterRef {
-  number: number;
-  title: string;
-  statement: string;
-  description?: string;
-  proof?: string | Proof[];
-}
+import { filterByChapter, filterLabel, type NotesFilterParams } from "@/app/components/notesFilter";
+import { theorems } from "./data";
 
 export default async function TheoremsPage({
   searchParams,
@@ -21,32 +9,6 @@ export default async function TheoremsPage({
 }) {
   // Homework only applies to exercises, so ignore it when it carries over from that tab
   const { chapter, section } = await searchParams;
-  const theorems: Theorem[] = [
-    // Example card: replace with your own
-    {
-      number: 1,
-      chapter: 1,
-      section: 1,
-      title: "Example Theorem",
-      statement: `\\text{Statement of the theorem, in LaTeX.}`,
-      proof: `\\text{Proof of the theorem, in LaTeX.}`,
-    },
-    // Template:
-    // {
-    //   number: 1,
-    //   chapter: 1,
-    //   section: 1,
-    //   title: "Theorem name",
-    //   statement: `\\text{Statement...}`,
-    //   proof: `\\text{Proof...}`,
-    //   // or multiple proofs:
-    //   // proof: [
-    //   //   { title: "Proof of (a)", content: `\\text{...}` },
-    //   //   { title: "Proof of (b)", content: `\\text{...}` },
-    //   // ],
-    // },
-  ];
-
   const visible = filterByChapter(theorems, { chapter, section });
   const label = filterLabel({ chapter, section });
 
@@ -63,6 +25,7 @@ export default async function TheoremsPage({
       {visible.map((theorem) => (
         <TheoremCard
           key={theorem.number}
+          kind={theorem.kind}
           number={theorem.number}
           title={theorem.title}
           statement={theorem.statement}

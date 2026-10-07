@@ -1,7 +1,7 @@
 "use client";
 
 import { processLatexLinks } from "./latexLinkHelper";
-import TrustedBlockMath from "./TrustedBlockMath";
+import TrustedBlockMath from "@/app/components/TrustedBlockMath";
 
 interface DefinitionCardProps {
   number: number;

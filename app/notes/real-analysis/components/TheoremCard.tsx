@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import { processLatexLinks } from "./latexLinkHelper";
-import TrustedBlockMath from "./TrustedBlockMath";
+import TrustedBlockMath from "@/app/components/TrustedBlockMath";
 import LocationBadges from "@/app/components/LocationBadges";
 import type { ChapterRef } from "@/app/components/notesFilter";
+
+// What the card is labeled as; all kinds share one numbering, like most textbooks
+export type TheoremKind = "Theorem" | "Lemma" | "Corollary";
 
 interface Proof {
   title?: string;
@@ -12,6 +15,7 @@ interface Proof {
 }
 
 interface TheoremCardProps extends ChapterRef {
+  kind?: TheoremKind;
   number: number;
   title: string;
   statement: string;
@@ -21,6 +25,7 @@ interface TheoremCardProps extends ChapterRef {
 }
 
 export default function TheoremCard({
+  kind = "Theorem",
   number,
   title,
   statement,
@@ -48,7 +53,7 @@ export default function TheoremCard({
             onClick={() => proof && setIsProofOpen(!isProofOpen)}
           >
             <div>
-              <span className="font-bold text-purple-600">Theorem {number}. </span>
+              <span className="font-bold text-purple-600">{kind} {number}. </span>
               <span className="font-semibold text-black">{title}</span>
             </div>
             <LocationBadges chapter={chapter} section={section} />

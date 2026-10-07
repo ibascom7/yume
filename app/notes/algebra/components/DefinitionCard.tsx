@@ -1,6 +1,6 @@
 "use client";
 
-import { BlockMath } from "react-katex";
+import TrustedBlockMath from "@/app/components/TrustedBlockMath";
 
 interface DefinitionCardProps {
   number: number;
@@ -21,7 +21,7 @@ export default function DefinitionCard({ number, term, definition, image, imageA
         <span className="font-semibold text-black">{term}</span>
       </div>
       <div className="text-black text-sm sm:text-base ml-0 sm:ml-[7.5em]">
-        <BlockMath math={definition} />
+        <TrustedBlockMath math={definition} />
         {image && (
           <div className="mt-2">
             <img

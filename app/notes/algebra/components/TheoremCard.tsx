@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { InlineMath, BlockMath } from "react-katex";
+import TrustedBlockMath from "@/app/components/TrustedBlockMath";
 
 interface Proof {
   title?: string;
@@ -41,7 +41,7 @@ export default function TheoremCard({ number, title, statement, description, pro
             <span className="font-semibold text-black">{title}</span>
           </div>
           <div className="text-black text-sm sm:text-base ml-0 sm:ml-[6em]">
-            <BlockMath math={statement} />
+            <TrustedBlockMath math={statement} />
           </div>
           <div className="text-black text-sm sm:text-base ml-0 sm:ml-[6em]">
             <p>{description}</p>
@@ -75,7 +75,7 @@ export default function TheoremCard({ number, title, statement, description, pro
                 {p.title ? `${p.title}:` : proofs.length > 1 ? `Proof ${index + 1}:` : "Proof:"}
               </div>
               <div className="text-black text-sm sm:text-base ml-0 sm:ml-[3.5em]" style={{ lineHeight: "2" }}>
-                <BlockMath math={p.content} />
+                <TrustedBlockMath math={p.content} />
               </div>
             </div>
           ))}

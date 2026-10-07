@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { processLatexLinks } from "./latexLinkHelper";
-import TrustedBlockMath from "./TrustedBlockMath";
+import TrustedBlockMath from "@/app/components/TrustedBlockMath";
 
 interface Proof {
   title?: string;
