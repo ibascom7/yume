@@ -154,6 +154,30 @@ export const definitions: Definition[] = [
                  \\text{consisting of all of its [[definition 12|limit points]].} \\\\[1em]
                  \\text{Note } A \\text{ [[definition 13|closed]]} \\iff \\overline{A} \\subseteq A.`,
   },
+  {
+    number: 15,
+    chapter: 4,
+    section: 3,
+    term: "Dense",
+    definition: `\\text{A set } A \\text{ is dense in } B \\text{ if } A \\subseteq B \\subseteq \\overline{A}. \\\\[1em]
+                 \\text{e.g. } \\mathbb{Q} \\text{ is dense in } \\mathbb{R}, \\text{ since } \\overline{\\mathbb{Q}} = \\mathbb{R}.`,
+  },
+  {
+    number: 16,
+    chapter: 4,
+    section: 3,
+    term: "Ball",
+    definition: `\\text{The ball about } \\mathbf{a} \\in \\mathbb{R}^n \\text{ of radius } r \\text{ is the set} \\\\
+                 B_r(\\mathbf{a}) := \\{ \\mathbf{x} \\in \\mathbb{R}^n \\mid \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\}.`,
+  },
+  {
+    number: 17,
+    chapter: 4,
+    section: 3,
+    term: "Open",
+    definition: `\\text{A set } U \\subseteq \\mathbb{R}^n \\text{ is open if} \\\\
+                 \\forall \\mathbf{a} \\in U,\\ \\exists r = r(\\mathbf{a}) > 0,\\ [[definition 16|$B_r(\\mathbf{a})$]] \\subseteq U.`,
+  },
   // Template:
   // {
   //   number: 1,

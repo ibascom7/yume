@@ -350,6 +350,55 @@ export const theorems: Theorem[] = [
         content: `\\text{1) } [[definition 13|Closed]] \\\\
                   \\text{2) } [[definition 12|Limit point]]`,
       },
+      {
+        title: "Proof of Part 1",
+        content: `\\text{Suppose $A, B \\subseteq \\mathbb{R}^n$ are closed. WTS $A \\cup B$ is closed.} \\\\
+                  \\text{So let $\\mathbf{x}$ be a limit point of $A \\cup B$.} \\\\
+                  \\text{So $\\exists (\\mathbf{x}_k) \\subseteq A \\cup B$ such that } \\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{x}. \\\\
+                  \\text{Thus there are infinitely many terms of $(\\mathbf{x}_k)$ in $A$ or in $B$.} \\\\
+                  \\text{WLOG, infinitely many terms of $(\\mathbf{x}_k)$ are in $A$.} \\\\
+                  \\text{Then $\\exists (k_n) \\subseteq \\mathbb{N}$ increasing such that $(\\mathbf{x}_{k_n}) \\subseteq A$ and} \\\\
+                  \\lim_{n \\to \\infty} \\mathbf{x}_{k_n} = \\mathbf{x}, \\\\
+                  \\text{since subsequences of a convergent sequence share its limit.} \\\\
+                  \\text{So $\\mathbf{x}$ is a limit point of $A$. Since $A$ is closed, $\\mathbf{x} \\in A$.} \\\\
+                  \\text{Since $A \\subseteq A \\cup B$, then $\\mathbf{x} \\in A \\cup B$.} \\\\
+                  \\text{Thus, $A \\cup B$ is closed.} \\ \\blacksquare`
+      },
+      {
+        title: "Proof of Part 2",
+        content: `\\text{Recall, $\\mathbf{x} \\in \\bigcap_{i \\in I} A_i$ means that $\\forall i \\in I$, $\\mathbf{x} \\in A_i$.} \\\\
+                  \\text{WTS $\\bigcap_{i \\in I} A_i$ is closed. Let $\\mathbf{x}$ be a limit point of $\\bigcap_{i \\in I} A_i$.} \\\\
+                  \\text{Thus, $\\exists (\\mathbf{a}_k) \\subseteq \\bigcap_{i \\in I} A_i$ such that } \\lim_{k \\to \\infty} \\mathbf{a}_k = \\mathbf{x}. \\\\
+                  \\text{Since $(\\mathbf{a}_k) \\subseteq \\bigcap_{i \\in I} A_i$, then for each $i \\in I$, $(\\mathbf{a}_k) \\subseteq A_i$.} \\\\
+                  \\text{But since $A_i$ is closed, we have } \\lim_{k \\to \\infty} \\mathbf{a}_k = \\mathbf{x} \\in A_i. \\\\
+                  \\text{Since $i$ arbitrary, then $\\forall i \\in I$, $\\mathbf{x} \\in A_i \\implies \\mathbf{x} \\in \\bigcap_{i \\in I} A_i$.} \\\\
+                  \\text{Thus, an arbitrary limit point $\\mathbf{x}$ of $\\bigcap_{i \\in I} A_i$ is in $\\bigcap_{i \\in I} A_i$,} \\\\
+                  \\text{so $\\bigcap_{i \\in I} A_i$ is closed.} \\ \\blacksquare`
+      },
+    ],
+  },
+  {
+    kind: "Lemma",
+    number: 9,
+    chapter: 4,
+    section: 3,
+    title: "Closure is the Smallest Closed Set",
+    statement: `\\text{Let } A \\subseteq \\mathbb{R}^n. \\text{ Then } \\overline{A} \\text{ is the smallest closed set containing } A. \\\\
+                \\text{In particular, } \\overline{\\overline{A}} = \\overline{A}.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 13|Closed]] \\\\
+                  \\text{2) } [[definition 12|Limit point]] \\\\
+                  \\text{3) } [[definition 14|Closure]] \\\\
+                  \\text{4) } [[definition 9|Convergence]] \\\\
+                  \\text{5) } [[theorem 4|Convergence via Norms]]`,
+      },
+      {
+        title: "Proof",
+        content: `
+        `
+      },
     ],
   },
   // Template:
