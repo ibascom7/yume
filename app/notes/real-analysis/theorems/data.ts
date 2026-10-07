@@ -78,6 +78,61 @@ export const theorems: Theorem[] = [
       \\end{aligned}
       `,
     },
+  {
+    kind: "Lemma",
+    number: 2,
+    chapter: 4,
+    section: 1,
+    title: "Properties of Orthonormal Sets",
+    statement: `\\text{Let } \\{\\mathbf{v}_1, \\ldots, \\mathbf{v}_n\\} \\subseteq \\mathbb{R}^n \\text{ be an orthonormal set.} \\\\[0.5em]
+                \\text{(a) For } a_j \\in \\mathbb{R},\\ \\left\\lVert \\sum_{j=1}^{n} a_j \\mathbf{v}_j \\right\\rVert = \\left( \\sum_{j=1}^{n} a_j^2 \\right)^{1/2} \\\\[0.5em]
+                \\text{(b) Any orthonormal set in } \\mathbb{R}^n \\text{ is linearly independent.} \\\\[0.5em]
+                \\text{(c) An ONB in } \\mathbb{R}^n \\text{ is a basis and has exactly } n \\text{ elements.}`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{Let } S = \\{\\mathbf{v}_1, \\ldots, \\mathbf{v}_n\\} \\subseteq \\mathbb{R}^n. \\\\[0.5em]
+                  \\text{1) } [[definition 1|Norm]] \\\\
+                  \\text{2) } [[definition 5|Orthonormal]] \\\\
+                  \\text{3) } [[definition 7|Linearly independent]] \\\\
+                  \\text{4) } [[definition 6|ONB]] \\\\
+                  \\text{5) } [[definition 8|Basis]] \\\\
+                  \\text{6) A basis of } \\mathbb{R}^n \\text{ has } n \\text{ elements.}`,
+      },
+      {
+        title: "Proof of (a)",
+        content: `\\text{Assume } \\{\\mathbf{v}_1, \\ldots, \\mathbf{v}_n\\} \\text{ is an orthonormal set. Then} \\\\
+                  \\begin{aligned}
+                    \\left\\lVert \\sum_{j=1}^{n} a_j \\mathbf{v}_j \\right\\rVert^2 &\\overset{(1)}{=} \\left\\langle \\sum_{j=1}^{n} a_j \\mathbf{v}_j, \\sum_{k=1}^{n} a_k \\mathbf{v}_k \\right\\rangle \\\\
+                    &= \\sum_{j,k=1}^{n} a_j a_k \\langle \\mathbf{v}_j, \\mathbf{v}_k \\rangle \\\\
+                    &\\overset{(2)}{=} \\sum_{j,k=1}^{n} a_j a_k \\delta_{jk} \\\\
+                    &= \\sum_{j} a_j^2 \\cdot 1
+                  \\end{aligned} \\\\
+                  \\text{Thus } \\left\\lVert \\sum_{j=1}^{n} a_j \\mathbf{v}_j \\right\\rVert = \\left( \\sum_{j=1}^{n} a_j^2 \\right)^{1/2}
+      `,
+      },
+      { 
+        title: "Proof of (b)", 
+        content: `\\text{Let } S = \\{\\mathbf{v}_1, \\ldots, \\mathbf{v}_n\\} \\text{ be an orthonormal set.} \\\\
+                  \\text{We want to show it is linearly independent.} \\\\
+                  \\text{Suppose } a_j \\in \\mathbb{R} \\text{ and } \\sum_{j=1}^{n} a_j \\mathbf{v}_j = \\mathbf{0}. \\\\
+                  \\text{So we have } \\left\\lVert \\sum_{j=1}^{n} a_j \\mathbf{v}_j \\right\\rVert = 0. \\\\
+                  \\text{Hence, by (a),} \\\\
+                  0 = \\left\\lVert \\sum_{j=1}^{n} a_j \\mathbf{v}_j \\right\\rVert^2 = \\sum_{j=1}^{n} a_j^2, \\\\
+                  \\text{which is a sum of non-negative values } (a_j^2 \\geq 0), \\\\
+                  \\text{and so we have } \\forall j,\\ a_j^2 = 0 \\implies a_j = 0. \\\\
+                  \\text{So } S \\text{ is linearly independent.}
+        `
+      },
+      { title: "Proof of (c)", 
+        content: `\\text{Let } S = \\{\\mathbf{v}_1, \\ldots, \\mathbf{v}_n\\} \\text{ be an orthonormal set.} \\\\
+                  \\text{From (b) we know } S \\text{ is linearly independent,} \\\\
+                  \\text{and by our definition of ONB (4)}, \\text{ S is spanning}. \\\\
+                  \\text{Hence, } S \\text{ is a basis for } \\mathbb{R}^n.
+        ` 
+      },
+    ],
+  },
   // Template:
   // {
   //   kind: "Lemma", // optional: "Theorem" (default), "Lemma", or "Corollary"

@@ -56,8 +56,45 @@ export const definitions: Definition[] = [
     term: "Collinear",
     definition: `\\text{Let } \\mathbf{x}, \\mathbf{y} \\in \\mathbb{R}^n. \\\\
                  \\mathbf{x} \\text{ and } \\mathbf{y} \\text{ are collinear iff } \\ \\exists t \\in \\mathbb{R} \\text{ s.t. } \\mathbf{y} = t \\mathbf{x}.
-                 
+
     `,
+  },
+  {
+    number: 5,
+    chapter: 4,
+    section: 1,
+    term: "Orthonormal",
+    definition: `\\text{A set } \\{\\mathbf{v}_1, \\ldots, \\mathbf{v}_n\\} \\subseteq \\mathbb{R}^n \\text{ of vectors} \\\\
+                 \\text{is orthonormal iff} \\\\
+                 \\langle \\mathbf{v}_i, \\mathbf{v}_j \\rangle = \\delta_{ij} := \\begin{cases} 1 & \\text{if } i = j \\\\ 0 & \\text{if } i \\neq j. \\end{cases} \\\\[1em]
+                 \\text{Note } \\lVert \\mathbf{v}_j \\rVert = \\sqrt{\\langle \\mathbf{v}_j, \\mathbf{v}_j \\rangle} = \\sqrt{1} = 1`,
+  },
+  {
+    number: 6,
+    chapter: 4,
+    section: 1,
+    term: "Orthonormal Basis (ONB)",
+    definition: `\\text{A set } S = \\{\\mathbf{v}_1, \\ldots, \\mathbf{v}_n\\} \\subseteq \\mathbb{R}^n \\text{ of vectors} \\\\
+                 \\text{is an orthonormal basis (ONB) if } S \\\\
+                 \\text{is orthonormal and } \\operatorname{span}(S) = \\mathbb{R}^n.`,
+  },
+  {
+    number: 7,
+    chapter: 4,
+    section: 1,
+    term: "Linearly Independent",
+    definition: `\\text{A set } S = \\{\\mathbf{v}_1, \\ldots, \\mathbf{v}_n\\} \\subseteq \\mathbb{R}^n \\text{ of vectors} \\\\
+                 \\text{is linearly independent iff for } a_1, \\ldots, a_n \\in \\mathbb{R}, \\\\
+                 \\sum_{j=1}^{n} a_j \\mathbf{v}_j = \\mathbf{0} \\implies a_j = 0 \\ \\forall j.`,
+  },
+  {
+    number: 8,
+    chapter: 4,
+    section: 1,
+    term: "Basis",
+    definition: `\\text{A set } S = \\{\\mathbf{v}_1, \\ldots, \\mathbf{v}_n\\} \\subseteq \\mathbb{R}^n \\text{ of vectors} \\\\
+                 \\text{is a basis iff } S \\text{ is } [[definition 7|linearly independent]] \\\\
+                 \\text{and } \\operatorname{span}(S) = \\mathbb{R}^n.`,
   },
   // Template:
   // {
