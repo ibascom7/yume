@@ -10,6 +10,8 @@ const HIDE_DELAY_MS = 150;
 const POPUP_WIDTH = 448;
 // Rough popup height, used to decide whether it fits below the link
 const POPUP_HEIGHT = 260;
+// A click this soon after a finger press is treated as that press's tap
+const TOUCH_CLICK_WINDOW_MS = 1000;
 
 type Shown =
   | { mode: "hover"; href: string; top: number; left: number; above: boolean }
@@ -29,8 +31,9 @@ export default function LinkPreviewPopup({ previews }: { previews: LinkPreviews 
   const anchor = useRef<Element | null>(null);
   // Mirrors `shown` so the document listeners can see it without re-subscribing
   const shownRef = useRef<Shown | null>(null);
-  // Pointer type of the last press, for browsers whose click events don't carry one
-  const lastPointerType = useRef("");
+  // When the last finger or pen press happened. Clicks can't be trusted to say they came from
+  // a tap (Safari may report a tap's click as "mouse"), so a click right after one counts as touch.
+  const lastTouchAt = useRef(-Infinity);
 
   const show = (next: Shown | null) => {
     shownRef.current = next;
@@ -91,7 +94,10 @@ export default function LinkPreviewPopup({ previews }: { previews: LinkPreviews 
     };
 
     const onDown = (e: PointerEvent) => {
-      lastPointerType.current = e.pointerType;
+      if (e.pointerType === "touch" || e.pointerType === "pen") lastTouchAt.current = e.timeStamp;
+    };
+    const onTouchStart = (e: TouchEvent) => {
+      lastTouchAt.current = e.timeStamp;
     };
 
     // iOS Safari doesn't send clicks on plain text up to the document, so close the sheet on
@@ -107,8 +113,7 @@ export default function LinkPreviewPopup({ previews }: { previews: LinkPreviews 
       // Taps inside the sheet (its "Go to" link, close button, scrolling the math) handle themselves
       if (popupRef.current?.contains(target)) return;
 
-      const pointerType = (e as PointerEvent).pointerType || lastPointerType.current;
-      const touch = pointerType === "touch" || pointerType === "pen";
+      const touch = e.timeStamp - lastTouchAt.current < TOUCH_CLICK_WINDOW_MS;
       const link = target.closest("a[href]");
       const href = link?.getAttribute("href");
       const current = shownRef.current;
@@ -131,6 +136,7 @@ export default function LinkPreviewPopup({ previews }: { previews: LinkPreviews 
     document.addEventListener("pointerover", onOver);
     document.addEventListener("pointerout", onOut);
     document.addEventListener("pointerdown", onDown);
+    document.addEventListener("touchstart", onTouchStart, { passive: true });
     document.addEventListener("pointerup", onUp);
     window.addEventListener("scroll", onScroll, { passive: true });
     // Capture phase, so the link's default navigation can still be cancelled
@@ -140,6 +146,7 @@ export default function LinkPreviewPopup({ previews }: { previews: LinkPreviews 
       document.removeEventListener("pointerover", onOver);
       document.removeEventListener("pointerout", onOut);
       document.removeEventListener("pointerdown", onDown);
+      document.removeEventListener("touchstart", onTouchStart);
       document.removeEventListener("pointerup", onUp);
       window.removeEventListener("scroll", onScroll);
       document.removeEventListener("click", onClick, true);
