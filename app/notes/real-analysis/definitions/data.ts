@@ -49,6 +49,16 @@ export const definitions: Definition[] = [
                  \\text{Also note, for } \\mathbf{x} = (x_1, \\ldots, x_n) \\in \\mathbb{R}^n\\text{,} \\\\
                  \\langle \\mathbf{x}, \\mathbf{x} \\rangle = \\sum_{j=1}^{n} x_j \\cdot x_j = \\sum_{j=1}^{n} x_j^2 = \\lVert \\mathbf{x} \\rVert^2`,
   },
+  {
+    number: 4,
+    chapter: 4,
+    section: 1,
+    term: "Collinear",
+    definition: `\\text{Let } \\mathbf{x}, \\mathbf{y} \\in \\mathbb{R}^n. \\\\
+                 \\mathbf{x} \\text{ and } \\mathbf{y} \\text{ are collinear iff } \\ \\exists t \\in \\mathbb{R} \\text{ s.t. } \\mathbf{y} = t \\mathbf{x}.
+                 
+    `,
+  },
   // Template:
   // {
   //   number: 1,
