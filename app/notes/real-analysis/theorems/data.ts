@@ -65,8 +65,17 @@ export const theorems: Theorem[] = [
         \\implies &\\mathbf{y} = \\frac{y_1}{x_1} \\mathbf{x}.
       \\end{aligned} \\\\
       \\text{Hence, } \\mathbf{x} \\text{ and } \\mathbf{y} \\text{ are collinear.} \\\\
-      \\text{Conversely, suppose } \\mathbf{x} \\text{ and } \\mathbf{y} \\text{ are collinear}.
-
+      \\text{Conversely, suppose } \\mathbf{x} \\text{ and } \\mathbf{y} \\text{ are collinear}. \\\\
+      \\text{Then } \\exists t \\in \\mathbb{R} \\text{ s.t. } \\mathbf{y} = t \\mathbf{x}.
+      \\text{Thus, } \\\\
+      \\begin{aligned}
+        & |\\langle \\mathbf{x,y} \\rangle| \\\\
+        = & |\\langle \\mathbf{x}, t \\mathbf{x} \\rangle| \\\\
+        = & |t| \\ |\\langle \\mathbf{x}, \\mathbf{x} \\rangle| \\\\
+        = & |t| \\ |\\|\\mathbf{x} \\|^2| \\\\
+        = & |t| \\ \\|\\mathbf{x}\\|^2 \\\\
+        = & \\|\\mathbf{x}\\| \\|\\mathbf{y}\\| \\ \\ \\blacksquare
+      \\end{aligned}
       `,
     },
   // Template:
