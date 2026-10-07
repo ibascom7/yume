@@ -1,6 +1,8 @@
 import TheoremCard from "../components/TheoremCard";
 import { filterByChapter, filterLabel, type NotesFilterParams } from "@/app/components/notesFilter";
 import { theorems } from "./data";
+import LinkPreviewPopup from "@/app/components/LinkPreviewPopup";
+import { linkPreviews } from "../linkPreviews";
 
 export default async function TheoremsPage({
   searchParams,
@@ -14,6 +16,7 @@ export default async function TheoremsPage({
 
   return (
     <div>
+      <LinkPreviewPopup previews={linkPreviews} />
       <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-200">
         <p className="text-gray-700 text-sm sm:text-base">
           Catalog of theorems from Real Analysis alongside proofs for each.

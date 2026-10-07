@@ -129,7 +129,29 @@ export const theorems: Theorem[] = [
                   \\text{From (b) we know } S \\text{ is linearly independent,} \\\\
                   \\text{and by our definition of ONB (4)}, \\text{ S is spanning}. \\\\
                   \\text{Hence, } S \\text{ is a basis for } \\mathbb{R}^n.
-        ` 
+        `
+      },
+    ],
+  },
+  {
+    kind: "Lemma",
+    number: 3,
+    chapter: 4,
+    section: 1,
+    title: "Triangle Inequality",
+    statement: `\\text{For all } \\mathbf{x}, \\mathbf{y} \\in \\mathbb{R}^n,\\ \\lVert \\mathbf{x} + \\mathbf{y} \\rVert \\leq \\lVert \\mathbf{x} \\rVert + \\lVert \\mathbf{y} \\rVert. \\\\
+                \\text{Moreover, the equality holds iff} \\\\
+                \\mathbf{x} = \\mathbf{0} \\text{ or } \\exists c \\geq 0,\\ \\mathbf{y} = c\\mathbf{x}.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 1|Norm]] \\\\
+                  \\text{2) } [[theorem 1|Cauchy-Schwarz]]`,
+      },
+      {
+        title: "Proof",
+        content: `
+        `,
       },
     ],
   },

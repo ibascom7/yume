@@ -1,6 +1,8 @@
 import ExerciseCard from "../components/ExerciseCard";
 import { filterByChapter, filterByHomework, filterLabel, type NotesFilterParams } from "@/app/components/notesFilter";
 import { exercises } from "./data";
+import LinkPreviewPopup from "@/app/components/LinkPreviewPopup";
+import { linkPreviews } from "../linkPreviews";
 
 export default async function ExercisesPage({
   searchParams,
@@ -13,6 +15,7 @@ export default async function ExercisesPage({
 
   return (
     <div>
+      <LinkPreviewPopup previews={linkPreviews} />
       <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-200">
         <p className="text-gray-700 text-sm sm:text-base">
           Exercises from Algebraic Topology with worked solutions.

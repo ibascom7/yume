@@ -1,10 +1,13 @@
 import DefinitionCard from "../components/DefinitionCard";
 import { definitions } from "./data";
 import Image from "next/image";
+import LinkPreviewPopup from "@/app/components/LinkPreviewPopup";
+import { linkPreviews } from "../linkPreviews";
 
 export default function DefinitionsPage() {
   return (
     <div>
+      <LinkPreviewPopup previews={linkPreviews} />
       <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-200">
         <p className="text-gray-700 text-sm sm:text-base">
           Catalog of Definitions from Intermediate Analysis.
