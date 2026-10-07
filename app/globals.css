@@ -38,6 +38,12 @@ body {
   text-align: left !important;
 }
 
+/* KaTeX's layout spans (e.g. inside aligned blocks) can sit on top of \href links, swallowing hovers and clicks */
+.katex a {
+  position: relative;
+  z-index: 1;
+}
+
 /* Make KaTeX more readable on mobile */
 @media (max-width: 640px) {
   .katex {

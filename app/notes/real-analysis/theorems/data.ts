@@ -149,15 +149,43 @@ export const theorems: Theorem[] = [
                   \\text{2) } [[theorem 1|Cauchy-Schwarz]]`,
       },
       {
-        title: "Proof",
-        content: `\\text{Let } \\mathbf{x,y} \\in \\mathbb{R}^n. \\text{ We first show the inequality.}
-                  \\text{Note } 
-                  \\text{Observe}
+        title: "Proof of inequality",
+        content: `\\text{Let } \\mathbf{x,y} \\in \\mathbb{R}^n. \\\\
+                  \\text{Observe} \\\\
                   \\begin{aligned}
-                  
-                  \\end{aligned}
+                    \\| \\mathbf{x} + \\mathbf{y} \\|^2 &\\overset{(1)}= \\langle \\mathbf{x} + \\mathbf{y}, \\mathbf{x} + \\mathbf{y} \\rangle \\\\
+                      &= \\langle \\mathbf{x}, \\mathbf{x} \\rangle + \\langle \\mathbf{x}, \\mathbf{y} \\rangle + \\langle \\mathbf{y}, \\mathbf{x} \\rangle + \\langle \\mathbf{y}, \\mathbf{y} \\rangle \\\\
+                      &= \\| \\mathbf{x} \\|^2 + \\langle \\mathbf{x}, \\mathbf{y} \\rangle + \\langle \\mathbf{x}, \\mathbf{y} \\rangle + \\| \\mathbf{y} \\|^2 \\\\
+                      &= \\| \\mathbf{x} \\|^2 + 2 \\langle \\mathbf{x}, \\mathbf{y} \\rangle + \\| \\mathbf{y} \\|^2 \\\\
+                      &\\leq \\| \\mathbf{x} \\|^2 + 2 | \\langle \\mathbf{x}, \\mathbf{y} \\rangle | + \\| \\mathbf{y} \\|^2 \\\\
+                      &\\overset{(2)}{\\leq} \\| \\mathbf{x} \\|^2 + 2 \\| \\mathbf{x} \\| \\| \\mathbf{y} \\| + \\| \\mathbf{y} \\|^2 \\\\
+                      &= (\\| \\mathbf{x} \\| + \\| \\mathbf{y} \\|)^2
+                  \\end{aligned} \\\\
+                  \\text{By taking square roots, } \\\\
+                  \\| \\mathbf{x} + \\mathbf{y} \\|^2 \\le (\\| \\mathbf{x} \\| + \\| \\mathbf{x} \\|)^2  \\implies \\| \\mathbf{x} + \\mathbf{y} \\| \\le \\| \\mathbf{x} \\| + \\| \\mathbf{x} \\|.
         `,
       },
+      {
+        title: "Proof of equality",
+        content: `\\text{Let } \\mathbf{x,y} \\in \\mathbb{R}^n. \\\\
+                  \\text{Suppose } \\lVert \\mathbf{x} + \\mathbf{y} \\rVert = \\lVert \\mathbf{x} \\rVert + \\lVert \\mathbf{y} \\rVert. \\\\
+                  \\text{From our computations in the proof of inequality, we have} \\\\
+                  \\begin{aligned}
+                    \\| \\mathbf{x} + \\mathbf{y} \\|^2 &\\leq \\| \\mathbf{x} \\|^2 + 2 | \\langle \\mathbf{x}, \\mathbf{y} \\rangle | + \\| \\mathbf{y} \\|^2 \\\\
+                      &\\overset{(2)}{\\leq} \\| \\mathbf{x} \\|^2 + 2 \\| \\mathbf{x} \\| \\| \\mathbf{y} \\| + \\| \\mathbf{y} \\|^2 \\\\
+                      &= (\\| \\mathbf{x} \\| + \\| \\mathbf{y} \\|)^2
+                  \\end{aligned} \\\\
+                  \\text{But by our assumption we force } \\\\
+                  \\| \\mathbf{x} \\|^2 + 2 | \\langle \\mathbf{x}, \\mathbf{y} \\rangle | + \\| \\mathbf{y} \\|^2
+                      = \\| \\mathbf{x} \\|^2 + 2 \\| \\mathbf{x} \\| \\| \\mathbf{y} \\| + \\| \\mathbf{y} \\|^2. \\\\
+                  \\text{Which implies } | \\langle \\mathbf{x}, \\mathbf{y} \\rangle | = \\| \\mathbf{x} \\| \\| \\mathbf{y} \\|. \\\\
+                  \\text{So (2) requires that } \\exists t \\in \\mathbb{R} \\text{ s.t. } \\mathbf{y} = t \\mathbf{x}. \\\\
+                  \\text{If } \\mathbf{x} = 0, \\text{ then there is nothing to prove}. \\\\
+                  \\text{If } \\mathbf{x} \\neq 0, \\text{ then we have } \\\\
+                  0 \\le \\langle \\mathbf{x,y} \\rangle = \\langle \\mathbf{x}, t\\mathbf{x} \\rangle = t \\langle \\mathbf{x}, \\mathbf{x} \\rangle. \\\\
+                  \\text{So } t \\ge 0.
+        `
+      }
     ],
   },
   // Template:

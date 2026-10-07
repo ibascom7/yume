@@ -96,6 +96,16 @@ export const definitions: Definition[] = [
                  \\text{is a basis iff } S \\text{ is } [[definition 7|linearly independent]] \\\\
                  \\text{and } \\operatorname{span}(S) = \\mathbb{R}^n.`,
   },
+  {
+    number: 9,
+    chapter: 4,
+    section: 2,
+    term: "Convergence of a Sequence",
+    definition: `\\text{A sequence of points } (\\mathbf{x}_k) \\subseteq \\mathbb{R}^n \\\\
+                 \\text{converges to a point } \\mathbf{a} \\in \\mathbb{R}^n \\text{ if} \\\\
+                 \\forall \\varepsilon > 0,\\ \\exists N \\in \\mathbb{N},\\ \\forall k \\geq N,\\ \\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert < \\varepsilon. \\\\
+                 \\text{In this case, we notate this by } \\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}.`,
+  },
   // Template:
   // {
   //   number: 1,

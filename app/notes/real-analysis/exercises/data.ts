@@ -16,6 +16,251 @@ export const exercises: Exercise[] = [
   {
     number: 1,
     chapter: 4,
+    section: 1,
+    homework: 1,
+    title: "Question 4.1.A",
+    problem: `\\text{Establish the Pythagorean formula: if $x$ and $y$ are orthogonal vectors,} \\\\
+             \\text{prove that $\\lVert x+y\\rVert = \\left(\\lVert x\\rVert^2+\\lVert y\\rVert^2\\right)^{1/2}$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) Orthogonal: $\\langle x,y\\rangle=0$.} \\\\
+                  \\text{2) [[definition 3|Inner product]]: $\\langle x,y\\rangle=\\sum_{i=1}^n x_iy_i$.} \\\\
+                  \\text{3) [[definition 1|Norm]]: $\\lVert x\\rVert=\\left(\\sum_{i=1}^n |x_i|^2\\right)^{1/2}$.}`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $x,y\\in\\mathbb{R}^n$ be orthogonal. By the definition of the [[definition 1|Euclidean norm]],} \\\\
+                  \\left(\\lVert x\\rVert^2+\\lVert y\\rVert^2\\right)^{1/2} = \\left(\\left(\\Big(\\sum_{i=1}^n |x_i|^2\\Big)^{1/2}\\right)^{2} + \\left(\\Big(\\sum_{i=1}^n |y_i|^2\\Big)^{1/2}\\right)^{2}\\right)^{1/2}. \\\\
+                  \\text{Simplifying,} \\\\
+                  \\left(\\lVert x\\rVert^2+\\lVert y\\rVert^2\\right)^{1/2} = \\left(\\sum_{i=1}^n x_i^2+\\sum_{i=1}^n y_i^2\\right)^{1/2} = \\left(\\sum_{i=1}^n x_i^2+y_i^2\\right)^{1/2}. \\\\
+                  \\text{Note that $\\sum_{i=1}^n x_iy_i=0$ because $x$ and $y$ are orthogonal. Therefore} \\\\
+                  \\left(\\sum_{i=1}^n x_i^2+y_i^2\\right)^{1/2} = \\left(\\sum_{i=1}^n x_i^2+2x_iy_i+y_i^2\\right)^{1/2} = \\left(\\sum_{i=1}^n (x_i+y_i)^2\\right)^{1/2} = \\lVert x+y\\rVert. \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 2,
+    chapter: 4,
+    section: 1,
+    homework: 1,
+    title: "Question 4.1.C",
+    problem: `\\text{Show that $\\lVert x+y\\rVert^2+\\lVert x-y\\rVert^2 = 2\\lVert x\\rVert^2+2\\lVert y\\rVert^2$ for all vectors $x,y\\in\\mathbb{R}^n$.} \\\\
+             \\text{Geometric meaning?}`,
+    solution: [
+      {
+        title: "Solution",
+        content: `\\text{Let $x,y\\in\\mathbb{R}^n$ be arbitrary. First, observe} \\\\
+                  \\begin{aligned}
+                    \\lVert x+y\\rVert^2 &= \\langle x+y,x+y\\rangle \\\\
+                    &= \\langle x,x+y\\rangle+\\langle y,x+y\\rangle \\\\
+                    &= \\langle x,x\\rangle+\\langle x,y\\rangle+\\langle y,x\\rangle+\\langle y,y\\rangle \\\\
+                    &= \\lVert x\\rVert^2+2\\langle x,y\\rangle+\\lVert y\\rVert^2 \\qquad (\\text{by [[definition 3|symmetry]], } \\langle x,y\\rangle=\\langle y,x\\rangle).
+                  \\end{aligned} \\\\
+                  \\text{Second, observe} \\\\
+                  \\begin{aligned}
+                    \\lVert x-y\\rVert^2 &= \\langle x-y,x-y\\rangle \\\\
+                    &= \\langle x,x-y\\rangle-\\langle y,x-y\\rangle \\\\
+                    &= \\langle x,x\\rangle-\\langle x,y\\rangle-\\langle y,x\\rangle+\\langle y,y\\rangle \\\\
+                    &= \\lVert x\\rVert^2-2\\langle x,y\\rangle+\\lVert y\\rVert^2.
+                  \\end{aligned} \\\\
+                  \\text{Therefore} \\\\
+                  \\begin{aligned}
+                    \\lVert x+y\\rVert^2+\\lVert x-y\\rVert^2 &= \\left(\\lVert x\\rVert^2+2\\langle x,y\\rangle+\\lVert y\\rVert^2\\right) + \\left(\\lVert x\\rVert^2-2\\langle x,y\\rangle+\\lVert y\\rVert^2\\right) \\\\
+                    &= 2\\lVert x\\rVert^2+2\\lVert y\\rVert^2. \\ \\blacksquare
+                  \\end{aligned}`,
+      },
+      {
+        title: "Geometric meaning",
+        content: `\\text{Consider the parallelogram with edges $x$ and $y$; its diagonals are $x+y$ and $x-y$. The identity} \\\\
+                  \\lVert x+y\\rVert^2+\\lVert x-y\\rVert^2 = 2\\lVert x\\rVert^2+2\\lVert y\\rVert^2 \\\\
+                  \\text{says that the sum of the squares of the diagonals is equal to the sum of the squares} \\\\
+                  \\text{of the edges (the parallelogram law).}`,
+      },
+    ],
+  },
+  {
+    number: 3,
+    chapter: 4,
+    section: 1,
+    homework: 1,
+    title: "Question 4.1.D",
+    problem: `\\text{Prove that if $x,y\\in\\mathbb{R}^n$ then $\\big|\\lVert x\\rVert-\\lVert y\\rVert\\big|\\le\\lVert x-y\\rVert$.}`,
+    solution: `\\text{Let $x,y\\in\\mathbb{R}^n$. Observe that} \\\\
+              \\begin{aligned}
+                \\lVert x-y\\rVert^2 &= \\langle x-y,x-y\\rangle = \\langle x,x-y\\rangle-\\langle y,x-y\\rangle \\\\
+                &= \\langle x,x\\rangle-\\langle x,y\\rangle-\\langle y,x\\rangle+\\langle y,y\\rangle \\\\
+                &= \\lVert x\\rVert^2-2\\langle x,y\\rangle+\\lVert y\\rVert^2 \\\\
+                &\\ge \\lVert x\\rVert^2-2\\,|\\langle x,y\\rangle|+\\lVert y\\rVert^2 \\\\
+                &\\ge \\lVert x\\rVert^2-2\\lVert x\\rVert\\lVert y\\rVert+\\lVert y\\rVert^2 \\qquad (\\text{by [[theorem 1|Cauchy-Schwarz]]}) \\\\
+                &= \\big(\\lVert x\\rVert-\\lVert y\\rVert\\big)^2 \\\\
+                &= \\big|\\lVert x\\rVert-\\lVert y\\rVert\\big|^2.
+              \\end{aligned} \\\\
+              \\text{Taking square roots gives $\\lVert x-y\\rVert\\ge\\big|\\lVert x\\rVert-\\lVert y\\rVert\\big|$.} \\ \\blacksquare`,
+  },
+  {
+    number: 4,
+    chapter: 4,
+    section: 1,
+    homework: 1,
+    title: "Question 4.1.E",
+    problem: `\\text{Prove by induction that $\\lVert x_1+\\cdots+x_k\\rVert\\le\\lVert x_1\\rVert+\\cdots+\\lVert x_k\\rVert$ for vectors $x_i\\in\\mathbb{R}^n$.}`,
+    solution: `\\text{Let $x_i\\in\\mathbb{R}^n$ be arbitrary. We show $\\big\\lVert\\sum_{i=1}^k x_i\\big\\rVert\\le\\sum_{i=1}^k\\lVert x_i\\rVert$ by induction on $k\\in\\mathbb{N}$.} \\\\
+              \\text{\\textit{Base case.} If $k=1$, then $\\lVert x_1\\rVert\\le\\lVert x_1\\rVert$.} \\\\
+              \\text{\\textit{Inductive step.} Assume $\\big\\lVert\\sum_{i=1}^k x_i\\big\\rVert\\le\\sum_{i=1}^k\\lVert x_i\\rVert$.} \\\\
+              \\text{We seek to show $\\big\\lVert\\sum_{i=1}^{k+1} x_i\\big\\rVert\\le\\sum_{i=1}^{k+1}\\lVert x_i\\rVert$. We have} \\\\
+              \\Big\\lVert\\sum_{i=1}^{k+1}x_i\\Big\\rVert = \\Big\\lVert\\sum_{i=1}^{k}x_i+x_{k+1}\\Big\\rVert. \\\\
+              \\text{By the [[theorem 3|triangle inequality]],} \\\\
+              \\begin{aligned}
+                \\Big\\lVert\\sum_{i=1}^{k}x_i+x_{k+1}\\Big\\rVert &\\le \\Big\\lVert\\sum_{i=1}^{k}x_i\\Big\\rVert+\\lVert x_{k+1}\\rVert \\\\
+                &\\le \\sum_{i=1}^{k}\\lVert x_i\\rVert+\\lVert x_{k+1}\\rVert \\qquad (\\text{by the inductive hypothesis}) \\\\
+                &= \\sum_{i=1}^{k+1}\\lVert x_i\\rVert.
+              \\end{aligned} \\\\
+              \\text{Thus $\\big\\lVert\\sum_{i=1}^k x_i\\big\\rVert\\le\\sum_{i=1}^k\\lVert x_i\\rVert$ for all $k\\in\\mathbb{N}$.} \\ \\blacksquare`,
+  },
+  {
+    number: 5,
+    chapter: 4,
+    section: 1,
+    homework: 1,
+    title: "Question 4.1.F",
+    problem: `\\text{Suppose that $x$ and $y$ are unit vectors in $\\mathbb{R}^n$. Show that if $\\big\\lVert\\frac{x+y}{2}\\big\\rVert=1$, then $x=y$.}`,
+    solution: `\\text{Let $x,y\\in\\mathbb{R}^n$ be unit vectors such that $\\big\\lVert\\frac{x+y}{2}\\big\\rVert=1$. Then $\\big\\lVert\\frac{x+y}{2}\\big\\rVert^2=1^2$ as well.} \\\\
+              \\text{Using $\\lVert v\\rVert^2=\\langle v,v\\rangle$,} \\\\
+              \\begin{aligned}
+                \\Big\\lVert\\frac{x+y}{2}\\Big\\rVert^2 &= \\Big\\langle\\frac{x+y}{2},\\frac{x+y}{2}\\Big\\rangle = \\frac14\\langle x+y,x+y\\rangle \\\\
+                &= \\frac14\\left(\\lVert x\\rVert^2+2\\langle x,y\\rangle+\\lVert y\\rVert^2\\right) \\qquad (\\text{see [[exercise 2|(C)]] for the computation}) \\\\
+                &= 1.
+              \\end{aligned} \\\\
+              \\text{This implies $\\lVert x\\rVert^2+2\\langle x,y\\rangle+\\lVert y\\rVert^2=4$.} \\\\
+              \\text{Since $x$ and $y$ are unit vectors, $2\\langle x,y\\rangle+2=4$, so $\\langle x,y\\rangle=1$. Now} \\\\
+              \\lVert x-y\\rVert^2=\\lVert x\\rVert^2-2\\langle x,y\\rangle+\\lVert y\\rVert^2 = 1-2+1 = 0. \\\\
+              \\text{Thus $x-y=0$, i.e. $x=y$.} \\ \\blacksquare`,
+  },
+  {
+    number: 6,
+    chapter: 4,
+    section: 1,
+    homework: 1,
+    title: "Question 4.1.I",
+    problem: `\\text{Suppose that $U$ is a linear transformation from $\\mathbb{R}^n$ to $\\mathbb{R}^m$ that is \\textit{isometric},} \\\\
+             \\text{meaning that $\\lVert Ux\\rVert=\\lVert x\\rVert$ for all $x\\in\\mathbb{R}^n$.} \\\\[0.5em]
+             \\text{(a) Prove that $\\langle Ux,Uy\\rangle=\\langle x,y\\rangle$ for all $x,y\\in\\mathbb{R}^n$.} \\\\
+             \\text{(b) If $\\{v_1,\\dots,v_n\\}$ is an [[definition 5|orthonormal]] set in $\\mathbb{R}^m$, show that the linear transformation} \\\\
+             \\text{$Ux=\\sum_{i=1}^n x_iv_i$ is isometric.}`,
+    solution: [
+      {
+        title: "Part (a)",
+        content: `\\text{Let $x,y\\in\\mathbb{R}^n$ be arbitrary and let $U:\\mathbb{R}^n\\to\\mathbb{R}^m$ be an isometric linear transformation. Then} \\\\
+                  \\begin{aligned}
+                    \\langle Ux,Uy\\rangle &= \\tfrac12\\left(\\lVert Ux+Uy\\rVert^2-\\lVert Ux\\rVert^2-\\lVert Uy\\rVert^2\\right) \\\\
+                    &= \\tfrac12\\left(\\lVert U(x+y)\\rVert^2-\\lVert x\\rVert^2-\\lVert y\\rVert^2\\right) \\\\
+                    &= \\tfrac12\\left(\\lVert x+y\\rVert^2-\\lVert x\\rVert^2-\\lVert y\\rVert^2\\right) \\\\
+                    &= \\langle x,y\\rangle. \\ \\blacksquare
+                  \\end{aligned}`,
+      },
+      {
+        title: "Part (b)",
+        content: `\\text{Suppose $\\{v_1,\\dots,v_n\\}$ is an orthonormal set in $\\mathbb{R}^m$.} \\\\
+                  \\text{Define the linear transformation $U:\\mathbb{R}^n\\to\\mathbb{R}^m$ by $Ux=\\sum_{i=1}^n x_iv_i$ for $x\\in\\mathbb{R}^n$.} \\\\
+                  \\text{By [[theorem 2|Lemma 4.1.3]],} \\\\
+                  \\lVert Ux\\rVert=\\Big\\lVert\\sum_{i=1}^n x_iv_i\\Big\\rVert=\\Big(\\sum_{i=1}^n x_i^2\\Big)^{1/2}=\\lVert x\\rVert. \\\\
+                  \\text{Hence $U$ is isometric.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 7,
+    chapter: 4,
+    section: 1,
+    homework: 1,
+    title: "Question 4.1.K",
+    problem: `\\text{Let $M$ be a subspace of $\\mathbb{R}^n$ with an [[definition 6|orthonormal basis]] $\\{v_1,\\dots,v_k\\}$.} \\\\
+             \\text{Define a linear transformation on $\\mathbb{R}^n$ by} \\\\
+             Px=\\sum_{i=1}^k\\langle x,v_i\\rangle v_i. \\\\[0.5em]
+             \\text{(a) Show that $Px$ belongs to $M$, and $Py=y$ for all $y\\in M$. Hence show that $P^2=P$.} \\\\
+             \\text{(b) Show that $\\langle Px,x-Px\\rangle=0$.} \\\\
+             \\text{(c) Hence show that $\\lVert x\\rVert^2=\\lVert Px\\rVert^2+\\lVert x-Px\\rVert^2$.} \\\\
+             \\text{(d) If $y\\in M$, show that $\\lVert x-y\\rVert^2=\\lVert y-Px\\rVert^2+\\lVert x-Px\\rVert^2$.} \\\\
+             \\text{(e) Hence show that $Px$ is the closest point in $M$ to $x$.}`,
+    solution: [
+      {
+        title: "Part (a)",
+        content: `\\text{\\textit{Idea.} $P$ sends any vector in $\\mathbb{R}^n$ to a linear combination of $\\{v_1,\\dots,v_k\\}$, and by orthonormality} \\\\
+                  \\text{it sends a linear combination of $\\{v_1,\\dots,v_k\\}$ to the same vector.} \\\\[1em]
+                  \\text{Let $x\\in\\mathbb{R}^n$ and $y\\in M$, where $M\\subseteq\\mathbb{R}^n$ has orthonormal basis $\\{v_1,\\dots,v_k\\}$.} \\\\
+                  \\text{The linear transformation $Px=\\sum_{i=1}^k\\langle x,v_i\\rangle v_i$ outputs a linear combination of the basis elements of $M$.} \\\\
+                  \\text{Therefore $Px\\in M$, because $Px\\in\\operatorname{span}\\{v_1,\\dots,v_k\\}$.} \\\\
+                  \\text{Our $y\\in M$ is also a linear combination of $\\{v_1,\\dots,v_k\\}$, so} \\\\
+                  y=a_1v_1+a_2v_2+\\cdots+a_kv_k=\\sum_{j=1}^k a_jv_j, \\qquad a_1,\\dots,a_k\\in\\mathbb{R}. \\\\
+                  \\text{Consider $Py=\\sum_{i=1}^k\\big\\langle \\sum_{j=1}^k a_jv_j,\\,v_i\\big\\rangle v_i$. By [[definition 5|orthonormality]] of $\\{v_1,\\dots,v_k\\}$,} \\\\
+                  \\Big\\langle\\sum_{j=1}^k a_jv_j,\\,v_i\\Big\\rangle = \\begin{cases} a_i, & j=i, \\\\ 0, & j\\neq i, \\end{cases} \\\\
+                  \\text{i.e. the inner product equals $a_i$. Therefore} \\\\
+                  Py=\\sum_{i=1}^k\\langle y,v_i\\rangle v_i=\\sum_{i=1}^k a_iv_i=y. \\\\
+                  \\text{Finally, for any $x\\in\\mathbb{R}^n$ we have shown $Px\\in M$, so by our second result $P(Px)=Px$,} \\\\
+                  \\text{i.e. $P^2x=Px$. Hence $P^2=P$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Part (b)",
+        content: `\\text{Let $x\\in\\mathbb{R}^n$ be arbitrary. Observe that} \\\\
+                  \\begin{aligned}
+                    \\langle Px,x-Px\\rangle &= \\langle Px,x\\rangle-\\langle Px,Px\\rangle \\\\
+                    &= \\langle Px,x\\rangle-\\lVert Px\\rVert^2 \\\\
+                    &= \\langle Px,x\\rangle-\\Big\\lVert\\sum_{i=1}^k\\langle x,v_i\\rangle v_i\\Big\\rVert^2 \\\\
+                    &= \\langle Px,x\\rangle-\\left(\\Big(\\sum_{i=1}^k\\langle x,v_i\\rangle^2\\Big)^{1/2}\\right)^2 \\qquad (\\text{by [[theorem 2|Lemma 4.1.3]]}) \\\\
+                    &= \\langle Px,x\\rangle-\\sum_{i=1}^k\\langle x,v_i\\rangle^2 \\\\
+                    &= \\Big\\langle\\sum_{i=1}^k\\langle x,v_i\\rangle v_i,\\;x\\Big\\rangle-\\sum_{i=1}^k\\langle x,v_i\\rangle^2 \\\\
+                    &= \\sum_{i=1}^k\\langle \\langle x,v_i\\rangle v_i,x\\rangle-\\sum_{i=1}^k\\langle x,v_i\\rangle^2 \\qquad (\\text{by [[definition 3|linearity of the inner product]]}) \\\\
+                    &= \\sum_{i=1}^k\\langle x,v_i\\rangle\\langle x,v_i\\rangle-\\sum_{i=1}^k\\langle x,v_i\\rangle^2 \\\\
+                    &= 0. \\ \\blacksquare
+                  \\end{aligned} \\\\[1em]
+                  \\text{\\textit{Remark.} I kept the $\\langle\\cdot,\\cdot\\rangle$ notation, but for the later steps I got my intuition from thinking} \\\\
+                  \\text{with “$\\cdot$” distributed into the sum.}`,
+      },
+      {
+        title: "Part (c)",
+        content: `\\text{First observe that} \\\\
+                  \\begin{aligned}
+                    \\lVert x-Px\\rVert^2 &= \\langle x-Px,x-Px\\rangle \\\\
+                    &= \\langle x,x-Px\\rangle-\\langle Px,x-Px\\rangle \\\\
+                    &= \\langle x,x\\rangle-\\langle x,Px\\rangle-\\langle Px,x\\rangle+\\langle Px,Px\\rangle \\\\
+                    &= \\langle x,x\\rangle-\\langle x,Px\\rangle,
+                  \\end{aligned} \\\\
+                  \\text{because part (b) showed that $\\langle Px,x\\rangle=\\langle Px,Px\\rangle$ (so those two terms cancel).} \\\\
+                  \\text{So we have $\\lVert x-Px\\rVert^2=\\lVert x\\rVert^2-\\langle Px,x\\rangle$, and by using our identity from (b) again,} \\\\
+                  \\text{$\\langle Px,x\\rangle=\\lVert Px\\rVert^2$, we get} \\\\
+                  \\lVert x-Px\\rVert^2=\\lVert x\\rVert^2-\\lVert Px\\rVert^2. \\\\
+                  \\text{Thus $\\lVert x\\rVert^2=\\lVert Px\\rVert^2+\\lVert x-Px\\rVert^2$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Part (d)",
+        content: `\\text{Let $y\\in M$. From part (c), $\\lVert x\\rVert^2=\\lVert Px\\rVert^2+\\lVert x-Px\\rVert^2$ for every $x\\in\\mathbb{R}^n$.} \\\\
+                  \\text{Replace $x$ with $x-y$ to get} \\\\
+                  \\lVert x-y\\rVert^2=\\lVert P(x-y)\\rVert^2+\\lVert x-y-P(x-y)\\rVert^2. \\\\
+                  \\text{By linearity of $P$,} \\\\
+                  \\lVert x-y\\rVert^2=\\lVert Px-Py\\rVert^2+\\lVert x-y-Px+Py\\rVert^2. \\\\
+                  \\text{From part (a) we know $Py=y$, so} \\\\
+                  \\lVert x-y\\rVert^2=\\lVert Px-y\\rVert^2+\\lVert x-\\cancel{y}-Px+\\cancel{y}\\rVert^2 \\\\
+                  \\;\\Longrightarrow\\; \\lVert x-y\\rVert^2=\\lVert Px-y\\rVert^2+\\lVert x-Px\\rVert^2. \\\\
+                  \\text{Finally, since $\\lVert a-b\\rVert=\\lVert -(b-a)\\rVert=\\lVert b-a\\rVert$, we have} \\\\
+                  \\lVert x-y\\rVert^2=\\lVert y-Px\\rVert^2+\\lVert x-Px\\rVert^2. \\ \\blacksquare`,
+      },
+      {
+        title: "Part (e)",
+        content: `\\text{Let $x\\in\\mathbb{R}^n$ and $y\\in M$. From part (d), $\\lVert x-y\\rVert^2=\\lVert y-Px\\rVert^2+\\lVert x-Px\\rVert^2$.} \\\\
+                  \\text{We wish to show that $\\lVert x-y\\rVert^2\\ge\\lVert x-Px\\rVert^2$.} \\\\
+                  \\text{Note that $\\lVert x-y\\rVert^2$, $\\lVert y-Px\\rVert^2$, $\\lVert x-Px\\rVert^2\\ge0$. So} \\\\
+                  \\lVert x-y\\rVert^2-\\lVert y-Px\\rVert^2=\\lVert x-Px\\rVert^2 \\;\\Longrightarrow\\; \\lVert x-y\\rVert^2\\ge\\lVert x-Px\\rVert^2. \\\\
+                  \\text{\\textit{Case 1:} If $\\lVert x-y\\rVert^2>\\lVert x-Px\\rVert^2$, then $Px\\in M$ is closer to $x$ than the arbitrary point $y\\in M$.} \\\\
+                  \\text{\\textit{Case 2:} If $\\lVert x-y\\rVert^2=\\lVert x-Px\\rVert^2$, then $\\lVert y-Px\\rVert^2=0\\Rightarrow y=Px$.} \\\\
+                  \\text{So any point $y\\in M$ that is equally close to $x$ coincides with $Px$.} \\\\
+                  \\text{Hence $Px$ is the closest point in $M$ to $x$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 8,
+    chapter: 4,
     section: 2,
     homework: 2,
     title: "Question 4.2.A",
@@ -27,7 +272,7 @@ export const exercises: Exercise[] = [
         title: "Part (a)",
         content: `\\text{Choose $\\varepsilon > 0$.} \\\\
                   \\text{By hypothesis, $\\exists N \\in \\mathbb{N}$ s.t. $\\forall n \\geq N, \\ \\lVert \\mathbf{x}_n - \\mathbf{a} \\rVert < \\varepsilon$.} \\\\
-                  \\text{By reverse triangle inequality, $| \\lVert \\mathbf{x}_n \\rVert - \\lVert \\mathbf{a} \\rVert | \\leq \\lVert \\mathbf{x}_n - \\mathbf{a} \\rVert < \\varepsilon$.} \\\\
+                  \\text{By [[exercise 3|reverse triangle inequality]], $| \\lVert \\mathbf{x}_n \\rVert - \\lVert \\mathbf{a} \\rVert | \\leq \\lVert \\mathbf{x}_n - \\mathbf{a} \\rVert < \\varepsilon$.} \\\\
                   \\text{Hence, $\\lim_{n \\to \\infty} \\lVert \\mathbf{x}_n \\rVert = \\lVert \\mathbf{a} \\rVert$.} \\ \\blacksquare`,
       },
       {
@@ -43,7 +288,7 @@ export const exercises: Exercise[] = [
     ],
   },
   {
-    number: 2,
+    number: 9,
     chapter: 4,
     section: 2,
     homework: 2,
@@ -65,7 +310,7 @@ export const exercises: Exercise[] = [
               \\text{Hence, $\\| \\mathbf{x}_k - \\mathbf{x}_l \\| < \\varepsilon$ whenever $k, l \\geq N+1,$ so $(\\mathbf{x}_k)$ is Cauchy.} \\ \\blacksquare`,
   },
   {
-    number: 3,
+    number: 10,
     chapter: 4,
     section: 2,
     homework: 2,
@@ -82,7 +327,7 @@ export const exercises: Exercise[] = [
               \\text{Hence, $(\\mathbf{x}_k)$ is convergent in S.} \\ \\blacksquare`,
   },
   {
-    number: 4,
+    number: 11,
     chapter: 4,
     section: 2,
     homework: 2,
@@ -135,7 +380,7 @@ export const exercises: Exercise[] = [
     ],
   },
   {
-    number: 5,
+    number: 12,
     chapter: 4,
     section: 2,
     homework: 2,
@@ -197,7 +442,7 @@ export const exercises: Exercise[] = [
     ],
   },
   {
-    number: 6,
+    number: 13,
     chapter: 4,
     section: 2,
     homework: 2,
@@ -251,7 +496,7 @@ export const exercises: Exercise[] = [
     ],
   },
   {
-    number: 7,
+    number: 14,
     homework: 2,
     title: "Additional Problem",
     problem: `\\text{If $(\\mathbf{x}_k) \\subseteq \\mathbb{R}^n$ converges to $\\mathbf{a} \\in \\mathbb{R}^n$ and $\\|\\mathbf{x}_k\\| \\leq 81$ for all $k \\in \\mathbb{N}$,} \\\\
