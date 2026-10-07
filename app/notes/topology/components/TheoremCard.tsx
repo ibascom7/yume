@@ -7,7 +7,7 @@ import LocationBadges from "@/app/components/LocationBadges";
 import type { ChapterRef } from "@/app/components/notesFilter";
 
 // What the card is labeled as; all kinds share one numbering, like most textbooks
-export type TheoremKind = "Theorem" | "Lemma" | "Corollary";
+export type TheoremKind = "Theorem" | "Lemma" | "Corollary" | "Proposition";
 
 interface Proof {
   title?: string;

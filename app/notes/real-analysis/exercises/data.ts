@@ -60,6 +60,11 @@ export const exercises: Exercise[] = [
              \\text{Geometric meaning?}`,
     solution: [
       {
+        title: "Recall",
+        content: `\\text{1) } [[definition 1|Norm]] \\\\
+                  \\text{2) } [[definition 3|Inner product]]`,
+      },
+      {
         title: "Solution",
         content: `\\text{Let $x,y\\in\\mathbb{R}^n$ be arbitrary. First, observe} \\\\
                   \\begin{aligned}
@@ -101,7 +106,16 @@ export const exercises: Exercise[] = [
     homework: 1,
     title: "Question 4.1.D",
     problem: `\\text{Prove that if $x,y\\in\\mathbb{R}^n$ then $\\big|\\lVert x\\rVert-\\lVert y\\rVert\\big|\\le\\lVert x-y\\rVert$.}`,
-    solution: `\\text{Let $x,y\\in\\mathbb{R}^n$. Observe that} \\\\
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 1|Norm]] \\\\
+                  \\text{2) } [[definition 3|Inner product]] \\\\
+                  \\text{3) } [[theorem 1|Cauchy-Schwarz]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $x,y\\in\\mathbb{R}^n$. Observe that} \\\\
               \\begin{aligned}
                 \\lVert x-y\\rVert^2 &= \\langle x-y,x-y\\rangle \\\\
                 &= \\langle x,x-y\\rangle-\\langle y,x-y\\rangle \\\\
@@ -114,6 +128,8 @@ export const exercises: Exercise[] = [
                 &= \\big|\\lVert x\\rVert-\\lVert y\\rVert\\big|^2.
               \\end{aligned} \\\\
               \\text{Taking square roots gives $\\lVert x-y\\rVert\\ge\\big|\\lVert x\\rVert-\\lVert y\\rVert\\big|$.} \\ \\blacksquare`,
+      },
+    ],
   },
   {
     number: 4,
@@ -124,7 +140,14 @@ export const exercises: Exercise[] = [
     problem: `\\text{Prove by induction that} \\\\
               \\text{$\\lVert x_1+\\cdots+x_k\\rVert\\le\\lVert x_1\\rVert+\\cdots+\\lVert x_k\\rVert$ for vectors} \\\\
               \\text{$x_i\\in\\mathbb{R}^n$.}`,
-    solution: `\\text{Let $x_i\\in\\mathbb{R}^n$ be arbitrary. We show $\\big\\lVert\\sum_{i=1}^k x_i\\big\\rVert\\le\\sum_{i=1}^k\\lVert x_i\\rVert$} \\\\
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[theorem 3|Triangle inequality]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $x_i\\in\\mathbb{R}^n$ be arbitrary. We show $\\big\\lVert\\sum_{i=1}^k x_i\\big\\rVert\\le\\sum_{i=1}^k\\lVert x_i\\rVert$} \\\\
                \\text{by induction on $k\\in\\mathbb{N}$.} \\\\
               \\text{\\textit{Base case.} If $k=1$, then $\\lVert x_1\\rVert\\le\\lVert x_1\\rVert$.} \\\\
               \\text{\\textit{Inductive step.} Assume $\\big\\lVert\\sum_{i=1}^k x_i\\big\\rVert\\le\\sum_{i=1}^k\\lVert x_i\\rVert$.} \\\\
@@ -138,6 +161,8 @@ export const exercises: Exercise[] = [
                 &= \\sum_{i=1}^{k+1}\\lVert x_i\\rVert.
               \\end{aligned} \\\\
               \\text{Thus $\\big\\lVert\\sum_{i=1}^k x_i\\big\\rVert\\le\\sum_{i=1}^k\\lVert x_i\\rVert$ for all $k\\in\\mathbb{N}$.} \\ \\blacksquare`,
+      },
+    ],
   },
   {
     number: 5,
@@ -147,7 +172,16 @@ export const exercises: Exercise[] = [
     title: "Question 4.1.F",
     problem: `\\text{Suppose that $x$ and $y$ are unit vectors in $\\mathbb{R}^n$. Show} \\\\
               \\text{that if $\\big\\lVert\\frac{x+y}{2}\\big\\rVert=1$, then $x=y$.}`,
-    solution: `\\text{Let $x,y\\in\\mathbb{R}^n$ be unit vectors such that $\\big\\lVert\\frac{x+y}{2}\\big\\rVert=1$. Then} \\\\
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 1|Norm]] \\\\
+                  \\text{2) } [[definition 3|Inner product]] \\\\
+                  \\text{3) } [[exercise 2|Question 4.1.C]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $x,y\\in\\mathbb{R}^n$ be unit vectors such that $\\big\\lVert\\frac{x+y}{2}\\big\\rVert=1$. Then} \\\\
                \\text{$\\big\\lVert\\frac{x+y}{2}\\big\\rVert^2=1^2$ as well.} \\\\
               \\text{Using $\\lVert v\\rVert^2=\\langle v,v\\rangle$,} \\\\
               \\begin{aligned}
@@ -162,6 +196,8 @@ export const exercises: Exercise[] = [
               \\text{$\\langle x,y\\rangle=1$. Now} \\\\
               \\lVert x-y\\rVert^2=\\lVert x\\rVert^2-2\\langle x,y\\rangle+\\lVert y\\rVert^2 = 1-2+1 = 0. \\\\
               \\text{Thus $x-y=0$, i.e. $x=y$.} \\ \\blacksquare`,
+      },
+    ],
   },
   {
     number: 6,
@@ -173,10 +209,18 @@ export const exercises: Exercise[] = [
               \\text{$\\mathbb{R}^m$ that is \\textit{isometric},} \\\\
              \\text{meaning that $\\lVert Ux\\rVert=\\lVert x\\rVert$ for all $x\\in\\mathbb{R}^n$.} \\\\[0.5em]
              \\text{(a) Prove that $\\langle Ux,Uy\\rangle=\\langle x,y\\rangle$ for all $x,y\\in\\mathbb{R}^n$.} \\\\
-             \\text{(b) If $\\{v_1,\\dots,v_n\\}$ is an [[definition 5|orthonormal]] set in $\\mathbb{R}^m$, show} \\\\
+             \\text{(b) If $\\{v_1,\\dots,v_n\\}$ is an orthonormal set in $\\mathbb{R}^m$, show} \\\\
              \\text{that the linear transformation} \\\\
              \\text{$Ux=\\sum_{i=1}^n x_iv_i$ is isometric.}`,
     solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 1|Norm]] \\\\
+                  \\text{2) } [[definition 3|Inner product]] \\\\
+                  \\text{3) } [[definition 5|Orthonormal]] \\\\
+                  \\text{4) } [[theorem 2|Lemma 4.1.3]] \\\\
+                  \\text{5) } [[exercise 2|Question 4.1.C]]`,
+      },
       {
         title: "Part (a)",
         content: `\\text{Let $x,y\\in\\mathbb{R}^n$ be arbitrary and let $U:\\mathbb{R}^n\\to\\mathbb{R}^m$ be an} \\\\
@@ -190,7 +234,7 @@ export const exercises: Exercise[] = [
       },
       {
         title: "Part (b)",
-        content: `\\text{Suppose $\\{v_1,\\dots,v_n\\}$ is an orthonormal set in $\\mathbb{R}^m$.} \\\\
+        content: `\\text{Suppose $\\{v_1,\\dots,v_n\\}$ is an [[definition 5|orthonormal]] set in $\\mathbb{R}^m$.} \\\\
                   \\text{Define the linear transformation $U:\\mathbb{R}^n\\to\\mathbb{R}^m$ by} \\\\
                   \\text{$Ux=\\sum_{i=1}^n x_iv_i$ for $x\\in\\mathbb{R}^n$.} \\\\
                   \\text{By [[theorem 2|Lemma 4.1.3]],} \\\\
@@ -205,7 +249,7 @@ export const exercises: Exercise[] = [
     section: 1,
     homework: 1,
     title: "Question 4.1.K",
-    problem: `\\text{Let $M$ be a subspace of $\\mathbb{R}^n$ with an [[definition 6|orthonormal basis]]} \\\\
+    problem: `\\text{Let $M$ be a subspace of $\\mathbb{R}^n$ with an orthonormal basis} \\\\
               \\text{$\\{v_1,\\dots,v_k\\}$.} \\\\
              \\text{Define a linear transformation on $\\mathbb{R}^n$ by} \\\\
              Px=\\sum_{i=1}^k\\langle x,v_i\\rangle v_i. \\\\[0.5em]
@@ -217,6 +261,14 @@ export const exercises: Exercise[] = [
              \\text{$\\lVert x-y\\rVert^2=\\lVert y-Px\\rVert^2+\\lVert x-Px\\rVert^2$.} \\\\
              \\text{(e) Hence show that $Px$ is the closest point in $M$ to $x$.}`,
     solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 3|Inner product]] \\\\
+                  \\text{2) } [[definition 1|Norm]] \\\\
+                  \\text{3) } [[definition 5|Orthonormal]] \\\\
+                  \\text{4) } [[definition 6|Orthonormal basis]] \\\\
+                  \\text{5) } [[theorem 2|Lemma 4.1.3]]`,
+      },
       {
         title: "Part (a)",
         content: `\\text{\\textit{Idea.} $P$ sends any vector in $\\mathbb{R}^n$ to a linear combination of} \\\\
@@ -319,6 +371,11 @@ export const exercises: Exercise[] = [
              \\text{(b) Show by example that the converse is false.}`,
     solution: [
       {
+        title: "Recall",
+        content: `\\text{1) } [[definition 9|Convergence]] \\\\
+                  \\text{2) } [[exercise 3|Reverse triangle inequality]]`,
+      },
+      {
         title: "Part (a)",
         content: `\\text{Choose $\\varepsilon > 0$.} \\\\
                   \\text{By hypothesis, $\\exists N \\in \\mathbb{N}$ s.t. $\\forall n \\geq N, \\ \\lVert \\mathbf{x}_n - \\mathbf{a} \\rVert < \\varepsilon$.} \\\\
@@ -334,7 +391,7 @@ export const exercises: Exercise[] = [
                   \\text{and another subsequence $(\\mathbf{x}_{2k-1})$ has} \\\\
                   \\text{$\\lim_{k \\to \\infty} \\left( (-1)^{2k-1} \\right) = -1$.} \\\\
                   \\text{So $\\lim_{n \\to \\infty} \\mathbf{x}_n$ does not exist} \\\\
-                  \\text{because two subsequences of $(\\mathbf{x}_n)$ converge to different} \\\\
+                  \\text{because two subsequences of $(\\mathbf{x}_n)$ [[definition 9|converge]] to different} \\\\
                   \\text{limits.} \\\\
                   \\text{Thus, $\\lim_{n \\to \\infty} \\lVert \\mathbf{x}_n \\rVert = \\lVert \\mathbf{a} \\rVert \\nRightarrow \\lim_{n \\to \\infty} \\mathbf{x}_n = \\mathbf{a}$} \\ \\blacksquare`,
       },
@@ -349,9 +406,17 @@ export const exercises: Exercise[] = [
     problem: `\\text{Show that if $(\\mathbf{x}_k)$ is a sequence in $\\mathbb{R}^n$ such that} \\\\
               \\text{$\\sum_{k \\geq 1} \\lVert \\mathbf{x}_k - \\mathbf{x}_{k+1} \\rVert < \\infty$,} \\\\
              \\text{then $(\\mathbf{x}_k)$ is a Cauchy sequence.}`,
-    solution: `\\text{Let $\\varepsilon > 0$, and with $k \\in \\mathbb{N}$ let $S_k = \\sum_{i=1}^k \\lVert \\mathbf{x}_i - \\mathbf{x}_{i+1} \\rVert$. Set} \\\\
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 10|Cauchy sequence]] \\\\
+                  \\text{2) } [[definition 9|Convergence]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $\\varepsilon > 0$, and with $k \\in \\mathbb{N}$ let $S_k = \\sum_{i=1}^k \\lVert \\mathbf{x}_i - \\mathbf{x}_{i+1} \\rVert$. Set} \\\\
                \\text{$S_0 = 0$.} \\\\
-              \\text{By hypothesis, $(S_k)$ converges to some $S \\in \\mathbb{R}$.} \\\\
+              \\text{By hypothesis, $(S_k)$ [[definition 9|converges]] to some $S \\in \\mathbb{R}$.} \\\\
               \\text{So $\\exists N \\in \\mathbb{N}$ s.t. $| S_k - S | < \\varepsilon/2$ when $k \\geq N$.} \\\\
               \\text{Let $k,l \\geq N+1$. If $k=l$, $\\|\\mathbf{x}_k - \\mathbf{x}_l \\| = 0 < \\varepsilon$, so WLOG} \\\\
               \\text{$l > k$.} \\\\
@@ -366,7 +431,9 @@ export const exercises: Exercise[] = [
                 &\\qquad (\\text{Since } k-1, l-1 \\geq N).
               \\end{aligned} \\\\
               \\text{Hence, $\\| \\mathbf{x}_k - \\mathbf{x}_l \\| < \\varepsilon$ whenever $k, l \\geq N+1,$ so $(\\mathbf{x}_k)$ is} \\\\
-              \\text{Cauchy.} \\ \\blacksquare`,
+              \\text{[[definition 10|Cauchy]].} \\ \\blacksquare`,
+      },
+    ],
   },
   {
     number: 10,
@@ -376,9 +443,20 @@ export const exercises: Exercise[] = [
     title: "Question 4.2.D",
     problem: `\\text{Let $x_0 \\in \\mathbb{R}^n$ and $R > 0$. Prove that} \\\\
               \\text{$\\{x \\in \\mathbb{R}^n : \\|\\mathbf{x} - \\mathbf{x_0}\\| \\leq R \\}$ is complete.}`,
-    solution: `\\text{Say $S = \\{ x \\in \\mathbb{R}^n : \\|\\mathbf{x} - \\mathbf{x}_0 \\| \\leq R \\}$.} \\\\
-              \\text{Let $\\varepsilon > 0$ and let $(\\mathbf{x}_k)$ be a cauchy sequence in $S$.} \\\\
-              \\text{Then $(\\mathbf{x}_k)$ is convergent in $\\mathbb{R}^n$, since $\\mathbb{R}^n$ is complete.} \\\\
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 10|Cauchy sequence]] \\\\
+                  \\text{2) } [[definition 11|Complete]] \\\\
+                  \\text{3) } [[theorem 7|Completeness Theorem for $\\mathbb{R}^n$]] \\\\
+                  \\text{4) } [[theorem 3|Triangle inequality]] \\\\
+                  \\text{5) } [[theorem 4|Lemma 4.2.2]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Say $S = \\{ x \\in \\mathbb{R}^n : \\|\\mathbf{x} - \\mathbf{x}_0 \\| \\leq R \\}$.} \\\\
+              \\text{Let $\\varepsilon > 0$ and let $(\\mathbf{x}_k)$ be a [[definition 10|cauchy sequence]] in $S$.} \\\\
+              \\text{Then $(\\mathbf{x}_k)$ is convergent in $\\mathbb{R}^n$, since $\\mathbb{R}^n$ is [[theorem 7|complete]].} \\\\
               \\text{So $\\exists \\mathbf{a} \\in \\mathbb{R}^n$ s.t. $\\lim_{k \\to \\infty} \\mathbf{x}_{k} = \\mathbf{a}$. Now to show $\\mathbf{a} \\in S$,} \\\\
               \\text{observe $\\|\\mathbf{a} - \\mathbf{x}_0 \\| \\leq \\| \\mathbf{a} - \\mathbf{x}_k \\| + \\|\\mathbf{x}_k - \\mathbf{x}_0 \\| \\leq \\|\\mathbf{x}_k - \\mathbf{a} \\| + R$.} \\\\
               \\text{By [[theorem 4|Lemma 4.2.2]], $\\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}$ implies} \\\\
@@ -387,6 +465,8 @@ export const exercises: Exercise[] = [
               \\text{inequality above gives} \\\\
               \\text{$\\|\\mathbf{a} - \\mathbf{x}_0 \\| \\leq 0 + R$, and thus, $\\mathbf{a} \\in S$.} \\\\
               \\text{Hence, $(\\mathbf{x}_k)$ is convergent in S.} \\ \\blacksquare`,
+      },
+    ],
   },
   {
     number: 11,
@@ -395,11 +475,20 @@ export const exercises: Exercise[] = [
     homework: 2,
     title: "Question 4.2.E",
     problem: `\\text{Let $M$ be a subspace of $\\mathbb{R}^n$.} \\\\[0.5em]
-             \\text{(a) Let $\\{\\mathbf{v}_1, \\dots, \\mathbf{v}_m\\}$ be an [[definition 6|orthonormal basis]] for $M$.} \\\\
-             \\text{Formulate an analogue of [[theorem 5|Lemma 4.2.3]] for $M$ and} \\\\
+             \\text{(a) Let $\\{\\mathbf{v}_1, \\dots, \\mathbf{v}_m\\}$ be an orthonormal basis for $M$.} \\\\
+             \\text{Formulate an analogue of Lemma 4.2.3 for $M$ and} \\\\
              \\text{prove it.} \\\\[0.5em]
              \\text{(b) Prove that $M$ is complete.}`,
     solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 5|Orthonormal]] \\\\
+                  \\text{2) } [[definition 6|Orthonormal basis]] \\\\
+                  \\text{3) } [[definition 10|Cauchy sequence]] \\\\
+                  \\text{4) } [[definition 11|Complete]] \\\\
+                  \\text{5) } [[theorem 1|Cauchy-Schwarz]] \\\\
+                  \\text{6) } [[theorem 5|Lemma 4.2.3]]`,
+      },
       {
         title: "Part (a)",
         content: `\\text{First we record the coordinate formula. Since} \\\\
@@ -407,7 +496,7 @@ export const exercises: Exercise[] = [
                   \\text{every $\\mathbf{x} \\in M$ can be written as $\\mathbf{x} = \\sum_{i=1}^m c_i \\mathbf{v}_i$, and for each} \\\\
                   \\text{$j \\in \\{1, \\dots, m\\}$,} \\\\
                   \\langle \\mathbf{x}, \\mathbf{v}_j \\rangle = \\Big\\langle \\sum_{i=1}^m c_i \\mathbf{v}_i, \\ \\mathbf{v}_j \\Big\\rangle = \\sum_{i=1}^m c_i \\langle \\mathbf{v}_i, \\mathbf{v}_j \\rangle = c_j, \\\\
-                  \\text{since $\\{\\mathbf{v}_1, \\dots, \\mathbf{v}_m\\}$ is orthonormal. Therefore} \\\\
+                  \\text{since $\\{\\mathbf{v}_1, \\dots, \\mathbf{v}_m\\}$ is [[definition 5|orthonormal]]. Therefore} \\\\
                   \\mathbf{x} = \\sum_{i=1}^m \\langle \\mathbf{x}, \\mathbf{v}_i \\rangle \\mathbf{v}_i \\qquad \\text{and} \\\\
                   \\|\\mathbf{x}\\|^2 = \\Big\\langle \\sum_{i=1}^m c_i \\mathbf{v}_i, \\sum_{j=1}^m c_j \\mathbf{v}_j \\Big\\rangle = \\sum_{i=1}^m c_i^2 = \\sum_{i=1}^m |\\langle \\mathbf{x}, \\mathbf{v}_i \\rangle|^2. \\\\[1em]
                   \\textbf{Lemma} \\text{ (analogue of [[theorem 5|Lemma 4.2.3]]).} \\\\
@@ -439,7 +528,7 @@ export const exercises: Exercise[] = [
       },
       {
         title: "Part (b)",
-        content: `\\text{Suppose $(\\mathbf{x}_k)$ is a Cauchy sequence in $M$, and let $\\varepsilon > 0$.} \\\\
+        content: `\\text{Suppose $(\\mathbf{x}_k)$ is a [[definition 10|Cauchy sequence]] in $M$, and let $\\varepsilon > 0$.} \\\\
                   \\text{So $\\exists N \\in \\mathbb{N}$ s.t. $\\|\\mathbf{x}_k - \\mathbf{x}_l\\| < \\varepsilon$ whenever $k, l \\geq N$.} \\\\
                   \\text{Fix $j \\in \\{1, \\dots, m\\}$. By [[theorem 1|Cauchy-Schwarz]], for all $k, l \\geq N$,} \\\\
                   |\\langle \\mathbf{x}_k, \\mathbf{v}_j \\rangle - \\langle \\mathbf{x}_l, \\mathbf{v}_j \\rangle| = |\\langle \\mathbf{x}_k - \\mathbf{x}_l, \\mathbf{v}_j \\rangle| \\leq \\|\\mathbf{x}_k - \\mathbf{x}_l\\| < \\varepsilon, \\\\
@@ -451,7 +540,7 @@ export const exercises: Exercise[] = [
                   \\lim_{k \\to \\infty} \\langle \\mathbf{x}_k, \\mathbf{v}_j \\rangle = \\alpha_j = \\langle \\mathbf{a}, \\mathbf{v}_j \\rangle \\qquad \\text{for every } j \\in \\{1, \\dots, m\\}. \\\\
                   \\text{By the Lemma of part (a), $\\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}$ with $\\mathbf{a} \\in M$.} \\\\
                   \\text{So every Cauchy sequence in $M$ converges to a limit in $M$,} \\\\
-                  \\text{and therefore $M$ is complete.} \\ \\blacksquare`,
+                  \\text{and therefore $M$ is [[definition 11|complete]].} \\ \\blacksquare`,
       },
     ],
   },
@@ -470,6 +559,11 @@ export const exercises: Exercise[] = [
              \\text{(c) Thereby show that there is a number $c$ such that} \\\\
              \\text{$\\lim_{n \\to \\infty} \\mathbf{v}_n = (c,c)$.}`,
     solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 9|Convergence]] \\\\
+                  \\text{2) } [[theorem 5|Lemma 4.2.3]]`,
+      },
       {
         title: "Part (a)",
         content: `\\text{We induct on the statement $P(n): 0 < x_n < y_n$.} \\\\
@@ -547,6 +641,12 @@ export const exercises: Exercise[] = [
              \\text{all $n \\geq N$.}`,
     solution: [
       {
+        title: "Recall",
+        content: `\\text{1) } [[definition 9|Convergence]] \\\\
+                  \\text{2) } [[definition 1|Norm]] \\\\
+                  \\text{3) } [[theorem 5|Lemma 4.2.3]]`,
+      },
+      {
         title: "Part (a)",
         content: `\\text{By way of induction, we show that} \\\\
                   \\mathbf{x}_n = \\left( \\dfrac{3 - 2^{-n}}{2}, \\ \\dfrac{3(1 - 2^{-n})}{2} \\right) \\quad \\text{for all } n \\geq 1. \\\\
@@ -611,7 +711,15 @@ export const exercises: Exercise[] = [
     problem: `\\text{If $(\\mathbf{x}_k) \\subseteq \\mathbb{R}^n$ converges to $\\mathbf{a} \\in \\mathbb{R}^n$ and $\\|\\mathbf{x}_k\\| \\leq 81$ for all} \\\\
               \\text{$k \\in \\mathbb{N}$,} \\\\
              \\text{then $\\|\\mathbf{a}\\| \\leq 81$.}`,
-    solution: `\\text{By way of contradiction, suppose $\\|\\mathbf{a}\\| > 81$.} \\\\
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 9|Convergence]] \\\\
+                  \\text{2) } [[theorem 3|Triangle inequality]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{By way of contradiction, suppose $\\|\\mathbf{a}\\| > 81$.} \\\\
               \\text{Let $\\varepsilon = \\|\\mathbf{a}\\| - 81 > 0$.} \\\\
               \\text{Since $\\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}$, there is some $k \\in \\mathbb{N}$ with} \\\\
               \\text{$\\|\\mathbf{a} - \\mathbf{x}_k\\| < \\varepsilon$.} \\\\
@@ -619,6 +727,8 @@ export const exercises: Exercise[] = [
               \\|\\mathbf{a}\\| \\leq \\|\\mathbf{a} - \\mathbf{x}_k\\| + \\|\\mathbf{x}_k\\| < \\varepsilon + 81 = \\|\\mathbf{a}\\|, \\\\
               \\text{so $\\|\\mathbf{a}\\| < \\|\\mathbf{a}\\|$, which is a contradiction.} \\\\
               \\text{Hence $\\|\\mathbf{a}\\| \\leq 81$.} \\ \\blacksquare`,
+      },
+    ],
   },
   {
     number: 15,
@@ -631,13 +741,19 @@ export const exercises: Exercise[] = [
              \\text{Does } (\\mathbf{v}_n) \\text{ converge?}`,
     solution: [
       {
+        title: "Recall",
+        content: `\\text{1) } [[definition 9|Convergence]] \\\\
+                  \\text{2) } [[definition 1|Norm]] \\\\
+                  \\text{3) } [[theorem 4|Lemma 4.2.2]]`,
+      },
+      {
         title: "Finding the limit",
         content: `\\text{The first terms are} \\\\
                   \\mathbf{v}_0 = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}\\!, \\ \\mathbf{v}_1 = \\begin{pmatrix} 1/2 \\\\ 1/2 \\end{pmatrix}\\!, \\ \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ 1/2 \\end{pmatrix}\\!, \\ \\mathbf{v}_3 = \\begin{pmatrix} 5/4 \\\\ 3/4 \\end{pmatrix}\\!, \\ \\ldots \\\\[0.5em]
                   \\text{Consider the map} \\\\
                   T\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} \\dfrac{x+y+1}{2} \\\\[0.6em] \\dfrac{x-y+1}{2} \\end{pmatrix}. \\\\
                   \\text{We will look for fixed points of $T$ to find} \\\\
-                  \\text{what $\\mathbf{v}_n$ \\textit{may} converge to.} \\\\[0.5em]
+                  \\text{what $\\mathbf{v}_n$ \\textit{may} [[definition 9|converge]] to.} \\\\[0.5em]
                   \\text{\\textit{Intuition:} $\\mathbf{v}_{n+1} = T(\\mathbf{v}_n) = T^2(\\mathbf{v}_{n-1})$. Consider} \\\\
                   \\begin{aligned}
                     \\mathbf{v} = \\lim_{n \\to \\infty} \\mathbf{v}_{n+1} &= \\lim_{n \\to \\infty} T(\\mathbf{v}_n) \\\\

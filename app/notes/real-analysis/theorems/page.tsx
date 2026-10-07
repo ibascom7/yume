@@ -3,6 +3,7 @@ import { filterByChapter, filterLabel, type NotesFilterParams } from "@/app/comp
 import { theorems } from "./data";
 import LinkPreviewPopup from "@/app/components/LinkPreviewPopup";
 import { linkPreviews } from "../linkPreviews";
+import DogPhoto from "../components/DogPhoto";
 
 export default async function TheoremsPage({
   searchParams,
@@ -39,6 +40,8 @@ export default async function TheoremsPage({
           id={`theorem-${theorem.number}`}
         />
       ))}
+
+      <DogPhoto tab="theorems" />
     </div>
   );
 }

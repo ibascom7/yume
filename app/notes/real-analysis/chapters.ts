@@ -9,6 +9,7 @@ export const chapters: Chapter[] = [
     sections: [
       { number: 1, title: "n-Dimensional Space" },
       { number: 2, title: "Convergence and Completeness in ℝⁿ" },
+      { number: 3, title: "Closed and Open Subsets of ℝⁿ" },
     ],
   },
 ];

@@ -18,7 +18,7 @@ interface Theorem extends ChapterRef {
 export const theorems: Theorem[] = [
   // Template:
   // {
-  //   kind: "Lemma", // optional: "Theorem" (default), "Lemma", or "Corollary"
+  //   kind: "Lemma", // optional: "Theorem" (default), "Lemma", "Corollary", or "Proposition"
   //   number: 1,
   //   chapter: 1,
   //   section: 1,

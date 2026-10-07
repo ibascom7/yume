@@ -3,6 +3,7 @@ import { filterByChapter, filterByHomework, filterLabel, type NotesFilterParams 
 import { exercises } from "./data";
 import LinkPreviewPopup from "@/app/components/LinkPreviewPopup";
 import { linkPreviews } from "../linkPreviews";
+import DogPhoto from "../components/DogPhoto";
 
 export default async function ExercisesPage({
   searchParams,
@@ -37,6 +38,8 @@ export default async function ExercisesPage({
           id={`exercise-${exercise.number}`}
         />
       ))}
+
+      <DogPhoto tab="exercises" />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { filterByChapter, filterLabel, type NotesFilterParams } from "@/app/comp
 import { definitions } from "./data";
 import LinkPreviewPopup from "@/app/components/LinkPreviewPopup";
 import { linkPreviews } from "../linkPreviews";
+import DogPhoto from "../components/DogPhoto";
 
 export default async function DefinitionsPage({
   searchParams,
@@ -36,6 +37,8 @@ export default async function DefinitionsPage({
           id={`definition-${def.number}`}
         />
       ))}
+
+      <DogPhoto tab="definitions" />
     </div>
   );
 }

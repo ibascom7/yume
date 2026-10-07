@@ -321,15 +321,40 @@ export const theorems: Theorem[] = [
       },
       {
         title: "Proof",
-        content: `\\text{Let } 
-                  \\text{By } [[theorem 5|previous lemma]], 
-        `
-      }
+        content: `\\text{Suppose that $\\mathbf{x}_k = (x_{k,1}, x_{k,2}, \\ldots, x_{k,n})$ is Cauchy in $\\mathbb{R}^n$.} \\\\
+                  \\text{Let $\\varepsilon > 0$. By definition, this means} \\\\
+                  \\exists N \\in \\mathbb{N},\\ \\forall k, l \\geq N,\\ \\lVert \\mathbf{x}_k - \\mathbf{x}_l \\rVert < \\varepsilon. \\\\
+                  \\text{But then for each $j \\in \\{1, \\ldots, n\\}$ and $k, l \\geq N$,} \\\\
+                  |x_{k,j} - x_{l,j}| \\leq \\lVert \\mathbf{x}_k - \\mathbf{x}_l \\rVert < \\varepsilon. \\\\
+                  \\text{Thus, $(x_{k,j})$ is Cauchy. By completeness of $\\mathbb{R}$,} \\\\
+                  \\text{$(x_{k,j})$ is convergent. So $\\exists a_j \\in \\mathbb{R}$, $\\lim_{k \\to \\infty} x_{k,j} = a_j$.} \\\\
+                  \\text{Let $\\mathbf{a} = (a_1, a_2, \\ldots, a_n) \\in \\mathbb{R}^n$.} \\\\
+                  \\text{Since for $(\\mathbf{x}_k)$ we have $\\lim_{k \\to \\infty} x_{k,j} = a_j$ for all $j$,} \\\\
+                  \\text{$\\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}$ by [[theorem 5|previous lemma]].} \\\\
+                  \\text{Hence $(\\mathbf{x}_k)$ is convergent, so $\\mathbb{R}^n$ is complete.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Proposition",
+    number: 8,
+    chapter: 4,
+    section: 3,
+    title: "Unions and Intersections of Closed Sets",
+    statement: `\\text{If } A, B \\subset \\mathbb{R}^n \\text{ are closed, then } A \\cup B \\text{ is closed.} \\\\
+                \\text{If } \\{A_i : i \\in I\\} \\text{ is a family of closed subsets of } \\mathbb{R}^n, \\\\
+                \\text{then } \\bigcap_{i \\in I} A_i \\text{ is closed.}`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 13|Closed]] \\\\
+                  \\text{2) } [[definition 12|Limit point]]`,
+      },
     ],
   },
   // Template:
   // {
-  //   kind: "Lemma", // optional: "Theorem" (default), "Lemma", or "Corollary"
+  //   kind: "Lemma", // optional: "Theorem" (default), "Lemma", "Corollary", or "Proposition"
   //   number: 1,
   //   chapter: 1,
   //   section: 1,

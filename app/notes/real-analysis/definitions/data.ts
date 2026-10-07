@@ -123,6 +123,37 @@ export const definitions: Definition[] = [
                  [[definition 10|Cauchy sequence]] \\text{ in } S \\text{ } [[definition 9|converges]] \\text{ to a point in } S. \\\\[0.5em]
                  (\\mathbf{x}_k) \\subseteq S,\\ (\\mathbf{x}_k) \\text{ Cauchy} \\implies \\exists \\mathbf{a} \\in \\mathbb{R}^n,\\ \\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a} \\in S`,
   },
+  {
+    number: 12,
+    chapter: 4,
+    section: 3,
+    term: "Limit Point",
+    definition: `\\text{A point } \\mathbf{x} \\in \\mathbb{R}^n \\text{ is a limit point of a set } A \\subseteq \\mathbb{R}^n \\\\
+                 \\text{if } \\exists (\\mathbf{a}_k) \\subseteq A \\text{ such that } \\lim_{k \\to \\infty} \\mathbf{a}_k = \\mathbf{x}.`,
+  },
+  {
+    number: 13,
+    chapter: 4,
+    section: 3,
+    term: "Closed",
+    definition: `\\text{A set } A \\subseteq \\mathbb{R}^n \\text{ is closed if it contains} \\\\
+                 \\text{all of its [[definition 12|limit points]].} \\\\[1em]
+                 \\text{In other words,} \\text{ Closed means } \\{\\text{limit pts of } A\\} \\subseteq A. \\\\[1em]
+                 \\text{Note for any } \\mathbf{a} \\in A, \\text{ we may consider the constant} \\\\
+                 \\text{sequence } \\mathbf{a}_k \\equiv \\mathbf{a}\\ \\forall k \\text{ to see } \\mathbf{a} \\in \\{\\text{limit pts of } A\\}. \\\\
+                 \\text{That is, } \\{\\text{limit pts of } A\\} \\supseteq A \\text{ always holds.} \\\\
+                 \\text{So } A \\text{ is closed iff } A = \\{\\text{limit pts of } A\\}, \\text{ and to show} \\\\
+                 A \\text{ is closed we only need to show all limit points are in } A.`,
+  },
+  {
+    number: 14,
+    chapter: 4,
+    section: 3,
+    term: "Closure",
+    definition: `\\text{Let } A \\subseteq \\mathbb{R}^n. \\text{ The closure of } A \\text{ is the set } \\overline{A} \\\\
+                 \\text{consisting of all of its [[definition 12|limit points]].} \\\\[1em]
+                 \\text{Note } A \\text{ [[definition 13|closed]]} \\iff \\overline{A} \\subseteq A.`,
+  },
   // Template:
   // {
   //   number: 1,
