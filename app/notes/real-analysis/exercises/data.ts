@@ -381,7 +381,7 @@ export const exercises: Exercise[] = [
               \\text{Then $(\\mathbf{x}_k)$ is convergent in $\\mathbb{R}^n$, since $\\mathbb{R}^n$ is complete.} \\\\
               \\text{So $\\exists \\mathbf{a} \\in \\mathbb{R}^n$ s.t. $\\lim_{k \\to \\infty} \\mathbf{x}_{k} = \\mathbf{a}$. Now to show $\\mathbf{a} \\in S$,} \\\\
               \\text{observe $\\|\\mathbf{a} - \\mathbf{x}_0 \\| \\leq \\| \\mathbf{a} - \\mathbf{x}_k \\| + \\|\\mathbf{x}_k - \\mathbf{x}_0 \\| \\leq \\|\\mathbf{x}_k - \\mathbf{a} \\| + R$.} \\\\
-              \\text{By Lemma 4.2.2, $\\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}$ implies} \\\\
+              \\text{By [[theorem 4|Lemma 4.2.2]], $\\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}$ implies} \\\\
               \\text{$\\lim_{k \\to \\infty} \\|\\mathbf{x}_k - \\mathbf{a} \\| = 0$.} \\\\
               \\text{Since $\\|\\mathbf{a} - \\mathbf{x}_0\\|$ does not depend on $k$, letting $k \\to \\infty$ in the} \\\\
               \\text{inequality above gives} \\\\
@@ -396,7 +396,7 @@ export const exercises: Exercise[] = [
     title: "Question 4.2.E",
     problem: `\\text{Let $M$ be a subspace of $\\mathbb{R}^n$.} \\\\[0.5em]
              \\text{(a) Let $\\{\\mathbf{v}_1, \\dots, \\mathbf{v}_m\\}$ be an [[definition 6|orthonormal basis]] for $M$.} \\\\
-             \\text{Formulate an analogue of Lemma 4.2.3 for $M$ and} \\\\
+             \\text{Formulate an analogue of [[theorem 5|Lemma 4.2.3]] for $M$ and} \\\\
              \\text{prove it.} \\\\[0.5em]
              \\text{(b) Prove that $M$ is complete.}`,
     solution: [
@@ -410,7 +410,7 @@ export const exercises: Exercise[] = [
                   \\text{since $\\{\\mathbf{v}_1, \\dots, \\mathbf{v}_m\\}$ is orthonormal. Therefore} \\\\
                   \\mathbf{x} = \\sum_{i=1}^m \\langle \\mathbf{x}, \\mathbf{v}_i \\rangle \\mathbf{v}_i \\qquad \\text{and} \\\\
                   \\|\\mathbf{x}\\|^2 = \\Big\\langle \\sum_{i=1}^m c_i \\mathbf{v}_i, \\sum_{j=1}^m c_j \\mathbf{v}_j \\Big\\rangle = \\sum_{i=1}^m c_i^2 = \\sum_{i=1}^m |\\langle \\mathbf{x}, \\mathbf{v}_i \\rangle|^2. \\\\[1em]
-                  \\textbf{Lemma} \\text{ (analogue of Lemma 4.2.3).} \\\\
+                  \\textbf{Lemma} \\text{ (analogue of [[theorem 5|Lemma 4.2.3]]).} \\\\
                   \\textit{Let $(\\mathbf{x}_k)$ be a sequence in $M$ and let $\\mathbf{a} \\in M$. Then} \\\\
                   \\textit{$\\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}$ if and only if} \\\\
                   \\textit{$\\lim_{k \\to \\infty} \\langle \\mathbf{x}_k, \\mathbf{v}_j \\rangle = \\langle \\mathbf{a}, \\mathbf{v}_j \\rangle$ for every $j \\in \\{1, \\dots, m\\}$.} \\\\[1em]
@@ -529,7 +529,7 @@ export const exercises: Exercise[] = [
                   \\text{Hence} \\\\
                   \\lim_{n \\to \\infty} \\mathbf{v}_n = \\left( \\lim_{n \\to \\infty} x_n, \\ \\lim_{n \\to \\infty} y_n \\right) = (c,c), \\\\
                   \\text{where the limit of the vector sequence is taken} \\\\
-                  \\text{coordinatewise by Lemma 4.2.3.} \\\\
+                  \\text{coordinatewise by [[theorem 5|Lemma 4.2.3]].} \\\\
                   \\text{This value $c$ is the arithmetic--geometric mean of $x_0$ and} \\\\
                   \\text{$y_0$.} \\ \\blacksquare`,
       },
@@ -574,7 +574,7 @@ export const exercises: Exercise[] = [
                   \\text{So the $n+1$ case holds, and the formula is valid for all} \\\\
                   \\text{$n \\geq 1$.} \\\\
                   \\text{Since $\\lim_{n \\to \\infty} 2^{-n} = 0$, each coordinate converges, so by} \\\\
-                  \\text{Lemma 4.2.3,} \\\\
+                  \\text{[[theorem 5|Lemma 4.2.3]],} \\\\
                   \\lim_{n \\to \\infty} \\mathbf{x}_n = \\left( \\frac{3}{2}, \\ \\frac{3}{2} \\right) = \\mathbf{y}. \\ \\blacksquare`,
       },
       {
@@ -619,6 +619,64 @@ export const exercises: Exercise[] = [
               \\|\\mathbf{a}\\| \\leq \\|\\mathbf{a} - \\mathbf{x}_k\\| + \\|\\mathbf{x}_k\\| < \\varepsilon + 81 = \\|\\mathbf{a}\\|, \\\\
               \\text{so $\\|\\mathbf{a}\\| < \\|\\mathbf{a}\\|$, which is a contradiction.} \\\\
               \\text{Hence $\\|\\mathbf{a}\\| \\leq 81$.} \\ \\blacksquare`,
+  },
+  {
+    number: 15,
+    chapter: 4,
+    section: 2,
+    title: "Example of Convergence in ℝ²",
+    problem: `\\text{Let } \\mathbf{v}_0 = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix} \\text{ and define a sequence} \\\\
+             \\mathbf{v}_n = \\begin{pmatrix} x_n \\\\ y_n \\end{pmatrix} \\in \\mathbb{R}^2 \\text{ recursively by} \\\\
+             x_{n+1} = \\frac{x_n + y_n + 1}{2}, \\quad y_{n+1} = \\frac{x_n - y_n + 1}{2}. \\\\[0.5em]
+             \\text{Does } (\\mathbf{v}_n) \\text{ converge?}`,
+    solution: [
+      {
+        title: "Finding the limit",
+        content: `\\text{The first terms are} \\\\
+                  \\mathbf{v}_0 = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}\\!, \\ \\mathbf{v}_1 = \\begin{pmatrix} 1/2 \\\\ 1/2 \\end{pmatrix}\\!, \\ \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ 1/2 \\end{pmatrix}\\!, \\ \\mathbf{v}_3 = \\begin{pmatrix} 5/4 \\\\ 3/4 \\end{pmatrix}\\!, \\ \\ldots \\\\[0.5em]
+                  \\text{Consider the map} \\\\
+                  T\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} \\dfrac{x+y+1}{2} \\\\[0.6em] \\dfrac{x-y+1}{2} \\end{pmatrix}. \\\\
+                  \\text{We will look for fixed points of $T$ to find} \\\\
+                  \\text{what $\\mathbf{v}_n$ \\textit{may} converge to.} \\\\[0.5em]
+                  \\text{\\textit{Intuition:} $\\mathbf{v}_{n+1} = T(\\mathbf{v}_n) = T^2(\\mathbf{v}_{n-1})$. Consider} \\\\
+                  \\begin{aligned}
+                    \\mathbf{v} = \\lim_{n \\to \\infty} \\mathbf{v}_{n+1} &= \\lim_{n \\to \\infty} T(\\mathbf{v}_n) \\\\
+                    &= T\\Big(\\lim_{n \\to \\infty} \\mathbf{v}_n\\Big) = T(\\mathbf{v}).
+                  \\end{aligned} \\\\[0.5em]
+                  \\text{Thus we look for fixed points of $T$.} \\\\
+                  \\text{If } \\mathbf{v} = \\begin{pmatrix} x \\\\ y \\end{pmatrix}\\text{, then $T\\mathbf{v} = \\mathbf{v}$ leads to} \\\\
+                  \\begin{aligned}
+                    \\tfrac{1}{2}x + \\tfrac{1}{2}y + \\tfrac{1}{2} &= x \\\\
+                    \\tfrac{1}{2}x - \\tfrac{1}{2}y + \\tfrac{1}{2} &= y
+                  \\end{aligned} \\\\
+                  \\text{and solving this linear system gives } \\mathbf{v} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}.`,
+      },
+      {
+        title: "Proof",
+        content: `\\text{Goal: $\\lim_{n \\to \\infty} \\mathbf{v}_n = \\mathbf{v}$. Now we prove it. Consider} \\\\
+                  \\begin{aligned}
+                    \\lVert \\mathbf{v}_{n+1} - \\mathbf{v} \\rVert^2 &= \\left\\lVert \\begin{pmatrix} x_{n+1} - 2 \\\\ y_{n+1} - 1 \\end{pmatrix} \\right\\rVert^2 \\\\
+                    &= \\left\\lVert \\begin{pmatrix} \\dfrac{x_n + y_n + 1}{2} - 2 \\\\[0.6em] \\dfrac{x_n - y_n + 1}{2} - 1 \\end{pmatrix} \\right\\rVert^2 \\\\
+                    &= \\frac{(x_n + y_n - 3)^2 + (x_n - y_n - 1)^2}{4} \\\\
+                    &= \\frac{2x_n^2 + 2y_n^2 - 8x_n - 4y_n + 10}{4} \\\\
+                    &= \\frac{(x_n - 2)^2 + (y_n - 1)^2}{2} = \\frac{1}{2} \\lVert \\mathbf{v}_n - \\mathbf{v} \\rVert^2.
+                  \\end{aligned} \\\\
+                  \\text{Thus,} \\\\
+                  \\begin{aligned}
+                    \\lVert \\mathbf{v}_{n+1} - \\mathbf{v} \\rVert &= \\frac{1}{\\sqrt{2}} \\lVert \\mathbf{v}_n - \\mathbf{v} \\rVert \\\\
+                    &= \\frac{1}{\\sqrt{2}} \\left( \\frac{1}{\\sqrt{2}} \\lVert \\mathbf{v}_{n-1} - \\mathbf{v} \\rVert \\right).
+                  \\end{aligned} \\\\
+                  \\text{By induction,} \\\\
+                  \\begin{aligned}
+                    \\lVert \\mathbf{v}_n - \\mathbf{v} \\rVert &= \\cdots = \\left( \\frac{1}{\\sqrt{2}} \\right)^n \\lVert \\mathbf{v}_0 - \\mathbf{v} \\rVert \\\\
+                    &= \\left( \\frac{1}{\\sqrt{2}} \\right)^n \\sqrt{5},
+                  \\end{aligned} \\\\
+                  \\text{where $\\frac{1}{\\sqrt{2}} < 1$. So taking limits,} \\\\
+                  \\lim_{n \\to \\infty} \\lVert \\mathbf{v}_n - \\mathbf{v} \\rVert = \\lim_{n \\to \\infty} \\left( \\frac{1}{\\sqrt{2}} \\right)^n \\sqrt{5} = 0. \\\\
+                  \\text{So by [[theorem 4|Lemma 4.2.2]],} \\\\
+                  \\lim_{n \\to \\infty} \\mathbf{v}_n = \\mathbf{v} = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}. \\ \\blacksquare`,
+      },
+    ],
   },
   // Template:
   // {

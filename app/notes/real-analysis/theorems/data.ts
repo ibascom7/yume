@@ -26,7 +26,16 @@ export const theorems: Theorem[] = [
       statement: `\\text{For } \\mathbf{x}, \\mathbf{y} \\in \\mathbb{R}^n, \\ |\\langle x, y \\rangle | \\leq \\| \\mathbf{x} \\| \\| \\mathbf{y} \\| \\\\
                   \\text{Equality holds iff } \\mathbf{x} \\text{ and } \\mathbf{y} \\text{ are collinear}.
       `,
-      proof: `
+      proof: [
+        {
+          title: "Recall",
+          content: `\\text{1) } [[definition 1|Norm]] \\\\
+                    \\text{2) } [[definition 3|Dot Product / Inner Product]] \\\\
+                    \\text{3) } [[definition 4|Collinear]]`,
+        },
+        {
+          title: "Proof",
+          content: `
       \\text{Let } \\mathbf{x} = (x_1, \\ldots, x_n),\\ \\mathbf{y} = (y_1, \\ldots, y_n) \\in \\mathbb{R}^n. \\\\
       \\text{We first check the inequality } |\\langle x, y \\rangle | \\leq \\| \\mathbf{x} \\| \\| \\mathbf{y} \\|. \\\\
       \\text{Note } \\\\
@@ -40,7 +49,7 @@ export const theorems: Theorem[] = [
       \\text{Observe } \\\\
       \\begin{aligned}
         &2 \\lVert \\mathbf{x} \\rVert^2 \\lVert \\mathbf{y} \\rVert^2 - 2 |\\langle \\mathbf{x}, \\mathbf{y} \\rangle|^2 \\\\
-        = &2 \\left( \\sum_{i=1}^{n} x_i^2 \\right) \\left( \\sum_{j=1}^{n} y_j^2 \\right) - 2 \\left( \\sum_{i=1}^{n} x_i y_i \\right)^2 & \\text{ (By def of norm and inner product)} \\\\
+        = &2 \\left( \\sum_{i=1}^{n} x_i^2 \\right) \\left( \\sum_{j=1}^{n} y_j^2 \\right) - 2 \\left( \\sum_{i=1}^{n} x_i y_i \\right)^2 & \\text{ (By def of [[definition 1|norm]] and [[definition 3|inner product]])} \\\\
         = &2 \\sum_{i=1}^{n} \\sum_{j=1}^{n} x_i^2 y_j^2 - 2 \\left( \\sum_{i=1}^{n} x_i y_i \\right)^2 \\\\
         = &\\sum_{i=1}^{n} \\sum_{j=1}^{n} x_i^2 y_j^2 + \\sum_{i=1}^{n} \\sum_{j=1}^{n} x_i^2 y_j^2 - 2 \\left( \\sum_{i=1}^{n} x_i y_i \\right)^2 \\\\
         = &\\sum_{i=1}^{n} \\sum_{j=1}^{n} x_i^2 y_j^2 + \\sum_{j=1}^{n} \\sum_{i=1}^{n} x_j^2 y_i^2 - 2 \\left( \\sum_{i=1}^{n} x_i y_i \\right)^2 & \\text{(Swap dummy variables)} \\\\
@@ -77,6 +86,8 @@ export const theorems: Theorem[] = [
         = & \\|\\mathbf{x}\\| \\|\\mathbf{y}\\| \\ \\ \\blacksquare
       \\end{aligned}
       `,
+        },
+      ],
     },
   {
     kind: "Lemma",
@@ -184,6 +195,134 @@ export const theorems: Theorem[] = [
                   \\text{If } \\mathbf{x} \\neq 0, \\text{ then we have } \\\\
                   0 \\le \\langle \\mathbf{x,y} \\rangle = \\langle \\mathbf{x}, t\\mathbf{x} \\rangle = t \\langle \\mathbf{x}, \\mathbf{x} \\rangle. \\\\
                   \\text{So } t \\ge 0.
+        `
+      }
+    ],
+  },
+  {
+    kind: "Lemma",
+    number: 4,
+    chapter: 4,
+    section: 2,
+    title: "Convergence via Norms",
+    statement: `\\text{Let } (\\mathbf{x}_k) \\subseteq \\mathbb{R}^n. \\text{ Then} \\\\
+                \\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a} \\iff \\lim_{k \\to \\infty} \\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert = 0.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 9|Convergence]] \\\\
+                  \\text{2) } [[definition 1|Norm]]`,
+      },
+      {
+        title: "Proof",
+        content: `\\text{Let } \\varepsilon > 0.
+                  \\\\ \\text{Suppose } \\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}. 
+                  \\\\ \\text{Then } \\exists N \\in \\mathbb{N} \\text{ s.t. } \\| \\mathbf{x}_k - \\mathbf{a} \\| < \\varepsilon \\ \\forall k \\ge N.
+                  \\\\ \\text{Let } m_k = \\| \\mathbf{x}_k - \\mathbf{a} \\| \\text{ be a sequence in } \\mathbb{R}.
+                  \\\\ \\text{So for } k \\ge N, |m_k| = m_k < \\varepsilon.
+                  \\\\[1em] \\text{Conversely, suppose } \\lim_{k \\to \\infty} \\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert = 0.
+                  \\\\ \\text{Then } \\exists N \\in \\mathbb{N} \\text{ s.t. } \\| \\mathbf{x}_k - \\mathbf{a} \\| < \\varepsilon \\ \\forall k \\ge N.
+                  \\\\ \\text{This is the definition (1) of } \\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}.
+
+        `
+      }
+    ],
+  },
+  {
+    kind: "Lemma",
+    number: 5,
+    chapter: 4,
+    section: 2,
+    title: "Coordinatewise Convergence",
+    statement: `\\text{A sequence } (\\mathbf{x}_k) \\subseteq \\mathbb{R}^n, \\ \\mathbf{x}_k = \\begin{pmatrix} x_{k,1} \\\\ \\vdots \\\\ x_{k,n} \\end{pmatrix}, \\\\
+                \\text{converges to $\\mathbf{a} = (a_1, \\ldots, a_n)$ iff} \\\\
+                \\text{each coordinate converges,} \\\\
+                \\text{i.e. } \\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a} \\iff \\\\
+                \\text{for each coordinate } j = 1, \\ldots, n, \\ \\lim_{k \\to \\infty} x_{k,j} = a_j.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 9|Convergence]] 
+                  \\\\ \\text{2) } [[definition 1|Norm]]`,
+      },
+      {
+        title: "Proof",
+        content: `\\text{($\\Rightarrow$). Let $\\varepsilon > 0$. Assume $\\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}$.} \\\\
+                  \\text{Then $\\exists N \\in \\mathbb{N}$, $\\forall k \\geq N$, $\\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert < \\varepsilon$.} \\\\
+                  \\text{Let $j \\in \\{1, \\ldots, n\\}$. Note} \\\\
+                  \\begin{aligned}
+                    |x_{k,j} - a_j| &= \\sqrt{(x_{k,j} - a_j)^2} \\\\
+                    &\\leq \\sqrt{\\sum_{i=1}^{n} (x_{k,i} - a_i)^2} \\\\
+                    &= \\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert
+                  \\end{aligned} \\\\
+                  \\text{since $(x_{k,j} - a_j)^2$ is a term in the sum for $\\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert$.} \\\\
+                  \\text{Thus, for $k \\geq N$,} \\\\
+                  |x_{k,j} - a_j| \\leq \\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert < \\varepsilon. \\\\[1em]
+                  \\text{($\\Leftarrow$). Let $\\varepsilon > 0$. Know for each $j \\in \\{1, \\ldots, n\\}$,} \\\\
+                  \\lim_{k \\to \\infty} x_{k,j} = a_j. \\\\
+                  \\text{Hence, $\\exists N_j \\in \\mathbb{N}$, $\\forall k \\geq N_j$, $|x_{k,j} - a_j| < \\frac{\\varepsilon}{n}$.} \\\\
+                  \\text{Note for each $j$, $N_j = N(\\varepsilon, j)$.} \\\\
+                  \\text{Let $N = \\max\\{N_1, \\ldots, N_n\\}$.} \\\\
+                  \\text{Then for $k \\geq N$,} \\\\
+                  \\begin{aligned}
+                    \\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert &= \\sqrt{\\sum_{j=1}^{n} (x_{k,j} - a_j)^2} < \\sqrt{\\sum_{j=1}^{n} \\left( \\frac{\\varepsilon}{n} \\right)^2} \\\\
+                    &= \\sqrt{n \\cdot \\frac{\\varepsilon^2}{n^2}} = \\frac{\\varepsilon}{\\sqrt{n}} \\leq \\varepsilon. \\ \\blacksquare
+                  \\end{aligned}`,
+      },
+    ],
+  },
+  {
+    kind: "Lemma",
+    number: 6,
+    chapter: 4,
+    section: 2,
+    title: "Convergent Sequences are Cauchy",
+    statement: `\\text{Every convergent sequence is Cauchy.}`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 9|Convergence]] \\\\
+                  \\text{2) } [[definition 10|Cauchy sequence]] \\\\
+                  \\text{3) } [[theorem 3| Triangle Inequality]]
+                  `,
+      },
+      {
+        title: "Proof",
+        content: `\\text{Let } (\\mathbf{x}_k) \\subseteq \\mathbb{R}^n \\text{ be a sequence that converges to } \\mathbf{a} \\in \\mathbb{R}^n.
+                  \\\\ \\text{Then } \\exists N \\in \\N. \\text{ s.t. } \\| \\mathbf{x}_k - \\mathbf{a} \\| < \\frac{\\varepsilon}{2} \\ \\forall k \\ge N.
+                  \\\\ \\text{Let } k, \\ell \\ge N, 
+                  \\\\ \\begin{aligned}
+                    \\| \\mathbf{x}_k - \\mathbf{x}_{\\ell} \\| &\\le \\| \\mathbf{x}_k - \\mathbf{a} \\| + \\| \\mathbf{a} - \\mathbf{x}_{\\ell} \\|
+                    \\\\ &= \\| \\mathbf{x}_k - \\mathbf{a} \\| + \\| \\mathbf{x}_{\\ell} - \\mathbf{a} \\|
+                    \\\\ &< \\frac{\\varepsilon}{2} + \\frac{\\varepsilon}{2} = \\varepsilon
+                  \\\\ \\end{aligned}
+                  \\\\ \\text{Hence, convergent } (\\mathbf{x}_k) \\subseteq \\mathbb{R}^n \\text{ are Cauchy.}
+                  
+        `
+      }
+    ],
+  },
+  {
+    kind: "Theorem",
+    number: 7,
+    chapter: 4,
+    section: 2,
+    title: "Completeness Theorem for ℝⁿ",
+    statement: `\\text{Every Cauchy sequence in $\\mathbb{R}^n$ converges.} \\\\
+                \\text{Thus, $\\mathbb{R}^n$ is complete.}`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 10|Cauchy sequence]] \\\\
+                  \\text{2) } [[definition 9|Convergence]] \\\\
+                  \\text{3) } [[definition 11|Complete]] \\\\
+                  \\text{4) } \\mathbb{R} \\text{ is complete} \\\\
+                  \\text{5) } [[definition 1|Norm]]`,
+      },
+      {
+        title: "Proof",
+        content: `\\text{Let } 
+                  \\text{By } [[theorem 5|previous lemma]], 
         `
       }
     ],
