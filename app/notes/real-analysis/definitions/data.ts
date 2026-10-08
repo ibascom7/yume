@@ -178,6 +178,14 @@ export const definitions: Definition[] = [
     definition: `\\text{A set } U \\subseteq \\mathbb{R}^n \\text{ is open if} \\\\
                  \\forall \\mathbf{a} \\in U,\\ \\exists r = r(\\mathbf{a}) > 0,\\ [[definition 16|$B_r(\\mathbf{a})$]] \\subseteq U.`,
   },
+  {
+    number: 18,
+    chapter: 4,
+    section: 3,
+    term: "Interior",
+    definition: `\\text{The interior of a set } X \\subseteq \\mathbb{R}^n \\text{ is the largest} \\\\
+                 \\text{[[definition 17|open]] set contained in } X, \\text{ and is denoted } \\operatorname{int}(X).`,
+  },
   // Template:
   // {
   //   number: 1,
