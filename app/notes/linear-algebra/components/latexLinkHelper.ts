@@ -8,6 +8,9 @@
  *
  * You can also use custom text:
  * - [[definition 1|the limit definition]] -> "the limit definition" linking to Definition 1
+ *
+ * Vector space axioms are linked automatically, no brackets needed:
+ * - (VS 3) -> "(VS 3)" linking to that row of the Vector Space definition
  */
 export function processLatexLinks(latex: string): string {
   // Pattern matches [[type number]] or [[type number|custom text]]
@@ -19,7 +22,12 @@ export function processLatexLinks(latex: string): string {
     exercise: "/notes/linear-algebra/exercises"
   };
 
-  return latex.replace(pattern, (match, type, number, customText) => {
+  // Skips "}{\text{(VS N)" so the labels in Definition 1 (and already-linked axioms) stay plain
+  const axiomPattern = /(?<!\}\{\\text\{)\(VS ?([1-8])\)/g;
+
+  return latex.replace(axiomPattern, (match, number) =>
+    `\\underline{\\href{/notes/linear-algebra/definitions#vs-${number}}{\\text{(VS ${number})}}}`
+  ).replace(pattern, (match, type, number, customText) => {
     const typeLower = type.toLowerCase() as keyof typeof pathMap;
     const path = pathMap[typeLower];
     const href = `${path}#${typeLower}-${number}`;
