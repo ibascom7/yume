@@ -39,6 +39,27 @@ export default async function TheoremsPage({
           id={`theorem-${theorem.number}`}
         />
       ))}
+      <figure className="mt-8 flex flex-col items-center">
+        {/* preload="none": nothing streams until play is pressed. Each browser takes the first source it can play:
+            H.264 MP4 for Safari/iPhone and most others, VP9 WebM for browsers without H.264 (e.g. some Linux Chromium builds) */}
+        <video
+          poster="/sphere_eversion_poster.jpg"
+          controls
+          preload="none"
+          playsInline
+          loop
+          className="w-full max-w-[600px] aspect-square rounded-lg bg-black"
+        >
+          <source src="/sphere_eversion.mp4" type='video/mp4; codecs="avc1.640028"' />
+          <source src="/sphere_eversion.webm" type='video/webm; codecs="vp9"' />
+        </video>
+        <figcaption className="mt-2 text-center text-xs sm:text-sm text-gray-600">
+          <a href="https://commons.wikimedia.org/wiki/File:Thurston_Sphere_Eversion.webm" className="underline">
+            Thurston sphere eversion
+          </a>{" "}
+          via Wikimedia Commons
+        </figcaption>
+      </figure>
     </div>
   );
 }

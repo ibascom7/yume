@@ -3,6 +3,7 @@ import { filterByChapter, filterByHomework, filterLabel, type NotesFilterParams 
 import { exercises } from "./data";
 import LinkPreviewPopup from "@/app/components/LinkPreviewPopup";
 import { linkPreviews } from "../linkPreviews";
+import Image from "next/image";
 
 export default async function ExercisesPage({
   searchParams,
@@ -37,6 +38,16 @@ export default async function ExercisesPage({
           id={`exercise-${exercise.number}`}
         />
       ))}
+      <figure className="mt-8 flex flex-col items-center">
+        <Image
+          src="/Pepe_Silvia.jpg"
+          alt="Charlie from It's Always Sunny in front of a conspiracy board, explaining Pepe Silvia"
+          width={800}
+          height={600}
+          sizes="(max-width: 640px) 100vw, 600px"
+          className="w-full max-w-[600px] h-auto rounded-lg"
+        />
+      </figure>
     </div>
   );
 }
