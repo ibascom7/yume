@@ -3,6 +3,7 @@ import { filterByChapter, filterLabel, type NotesFilterParams } from "@/app/comp
 import { theorems } from "./data";
 import LinkPreviewPopup from "@/app/components/LinkPreviewPopup";
 import { linkPreviews } from "../linkPreviews";
+import Image from "next/image";
 
 export default async function TheoremsPage({
   searchParams,
@@ -39,6 +40,20 @@ export default async function TheoremsPage({
           id={`theorem-${theorem.number}`}
         />
       ))}
+      <figure className="mt-8 flex flex-col items-center">
+        {/* unoptimized: Next's optimizer would flatten the GIF to one frame */}
+        <Image
+          src="/Spot_the_cow.gif"
+          alt="Spot the cow, a 3D model, morphing into a sphere"
+          width={500}
+          height={500}
+          unoptimized
+          className="w-full max-w-[500px] h-auto rounded-lg"
+        />
+        <figcaption className="mt-2 text-center text-xs sm:text-sm text-gray-600">
+          Cows are easy to round up
+        </figcaption>
+      </figure>
     </div>
   );
 }
