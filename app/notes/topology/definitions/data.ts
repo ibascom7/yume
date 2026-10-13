@@ -76,4 +76,41 @@ export const definitions: Definition[] = [
                  \\text{A subset $C \\subseteq X$ is called \\textit{closed} iff its complement} \\\\
                  C^c = X \\setminus C \\in \\tau.`,
   },
+  {
+    number: 4,
+    chapter: 1,
+    section: 1,
+    term: "Finer / Coarser",
+    definition: `\\text{Let $\\sigma, \\tau$ be [[definition 1|topologies]] on a set $X$.} \\\\
+                 \\text{We say $\\sigma$ is \\textit{finer} than $\\tau$ if } \\sigma \\supseteq \\tau. \\\\
+                 \\text{We can also say $\\tau$ is \\textit{coarser} than $\\sigma$.} \\\\[1em]
+                 \\text{Think of it as the space being “chopped up” into finer pieces} \\\\
+                 \\text{if $\\sigma$ has more [[definition 2|open]] sets.}`,
+  },
+  {
+    number: 5,
+    chapter: 1,
+    section: 2,
+    term: "Basis",
+    definition: `\\text{Let $(X, \\tau)$ be a [[definition 1|topological space]].} \\\\
+                 \\mathcal{B} \\subseteq \\tau \\text{ is called a \\textit{basis} of $\\tau$ if} \\\\
+                 \\forall x \\in X \\text{ and } \\forall U \\in \\tau \\text{ with } x \\in U, \\ \\exists B \\in \\mathcal{B} \\text{ s.t. } x \\in B \\subseteq U. \\\\[1em]
+                 \\text{Note that if $\\mathcal{B}$ is a basis for $(X, \\tau)$, then:} \\\\[0.5em]
+                 \\text{(B1) } \\forall x \\in X \\ \\exists B \\in \\mathcal{B} \\text{ s.t. } x \\in B. \\\\[0.5em]
+                 \\text{(B2) } \\forall B_1, B_2 \\in \\mathcal{B} \\text{ and } \\forall x \\in B_1 \\cap B_2, \\\\
+                 \\exists B_3 \\in \\mathcal{B} \\text{ s.t. } x \\in B_3 \\subseteq B_1 \\cap B_2. \\\\[0.5em]
+                 \\text{(B1) follows from the def of basis with } U = X \\\\
+                 \\text{and (B2) from the def of basis with } U = B_1 \\cap B_2.`,
+    examples: [
+      {
+        title: "Boring basis",
+        content: `\\text{Every topology $\\tau$ has the basis } \\mathcal{B} = \\tau.`,
+      },
+      {
+        title: "Standard basis of ℝⁿ",
+        content: `\\text{If } X = (\\mathbb{R}^n, \\tau) \\text{ then } \\mathcal{B} = \\{B(x, r) : x \\in X, \\ r > 0\\} \\\\
+                  \\text{is a basis, as seen in Real Analysis.}`,
+      },
+    ],
+  },
 ];
