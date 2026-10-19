@@ -8,6 +8,9 @@
  *
  * You can also use custom text:
  * - [[definition 1|the limit definition]] -> "the limit definition" linking to Definition 1
+ *
+ * Basis properties are linked automatically, no brackets needed:
+ * - (B1) -> "(B1)" linking to that row of the Basis definition
  */
 export function processLatexLinks(latex: string): string {
   // Pattern matches [[type number]] or [[type number|custom text]]
@@ -19,7 +22,12 @@ export function processLatexLinks(latex: string): string {
     exercise: "/notes/topology/exercises"
   };
 
-  return latex.replace(pattern, (match, type, number, customText) => {
+  // Skips "}{\text{(BN)" so the labels in Definition 5 (and already-linked properties) stay plain
+  const basisPattern = /(?<!\}\{\\text\{)\(B ?([12])\)/g;
+
+  return latex.replace(basisPattern, (match, number) =>
+    `\\underline{\\href{/notes/topology/definitions#b-${number}}{\\text{(B${number})}}}`
+  ).replace(pattern, (match, type, number, customText) => {
     const typeLower = type.toLowerCase() as keyof typeof pathMap;
     const path = pathMap[typeLower];
     const href = `${path}#${typeLower}-${number}`;

@@ -55,7 +55,7 @@ export const definitions: Definition[] = [
         title: "Standard topology on ℝⁿ",
         content: `\\text{See def of } \\underline{\\href{/notes/real-analysis/definitions#definition-17}{\\text{open}}} \\text{ from Real Analysis.} \\\\
                   \\text{However, in this class we notate with} \\\\
-                  \\tau = \\{ U \\subseteq \\mathbb{R}^n : \\ \\forall x \\in U \\ \\exists \\varepsilon > 0 \\text{ s.t. } B(x, \\varepsilon) \\subseteq U \\}.`,
+                  \\tau = \\{ U \\subseteq \\mathbb{R}^n : \\ \\forall x \\in U \\ \\exists \\varepsilon > 0 \\text{ s.t. } [[definition 8|$B(x, \\varepsilon)$]] \\subseteq U \\}.`,
       },
     ],
   },
@@ -96,9 +96,11 @@ export const definitions: Definition[] = [
                  \\mathcal{B} \\subseteq \\tau \\text{ is called a \\textit{basis} of $\\tau$ if} \\\\
                  \\forall x \\in X \\text{ and } \\forall U \\in \\tau \\text{ with } x \\in U, \\ \\exists B \\in \\mathcal{B} \\text{ s.t. } x \\in B \\subseteq U. \\\\[1em]
                  \\text{Note that if $\\mathcal{B}$ is a basis for $(X, \\tau)$, then:} \\\\[0.5em]
-                 \\text{(B1) } \\forall x \\in X \\ \\exists B \\in \\mathcal{B} \\text{ s.t. } x \\in B. \\\\[0.5em]
-                 \\text{(B2) } \\forall B_1, B_2 \\in \\mathcal{B} \\text{ and } \\forall x \\in B_1 \\cap B_2, \\\\
-                 \\exists B_3 \\in \\mathcal{B} \\text{ s.t. } x \\in B_3 \\subseteq B_1 \\cap B_2. \\\\[0.5em]
+                 \\begin{array}{ll}
+                   \\htmlId{b-1}{\\text{(B1)}} & \\forall x \\in X \\ \\exists B \\in \\mathcal{B} \\text{ s.t. } x \\in B. \\\\[0.5em]
+                   \\htmlId{b-2}{\\text{(B2)}} & \\forall B_1, B_2 \\in \\mathcal{B} \\text{ and } \\forall x \\in B_1 \\cap B_2, \\\\
+                                & \\exists B_3 \\in \\mathcal{B} \\text{ s.t. } x \\in B_3 \\subseteq B_1 \\cap B_2.
+                 \\end{array} \\\\[0.5em]
                  \\text{(B1) follows from the def of basis with } U = X \\\\
                  \\text{and (B2) from the def of basis with } U = B_1 \\cap B_2.`,
     examples: [
@@ -108,9 +110,48 @@ export const definitions: Definition[] = [
       },
       {
         title: "Standard basis of ℝⁿ",
-        content: `\\text{If } X = (\\mathbb{R}^n, \\tau) \\text{ then } \\mathcal{B} = \\{B(x, r) : x \\in X, \\ r > 0\\} \\\\
+        content: `\\text{If } X = (\\mathbb{R}^n, \\tau) \\text{ then } \\mathcal{B} = \\{[[definition 8|$B(x, r)$]] : x \\in X, \\ r > 0\\} \\\\
                   \\text{is a basis, as seen in Real Analysis.}`,
       },
     ],
+  },
+  {
+    number: 6,
+    chapter: 1,
+    section: 2,
+    term: "Metric Space",
+    definition: `\\text{A \\textit{metric space} is a set $X$ with a function } d : X \\times X \\to [0, \\infty), \\\\
+                 \\text{called a \\textit{metric}, satisfying the following:} \\\\[0.5em]
+                 \\text{(a) (Symmetric) } d(x, y) = d(y, x) \\text{ for all } x, y \\in X. \\\\[0.5em]
+                 \\text{(b) (Triangle Inequality) } d(x, y) \\leq d(x, z) + d(z, y) \\text{ for all } x, y, z \\in X. \\\\[0.5em]
+                 \\text{(c) (Distance is 0 iff same position) } d(x, y) = 0 \\text{ iff } x = y \\text{ with } x, y \\in X.`,
+  },
+  {
+    number: 7,
+    chapter: 1,
+    section: 2,
+    term: "Normed Vector Space",
+    definition: `\\text{A \\textit{normed vector space} is a vector space $X$ over the real or complex scalars,} \\\\
+                 \\text{with a function } \\| \\cdot \\| : X \\to [0, \\infty) \\text{, called a \\textit{norm}, satisfying:} \\\\[0.5em]
+                 \\text{(a) (Distance is 0 iff same position) } \\|x\\| = 0 \\text{ iff } x = 0. \\\\[0.5em]
+                 \\text{(b) (Triangle Inequality) } \\|x + y\\| \\leq \\|x\\| + \\|y\\| \\text{ for all } x, y \\in X. \\\\[0.5em]
+                 \\text{(c) } \\|\\lambda x\\| = |\\lambda| \\, \\|x\\| \\text{ for all scalars $\\lambda$ and } x \\in X.`,
+  },
+  {
+    number: 8,
+    chapter: 1,
+    section: 2,
+    term: "Open Ball",
+    definition: `\\text{Let $(X, d)$ be a [[definition 6|metric space]] with } x \\in X \\text{ and } r > 0. \\\\
+                 \\text{Then we write the \\textit{open ball} centered at $x$ with radius $r$ as} \\\\
+                 B(x, r) = \\{ y \\in X : d(x, y) < r \\}.`,
+  },
+  {
+    number: 9,
+    chapter: 1,
+    section: 2,
+    term: "Metrizable",
+    definition: `\\text{Let $(X, \\tau)$ be a [[definition 1|topological space]].} \\\\
+                 \\text{We say $(X, \\tau)$ is \\textit{metrizable} if } \\tau = [[theorem 5|$\\tau_d$]] \\text{, for some [[definition 6|metric]] $d$ on $X$.}`,
   },
 ];
