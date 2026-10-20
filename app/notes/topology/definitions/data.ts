@@ -1,11 +1,12 @@
 import type { ChapterRef } from "@/app/components/notesFilter";
-import type { Example } from "../components/DefinitionCard";
+import type { Example, Figure } from "../components/DefinitionCard";
 
 interface Definition extends ChapterRef {
   number: number;
   term: string;
   definition: string;
   examples?: Example[];
+  figure?: Figure;
 }
 
 export const definitions: Definition[] = [
@@ -86,6 +87,13 @@ export const definitions: Definition[] = [
                  \\text{We can also say $\\tau$ is \\textit{coarser} than $\\sigma$.} \\\\[1em]
                  \\text{Think of it as the space being “chopped up” into finer pieces} \\\\
                  \\text{if $\\sigma$ has more [[definition 2|open]] sets.}`,
+    figure: {
+      src: "/finer_coarser.png",
+      alt: "Two topologies on X drawn as circles of open sets: τ₂ has every open set of τ₁ plus three extra small circles, so τ₁ ⊂ τ₂ and τ₂ is finer than τ₁",
+      width: 1664,
+      height: 1120,
+      invert: true,
+    },
   },
   {
     number: 5,
@@ -103,6 +111,13 @@ export const definitions: Definition[] = [
                  \\end{array} \\\\[0.5em]
                  \\text{(B1) follows from the def of basis with } U = X \\\\
                  \\text{and (B2) from the def of basis with } U = B_1 \\cap B_2.`,
+    figure: {
+      src: "/basis_example.png",
+      alt: "An open set U drawn as a blob, with a point x inside a square B that sits inside U; caption: must be able to draw this picture for every x",
+      width: 1337,
+      height: 637,
+      invert: true,
+    },
     examples: [
       {
         title: "Boring basis",
@@ -153,5 +168,15 @@ export const definitions: Definition[] = [
     term: "Metrizable",
     definition: `\\text{Let $(X, \\tau)$ be a [[definition 1|topological space]].} \\\\
                  \\text{We say $(X, \\tau)$ is \\textit{metrizable} if } \\tau = [[theorem 5|$\\tau_d$]] \\text{, for some [[definition 6|metric]] $d$ on $X$.}`,
+  },
+  {
+    number: 10,
+    chapter: 1,
+    section: 2,
+    term: "Equivalent Metrics",
+    definition: `\\text{Let $d_1, d_2$ be [[definition 6|metrics]] on a set $X$ and fix } C > 0. \\\\
+                 \\text{We say that } d_1 \\leq C d_2 \\text{ if } d_1(x, y) \\leq C d_2(x, y), \\ \\forall x, y \\in X. \\\\[0.5em]
+                 \\text{We say that $d_1$ and $d_2$ are \\textit{equivalent} if } \\exists C_1 > 0, \\ C_2 > 0 \\\\
+                 \\text{s.t. } d_1 \\leq C_2 d_2 \\text{ and } d_2 \\leq C_1 d_1.`,
   },
 ];

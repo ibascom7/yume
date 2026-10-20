@@ -32,6 +32,7 @@ export default async function DefinitionsPage({
           term={def.term}
           definition={def.definition}
           examples={def.examples}
+          figure={def.figure}
           chapter={def.chapter}
           section={def.section}
           id={`definition-${def.number}`}

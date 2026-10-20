@@ -1,5 +1,6 @@
 import type { ChapterRef } from "@/app/components/notesFilter";
 import type { TheoremKind } from "../components/TheoremCard";
+import type { Example } from "../components/DefinitionCard";
 
 interface Proof {
   title?: string;
@@ -13,6 +14,7 @@ interface Theorem extends ChapterRef {
   statement: string;
   description?: string;
   proof?: string | Proof[];
+  examples?: Example[];
 }
 
 export const theorems: Theorem[] = [
@@ -30,6 +32,9 @@ export const theorems: Theorem[] = [
   //   //   { title: "Proof of (a)", content: `\\text{...}` },
   //   //   { title: "Proof of (b)", content: `\\text{...}` },
   //   // ],
+  //   examples: [ // optional, shown under the proof in the same dropdown
+  //     { title: "Example name", content: `\\text{...}` },
+  //   ],
   // },
   {
     kind: "Lemma",
@@ -133,10 +138,10 @@ export const theorems: Theorem[] = [
         title: "Proof",
         content: `\\text{Let } (X, \\|\\cdot\\|) \\text{ be a normed space and take } x, y, z \\in X. \\\\
                   \\text{We proceed by checking the properties of a [[definition 6|metric space]].} \\\\[0.5em]
-                  \\text{(a) } d(x, y) = \\|x - y\\| = \\|(-1)(y - x)\\| \\overset{\\text{def 7(c)}}{=} |-1| \\, \\|y - x\\| = d(y, x). \\\\[0.5em]
-                  \\text{(b) } \\begin{aligned}[t]
-                    d(x, z) &= \\|x - z\\| = \\|(x - y) + (y - z)\\| \\leq \\|x - y\\| + \\|y - z\\| \\\\
-                            &= d(x, y) + d(y, z).
+                  \\text{(a) } d(x, y) = \\|x - y\\| = \\|(-1)(y - x)\\| = |-1| \\, \\|y - x\\| = d(y, x). \\quad \\text{(by [[definition 7|Def 7(c)]])} \\\\[0.5em]
+                  \\begin{aligned}
+                    \\text{(b) } d(x, z) &= \\|x - z\\| = \\|(x - y) + (y - z)\\| \\leq \\|x - y\\| + \\|y - z\\| \\quad \\text{(by [[definition 7|Def 7(b)]])} \\\\
+                                        &= d(x, y) + d(y, z).
                   \\end{aligned} \\\\[0.5em]
                   \\text{(c) } d(x, y) = 0 \\text{ iff } \\|x - y\\| = 0 \\text{ iff } x - y = 0 \\text{ iff } x = y. \\ \\ \\blacksquare`,
       },
@@ -192,6 +197,168 @@ export const theorems: Theorem[] = [
                   \\text{Therefore } z \\in B(z, \\min(r, s)) \\subset B(x, \\varepsilon) \\cap B(y, \\delta) \\text{, so (B2) is satisfied.} \\\\
                   \\text{Hence, } \\{B(x, r) : x \\in X, \\ r > 0\\} \\text{ is a basis for a unique topology} \\\\
                   \\text{by [[theorem 2|Lemma 1.1.7]], which we denote } \\tau_d. \\ \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Proposition",
+    number: 6,
+    chapter: 1,
+    section: 2,
+    title: "Open Sets in a Metric Space (Prop 1.1.13)",
+    statement: `\\text{Let $(X, d)$ be a metric space and } U \\subseteq X. \\\\
+                U \\in \\tau_d \\text{ iff } \\forall x \\in U, \\ \\exists r > 0 \\text{ s.t. } B(x, r) \\subseteq U.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 8|Open Ball]] \\\\
+                  \\text{2) } [[theorem 1|Properties of a Basis]] \\\\
+                  \\text{3) } [[theorem 4|Open Balls Contain Open Balls]] \\\\
+                  \\text{4) } [[theorem 5|Open Balls Form a Basis]]`,
+      },
+      {
+        title: "(⇐)",
+        content: `\\text{Suppose } \\forall x \\in U, \\ \\exists r > 0 \\text{ s.t. } B(x, r) \\subseteq U. \\\\
+                  \\text{If } U = \\varnothing \\text{, then } U \\in \\tau_d \\text{ since $\\tau_d$ is a [[definition 1|topology]].} \\\\
+                  \\text{Otherwise, each $B(x, r)$ is in the basis of open balls for $\\tau_d$ ([[theorem 5|Prop 1.1.11]]),} \\\\
+                  \\text{and } x \\in B(x, r) \\subseteq U \\text{, so } U \\in \\tau_d \\text{ by [[theorem 1|Lemma 1.1.6]] ((c) ⇒ (a)).}`,
+      },
+      {
+        title: "(⇒)",
+        content: `\\text{Suppose } U \\in \\tau_d \\text{ and let } x \\in U. \\\\
+                  \\text{Since the open balls form a [[definition 5|basis]] for $\\tau_d$ ([[theorem 5|Prop 1.1.11]]),} \\\\
+                  \\exists y \\in X, \\ s > 0 \\text{ s.t. } x \\in B(y, s) \\subseteq U. \\\\
+                  \\text{By [[theorem 4|Prop 1.1.10]], } \\exists r > 0 \\text{ s.t. } B(x, r) \\subseteq B(y, s) \\subseteq U. \\ \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Lemma",
+    number: 7,
+    chapter: 1,
+    section: 2,
+    title: "Comparing Topologies via Bases (Lemma 1.1.14)",
+    statement: `\\text{Let $\\mathcal{B}_i$ be a basis for a topological space $(X, \\tau_i)$, for } i \\in \\{1, 2\\}. \\\\
+                \\text{Then } \\tau_1 \\subseteq \\tau_2 \\text{ iff } \\forall x \\in X, \\ \\forall B \\in \\mathcal{B}_1 \\text{ with } x \\in B, \\\\
+                \\exists C \\in \\mathcal{B}_2 \\text{ s.t. } x \\in C \\subseteq B.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 1|Topology]] \\\\
+                  \\text{2) } [[definition 5|Basis]] \\\\
+                  \\text{3) } [[theorem 1|Properties of a Basis]]`,
+      },
+      {
+        title: "(⇐)",
+        content: `\\text{Suppose } \\forall x \\in X \\text{ and } \\forall B \\in \\mathcal{B}_1 \\text{ with } x \\in B, \\\\
+                  \\exists C \\in \\mathcal{B}_2 \\text{ s.t. } x \\in C \\subseteq B. \\\\
+                  \\text{Let } U \\in \\tau_1. \\text{ If } U = \\varnothing \\text{, then } U \\in \\tau_2 \\text{ since $\\tau_2$ is a [[definition 1|topology]].} \\\\
+                  \\text{Otherwise, let } x \\in U. \\text{ By def of [[definition 5|basis]], } \\exists B \\in \\mathcal{B}_1 \\text{ s.t. } x \\in B \\subseteq U. \\\\
+                  \\text{By hypothesis, } \\exists C \\in \\mathcal{B}_2 \\text{ s.t. } x \\in C \\subseteq B \\subseteq U. \\\\
+                  \\text{Since $x \\in U$ was arbitrary, } U \\in \\tau_2 \\text{ by [[theorem 1|Lemma 1.1.6]] ((c) ⇒ (a)).} \\\\
+                  \\text{Thus } \\tau_1 \\subseteq \\tau_2.`,
+      },
+      {
+        title: "(⇒)",
+        content: `\\text{Suppose } \\tau_1 \\subseteq \\tau_2. \\\\
+                  \\text{Let } x \\in X \\text{ and } B \\in \\mathcal{B}_1 \\subseteq \\tau_1 \\text{ s.t. } x \\in B. \\\\
+                  \\text{By hypothesis, } B \\in \\tau_2. \\\\
+                  \\text{Since $\\mathcal{B}_2$ is a [[definition 5|basis]] for $\\tau_2$ and } x \\in B \\text{, } \\exists C \\in \\mathcal{B}_2 \\text{ s.t. } x \\in C \\subseteq B. \\ \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Lemma",
+    number: 8,
+    chapter: 1,
+    section: 2,
+    title: "Comparing Metric Topologies (Lemma 1.1.15)",
+    statement: `\\text{Let $d_1, d_2$ be metrics on $X$. Then } \\tau_{d_1} \\subseteq \\tau_{d_2} \\text{ iff} \\\\
+                \\forall x \\in X, \\ \\forall \\varepsilon > 0, \\ \\exists \\delta > 0 \\text{ s.t. } B_{d_2}(x, \\delta) \\subseteq B_{d_1}(x, \\varepsilon), \\\\
+                \\text{where $B_{d_i}$ denotes an open ball with respect to $d_i$.}`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 8|Open Ball]] \\\\
+                  \\text{2) } [[theorem 4|Open Balls Contain Open Balls]] \\\\
+                  \\text{3) } [[theorem 5|Open Balls Form a Basis]] \\\\
+                  \\text{4) } [[theorem 7|Comparing Topologies via Bases]]`,
+      },
+      {
+        title: "Setup",
+        content: `\\text{For } i \\in \\{1, 2\\} \\text{, let } \\mathcal{B}_{d_i} = \\{B_{d_i}(x, r) : x \\in X, \\ r > 0\\}, \\\\
+                  \\text{a basis for $\\tau_{d_i}$ by [[theorem 5|Prop 1.1.11]].}`,
+      },
+      {
+        title: "(⇒)",
+        content: `\\text{Suppose } \\tau_{d_1} \\subseteq \\tau_{d_2}. \\text{ Let } x \\in X \\text{ and } \\varepsilon > 0 \\text{, so } x \\in B_{d_1}(x, \\varepsilon) \\in \\mathcal{B}_{d_1}. \\\\
+                  \\text{By [[theorem 7|Lemma 1.1.14]], } \\exists C \\in \\mathcal{B}_{d_2} \\text{ s.t. } x \\in C \\subseteq B_{d_1}(x, \\varepsilon). \\\\
+                  \\text{Since $C$ is a $d_2$-ball containing $x$, [[theorem 4|Prop 1.1.10]] gives } \\delta > 0 \\\\
+                  \\text{s.t. } B_{d_2}(x, \\delta) \\subseteq C \\subseteq B_{d_1}(x, \\varepsilon).`,
+      },
+      {
+        title: "(⇐)",
+        content: `\\text{Suppose } \\forall x \\in X, \\ \\forall \\varepsilon > 0, \\ \\exists \\delta > 0 \\text{ s.t. } B_{d_2}(x, \\delta) \\subseteq B_{d_1}(x, \\varepsilon). \\\\
+                  \\text{Let } x \\in X \\text{ and } B \\in \\mathcal{B}_{d_1} \\text{ with } x \\in B. \\\\
+                  \\text{By [[theorem 4|Prop 1.1.10]], } \\exists \\varepsilon > 0 \\text{ s.t. } B_{d_1}(x, \\varepsilon) \\subseteq B. \\\\
+                  \\text{By hypothesis, } \\exists \\delta > 0 \\text{ s.t. } x \\in B_{d_2}(x, \\delta) \\subseteq B_{d_1}(x, \\varepsilon) \\subseteq B \\text{, with } B_{d_2}(x, \\delta) \\in \\mathcal{B}_{d_2}. \\\\
+                  \\text{Then } \\tau_{d_1} \\subseteq \\tau_{d_2} \\text{ follows from [[theorem 7|Lemma 1.1.14]].} \\ \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Corollary",
+    number: 9,
+    chapter: 1,
+    section: 2,
+    title: "Equivalent Metrics Induce the Same Topology (Cor 1.1.17)",
+    statement: `\\text{Let $d_1, d_2$ be metrics on a set $X$} \\\\
+                \\text{s.t. $\\exists$ a constant $C > 0$ s.t. } d_1 \\leq C d_2, \\ \\forall x, y \\in X. \\\\
+                \\text{Then } \\tau_{d_1} \\subseteq \\tau_{d_2}. \\\\[0.5em]
+                \\text{Also, two equivalent metrics induce the same topology.}`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 8|Open Ball]] \\\\
+                  \\text{2) } [[definition 10|Equivalent Metrics]] \\\\
+                  \\text{3) } [[theorem 8|Comparing Metric Topologies]]`,
+      },
+      {
+        title: "When d₁ ≤ Cd₂",
+        content: `\\text{Let } x \\in X \\text{ and } \\varepsilon > 0 \\text{, and choose } \\delta = \\varepsilon / C. \\\\
+                  \\text{Then } y \\in B_{d_2}(x, \\delta) \\text{ implies } d_2(x, y) < \\delta = \\varepsilon / C. \\\\
+                  \\text{So } d_1(x, y) \\leq C d_2(x, y) < C \\varepsilon / C = \\varepsilon \\text{, and thus, } y \\in B_{d_1}(x, \\varepsilon). \\\\
+                  \\text{Hence } B_{d_2}(x, \\delta) \\subseteq B_{d_1}(x, \\varepsilon) \\text{, so } \\tau_{d_1} \\subseteq \\tau_{d_2} \\text{ by [[theorem 8|Lemma 1.1.15]].}`,
+      },
+      {
+        title: "Equivalent metrics",
+        content: `\\text{Now suppose $d_1, d_2$ are [[definition 10|equivalent]] metrics on $X$.} \\\\
+                  \\text{Then by def of equivalent metrics,} \\\\
+                  \\exists C_1 > 0, \\ C_2 > 0 \\text{ s.t. } d_1 \\leq C_2 d_2 \\text{ and } d_2 \\leq C_1 d_1. \\\\
+                  \\text{Call } C_2 = C \\text{, then the argument above tells us } \\tau_{d_1} \\subseteq \\tau_{d_2}. \\\\
+                  \\text{Then similarly, with $C = C_1$ and the roles of $d_1, d_2$ swapped, } \\tau_{d_2} \\subseteq \\tau_{d_1}. \\\\
+                  \\text{Hence, } \\tau_{d_1} = \\tau_{d_2}. \\ \\ \\blacksquare`,
+      },
+    ],
+    examples: [
+      {
+        title: "The p-metrics on ℝⁿ (Ex 1.1.18)",
+        content: `\\text{On } \\mathbb{R}^n \\text{, we have [[definition 7|norms]] } \\|x\\|_p = \\left( \\sum_{i=1}^n |x_i|^p \\right)^{\\frac{1}{p}} \\\\
+                  \\text{and associated [[theorem 3|metrics]] } d_p(x, y) = \\|x - y\\|_p, \\ 1 \\leq p < \\infty. \\\\
+                  \\text{Set } \\|x\\|_\\infty = \\max\\{|x_i| : 1 \\leq i \\leq n\\}, \\ d_\\infty(x, y) = \\|x - y\\|_\\infty. \\\\[0.5em]
+                  \\text{Then } \\|x\\|_\\infty \\leq \\|x\\|_p, \\ \\forall p \\in [1, \\infty) \\text{, as seen below:} \\\\
+                  \\begin{aligned}
+                    \\|x\\|_\\infty &= \\max\\{|x_i| : 1 \\leq i \\leq n\\} = \\left( \\max\\{|x_i|^p : 1 \\leq i \\leq n\\} \\right)^{\\frac{1}{p}} \\\\
+                                &\\leq \\left( \\sum_{i=1}^n |x_i|^p \\right)^{\\frac{1}{p}} = \\|x\\|_p.
+                  \\end{aligned} \\\\[0.5em]
+                  \\text{Also } \\|x\\|_p \\leq C \\|x\\|_\\infty \\text{ where } C = n^{\\frac{1}{p}} \\text{, as shown below:} \\\\
+                  \\begin{aligned}
+                    \\|x\\|_p = \\left( \\sum_{i=1}^n |x_i|^p \\right)^{\\frac{1}{p}} &\\leq \\left( \\sum_{i=1}^n \\max\\{|x_j|^p : 1 \\leq j \\leq n\\} \\right)^{\\frac{1}{p}} \\\\
+                                &= \\left( n \\max\\{|x_j|^p : 1 \\leq j \\leq n\\} \\right)^{\\frac{1}{p}} = n^{\\frac{1}{p}} \\|x\\|_\\infty.
+                  \\end{aligned} \\\\[0.5em]
+                  \\text{So } d_\\infty \\leq d_p, \\ \\forall p \\in [1, \\infty) \\text{, and } d_p \\leq n^{\\frac{1}{p}} d_\\infty. \\\\
+                  \\text{Thus, by def of [[definition 10|equivalent metrics]], $d_p$ and $d_\\infty$ are equivalent metrics.} \\\\
+                  \\text{Hence by Corollary 1.1.17, they induce the same topology.}`,
       },
     ],
   },

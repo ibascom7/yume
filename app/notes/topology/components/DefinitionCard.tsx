@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { processLatexLinks } from "./latexLinkHelper";
 import TrustedBlockMath from "@/app/components/TrustedBlockMath";
 import LocationBadges from "@/app/components/LocationBadges";
@@ -11,15 +12,24 @@ export interface Example {
   content: string;
 }
 
+export interface Figure {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  invert?: boolean; // for drawings in white on black, so they read as ink on the white card
+}
+
 interface DefinitionCardProps extends ChapterRef {
   number: number;
   term: string;
   definition: string;
   examples?: Example[];
+  figure?: Figure;
   id?: string;
 }
 
-export default function DefinitionCard({ number, term, definition, examples, chapter, section, id }: DefinitionCardProps) {
+export default function DefinitionCard({ number, term, definition, examples, figure, chapter, section, id }: DefinitionCardProps) {
   const [isExamplesOpen, setIsExamplesOpen] = useState(false);
   const hasExamples = !!examples && examples.length > 0;
 
@@ -39,6 +49,16 @@ export default function DefinitionCard({ number, term, definition, examples, cha
           </div>
           <div className="text-black text-sm sm:text-base ml-0 sm:ml-[6em]">
             <TrustedBlockMath math={processLatexLinks(definition)} />
+            {figure && (
+              <Image
+                src={figure.src}
+                alt={figure.alt}
+                width={figure.width}
+                height={figure.height}
+                sizes="(max-width: 640px) 100vw, 480px"
+                className={`mt-3 w-full max-w-[480px] h-auto rounded-lg ${figure.invert ? "invert" : ""}`}
+              />
+            )}
           </div>
         </div>
         {hasExamples && (
