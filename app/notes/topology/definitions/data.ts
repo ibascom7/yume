@@ -179,4 +179,18 @@ export const definitions: Definition[] = [
                  \\text{We say that $d_1$ and $d_2$ are \\textit{equivalent} if } \\exists C_1 > 0, \\ C_2 > 0 \\\\
                  \\text{s.t. } d_1 \\leq C_2 d_2 \\text{ and } d_2 \\leq C_1 d_1.`,
   },
+  {
+    number: 11,
+    chapter: 1,
+    section: 3,
+    term: "Subbasis",
+    definition: `\\text{Let $(X, \\tau)$ be a [[definition 1|topological space]] and } \\mathcal{A} \\subseteq \\mathcal{P}(X). \\\\
+                 \\text{$\\mathcal{A}$ is called a \\textit{subbasis} for $\\tau$} \\\\
+                 \\text{if the set of intersections of a finite number of sets in $\\mathcal{A}$ is a [[definition 5|basis]] for $\\tau$.} \\\\
+                 \\text{That is, $\\tau$ is the set of unions of intersections of a finite number of sets in $\\mathcal{A}$,} \\\\
+                 \\text{together with } \\varnothing. \\\\[1em]
+                 \\text{This is notated as,} \\\\
+                 \\mathcal{B} = \\left\\{ \\bigcap_{k=1}^n A_k : A_1, A_2, \\ldots, A_n \\in \\mathcal{A}, \\ n \\in \\mathbb{N} \\right\\} \\text{ is a basis for } \\tau. \\\\
+                 \\text{So by [[theorem 1|Lemma 1.1.6]], } \\tau = \\left\\{ \\bigcup_{i \\in I} B_i : B_i \\in \\mathcal{B} \\right\\} \\cup \\varnothing.`,
+  },
 ];
