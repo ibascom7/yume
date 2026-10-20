@@ -362,4 +362,51 @@ export const theorems: Theorem[] = [
       },
     ],
   },
+  {
+    kind: "Proposition",
+    number: 10,
+    chapter: 1,
+    section: 3,
+    title: "Every Covering Collection is a Subbasis (Prop 1.1.20)",
+    statement: `\\text{Let } \\mathcal{A} \\subseteq \\mathcal{P}(X) \\text{ s.t. } \\bigcup \\{A : A \\in \\mathcal{A}\\} = X. \\\\
+                \\text{Then $\\mathcal{A}$ is the subbasis for a unique topology on $X$.}`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 5|Basis]] \\text{ (B1), (B2)} \\\\
+                  \\text{2) } [[definition 11|Subbasis]] \\\\
+                  \\text{3) } [[theorem 1|Properties of a Basis]] \\\\
+                  \\text{4) } [[theorem 2|Every Basis Collection has a Unique Topology]]`,
+      },
+      {
+        title: "Setup",
+        content: `\\text{Let } \\mathcal{B} = \\left\\{ \\bigcap_{k=1}^n A_k : A_1, A_2, \\ldots, A_n \\in \\mathcal{A}, \\ n \\in \\mathbb{N} \\right\\}. \\\\
+                  \\text{So by construction of } \\mathcal{B}, \\ \\mathcal{A} \\subseteq \\mathcal{B} \\subseteq \\mathcal{P}(X). \\\\
+                  \\text{Note that $\\mathcal{B}$ depends only on $\\mathcal{A}$, not on any topology.}`,
+      },
+      {
+        title: "Existence",
+        content: `\\text{We claim $\\mathcal{B}$ satisfies (B1) and (B2).} \\\\[0.5em]
+                  \\text{(B1) If } x \\in X \\text{, then by hypothesis, } \\exists A \\in \\mathcal{A} \\text{ s.t. } x \\in A. \\\\
+                  \\text{However, for any } A \\in \\mathcal{A} \\text{, we can fix } n = 1 \\text{ to get } A = A_1 \\in \\mathcal{B}. \\\\
+                  \\text{Thus, (B1) is satisfied.} \\\\[0.5em]
+                  \\text{(B2) Let } E_1, E_2 \\in \\mathcal{B} \\text{ and } x \\in E_1 \\cap E_2. \\\\
+                  \\text{Say } E_1 = \\bigcap_{k=1}^n A_k \\text{ and } E_2 = \\bigcap_{k=1}^m A_k' \\text{ with } A_k, A_k' \\in \\mathcal{A}. \\\\
+                  \\text{Then } E_1 \\cap E_2 \\text{ is an intersection of } n + m \\text{ sets in } \\mathcal{A} \\text{, so } E_1 \\cap E_2 \\in \\mathcal{B}. \\\\
+                  \\text{So (B2) is satisfied by setting } E_3 = E_1 \\cap E_2 \\text{, so that } x \\in E_3 \\subseteq E_1 \\cap E_2. \\\\[0.5em]
+                  \\text{By [[theorem 2|Lemma 1.1.7]], } \\exists \\text{ a topology $\\sigma$ on $X$ s.t. $\\mathcal{B}$ is a basis for $\\sigma$.} \\\\
+                  \\text{Thus, by def of [[definition 11|subbasis]], $\\mathcal{A}$ is a subbasis for $\\sigma$.}`,
+      },
+      {
+        title: "Uniqueness",
+        content: `\\text{Suppose $\\mathcal{A}$ is a subbasis for topologies $\\tau_1$ and $\\tau_2$ on $X$.} \\\\
+                  \\text{By def of [[definition 11|subbasis]], the same $\\mathcal{B}$ is a basis for both $\\tau_1$ and $\\tau_2$.} \\\\
+                  \\text{Let } U \\in \\tau_1. \\text{ If } U = \\varnothing \\text{, then } U \\in \\tau_2 \\text{ since $\\tau_2$ is a [[definition 1|topology]].} \\\\
+                  \\text{Otherwise, by [[theorem 1|Lemma 1.1.6]] ((a) ⇒ (b)), $U$ is a union of elements in $\\mathcal{B}$.} \\\\
+                  \\text{Since $\\mathcal{B}$ is a basis for $\\tau_2$, } U \\in \\tau_2 \\text{ by [[theorem 1|Lemma 1.1.6]] ((b) ⇒ (a)).} \\\\
+                  \\text{So } \\tau_1 \\subseteq \\tau_2 \\text{, and by symmetry } \\tau_2 \\subseteq \\tau_1. \\\\
+                  \\text{Hence, } \\tau_1 = \\tau_2. \\ \\ \\blacksquare`,
+      },
+    ],
+  },
 ];
