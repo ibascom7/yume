@@ -17,6 +17,14 @@ export default function Projects() {
       description:
         "Poster presented at NASC-RTG. We used reinforcement learning (TD3) coupled to an OpenFOAM simulation to find a better way to spin the inner cylinder of a catalytic-wall Taylor-Couette reactor: brief stops beat constant operation, giving more conversion for less motor power.",
     },
+    {
+      name: "Brief Stops, More Vortices (GCURS Talk)",
+      id: "project-2",
+      slug: "gcurs",
+      image: "/gcurs-talk-thumb.png",
+      description:
+        "Talk given at the Gulf Coast Undergraduate Research Symposium at Rice. Reinforcement learning found that brief full stops beat steady rotation in a catalytic-wall Taylor-Couette reactor, and the strategy transferred to a reactor five times taller. Then we found out why it works: each restart from rest builds eight narrower vortex cells instead of four, and the narrower cells carry reactant to the catalytic wall faster.",
+    },
   ];
 
   return (
