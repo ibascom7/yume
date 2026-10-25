@@ -76,6 +76,24 @@ export const definitions: Definition[] = [
     definition: `\\text{Let $(X, \\tau)$ be a [[definition 1|topological space]].} \\\\
                  \\text{A subset $C \\subseteq X$ is called \\textit{closed} iff its complement} \\\\
                  C^c = X \\setminus C \\in \\tau.`,
+    examples: [
+      {
+        title: "Closed balls",
+        content: `\\text{Let $(X, d)$ be a [[definition 6|metric space]] and let } x \\in X \\text{ and } \\varepsilon > 0. \\\\
+                  \\overline{B}(x, \\varepsilon) = \\{ y \\in X : d(x, y) \\leq \\varepsilon \\} \\text{ is closed.} \\\\[1em]
+                  \\textit{Proof.} \\\\
+                  \\text{Let } x \\in X \\text{ and } \\varepsilon > 0. \\\\
+                  \\text{Then } \\overline{B}(x, \\varepsilon)^c = \\{ y \\in X : d(x, y) > \\varepsilon \\}. \\\\
+                  \\text{WTS } \\overline{B}(x, \\varepsilon)^c \\text{ is open.} \\\\
+                  \\text{Let } z \\in \\overline{B}(x, \\varepsilon)^c \\text{ and say } s = d(x, z) - \\varepsilon. \\\\
+                  \\text{Since } d(x, z) > \\varepsilon \\text{, we have } s > 0. \\\\
+                  \\text{Then for all } y \\in [[definition 8|$B(z, s)$]] \\text{, we have} \\\\
+                  d(x, y) \\geq d(x, z) - d(z, y) > d(x, z) - s = d(x, z) - d(x, z) + \\varepsilon = \\varepsilon. \\\\
+                  \\text{So } y \\in \\overline{B}(x, \\varepsilon)^c. \\text{ That is, } B(z, s) \\subseteq \\overline{B}(x, \\varepsilon)^c. \\\\
+                  \\text{By [[theorem 6|Prop 1.1.13]], } \\overline{B}(x, \\varepsilon)^c \\text{ is open.} \\\\
+                  \\text{Thus, } \\overline{B}(x, \\varepsilon) \\text{ is closed.} \\ \\ \\blacksquare`,
+      },
+    ],
   },
   {
     number: 4,
@@ -192,5 +210,40 @@ export const definitions: Definition[] = [
                  \\text{This is notated as,} \\\\
                  \\mathcal{B} = \\left\\{ \\bigcap_{k=1}^n A_k : A_1, A_2, \\ldots, A_n \\in \\mathcal{A}, \\ n \\in \\mathbb{N} \\right\\} \\text{ is a basis for } \\tau. \\\\
                  \\text{So by [[theorem 1|Lemma 1.1.6]], } \\tau = \\left\\{ \\bigcup_{i \\in I} B_i : B_i \\in \\mathcal{B} \\right\\} \\cup \\varnothing.`,
+  },
+  {
+    number: 12,
+    chapter: 1,
+    section: 3,
+    term: "Neighborhood",
+    definition: `\\text{Let $(X, \\tau)$ be a [[definition 1|topological space]] and } x \\in X. \\\\
+                 \\text{A \\textit{neighborhood} of $x$ is an [[definition 2|open]] set } U \\in \\tau \\text{ where } x \\in U.`,
+  },
+  {
+    number: 13,
+    chapter: 1,
+    section: 3,
+    term: "Neighborhood System",
+    definition: `\\text{The \\textit{neighborhood system} of $x$ is} \\\\
+                 \\mathcal{O}(x) = \\{ U \\in \\tau : x \\in U \\}.`,
+  },
+  {
+    number: 14,
+    chapter: 1,
+    section: 3,
+    term: "Neighborhood Basis",
+    definition: `\\text{A \\textit{neighborhood base} at $x$ is a subcollection } \\mathcal{B}(x) \\subseteq \\mathcal{O}(x) \\\\
+                 \\text{satisfying the condition that for every [[definition 12|neighborhood]] $U$ of $x$} \\\\
+                 \\text{we can find some } V \\in \\mathcal{B}(x) \\text{ s.t. } V \\subset U.`,
+  },
+  {
+    number: 15,
+    chapter: 1,
+    section: 4,
+    term: "Closure",
+    definition: `\\text{Let $(X, \\tau)$ be a [[definition 1|topological space]] and } A \\subseteq X. \\\\
+                 \\text{The \\textit{closure} $\\overline{A}$ of $A$ is} \\\\
+                 \\text{the intersection of all [[definition 3|closed]] subsets of $X$ containing $A$.} \\\\
+                 \\text{By [[theorem 12|Prop 1.1.26]], $\\overline{A}$ is closed, and we set } \\overline{\\varnothing} = \\varnothing, \\ \\overline{X} = X.`,
   },
 ];
