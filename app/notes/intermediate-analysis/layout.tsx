@@ -17,8 +17,9 @@ export default function IntermediateAnalysisLayout({
     { name: "Problem Solving Techniques", href: "/notes/intermediate-analysis/problem-solving-techniques" },
   ];
 
+  // theme-* sets the accent color that widgets and other shared pieces use (globals.css)
   return (
-    <div>
+    <div className="theme-blue">
       {/* Tab Navigation */}
       <div className="flex gap-1 sm:gap-2 mb-4 sm:mb-6 border-b border-gray-300 overflow-x-auto">
         {tabs.map((tab) => {

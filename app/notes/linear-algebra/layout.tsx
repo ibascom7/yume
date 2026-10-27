@@ -18,8 +18,9 @@ export default function LinearAlgebraLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // theme-* sets the accent color that widgets and other shared pieces use (globals.css)
   return (
-    <div>
+    <div className="theme-orange">
       {/* Reading search params needs a Suspense boundary so static routes still prerender */}
       <Suspense>
         <TabsAndFilter />

@@ -16,8 +16,9 @@ export default function AlgebraLayout({
     { name: "Articles", href: "/notes/algebra/articles" },
   ];
 
+  // theme-* sets the accent color that widgets and other shared pieces use (globals.css)
   return (
-    <div>
+    <div className="theme-red">
       {/* Tab Navigation */}
       <div className="flex gap-1 sm:gap-2 mb-4 sm:mb-6 border-b border-gray-300 overflow-x-auto">
         {tabs.map((tab) => {

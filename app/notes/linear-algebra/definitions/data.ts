@@ -161,6 +161,12 @@ export const definitions: Definition[] = [
                   \\text{so } 3x^3 - 2x^2 + 7x + 8 \\\\
                   \\text{is not a linear combination of } S. \\ \\ \\blacksquare`,
       },
+      {
+        title: "Check your row reduction",
+        content: `\\text{Row reduce a system one operation at a time, typing each new row} \\\\
+                  \\text{yourself. It starts on the first system above.}`,
+        widget: "row-reduce",
+      },
     ],
   },
   {
@@ -203,6 +209,14 @@ export const definitions: Definition[] = [
                    \\htmlId{lt-a}{\\text{(a)}} & T(x + y) = T(x) + T(y) \\\\[0.6em]
                    \\htmlId{lt-b}{\\text{(b)}} & T(cx) = cT(x)
                  \\end{array}`,
+    examples: [
+      {
+        title: "Is it linear?",
+        content: `\\text{Pick a map } T: \\mathbb{R}^2 \\to \\mathbb{R}^2 \\text{ and test conditions (a) and (b)} \\\\
+                  \\text{on vectors you choose.}`,
+        widget: "linearity",
+      },
+    ],
   },
   {
     number: 8,

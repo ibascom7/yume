@@ -28,6 +28,17 @@ body {
   padding-right: env(safe-area-inset-right);
 }
 
+/* Subject accent colors. Each subject's layout applies its class, and widgets and other shared
+   pieces color themselves with these variables instead of hardcoding a color, so they match the page.
+   --accent: main color · --accent-dark: hover/emphasis · --accent-light: tint · --accent-mid: soft border */
+:root,
+.theme-orange { --accent: var(--color-orange-600, #ea580c); --accent-dark: var(--color-orange-800, #9a3412); --accent-light: var(--color-orange-100, #ffedd5); --accent-mid: var(--color-orange-300, #fdba74); }
+.theme-green { --accent: var(--color-green-600, #16a34a); --accent-dark: var(--color-green-800, #166534); --accent-light: var(--color-green-100, #dcfce7); --accent-mid: var(--color-green-300, #86efac); }
+.theme-teal { --accent: var(--color-teal-600, #0d9488); --accent-dark: var(--color-teal-800, #115e59); --accent-light: var(--color-teal-100, #ccfbf1); --accent-mid: var(--color-teal-300, #5eead4); }
+.theme-red { --accent: var(--color-red-600, #dc2626); --accent-dark: var(--color-red-800, #991b1b); --accent-light: var(--color-red-100, #fee2e2); --accent-mid: var(--color-red-300, #fca5a5); }
+.theme-blue { --accent: var(--color-blue-600, #2563eb); --accent-dark: var(--color-blue-800, #1e40af); --accent-light: var(--color-blue-100, #dbeafe); --accent-mid: var(--color-blue-300, #93c5fd); }
+.theme-purple { --accent: var(--color-purple-600, #9333ea); --accent-dark: var(--color-purple-800, #6b21a8); --accent-light: var(--color-purple-100, #f3e8ff); --accent-mid: var(--color-purple-300, #d8b4fe); }
+
 /* Force KaTeX display math to be left-aligned */
 .katex-display {
   text-align: left !important;

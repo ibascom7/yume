@@ -202,6 +202,11 @@ export const theorems: Theorem[] = [
                   \\text{So } \\deg(cf(x)) \\leq n\\text{. Hence } cf(x) \\in P_n(\\mathbb{F}). \\\\[0.5em]
                   \\text{By }[[theorem 5|Theorem 1.3]]\\text{, } P_n(\\mathbb{F}) \\text{ is a subspace of } P(\\mathbb{F}). \\ \\ \\blacksquare`,
       },
+      {
+        title: "Subspaces of ℝ²?",
+        content: `\\text{Test conditions (i), (ii), (iii) on some subsets } W \\subseteq \\mathbb{R}^2.`,
+        widget: "subspace-test",
+      },
     ],
   },
   {
@@ -421,6 +426,12 @@ export const theorems: Theorem[] = [
                   \\text{Since } {-3x + x^2} \\neq 0\\text{, this set is linearly independent.} \\\\
                   \\text{Therefore } \\{-3x + x^2\\} \\text{ is a basis for } N(T)\\text{,} \\\\
                   \\text{and } \\dim N(T) = 1.`,
+      },
+      {
+        title: "See N(T) and R(T)",
+        content: `\\text{Enter a matrix } A \\text{ for } T(x) = Ax\\text{. The range is the span of} \\\\
+                  \\text{the images of the standard basis, as the theorem says.}`,
+        widget: "linear-map",
       },
     ],
   },

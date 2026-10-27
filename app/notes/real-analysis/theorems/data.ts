@@ -1,5 +1,6 @@
 import type { ChapterRef } from "@/app/components/notesFilter";
 import type { TheoremKind } from "../components/TheoremCard";
+import type { Example } from "../components/DefinitionCard";
 
 interface Proof {
   title?: string;
@@ -13,6 +14,7 @@ interface Theorem extends ChapterRef {
   statement: string;
   description?: string;
   proof?: string | Proof[];
+  examples?: Example[];
 }
 
 export const theorems: Theorem[] = [
@@ -270,6 +272,14 @@ export const theorems: Theorem[] = [
                   \\end{aligned}`,
       },
     ],
+    examples: [
+      {
+        title: "Watch the proof",
+        content: `\\text{Pick a sequence in } \\mathbb{R}^2 \\text{ and an } \\varepsilon\\text{. Each coordinate gets its own } N_j\\text{,} \\\\
+                  \\text{and } N = \\max\\{N_1, N_2\\} \\text{ puts the tail inside the } \\varepsilon\\text{-ball.}`,
+        widget: "coordinatewise",
+      },
+    ],
   },
   {
     kind: "Lemma",
@@ -289,7 +299,8 @@ export const theorems: Theorem[] = [
       {
         title: "Proof",
         content: `\\text{Let } (\\mathbf{x}_k) \\subseteq \\mathbb{R}^n \\text{ be a sequence that converges to } \\mathbf{a} \\in \\mathbb{R}^n.
-                  \\\\ \\text{Then } \\exists N \\in \\N. \\text{ s.t. } \\| \\mathbf{x}_k - \\mathbf{a} \\| < \\frac{\\varepsilon}{2} \\ \\forall k \\ge N.
+                  \\\\ \\text{Let } \\varepsilon > 0.
+                  \\\\ \\text{Then } \\exists N \\in \\mathbb{N} \\text{ s.t. } \\| \\mathbf{x}_k - \\mathbf{a} \\| < \\frac{\\varepsilon}{2} \\ \\forall k \\ge N.
                   \\\\ \\text{Let } k, \\ell \\ge N, 
                   \\\\ \\begin{aligned}
                     \\| \\mathbf{x}_k - \\mathbf{x}_{\\ell} \\| &\\le \\| \\mathbf{x}_k - \\mathbf{a} \\| + \\| \\mathbf{a} - \\mathbf{x}_{\\ell} \\|

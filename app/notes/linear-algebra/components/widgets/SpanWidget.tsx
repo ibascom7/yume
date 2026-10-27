@@ -3,10 +3,10 @@
 import { useRef, useState } from "react";
 import TrustedBlockMath from "@/app/components/TrustedBlockMath";
 
-type Vec = [number, number, number];
+export type Vec = [number, number, number];
 
 const MAX_VECTORS = 6;
-const ORANGE = "#ea580c";
+const ACCENT = "var(--accent)"; // the subject's accent color (globals.css)
 
 const PRESETS: { label: string; vectors: number[][] }[] = [
   { label: "xy-plane", vectors: [[1, 0, 0], [0, 1, 0]] },
@@ -29,7 +29,7 @@ const cross = (a: Vec, b: Vec): Vec => [
 
 // Keeps each vector of S that isn't in the span of the ones kept before it (Gram–Schmidt),
 // so `basis` is a basis for span(S) chosen from S itself and `ortho` is an orthonormal basis for it
-function independentSubset(vs: Vec[]) {
+export function independentSubset(vs: Vec[]) {
   const basis: number[] = [];
   const ortho: Vec[] = [];
   vs.forEach((v, i) => {
@@ -44,7 +44,7 @@ function independentSubset(vs: Vec[]) {
   return { basis, ortho };
 }
 
-function fmt(x: number): string {
+export function fmt(x: number): string {
   const r = Math.round(x * 1000) / 1000;
   return Object.is(r, -0) ? "0" : String(r);
 }
@@ -77,7 +77,7 @@ function planeEquation(n: Vec): string {
   return `${terms.join(" ")} = 0`;
 }
 
-const col = (v: Vec) => `\\begin{pmatrix} ${v.map(fmt).join(" \\\\ ")} \\end{pmatrix}`;
+export const col = (v: number[]) => `\\begin{pmatrix} ${v.map(fmt).join(" \\\\ ")} \\end{pmatrix}`;
 const name = (i: number) => `v_{${i + 1}}`;
 const setOf = (items: string[]) => (items.length ? `\\left\\{ ${items.join(", ")} \\right\\}` : "\\varnothing");
 
@@ -147,7 +147,8 @@ function Arrow({ from, to, color, dashed, label }: { from: [number, number]; to:
   );
 }
 
-function SpanPicture({ vs, basis, ortho }: { vs: Vec[]; basis: number[]; ortho: Vec[] }) {
+// 3D view of span(vs) with each vector drawn as an arrow; vectors outside `basis` are drawn grey and dashed
+export function SpanPicture({ vs, basis, ortho, labels }: { vs: Vec[]; basis: number[]; ortho: Vec[]; labels?: string[] }) {
   const [view, setView] = useState({ yaw: -2.2, pitch: 0.45 });
   const drag = useRef<{ x: number; y: number } | null>(null);
 
@@ -167,10 +168,10 @@ function SpanPicture({ vs, basis, ortho }: { vs: Vec[]; basis: number[]; ortho: 
   const origin = toScreen([0, 0, 0]);
   const pts = (ps: Vec[]) => ps.map((p) => toScreen(p).join(",")).join(" ");
 
-  let spanShape: React.ReactNode = <circle cx={origin[0]} cy={origin[1]} r={5} fill={ORANGE} />;
+  let spanShape: React.ReactNode = <circle cx={origin[0]} cy={origin[1]} r={5} fill={ACCENT} />;
   if (ortho.length === 1) {
     const [a, b] = [toScreen(scale(ortho[0], reach)), toScreen(scale(ortho[0], -reach))];
-    spanShape = <line x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={ORANGE} strokeOpacity={0.35} strokeWidth={6} strokeLinecap="round" />;
+    spanShape = <line x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={ACCENT} strokeOpacity={0.35} strokeWidth={6} strokeLinecap="round" />;
   } else if (ortho.length === 2) {
     const [e1, e2] = [scale(ortho[0], half), scale(ortho[1], half)];
     const corners = [add(e1, e2), sub(e1, e2), scale(add(e1, e2), -1), sub(e2, e1)];
@@ -181,10 +182,10 @@ function SpanPicture({ vs, basis, ortho }: { vs: Vec[]; basis: number[]; ortho: 
     ]);
     spanShape = (
       <g>
-        <polygon points={pts(corners)} fill={ORANGE} fillOpacity={0.15} stroke={ORANGE} strokeOpacity={0.5} />
+        <polygon points={pts(corners)} fill={ACCENT} fillOpacity={0.15} stroke={ACCENT} strokeOpacity={0.5} />
         {grid.map(([p, q], i) => {
           const [a, b] = [toScreen(p), toScreen(q)];
-          return <line key={i} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={ORANGE} strokeOpacity={0.25} />;
+          return <line key={i} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={ACCENT} strokeOpacity={0.25} />;
         })}
       </g>
     );
@@ -196,9 +197,9 @@ function SpanPicture({ vs, basis, ortho }: { vs: Vec[]; basis: number[]; ortho: 
       <g>
         {edges.map(([i, j]) => {
           const [a, b] = [toScreen(corner(i)), toScreen(corner(j))];
-          return <line key={`${i}-${j}`} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={ORANGE} strokeOpacity={0.4} strokeDasharray="4 4" />;
+          return <line key={`${i}-${j}`} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke={ACCENT} strokeOpacity={0.4} strokeDasharray="4 4" />;
         })}
-        <text x={size - 8} y={size - 10} fontSize={12} fill={ORANGE} textAnchor="end">all of ℝ³</text>
+        <text x={size - 8} y={size - 10} fontSize={12} fill={ACCENT} textAnchor="end">all of ℝ³</text>
       </g>
     );
   }
@@ -236,7 +237,7 @@ function SpanPicture({ vs, basis, ortho }: { vs: Vec[]; basis: number[]; ortho: 
       {spanShape}
       {vs.map((v, i) =>
         norm(v) > 0 ? (
-          <Arrow key={i} from={origin} to={toScreen(v)} color={basis.includes(i) ? "#1f2937" : "#9ca3af"} dashed={!basis.includes(i)} label={`v${i + 1}`} />
+          <Arrow key={i} from={origin} to={toScreen(v)} color={basis.includes(i) ? "#1f2937" : "#9ca3af"} dashed={!basis.includes(i)} label={labels?.[i] ?? `v${i + 1}`} />
         ) : null
       )}
     </svg>
@@ -261,7 +262,7 @@ export default function SpanWidget() {
           <button
             key={p.label}
             onClick={() => setEntries(p.vectors.map((v) => v.map(String)))}
-            className="px-3 py-1 text-xs sm:text-sm rounded-full border border-gray-300 hover:border-orange-600 hover:text-orange-600 transition-colors cursor-pointer"
+            className="px-3 py-1 text-xs sm:text-sm rounded-full border border-gray-300 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors cursor-pointer"
           >
             {p.label}
           </button>
@@ -300,7 +301,7 @@ export default function SpanWidget() {
           {entries.length < MAX_VECTORS && (
             <button
               onClick={() => setEntries((rows) => [...rows, ["0", "0", "0"]])}
-              className="text-sm text-orange-600 hover:text-orange-800 cursor-pointer"
+              className="text-sm text-[var(--accent)] hover:text-[var(--accent-dark)] cursor-pointer"
             >
               + Add vector
             </button>

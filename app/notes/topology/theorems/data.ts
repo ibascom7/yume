@@ -179,6 +179,14 @@ export const theorems: Theorem[] = [
                   \\text{So if } d(x, z) < r \\text{, then } z \\in B(x, r). \\text{ That is, } B(y, s) \\subset B(x, r). \\ \\ \\blacksquare`,
       },
     ],
+    examples: [
+      {
+        title: "Balls inside balls",
+        content: `\\text{Drag } y \\text{ around } B(x, r) \\text{ and watch } B(y, r - d(x, y)) \\text{ stay inside,} \\\\
+                  \\text{in three different metrics on } \\mathbb{R}^2.`,
+        widget: "open-balls",
+      },
+    ],
   },
   {
     kind: "Proposition",
@@ -319,6 +327,13 @@ export const theorems: Theorem[] = [
                   \\text{follows from [[theorem 7|Lemma 1.1.14]].} \\ \\ \\blacksquare`,
       },
     ],
+    examples: [
+      {
+        title: "Find the δ",
+        content: `\\text{Choose two metrics on } \\mathbb{R}^2 \\text{ and an } \\varepsilon\\text{, then hunt for a } \\delta \\text{ that works.}`,
+        widget: "compare-metrics",
+      },
+    ],
   },
   {
     kind: "Corollary",
@@ -373,6 +388,11 @@ export const theorems: Theorem[] = [
                   \\text{So } d_\\infty \\leq d_p, \\ \\forall p \\in [1, \\infty) \\text{, and } d_p \\leq n^{\\frac{1}{p}} d_\\infty. \\\\
                   \\text{Thus, by def of [[definition 10|equivalent metrics]], $d_p$ and $d_\\infty$ are equivalent metrics.} \\\\
                   \\text{Hence by Corollary 1.1.17, they induce the same topology.}`,
+      },
+      {
+        title: "Unit balls of the p-norms",
+        content: `\\text{Slide } p \\text{ to morph the unit ball of } \\|\\cdot\\|_p \\text{ on } \\mathbb{R}^2\\text{.}`,
+        widget: "p-norm-balls",
       },
     ],
   },

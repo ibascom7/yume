@@ -35,6 +35,7 @@ export default async function TheoremsPage({
           statement={theorem.statement}
           description={theorem.description}
           proof={theorem.proof}
+          examples={theorem.examples}
           chapter={theorem.chapter}
           section={theorem.section}
           id={`theorem-${theorem.number}`}

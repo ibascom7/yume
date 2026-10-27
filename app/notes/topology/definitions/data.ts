@@ -58,6 +58,11 @@ export const definitions: Definition[] = [
                   \\text{However, in this class we notate with} \\\\
                   \\tau = \\{ U \\subseteq \\mathbb{R}^n : \\ \\forall x \\in U \\ \\exists \\varepsilon > 0 \\text{ s.t. } [[definition 8|$B(x, \\varepsilon)$]] \\subseteq U \\}.`,
       },
+      {
+        title: "Topologies on {a, b, c, d}",
+        content: `\\text{Build a collection } \\tau \\text{ of subsets and check the three conditions.}`,
+        widget: "finite-topology",
+      },
     ],
   },
   {
@@ -217,6 +222,13 @@ export const definitions: Definition[] = [
                  \\text{is a basis for } \\tau. \\\\
                  \\text{So by [[theorem 1|Lemma 1.1.6]],} \\\\
                  \\tau = \\left\\{ \\bigcup_{i \\in I} B_i : B_i \\in \\mathcal{B} \\right\\} \\cup \\varnothing.`,
+    examples: [
+      {
+        title: "Generate a topology on {a, b, c, d}",
+        content: `\\text{Pick } \\mathcal{A}\\text{, then see its finite intersections } \\mathcal{B} \\text{ and the topology they generate.}`,
+        widget: "finite-subbasis",
+      },
+    ],
   },
   {
     number: 12,
@@ -252,6 +264,13 @@ export const definitions: Definition[] = [
                  \\text{The \\textit{closure} $\\overline{A}$ of $A$ is} \\\\
                  \\text{the intersection of all [[definition 3|closed]] subsets of $X$ containing $A$.} \\\\
                  \\text{By [[theorem 12|Prop 1.1.26]], $\\overline{A}$ is closed, and we set } \\overline{\\varnothing} = \\varnothing, \\ \\overline{X} = X.`,
+    examples: [
+      {
+        title: "Interior and closure on {a, b, c, d}",
+        content: `\\text{Pick } A \\subseteq X \\text{ and compare } A^\\circ\\text{, } A\\text{, and } \\overline{A}.`,
+        widget: "finite-closure",
+      },
+    ],
   },
   {
     number: 16,

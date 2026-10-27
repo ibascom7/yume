@@ -18,8 +18,9 @@ export default function RealAnalysisLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // theme-* sets the accent color that widgets and other shared pieces use (globals.css)
   return (
-    <div>
+    <div className="theme-purple">
       {/* Reading search params needs a Suspense boundary so static routes still prerender */}
       <Suspense>
         <TabsAndFilter />
