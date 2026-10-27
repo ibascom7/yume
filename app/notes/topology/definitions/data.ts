@@ -164,10 +164,13 @@ export const definitions: Definition[] = [
     chapter: 1,
     section: 2,
     term: "Normed Vector Space",
-    definition: `\\text{A \\textit{normed vector space} is a vector space $X$ over the real or complex scalars,} \\\\
-                 \\text{with a function } \\| \\cdot \\| : X \\to [0, \\infty) \\text{, called a \\textit{norm}, satisfying:} \\\\[0.5em]
-                 \\text{(a) (Distance is 0 iff same position) } \\|x\\| = 0 \\text{ iff } x = 0. \\\\[0.5em]
-                 \\text{(b) (Triangle Inequality) } \\|x + y\\| \\leq \\|x\\| + \\|y\\| \\text{ for all } x, y \\in X. \\\\[0.5em]
+    definition: `\\text{A \\textit{normed vector space} is a vector space $X$} \\\\
+                 \\text{over the real or complex scalars, with a function} \\\\
+                 \\| \\cdot \\| : X \\to [0, \\infty) \\text{, called a \\textit{norm}, satisfying:} \\\\[0.5em]
+                 \\text{(a) (Distance is 0 iff same position)} \\\\
+                 \\qquad \\|x\\| = 0 \\text{ iff } x = 0. \\\\[0.5em]
+                 \\text{(b) (Triangle Inequality)} \\\\
+                 \\qquad \\|x + y\\| \\leq \\|x\\| + \\|y\\| \\text{ for all } x, y \\in X. \\\\[0.5em]
                  \\text{(c) } \\|\\lambda x\\| = |\\lambda| \\, \\|x\\| \\text{ for all scalars $\\lambda$ and } x \\in X.`,
   },
   {
@@ -204,12 +207,16 @@ export const definitions: Definition[] = [
     term: "Subbasis",
     definition: `\\text{Let $(X, \\tau)$ be a [[definition 1|topological space]] and } \\mathcal{A} \\subseteq \\mathcal{P}(X). \\\\
                  \\text{$\\mathcal{A}$ is called a \\textit{subbasis} for $\\tau$} \\\\
-                 \\text{if the set of intersections of a finite number of sets in $\\mathcal{A}$ is a [[definition 5|basis]] for $\\tau$.} \\\\
-                 \\text{That is, $\\tau$ is the set of unions of intersections of a finite number of sets in $\\mathcal{A}$,} \\\\
+                 \\text{if the set of intersections of a finite number of sets} \\\\
+                 \\text{in $\\mathcal{A}$ is a [[definition 5|basis]] for $\\tau$.} \\\\
+                 \\text{That is, $\\tau$ is the set of unions of intersections} \\\\
+                 \\text{of a finite number of sets in $\\mathcal{A}$,} \\\\
                  \\text{together with } \\varnothing. \\\\[1em]
                  \\text{This is notated as,} \\\\
-                 \\mathcal{B} = \\left\\{ \\bigcap_{k=1}^n A_k : A_1, A_2, \\ldots, A_n \\in \\mathcal{A}, \\ n \\in \\mathbb{N} \\right\\} \\text{ is a basis for } \\tau. \\\\
-                 \\text{So by [[theorem 1|Lemma 1.1.6]], } \\tau = \\left\\{ \\bigcup_{i \\in I} B_i : B_i \\in \\mathcal{B} \\right\\} \\cup \\varnothing.`,
+                 \\mathcal{B} = \\left\\{ \\bigcap_{k=1}^n A_k : A_1, A_2, \\ldots, A_n \\in \\mathcal{A}, \\ n \\in \\mathbb{N} \\right\\} \\\\
+                 \\text{is a basis for } \\tau. \\\\
+                 \\text{So by [[theorem 1|Lemma 1.1.6]],} \\\\
+                 \\tau = \\left\\{ \\bigcup_{i \\in I} B_i : B_i \\in \\mathcal{B} \\right\\} \\cup \\varnothing.`,
   },
   {
     number: 12,

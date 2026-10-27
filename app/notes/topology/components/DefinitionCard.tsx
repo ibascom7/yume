@@ -47,19 +47,6 @@ export default function DefinitionCard({ number, term, definition, examples, fig
             </div>
             <LocationBadges chapter={chapter} section={section} />
           </div>
-          <div className="text-black text-sm sm:text-base ml-0 sm:ml-[6em]">
-            <TrustedBlockMath math={processLatexLinks(definition)} />
-            {figure && (
-              <Image
-                src={figure.src}
-                alt={figure.alt}
-                width={figure.width}
-                height={figure.height}
-                sizes="(max-width: 640px) 100vw, 480px"
-                className={`mt-3 w-full max-w-[480px] h-auto rounded-lg ${figure.invert ? "invert" : ""}`}
-              />
-            )}
-          </div>
         </div>
         {hasExamples && (
           <button
@@ -82,6 +69,19 @@ export default function DefinitionCard({ number, term, definition, examples, fig
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
           </button>
+        )}
+      </div>
+      <div className="text-black text-sm sm:text-base ml-0 sm:ml-[6em]">
+        <TrustedBlockMath math={processLatexLinks(definition)} />
+        {figure && (
+          <Image
+            src={figure.src}
+            alt={figure.alt}
+            width={figure.width}
+            height={figure.height}
+            sizes="(max-width: 640px) 100vw, 480px"
+            className={`mt-3 w-full max-w-[480px] h-auto rounded-lg ${figure.invert ? "invert" : ""}`}
+          />
         )}
       </div>
 

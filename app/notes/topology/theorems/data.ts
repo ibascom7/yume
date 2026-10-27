@@ -127,7 +127,8 @@ export const theorems: Theorem[] = [
     chapter: 1,
     section: 2,
     title: "Normed Spaces are Metric Spaces (Prop 1.1.9)",
-    statement: `\\text{Every normed space is a metric space with metric } d(x, y) = \\|x - y\\|.`,
+    statement: `\\text{Every normed space is a metric space} \\\\
+                \\text{with metric } d(x, y) = \\|x - y\\|.`,
     proof: [
       {
         title: "Recall",
@@ -136,14 +137,22 @@ export const theorems: Theorem[] = [
       },
       {
         title: "Proof",
-        content: `\\text{Let } (X, \\|\\cdot\\|) \\text{ be a normed space and take } x, y, z \\in X. \\\\
-                  \\text{We proceed by checking the properties of a [[definition 6|metric space]].} \\\\[0.5em]
-                  \\text{(a) } d(x, y) = \\|x - y\\| = \\|(-1)(y - x)\\| = |-1| \\, \\|y - x\\| = d(y, x). \\quad \\text{(by [[definition 7|Def 7(c)]])} \\\\[0.5em]
+        content: `\\text{Let } (X, \\|\\cdot\\|) \\text{ be a normed space} \\\\
+                  \\text{and take } x, y, z \\in X. \\\\
+                  \\text{We proceed by checking the properties} \\\\
+                  \\text{of a [[definition 6|metric space]].} \\\\[0.5em]
                   \\begin{aligned}
-                    \\text{(b) } d(x, z) &= \\|x - z\\| = \\|(x - y) + (y - z)\\| \\leq \\|x - y\\| + \\|y - z\\| \\quad \\text{(by [[definition 7|Def 7(b)]])} \\\\
+                    \\text{(a) } d(x, y) &= \\|x - y\\| = \\|(-1)(y - x)\\| \\\\
+                    &= |-1| \\, \\|y - x\\| \\quad \\text{(by [[definition 7|Def 7(c)]])} \\\\
+                    &= d(y, x).
+                  \\end{aligned} \\\\[0.5em]
+                  \\begin{aligned}
+                    \\text{(b) } d(x, z) &= \\|x - z\\| = \\|(x - y) + (y - z)\\| \\\\
+                                        &\\leq \\|x - y\\| + \\|y - z\\| \\quad \\text{(by [[definition 7|Def 7(b)]])} \\\\
                                         &= d(x, y) + d(y, z).
                   \\end{aligned} \\\\[0.5em]
-                  \\text{(c) } d(x, y) = 0 \\text{ iff } \\|x - y\\| = 0 \\text{ iff } x - y = 0 \\text{ iff } x = y. \\ \\ \\blacksquare`,
+                  \\text{(c) } d(x, y) = 0 \\text{ iff } \\|x - y\\| = 0 \\\\
+                  \\phantom{\\text{(c) } d(x, y) = 0} \\text{ iff } x - y = 0 \\text{ iff } x = y. \\ \\ \\blacksquare`,
       },
     ],
   },
@@ -291,18 +300,23 @@ export const theorems: Theorem[] = [
       },
       {
         title: "(⇒)",
-        content: `\\text{Suppose } \\tau_{d_1} \\subseteq \\tau_{d_2}. \\text{ Let } x \\in X \\text{ and } \\varepsilon > 0 \\text{, so } x \\in B_{d_1}(x, \\varepsilon) \\in \\mathcal{B}_{d_1}. \\\\
+        content: `\\text{Suppose } \\tau_{d_1} \\subseteq \\tau_{d_2}. \\text{ Let } x \\in X \\text{ and } \\varepsilon > 0\\text{,} \\\\
+                  \\text{so } x \\in B_{d_1}(x, \\varepsilon) \\in \\mathcal{B}_{d_1}. \\\\
                   \\text{By [[theorem 7|Lemma 1.1.14]], } \\exists C \\in \\mathcal{B}_{d_2} \\text{ s.t. } x \\in C \\subseteq B_{d_1}(x, \\varepsilon). \\\\
-                  \\text{Since $C$ is a $d_2$-ball containing $x$, [[theorem 4|Prop 1.1.10]] gives } \\delta > 0 \\\\
-                  \\text{s.t. } B_{d_2}(x, \\delta) \\subseteq C \\subseteq B_{d_1}(x, \\varepsilon).`,
+                  \\text{Since $C$ is a $d_2$-ball containing $x$,} \\\\
+                  \\text{[[theorem 4|Prop 1.1.10]] gives } \\delta > 0 \\text{ s.t. } B_{d_2}(x, \\delta) \\subseteq C \\subseteq B_{d_1}(x, \\varepsilon).`,
       },
       {
         title: "(⇐)",
-        content: `\\text{Suppose } \\forall x \\in X, \\ \\forall \\varepsilon > 0, \\ \\exists \\delta > 0 \\text{ s.t. } B_{d_2}(x, \\delta) \\subseteq B_{d_1}(x, \\varepsilon). \\\\
+        content: `\\text{Suppose } \\forall x \\in X, \\ \\forall \\varepsilon > 0, \\ \\exists \\delta > 0 \\\\
+                  \\text{s.t. } B_{d_2}(x, \\delta) \\subseteq B_{d_1}(x, \\varepsilon). \\\\
                   \\text{Let } x \\in X \\text{ and } B \\in \\mathcal{B}_{d_1} \\text{ with } x \\in B. \\\\
                   \\text{By [[theorem 4|Prop 1.1.10]], } \\exists \\varepsilon > 0 \\text{ s.t. } B_{d_1}(x, \\varepsilon) \\subseteq B. \\\\
-                  \\text{By hypothesis, } \\exists \\delta > 0 \\text{ s.t. } x \\in B_{d_2}(x, \\delta) \\subseteq B_{d_1}(x, \\varepsilon) \\subseteq B \\text{, with } B_{d_2}(x, \\delta) \\in \\mathcal{B}_{d_2}. \\\\
-                  \\text{Then } \\tau_{d_1} \\subseteq \\tau_{d_2} \\text{ follows from [[theorem 7|Lemma 1.1.14]].} \\ \\ \\blacksquare`,
+                  \\text{By hypothesis, } \\exists \\delta > 0 \\text{ s.t.} \\\\
+                  x \\in B_{d_2}(x, \\delta) \\subseteq B_{d_1}(x, \\varepsilon) \\subseteq B\\text{,} \\\\
+                  \\text{with } B_{d_2}(x, \\delta) \\in \\mathcal{B}_{d_2}. \\\\
+                  \\text{Then } \\tau_{d_1} \\subseteq \\tau_{d_2} \\\\
+                  \\text{follows from [[theorem 7|Lemma 1.1.14]].} \\ \\ \\blacksquare`,
       },
     ],
   },
