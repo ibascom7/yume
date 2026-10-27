@@ -11,6 +11,9 @@
  *
  * Vector space axioms are linked automatically, no brackets needed:
  * - (VS 3) -> "(VS 3)" linking to that row of the Vector Space definition
+ *
+ * Linearity conditions need brackets, since a bare "(a)" is ambiguous:
+ * - [[LT a]] -> "(a)" linking to that row of the Linear Transformation definition
  */
 export function processLatexLinks(latex: string): string {
   // Pattern matches [[type number]] or [[type number|custom text]]
@@ -25,8 +28,12 @@ export function processLatexLinks(latex: string): string {
   // Skips "}{\text{(VS N)" so the labels in Definition 1 (and already-linked axioms) stay plain
   const axiomPattern = /(?<!\}\{\\text\{)\(VS ?([1-8])\)/g;
 
+  const linearityPattern = /\[\[LT ([ab])\]\]/g;
+
   return latex.replace(axiomPattern, (match, number) =>
     `\\underline{\\href{/notes/linear-algebra/definitions#vs-${number}}{\\text{(VS ${number})}}}`
+  ).replace(linearityPattern, (match, label) =>
+    `\\underline{\\href{/notes/linear-algebra/definitions#lt-${label}}{\\text{(${label})}}}`
   ).replace(pattern, (match, type, number, customText) => {
     const typeLower = type.toLowerCase() as keyof typeof pathMap;
     const path = pathMap[typeLower];

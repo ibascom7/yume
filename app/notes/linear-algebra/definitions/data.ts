@@ -1,9 +1,11 @@
 import type { ChapterRef } from "@/app/components/notesFilter";
+import type { Example } from "../components/DefinitionCard";
 
 interface Definition extends ChapterRef {
   number: number;
   term: string;
   definition: string;
+  examples?: Example[];
 }
 
 export const definitions: Definition[] = [
@@ -43,33 +45,60 @@ export const definitions: Definition[] = [
     chapter: 1,
     section: 3,
     term: "Subspace",
-    definition: `W \\subseteq V \\text{ is a } \\textbf{subspace} \\text{ of } V \\text{ if } W \\text{ is a vector space over } \\mathbb{F} \\\\
-                 \\text{with the operations of addition and scalar} \\\\
-                 \\text{multiplication defined on } V. \\\\[0.5em]
-                 \\text{Equivalently, } W \\text{ is a subspace of } V \\text{ iff the following hold:} \\\\[1em]
+    definition: `W \\subseteq V \\text{ is a } \\textbf{subspace} \\text{ of } V \\text{ iff the following hold:} \\\\[1em]
                  \\begin{array}{ll}
                    \\text{(a)} & \\text{(Closed under addition)} \\\\
                                & x + y \\in W \\text{ whenever } x \\in W \\text{ and } y \\in W \\\\[0.6em]
                    \\text{(b)} & \\text{(Closed under scalar multiplication)} \\\\
                                & cx \\in W \\text{ whenever } c \\in \\mathbb{F} \\text{ and } x \\in W \\\\[0.6em]
-                   \\text{(c)} & 0 \\in W \\\\[0.6em]
+                   \\text{(c)} & \\text{(}W \\text{ has a zero vector)} \\\\
+                               & \\exists\\, 0_W \\in W \\text{ s.t. } 0_W + x = x \\ \\ \\forall x \\in W \\\\[0.6em]
                    \\text{(d)} & \\text{Each vector in } W \\text{ has an additive inverse in } W
                  \\end{array}`,
   },
   {
     number: 3,
+    chapter: 1,
+    section: 3,
+    term: "Transpose",
+    definition: `\\text{The } \\textbf{transpose } A^T \\text{ of an } m \\times n \\text{ matrix } A \\text{ is the } n \\times m \\text{ matrix} \\\\
+                 \\text{obtained by interchanging rows and columns.} \\\\
+                 \\text{That is, } (A^T)_{ij} = A_{ji}.`,
+    examples: [
+      {
+        title: "Transpose of a 2 × 3 matrix",
+        content: `\\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{pmatrix}^T = \\begin{pmatrix} 1 & 4 \\\\ 2 & 5 \\\\ 3 & 6 \\end{pmatrix}.`,
+      },
+    ],
+  },
+  {
+    number: 4,
+    chapter: 1,
+    section: 3,
+    term: "Symmetric Matrix",
+    definition: `\\text{A square matrix } A \\text{ is a } \\textbf{symmetric matrix} \\text{ if } A = A^T.`,
+    examples: [
+      {
+        title: "A symmetric matrix",
+        content: `A = \\begin{pmatrix} 1 & 2 \\\\ 2 & 3 \\end{pmatrix} \\text{ is symmetric because} \\\\
+                  \\begin{pmatrix} 1 & 2 \\\\ 2 & 3 \\end{pmatrix}^T = \\begin{pmatrix} 1 & 2 \\\\ 2 & 3 \\end{pmatrix}.`,
+      },
+    ],
+  },
+  {
+    number: 5,
     chapter: 2,
     section: 1,
     term: "Linear Transformation",
     definition: `\\text{Let } V \\text{ and } W \\text{ be vector spaces over } \\mathbb{F}\\text{.} \\\\
                  T: V \\to W \\text{ is } \\textbf{linear} \\text{ if } \\forall x, y \\in V \\text{ and } c \\in \\mathbb{F}\\text{,} \\\\[1em]
                  \\begin{array}{ll}
-                   \\text{(a)} & T(x + y) = T(x) + T(y) \\\\[0.6em]
-                   \\text{(b)} & T(cx) = cT(x)
+                   \\htmlId{lt-a}{\\text{(a)}} & T(x + y) = T(x) + T(y) \\\\[0.6em]
+                   \\htmlId{lt-b}{\\text{(b)}} & T(cx) = cT(x)
                  \\end{array}`,
   },
   {
-    number: 4,
+    number: 6,
     chapter: 2,
     section: 1,
     term: "Null Space and Range",

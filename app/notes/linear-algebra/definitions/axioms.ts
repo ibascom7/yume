@@ -10,3 +10,10 @@ export const axioms: { number: number; name: string; statement: string }[] = [
   { number: 7, name: "Distributivity over Vector Addition", statement: `\\forall a \\in \\mathbb{F},\\ \\forall x, y \\in V,\\ a(x + y) = ax + ay` },
   { number: 8, name: "Distributivity over Scalar Addition", statement: `\\forall a, b \\in \\mathbb{F},\\ \\forall x \\in V,\\ (a + b)x = ax + bx` },
 ];
+
+// Linearity conditions, previewed when hovering a [[LT a]] / [[LT b]] link in any card.
+// Keep in sync with the rows of Definition 5 (Linear Transformation), which link here via \htmlId{lt-a}.
+export const linearityConditions: { label: string; name: string; statement: string }[] = [
+  { label: "a", name: "Additivity", statement: `\\forall x, y \\in V,\\ T(x + y) = T(x) + T(y)` },
+  { label: "b", name: "Homogeneity", statement: `\\forall x \\in V,\\ \\forall c \\in \\mathbb{F},\\ T(cx) = cT(x)` },
+];
