@@ -5,6 +5,11 @@ import TrustedBlockMath from "@/app/components/TrustedBlockMath";
 import LocationBadges from "@/app/components/LocationBadges";
 import type { ChapterRef } from "@/app/components/notesFilter";
 
+export interface Example {
+  title?: string;
+  content: string;
+}
+
 interface DefinitionCardProps extends ChapterRef {
   number: number;
   term: string;

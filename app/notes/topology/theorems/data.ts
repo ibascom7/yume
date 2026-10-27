@@ -502,7 +502,7 @@ export const theorems: Theorem[] = [
     number: 13,
     chapter: 1,
     section: 4,
-    title: "Characterizing the Closure (Prop 1.1.29)",
+    title: "Characterizing Closure (Prop 1.1.29)",
     statement: `\\text{Let $(X, \\tau)$ be a topological space and } A \\subseteq X. \\\\[0.5em]
                 \\text{(a) } x \\in \\overline{A} \\text{ iff } U \\cap A \\neq \\varnothing, \\ \\forall U \\in \\tau \\text{ with } x \\in U. \\\\[0.5em]
                 \\text{(b) If $\\tau$ has a basis $\\mathcal{B}$, then } x \\in \\overline{A} \\text{ iff } U \\cap A \\neq \\varnothing, \\ \\forall U \\in \\mathcal{B} \\text{ with } x \\in U. \\\\[0.5em]
@@ -551,6 +551,137 @@ export const theorems: Theorem[] = [
                   \\text{By [[theorem 4|Prop 1.1.10]], } \\exists r > 0 \\text{ s.t. } B(x, r) \\subset B(y, s). \\\\
                   \\text{So } \\varnothing \\neq B(x, r) \\cap A \\subseteq B(y, s) \\cap A. \\\\
                   \\text{Since $B(y, s)$ was arbitrary, } x \\in \\overline{A} \\text{ by (b).} \\ \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Proposition",
+    number: 14,
+    chapter: 1,
+    section: 4,
+    title: "Characterizing Interior (Prop 1.1.31)",
+    statement: `\\text{Let $(X, \\tau)$ be a topological space and } A \\subseteq X. \\\\[0.5em]
+                \\text{(a) } x \\in A^\\circ \\text{ iff } \\exists U \\in \\tau \\text{ s.t. } x \\in U \\subseteq A. \\\\[0.5em]
+                \\text{(b) If $\\tau$ has a basis $\\mathcal{B}$, then } x \\in A^\\circ \\text{ iff } \\exists B \\in \\mathcal{B} \\text{ s.t. } x \\in B \\subseteq A. \\\\[0.5em]
+                \\text{(c) In a metric space $(X, d)$, } x \\in A^\\circ \\text{ iff } \\exists \\varepsilon > 0 \\text{ s.t. } B(x, \\varepsilon) \\subseteq A.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 2|Open]] \\\\
+                  \\text{2) } [[definition 5|Basis]] \\\\
+                  \\text{3) } [[definition 6|Metric Space]] \\\\
+                  \\text{4) } [[definition 8|Open Ball]] \\\\
+                  \\text{5) } [[definition 16|Interior]] \\\\
+                  \\text{6) } [[theorem 4|Open Balls Contain Open Balls]] \\\\
+                  \\text{7) } [[theorem 5|Open Balls Form a Basis]]`,
+      },
+      {
+        title: "(a) (⇐)",
+        content: `\\text{If $U$ is an open set with } x \\in U \\subseteq A \\text{, then } x \\in U \\subseteq A^\\circ, \\\\
+                  \\text{since any open set contained in $A$ must be inside $A^\\circ$ by def of [[definition 16|interior]].}`,
+      },
+      {
+        title: "(a) (⇒)",
+        content: `\\text{Suppose } x \\in A^\\circ. \\\\
+                  \\text{Since $A^\\circ$ is a union of open sets, it is open, so } A^\\circ \\in \\tau. \\\\
+                  \\text{Then } x \\in U = A^\\circ \\subseteq A \\text{ by def of [[definition 16|interior]].}`,
+      },
+      {
+        title: "(b) (⇒)",
+        content: `\\text{Let } x \\in A^\\circ. \\\\
+                  \\text{By (a), we have some } U \\in \\tau \\text{ s.t. } x \\in U \\subseteq A. \\\\
+                  \\text{By def of [[definition 5|basis]], } \\exists B \\in \\mathcal{B} \\text{ s.t. } x \\in B \\subseteq U \\subseteq A.`,
+      },
+      {
+        title: "(b) (⇐)",
+        content: `\\text{Suppose } \\exists B \\in \\mathcal{B} \\text{ s.t. } x \\in B \\subseteq A. \\\\
+                  \\text{Since $B$ is open, } x \\in B \\subseteq A^\\circ.`,
+      },
+      {
+        title: "(c) (⇒)",
+        content: `\\text{Let } x \\in A^\\circ. \\\\
+                  \\text{Since the open balls form a basis $\\mathcal{B}$ for $\\tau_d$ by [[theorem 5|Prop 1.1.11]], by (b)} \\\\
+                  \\text{we have } x \\in B(y, r) \\subseteq A \\text{ for some } y \\in X, \\ r > 0. \\\\
+                  \\text{By [[theorem 4|Prop 1.1.10]], } \\exists \\varepsilon > 0 \\text{ s.t. } B(x, \\varepsilon) \\subset B(y, r) \\subseteq A.`,
+      },
+      {
+        title: "(c) (⇐)",
+        content: `\\text{Suppose } \\exists \\varepsilon > 0 \\text{ s.t. } B(x, \\varepsilon) \\subseteq A. \\\\
+                  \\text{Since $B(x, \\varepsilon)$ is open, by def of [[definition 16|interior]], } B(x, \\varepsilon) \\subseteq A^\\circ. \\\\
+                  \\text{So } x \\in A^\\circ. \\ \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Proposition",
+    number: 15,
+    chapter: 1,
+    section: 4,
+    title: "Properties of Closure and Interior (Prop 1.1.32)",
+    statement: `\\text{For all } A, B \\subseteq X, \\\\[0.5em]
+                \\text{(a) If } A \\subseteq B \\text{ then } \\overline{A} \\subseteq \\overline{B} \\text{ and } A^\\circ \\subseteq B^\\circ. \\\\[0.5em]
+                \\text{(b) } \\overline{A \\cup B} = \\overline{A} \\cup \\overline{B} \\text{ and } (A \\cup B)^\\circ \\supseteq A^\\circ \\cup B^\\circ. \\\\[0.5em]
+                \\text{(c) } \\overline{A \\cap B} \\subseteq \\overline{A} \\cap \\overline{B} \\text{ and } (A \\cap B)^\\circ = A^\\circ \\cap B^\\circ. \\\\[0.5em]
+                \\text{(d) } (\\overline{A})^c = (A^c)^\\circ \\text{ and } (A^\\circ)^c = \\overline{A^c}.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 1|Topology]] \\\\
+                  \\text{2) } [[definition 2|Open]] \\\\
+                  \\text{3) } [[definition 3|Closed]] \\\\
+                  \\text{4) } [[definition 15|Closure]] \\\\
+                  \\text{5) } [[definition 16|Interior]] \\\\
+                  \\text{6) } [[theorem 12|Properties of Closed Sets]]`,
+      },
+      {
+        title: "(a)",
+        content: `\\text{Suppose } A \\subseteq B. \\\\
+                  \\text{By def of [[definition 15|closure]], } \\overline{B} = \\bigcap_i C_i \\text{ where $C_i$ closed containing $B$.} \\\\
+                  \\text{So } A \\subseteq B \\subseteq C_i \\text{ for each $i$, i.e. each $C_i$ is a closed set containing $A$.} \\\\
+                  \\text{So } \\overline{A} \\subseteq \\bigcap_i C_i = \\overline{B}. \\\\[0.5em]
+                  \\text{Similarly, by def of [[definition 16|interior]], } A^\\circ = \\bigcup_i V_i \\text{ where } V_i \\subseteq A \\text{ open.} \\\\
+                  \\text{Since } A \\subseteq B \\text{, each } V_i \\subseteq B \\text{ is open, so } A^\\circ = \\bigcup_i V_i \\subseteq B^\\circ.`,
+      },
+      {
+        title: "(b)",
+        content: `\\text{WTS } \\overline{A \\cup B} = \\overline{A} \\cup \\overline{B}. \\\\[0.5em]
+                  (\\supseteq) \\text{ Since } A \\subseteq A \\cup B \\text{ and } B \\subseteq A \\cup B, \\\\
+                  \\text{by (a), } \\overline{A} \\subseteq \\overline{A \\cup B} \\text{ and } \\overline{B} \\subseteq \\overline{A \\cup B}. \\text{ So } \\overline{A} \\cup \\overline{B} \\subseteq \\overline{A \\cup B}. \\\\[0.5em]
+                  (\\subseteq) \\text{ By [[theorem 12|Prop 1.1.26]], } \\overline{A} \\cup \\overline{B} \\text{ is closed, and } A \\cup B \\subseteq \\overline{A} \\cup \\overline{B}. \\\\
+                  \\text{So } \\overline{A} \\cup \\overline{B} \\text{ is one of the closed sets containing } A \\cup B, \\\\
+                  \\text{and by def of [[definition 15|closure]], } \\overline{A \\cup B} \\subseteq \\overline{A} \\cup \\overline{B}. \\\\[1em]
+                  \\text{Now WTS } (A \\cup B)^\\circ \\supseteq A^\\circ \\cup B^\\circ. \\\\
+                  \\text{Let } x \\in A^\\circ \\cup B^\\circ. \\text{ Then } x \\in A^\\circ \\text{ or } x \\in B^\\circ. \\\\
+                  \\text{So } x \\in V \\text{ for some open $V$ with } V \\subseteq A \\text{ or } V \\subseteq B. \\\\
+                  \\text{Either way } V \\subseteq A \\cup B \\text{ is open, so } x \\in (A \\cup B)^\\circ.`,
+      },
+      {
+        title: "(c)",
+        content: `\\text{WTS } \\overline{A \\cap B} \\subseteq \\overline{A} \\cap \\overline{B}. \\\\
+                  \\text{Let } x \\in \\overline{A \\cap B}. \\text{ Then } x \\in \\bigcap_i C_i \\text{ where } C_i \\supseteq A \\cap B \\text{ closed.} \\\\
+                  \\text{Since $\\overline{A}$ is closed and } \\overline{A} \\supseteq A \\supseteq A \\cap B, \\ \\overline{A} \\text{ is one of the $C_i$, so } x \\in \\overline{A}. \\\\
+                  \\text{Similarly } x \\in \\overline{B}. \\text{ So } x \\in \\overline{A} \\cap \\overline{B}. \\\\[1em]
+                  \\text{Now WTS } (A \\cap B)^\\circ = A^\\circ \\cap B^\\circ. \\\\[0.5em]
+                  (\\subseteq) \\text{ Let } x \\in (A \\cap B)^\\circ. \\text{ Then } x \\in V \\text{ for some open } V \\subseteq A \\cap B. \\\\
+                  \\text{So } V \\subseteq A \\text{ and } V \\subseteq B \\text{ open, so } x \\in A^\\circ \\cap B^\\circ. \\\\[0.5em]
+                  (\\supseteq) \\ A^\\circ \\cap B^\\circ \\text{ is open as a finite intersection of open sets,} \\\\
+                  \\text{and } A^\\circ \\cap B^\\circ \\subseteq A \\cap B. \\text{ So by def of [[definition 16|interior]], } A^\\circ \\cap B^\\circ \\subseteq (A \\cap B)^\\circ.`,
+      },
+      {
+        title: "(d)",
+        content: `\\text{WTS } (\\overline{A})^c = (A^c)^\\circ. \\\\
+                  \\text{Let } x \\in (\\overline{A})^c. \\text{ Then } x \\in X - \\overline{A} \\\\
+                  \\text{iff } x \\in X - \\bigcap_i C_i \\text{ where } C_i \\supseteq A \\text{ closed} \\\\
+                  \\text{iff } x \\in \\bigcup_i (X - C_i) \\text{ where } C_i \\supseteq A \\text{ closed.} \\\\
+                  \\text{Say } V_i = X - C_i. \\text{ Then } x \\in \\bigcup_i V_i \\text{ where } V_i \\subseteq X - A \\text{ open.} \\\\
+                  \\text{So } x \\in (A^c)^\\circ. \\\\[1em]
+                  \\text{Now WTS } (A^\\circ)^c = \\overline{A^c}. \\\\
+                  \\text{Let } x \\in (A^\\circ)^c. \\text{ Then } x \\in X - A^\\circ \\\\
+                  \\text{iff } x \\in X - \\bigcup_i V_i \\text{ where } V_i \\subseteq A \\text{ open} \\\\
+                  \\text{iff } x \\in \\bigcap_i (X - V_i) \\text{ where } V_i \\subseteq A \\text{ open.} \\\\
+                  \\text{Say } X - V_i = C_i. \\\\
+                  \\text{Then } x \\in \\bigcap_i C_i \\text{ where } C_i \\supseteq X - A \\text{ closed.} \\\\
+                  \\text{Thus } x \\in \\overline{A^c}. \\ \\ \\blacksquare`,
       },
     ],
   },

@@ -56,4 +56,27 @@ export const definitions: Definition[] = [
                    \\text{(d)} & \\text{Each vector in } W \\text{ has an additive inverse in } W
                  \\end{array}`,
   },
+  {
+    number: 3,
+    chapter: 2,
+    section: 1,
+    term: "Linear Transformation",
+    definition: `\\text{Let } V \\text{ and } W \\text{ be vector spaces over } \\mathbb{F}\\text{.} \\\\
+                 T: V \\to W \\text{ is } \\textbf{linear} \\text{ if } \\forall x, y \\in V \\text{ and } c \\in \\mathbb{F}\\text{,} \\\\[1em]
+                 \\begin{array}{ll}
+                   \\text{(a)} & T(x + y) = T(x) + T(y) \\\\[0.6em]
+                   \\text{(b)} & T(cx) = cT(x)
+                 \\end{array}`,
+  },
+  {
+    number: 4,
+    chapter: 2,
+    section: 1,
+    term: "Null Space and Range",
+    definition: `\\text{Let } V \\text{ and } W \\text{ be vector spaces and } T: V \\to W \\text{ be linear.} \\\\[1em]
+                 \\begin{array}{ll}
+                   \\text{(a)} & \\text{The } \\textbf{null space} \\text{ (}\\textbf{kernel}\\text{) of } T \\text{ is } N(T) = \\{x \\in V : T(x) = 0\\}. \\\\[0.6em]
+                   \\text{(b)} & \\text{The } \\textbf{range} \\text{ (}\\textbf{image}\\text{) of } T \\text{ is } R(T) = \\{T(x) : x \\in V\\}.
+                 \\end{array}`,
+  },
 ];

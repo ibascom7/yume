@@ -246,4 +246,15 @@ export const definitions: Definition[] = [
                  \\text{the intersection of all [[definition 3|closed]] subsets of $X$ containing $A$.} \\\\
                  \\text{By [[theorem 12|Prop 1.1.26]], $\\overline{A}$ is closed, and we set } \\overline{\\varnothing} = \\varnothing, \\ \\overline{X} = X.`,
   },
+  {
+    number: 16,
+    chapter: 1,
+    section: 4,
+    term: "Interior",
+    definition: `\\text{Let $(X, \\tau)$ be a [[definition 1|topological space]] and } A \\subseteq X. \\\\
+                 \\text{The \\textit{interior} of $A$, written $A^\\circ$ or int$(A)$,} \\\\
+                 \\text{is the union of all [[definition 2|open]] sets contained in $A$.} \\\\[1em]
+                 \\text{$A^\\circ$ is the largest open set in $A$.} \\\\
+                 \\text{$A$ is open iff } A = A^\\circ.`,
+  },
 ];
