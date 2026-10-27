@@ -172,10 +172,63 @@ export const theorems: Theorem[] = [
                   \\text{Hence } -x = (-1) \\cdot x \\in W. \\ \\ \\blacksquare`,
       },
     ],
+    examples: [
+      {
+        title: "Pₙ(𝔽) is a subspace of P(𝔽)",
+        content: `\\text{Let } P_n(\\mathbb{F}) = \\{\\text{polynomials with degree} \\leq n\\} \\text{ with } n \\in \\mathbb{N}\\text{.} \\\\
+                  \\text{Show } P_n(\\mathbb{F}) \\text{ is a subspace of } P(\\mathbb{F})\\text{.} \\\\[1em]
+                  \\textit{Proof.} \\\\
+                  \\text{WTS (i): } 0 \\in P_n(\\mathbb{F}). \\\\
+                  \\text{Note } 0 \\in P(\\mathbb{F}) \\text{ has degree } -1 \\leq n \\text{ whenever } n \\in \\mathbb{N}\\text{. So } 0 \\in P_n(\\mathbb{F}). \\\\[0.5em]
+                  \\text{WTS (ii): } \\forall f, g \\in P_n(\\mathbb{F})\\text{, } f(x) + g(x) \\in P_n(\\mathbb{F}). \\\\
+                  \\text{We can write} \\\\
+                  \\begin{aligned}
+                    f(x) &= a_0 x^0 + a_1 x^1 + \\dots + a_n x^n, \\\\
+                    g(x) &= b_0 x^0 + b_1 x^1 + \\dots + b_n x^n,
+                  \\end{aligned} \\\\
+                  \\text{where some of the coefficients may be } 0\\text{. So} \\\\
+                  f(x) + g(x) = (a_0 + b_0)x^0 + (a_1 + b_1)x^1 + \\dots + (a_n + b_n)x^n\\text{,} \\\\
+                  \\text{and } \\deg(f(x) + g(x)) \\leq n\\text{. Hence } f(x) + g(x) \\in P_n(\\mathbb{F}). \\\\[0.5em]
+                  \\text{WTS (iii): } \\forall f \\in P_n(\\mathbb{F}) \\text{ and } c \\in \\mathbb{F}\\text{, } cf(x) \\in P_n(\\mathbb{F}). \\\\
+                  \\text{We can write} \\\\
+                  \\begin{aligned}
+                    cf(x) &= c(a_0 + a_1 x^1 + \\dots + a_n x^n) \\\\
+                          &= ca_0 + ca_1 x^1 + \\dots + ca_n x^n.
+                  \\end{aligned} \\\\
+                  \\text{So } \\deg(cf(x)) \\leq n\\text{. Hence } cf(x) \\in P_n(\\mathbb{F}). \\\\[0.5em]
+                  \\text{By }[[theorem 5|Theorem 1.3]]\\text{, } P_n(\\mathbb{F}) \\text{ is a subspace of } P(\\mathbb{F}). \\ \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Theorem",
+    number: 6,
+    chapter: 1,
+    section: 3,
+    title: "Intersection of Subspaces is a Subspace (Thm 1.4)",
+    statement: `\\text{Any intersection of subspaces of a vector space } V \\text{ is a subspace of } V.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 2|Subspace]] \\\\
+                  \\text{2) } [[theorem 5|Subspace Test]]`,
+      },
+      {
+        title: "Proof",
+        content: `\\text{Let } S = \\{W \\subseteq V : W \\text{ is a subspace of } V\\}\\text{, and let } \\{W_i : i \\in I\\} \\subseteq S \\text{ with } I \\neq \\varnothing. \\\\
+                  \\text{Since every subspace contains } 0 \\text{ (}[[theorem 5|Theorem 1.3]]\\text{), } 0 \\in \\bigcap_{i \\in I} W_i. \\\\
+                  \\text{WTS } \\bigcap_{i \\in I} W_i \\text{ is closed under addition and scalar multiplication.} \\\\
+                  \\text{Let } x, y \\in \\bigcap_{i \\in I} W_i \\text{ and } c \\in \\mathbb{F}\\text{. Then } x, y \\in W_i \\ \\ \\forall i \\in I. \\\\
+                  \\text{Because every } W_i \\text{ is closed under addition and scalar multiplication,} \\\\
+                  x + y \\in W_i \\text{ and } cx \\in W_i \\ \\ \\forall i \\in I. \\\\
+                  \\text{Thus } x + y \\in \\bigcap_{i \\in I} W_i \\text{ and } cx \\in \\bigcap_{i \\in I} W_i. \\\\
+                  \\text{By }[[theorem 5|Theorem 1.3]]\\text{, } \\bigcap_{i \\in I} W_i \\text{ is a subspace of } V. \\ \\ \\blacksquare`,
+      },
+    ],
   },
   {
     kind: "Proposition",
-    number: 6,
+    number: 7,
     chapter: 2,
     section: 1,
     title: "Properties of Linear Transformations (Section 2.1)",
@@ -231,7 +284,7 @@ export const theorems: Theorem[] = [
   },
   {
     kind: "Theorem",
-    number: 7,
+    number: 8,
     chapter: 2,
     section: 1,
     title: "Null Space and Range are Subspaces (Thm 2.1)",
@@ -244,13 +297,13 @@ export const theorems: Theorem[] = [
                   \\text{2) } [[definition 5|Linear Transformation]] \\text{ [[LT a]], [[LT b]]} \\\\
                   \\text{3) } [[definition 6|Null Space and Range]] \\\\
                   \\text{4) } [[theorem 4|Properties of Scalar Multiplication]] \\\\
-                  \\text{5) } [[theorem 6|Properties of Linear Transformations]] \\
+                  \\text{5) } [[theorem 7|Properties of Linear Transformations]] \\
                   \\text{6) } [[theorem 5|Subspace Test]]`,
       },
       {
         title: "Proof",
         content: `\\text{WTS } N(T) \\text{ is a subspace of } V. \\\\
-                  \\text{Since } T(0_V) = 0_W \\text{ by }[[theorem 6|Proposition 6]]\\text{ (i), we have } 0_V \\in N(T). \\\\
+                  \\text{Since } T(0_V) = 0_W \\text{ by }[[theorem 7|Proposition 7]]\\text{ (i), we have } 0_V \\in N(T). \\\\
                   \\text{Let } x, y \\in N(T) \\text{ and } c \\in \\mathbb{F}\\text{. Then} \\\\
                   \\begin{aligned}
                     T(x + y) &\\overset{[[LT a]]}{=} T(x) + T(y) = 0_W + 0_W = 0_W, \\\\
@@ -273,7 +326,7 @@ export const theorems: Theorem[] = [
   },
   {
     kind: "Theorem",
-    number: 8,
+    number: 9,
     chapter: 2,
     section: 1,
     title: "The Range is Spanned by the Image of a Basis (Thm 2.2)",
@@ -284,18 +337,18 @@ export const theorems: Theorem[] = [
       {
         title: "Recall",
         content: `\\text{1) } [[definition 6|Null Space and Range]] \\\\
-                  \\text{2) } [[theorem 6|Properties of Linear Transformations]] \\\\
-                  \\text{3) } [[theorem 7|Null Space and Range are Subspaces]]`,
+                  \\text{2) } [[theorem 7|Properties of Linear Transformations]] \\\\
+                  \\text{3) } [[theorem 8|Null Space and Range are Subspaces]]`,
       },
       {
         title: "Proof",
         content: `\\text{By def of }[[definition 6|range]]\\text{, } T(v_i) \\in R(T) \\ \\ \\forall i \\in \\{1, \\dots, n\\}. \\\\
-                  \\text{Because } R(T) \\text{ is a subspace (}[[theorem 7|Theorem 2.1]]\\text{),} \\\\
+                  \\text{Because } R(T) \\text{ is a subspace (}[[theorem 8|Theorem 2.1]]\\text{),} \\\\
                   \\operatorname{span}(T(\\beta)) = \\operatorname{span}(\\{T(v_1), \\dots, T(v_n)\\}) \\subseteq R(T) \\\\
                   \\text{by Theorem 1.5.} \\\\[0.5em]
                   \\text{Now suppose } w \\in R(T)\\text{. Then } w = T(v) \\text{ for some } v \\in V. \\\\
                   \\text{Because } \\beta \\text{ is a basis for } V\\text{, we have } v = \\sum_{i=1}^n a_i v_i \\text{ for some } a_1, \\dots, a_n \\in \\mathbb{F}. \\\\
-                  \\text{Since } T \\text{ is linear, by }[[theorem 6|Proposition 6]]\\text{ (iv),} \\\\
+                  \\text{Since } T \\text{ is linear, by }[[theorem 7|Proposition 7]]\\text{ (iv),} \\\\
                   w = T(v) = \\sum_{i=1}^n a_i T(v_i) \\in \\operatorname{span}(T(\\beta)). \\\\
                   \\text{So } R(T) \\subseteq \\operatorname{span}(\\{T(v_1), \\dots, T(v_n)\\}) = \\operatorname{span}(T(\\beta)). \\\\[0.5em]
                   \\text{Hence, } R(T) = \\operatorname{span}(T(\\beta)). \\ \\ \\blacksquare`,
@@ -307,7 +360,7 @@ export const theorems: Theorem[] = [
         content: `\\text{Define } T: P_2(\\mathbb{R}) \\to M_{2 \\times 2}(\\mathbb{R}) \\text{ by} \\\\
                   T(f(x)) = \\begin{pmatrix} f(1) - f(2) & 0 \\\\ 0 & f(0) \\end{pmatrix}. \\\\[0.5em]
                   \\text{Find a basis for the range of } T. \\\\
-                  \\text{Since } \\beta = \\{1, x, x^2\\} \\text{ is a basis for } P_2(\\mathbb{R})\\text{, by }[[theorem 8|Theorem 2.2]]\\text{ we have} \\\\
+                  \\text{Since } \\beta = \\{1, x, x^2\\} \\text{ is a basis for } P_2(\\mathbb{R})\\text{, by }[[theorem 9|Theorem 2.2]]\\text{ we have} \\\\
                   \\begin{aligned}
                     R(T) &= \\operatorname{span}(T(\\beta)) = \\operatorname{span}(\\{T(1), T(x), T(x^2)\\}) \\\\
                     &= \\operatorname{span}\\left(\\left\\{ \\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}, \\begin{pmatrix} -1 & 0 \\\\ 0 & 0 \\end{pmatrix}, \\begin{pmatrix} -3 & 0 \\\\ 0 & 0 \\end{pmatrix} \\right\\}\\right) \\\\
