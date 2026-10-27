@@ -64,12 +64,6 @@ export default function TheoremCard({
             </div>
             <LocationBadges chapter={chapter} section={section} />
           </div>
-          <div className="text-black text-sm sm:text-base ml-0 sm:ml-[6em]">
-            <TrustedBlockMath math={processLatexLinks(statement)} />
-          </div>
-          <div className="text-black text-sm sm:text-base ml-0 sm:ml-[6em]">
-            <p>{description}</p>
-          </div>
         </div>
         {hasDropdown && (
           <button
@@ -95,6 +89,12 @@ export default function TheoremCard({
             </svg>
           </button>
         )}
+      </div>
+      <div className="text-black text-sm sm:text-base ml-0 sm:ml-[6em]">
+        <TrustedBlockMath math={processLatexLinks(statement)} />
+      </div>
+      <div className="text-black text-sm sm:text-base ml-0 sm:ml-[6em]">
+        <p>{description}</p>
       </div>
 
       {hasDropdown && isProofOpen && (

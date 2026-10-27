@@ -157,16 +157,20 @@ export const theorems: Theorem[] = [
         title: "Proof",
         content: `(\\Rightarrow) \\text{ Suppose } W \\text{ is a subspace of } V. \\\\
                   \\text{WTS (ii). By def of }[[definition 2|subspace]]\\text{, } W \\text{ is closed under addition.} \\\\
-                  \\text{WTS (iii). By def of }[[definition 2|subspace]]\\text{, } W \\text{ is closed under scalar multiplication.} \\\\
-                  \\text{WTS (i). By def of }[[definition 2|subspace]]\\text{, } \\exists\\, 0_W \\in W \\text{ s.t. } \\forall x \\in W\\text{, } 0_W + x = x. \\\\
+                  \\text{WTS (iii). By def of }[[definition 2|subspace]]\\text{, } W \\text{ is closed} \\\\
+                  \\text{under scalar multiplication.} \\\\
+                  \\text{WTS (i). By def of }[[definition 2|subspace]]\\text{,} \\\\
+                  \\exists\\, 0_W \\in W \\text{ s.t. } \\forall x \\in W\\text{, } 0_W + x = x. \\\\
                   \\text{But } 0_V + x = x \\text{ by (VS 3) and (VS 1).} \\\\
-                  \\text{Thus, taking any } x \\in W \\text{ (e.g. } x = 0_W\\text{), } 0_W = 0_V \\text{ by }[[theorem 1|cancellation law]]\\text{.} \\\\[0.5em]
+                  \\text{Thus, taking any } x \\in W \\text{ (e.g. } x = 0_W\\text{),} \\\\
+                  0_W = 0_V \\text{ by }[[theorem 1|cancellation law]]\\text{.} \\\\[0.5em]
                   (\\Leftarrow) \\text{ Suppose (i), (ii), (iii) hold.} \\\\
                   \\text{Immediately, (a), (b), and (c) of }[[definition 2|subspace]]\\text{ are satisfied,} \\\\
                   \\text{with } 0_W = 0_V \\text{ for (c).} \\\\
                   \\text{WTS (d). That is, WTS } \\forall x \\in W\\text{, } \\exists\\, (-x) \\in W. \\\\
-                  \\text{Let } x \\in W\\text{. Since } W \\text{ is closed under scalar multiplication, } (-1) \\cdot x \\in W\\text{,} \\\\
-                  \\text{and since } W \\text{ is closed under addition, } x + (-1) \\cdot x \\in W\\text{. But} \\\\
+                  \\text{Let } x \\in W\\text{. Since } W \\text{ is closed under scalar} \\\\
+                  \\text{multiplication, } (-1) \\cdot x \\in W\\text{, and since } W \\text{ is} \\\\
+                  \\text{closed under addition, } x + (-1) \\cdot x \\in W\\text{. But} \\\\
                   x + (-1) \\cdot x = (1 + (-1)) \\cdot x = 0 \\cdot x = 0 \\\\
                   \\text{by (VS 5), (VS 8), and }[[theorem 4|Theorem 1.2]]\\text{ (a).} \\\\
                   \\text{Hence } -x = (-1) \\cdot x \\in W. \\ \\ \\blacksquare`,
@@ -206,7 +210,8 @@ export const theorems: Theorem[] = [
     chapter: 1,
     section: 3,
     title: "Intersection of Subspaces is a Subspace (Thm 1.4)",
-    statement: `\\text{Any intersection of subspaces of a vector space } V \\text{ is a subspace of } V.`,
+    statement: `\\text{Any intersection of subspaces of a vector space } V \\\\
+                \\text{is a subspace of } V.`,
     proof: [
       {
         title: "Recall",
@@ -215,11 +220,16 @@ export const theorems: Theorem[] = [
       },
       {
         title: "Proof",
-        content: `\\text{Let } S = \\{W \\subseteq V : W \\text{ is a subspace of } V\\}\\text{, and let } \\{W_i : i \\in I\\} \\subseteq S \\text{ with } I \\neq \\varnothing. \\\\
-                  \\text{Since every subspace contains } 0 \\text{ (}[[theorem 5|Theorem 1.3]]\\text{), } 0 \\in \\bigcap_{i \\in I} W_i. \\\\
-                  \\text{WTS } \\bigcap_{i \\in I} W_i \\text{ is closed under addition and scalar multiplication.} \\\\
-                  \\text{Let } x, y \\in \\bigcap_{i \\in I} W_i \\text{ and } c \\in \\mathbb{F}\\text{. Then } x, y \\in W_i \\ \\ \\forall i \\in I. \\\\
-                  \\text{Because every } W_i \\text{ is closed under addition and scalar multiplication,} \\\\
+        content: `\\text{Let } S = \\{W \\subseteq V : W \\text{ is a subspace of } V\\}\\text{,} \\\\
+                  \\text{and let } \\{W_i : i \\in I\\} \\subseteq S \\text{ with } I \\neq \\varnothing. \\\\
+                  \\text{Since every subspace contains } 0 \\text{ (}[[theorem 5|Theorem 1.3]]\\text{),} \\\\
+                  0 \\in \\bigcap_{i \\in I} W_i. \\\\
+                  \\text{WTS } \\bigcap_{i \\in I} W_i \\text{ is closed under addition} \\\\
+                  \\text{and scalar multiplication.} \\\\
+                  \\text{Let } x, y \\in \\bigcap_{i \\in I} W_i \\text{ and } c \\in \\mathbb{F}\\text{.} \\\\
+                  \\text{Then } x, y \\in W_i \\ \\ \\forall i \\in I. \\\\
+                  \\text{Because every } W_i \\text{ is closed under addition} \\\\
+                  \\text{and scalar multiplication,} \\\\
                   x + y \\in W_i \\text{ and } cx \\in W_i \\ \\ \\forall i \\in I. \\\\
                   \\text{Thus } x + y \\in \\bigcap_{i \\in I} W_i \\text{ and } cx \\in \\bigcap_{i \\in I} W_i. \\\\
                   \\text{By }[[theorem 5|Theorem 1.3]]\\text{, } \\bigcap_{i \\in I} W_i \\text{ is a subspace of } V. \\ \\ \\blacksquare`,
@@ -234,10 +244,13 @@ export const theorems: Theorem[] = [
     title: "Properties of Linear Transformations (Section 2.1)",
     statement: `\\text{Let } T: V \\to W\\text{. Then the following hold:} \\\\[0.5em]
                 \\text{(i) If } T \\text{ is linear, then } T(0) = 0. \\\\[0.5em]
-                \\text{(ii) } T \\text{ is linear iff } T(cx + y) = cT(x) + T(y) \\ \\ \\forall x, y \\in V \\text{ and } c \\in \\mathbb{F}. \\\\[0.5em]
-                \\text{(iii) If } T \\text{ is linear, then } T(x - y) = T(x) - T(y) \\ \\ \\forall x, y \\in V. \\\\[0.5em]
-                \\text{(iv) } T \\text{ is linear iff for all } n \\in \\mathbb{N}\\text{, } x_1, \\dots, x_n \\in V \\text{ and } a_1, \\dots, a_n \\in \\mathbb{F}\\text{, we have} \\\\
-                T\\left(\\sum_{i=1}^n a_i x_i\\right) = \\sum_{i=1}^n a_i T(x_i).`,
+                \\text{(ii) } T \\text{ is linear iff} \\\\
+                \\qquad T(cx + y) = cT(x) + T(y) \\ \\ \\forall x, y \\in V \\text{ and } c \\in \\mathbb{F}. \\\\[0.5em]
+                \\text{(iii) If } T \\text{ is linear, then} \\\\
+                \\qquad T(x - y) = T(x) - T(y) \\ \\ \\forall x, y \\in V. \\\\[0.5em]
+                \\text{(iv) } T \\text{ is linear iff for all } n \\in \\mathbb{N}\\text{,} \\\\
+                \\qquad x_1, \\dots, x_n \\in V \\text{ and } a_1, \\dots, a_n \\in \\mathbb{F}\\text{, we have} \\\\
+                \\qquad T\\left(\\sum_{i=1}^n a_i x_i\\right) = \\sum_{i=1}^n a_i T(x_i).`,
     proof: [
       {
         title: "Recall",
@@ -254,14 +267,19 @@ export const theorems: Theorem[] = [
       },
       {
         title: "Proof of (ii)",
-        content: `(\\Rightarrow) \\text{ Suppose } T \\text{ is linear. Let } x, y \\in V \\text{ and } c \\in \\mathbb{F}\\text{. Then} \\\\
+        content: `(\\Rightarrow) \\text{ Suppose } T \\text{ is linear.} \\\\
+                  \\text{Let } x, y \\in V \\text{ and } c \\in \\mathbb{F}\\text{. Then} \\\\
                   T(cx + y) \\overset{[[LT a]]}{=} T(cx) + T(y) \\overset{[[LT b]]}{=} cT(x) + T(y). \\\\[0.5em]
-                  (\\Leftarrow) \\text{ Suppose } T(cx + y) = cT(x) + T(y) \\ \\ \\forall x, y \\in V \\text{ and } c \\in \\mathbb{F}. \\\\
-                  \\text{If } c = 1\\text{, then } T(x + y) = T(1x + y) = 1T(x) + T(y) = T(x) + T(y) \\\\
+                  (\\Leftarrow) \\text{ Suppose } T(cx + y) = cT(x) + T(y) \\\\
+                  \\forall x, y \\in V \\text{ and } c \\in \\mathbb{F}. \\\\
+                  \\text{If } c = 1\\text{, then} \\\\
+                  T(x + y) = T(1x + y) = 1T(x) + T(y) = T(x) + T(y) \\\\
                   \\text{by (VS 5), satisfying [[LT a]].} \\\\
-                  \\text{If } c = 1 \\text{ and } x = y = 0\\text{, then } T(0) = T(0) + T(0) = T(0) + 0\\text{,} \\\\
+                  \\text{If } c = 1 \\text{ and } x = y = 0\\text{, then} \\\\
+                  T(0) = T(0) + T(0) = T(0) + 0\\text{,} \\\\
                   \\text{so } T(0) = 0 \\text{ by }[[theorem 1|cancellation law]]\\text{.} \\\\
-                  \\text{So if } y = 0\\text{, then } T(cx) = cT(x) + T(0) = cT(x)\\text{, satisfying [[LT b]].} \\ \\ \\blacksquare`,
+                  \\text{So if } y = 0\\text{, then } T(cx) = cT(x) + T(0) = cT(x)\\text{,} \\\\
+                  \\text{satisfying [[LT b]].} \\ \\ \\blacksquare`,
       },
       {
         title: "Proof of (iii)",
@@ -271,12 +289,19 @@ export const theorems: Theorem[] = [
       },
       {
         title: "Proof of (iv)",
-        content: `(\\Rightarrow) \\text{ Suppose } T \\text{ is linear. Let } x_1, \\dots, x_n \\in V \\text{ and } a_1, \\dots, a_n \\in \\mathbb{F}\\text{. Then} \\\\
-                  T\\left(\\sum_{i=1}^n a_i x_i\\right) \\overset{[[LT a]]}{=} \\sum_{i=1}^n T(a_i x_i) \\overset{[[LT b]]}{=} \\sum_{i=1}^n a_i T(x_i)\\text{,} \\\\
-                  \\text{where the first equality applies [[LT a]] repeatedly (induction on } n\\text{).} \\\\[0.5em]
-                  (\\Leftarrow) \\text{ Suppose for all } n \\in \\mathbb{N}\\text{, } x_1, \\dots, x_n \\in V \\text{ and } a_1, \\dots, a_n \\in \\mathbb{F}\\text{, we have} \\\\
+        content: `(\\Rightarrow) \\text{ Suppose } T \\text{ is linear.} \\\\
+                  \\text{Let } x_1, \\dots, x_n \\in V \\text{ and } a_1, \\dots, a_n \\in \\mathbb{F}\\text{. Then} \\\\
+                  \\begin{aligned}
+                    T\\left(\\sum_{i=1}^n a_i x_i\\right) &\\overset{[[LT a]]}{=} \\sum_{i=1}^n T(a_i x_i) \\\\
+                    &\\overset{[[LT b]]}{=} \\sum_{i=1}^n a_i T(x_i)\\text{,}
+                  \\end{aligned} \\\\
+                  \\text{where the first equality applies [[LT a]] repeatedly} \\\\
+                  \\text{(induction on } n\\text{).} \\\\[0.5em]
+                  (\\Leftarrow) \\text{ Suppose for all } n \\in \\mathbb{N}\\text{, } x_1, \\dots, x_n \\in V \\\\
+                  \\text{and } a_1, \\dots, a_n \\in \\mathbb{F}\\text{, we have} \\\\
                   T\\left(\\sum_{i=1}^n a_i x_i\\right) = \\sum_{i=1}^n a_i T(x_i). \\\\
-                  \\text{If } n = 2 \\text{ and } a_1 = a_2 = 1\\text{, then } T(x_1 + x_2) = T(x_1) + T(x_2) \\\\
+                  \\text{If } n = 2 \\text{ and } a_1 = a_2 = 1\\text{, then} \\\\
+                  T(x_1 + x_2) = T(x_1) + T(x_2) \\\\
                   \\text{by (VS 5), satisfying [[LT a]].} \\\\
                   \\text{If } n = 1\\text{, then } T(a_1 x_1) = a_1 T(x_1)\\text{, satisfying [[LT b]].} \\ \\ \\blacksquare`,
       },
@@ -288,8 +313,10 @@ export const theorems: Theorem[] = [
     chapter: 2,
     section: 1,
     title: "Null Space and Range are Subspaces (Thm 2.1)",
-    statement: `\\text{Let } V \\text{ and } W \\text{ be vector spaces and } T: V \\to W \\text{ be linear.} \\\\
-                \\text{Then } N(T) \\text{ and } R(T) \\text{ are subspaces of } V \\text{ and } W\\text{, respectively.}`,
+    statement: `\\text{Let } V \\text{ and } W \\text{ be vector spaces} \\\\
+                \\text{and } T: V \\to W \\text{ be linear.} \\\\
+                \\text{Then } N(T) \\text{ and } R(T) \\text{ are subspaces} \\\\
+                \\text{of } V \\text{ and } W\\text{, respectively.}`,
     proof: [
       {
         title: "Recall",
@@ -297,30 +324,34 @@ export const theorems: Theorem[] = [
                   \\text{2) } [[definition 7|Linear Transformation]] \\text{ [[LT a]], [[LT b]]} \\\\
                   \\text{3) } [[definition 8|Null Space and Range]] \\\\
                   \\text{4) } [[theorem 4|Properties of Scalar Multiplication]] \\\\
-                  \\text{5) } [[theorem 7|Properties of Linear Transformations]] \\
+                  \\text{5) } [[theorem 7|Properties of Linear Transformations]] \\\\
                   \\text{6) } [[theorem 5|Subspace Test]]`,
       },
       {
         title: "Proof",
         content: `\\text{WTS } N(T) \\text{ is a subspace of } V. \\\\
-                  \\text{Since } T(0_V) = 0_W \\text{ by }[[theorem 7|Proposition 7]]\\text{ (i), we have } 0_V \\in N(T). \\\\
+                  \\text{Since } T(0_V) = 0_W \\text{ by }[[theorem 7|Proposition 7]]\\text{ (i),} \\\\
+                  \\text{we have } 0_V \\in N(T). \\\\
                   \\text{Let } x, y \\in N(T) \\text{ and } c \\in \\mathbb{F}\\text{. Then} \\\\
                   \\begin{aligned}
                     T(x + y) &\\overset{[[LT a]]}{=} T(x) + T(y) = 0_W + 0_W = 0_W, \\\\
                     T(cx) &\\overset{[[LT b]]}{=} cT(x) = c0_W = 0_W
                   \\end{aligned} \\\\
                   \\text{by (VS 3) and }[[theorem 4|Theorem 1.2]]\\text{ (c).} \\\\
-                  \\text{Hence, } x + y \\in N(T) \\text{ and } cx \\in N(T)\\text{, so } N(T) \\text{ is a subspace of } V \\\\
-                  \\text{by }[[theorem 5|Theorem 1.3]]\\text{.} \\\\[0.5em]
+                  \\text{Hence, } x + y \\in N(T) \\text{ and } cx \\in N(T)\\text{,} \\\\
+                  \\text{so } N(T) \\text{ is a subspace of } V \\text{ by }[[theorem 5|Theorem 1.3]]\\text{.} \\\\[0.5em]
                   \\text{Now WTS } R(T) \\text{ is a subspace of } W. \\\\
                   \\text{Since } T(0_V) = 0_W\\text{, we have } 0_W \\in R(T). \\\\
-                  \\text{Now let } x, y \\in R(T) \\text{ and } c \\in \\mathbb{F}\\text{. Then } \\exists\\, v, w \\in V \\text{ s.t. } T(v) = x \\text{ and } T(w) = y\\text{. So} \\\\
+                  \\text{Now let } x, y \\in R(T) \\text{ and } c \\in \\mathbb{F}\\text{.} \\\\
+                  \\text{Then } \\exists\\, v, w \\in V \\text{ s.t. } T(v) = x \\text{ and } T(w) = y\\text{. So} \\\\
                   \\begin{aligned}
                     T(v + w) &\\overset{[[LT a]]}{=} T(v) + T(w) = x + y, \\\\
                     T(cv) &\\overset{[[LT b]]}{=} cT(v) = cx.
                   \\end{aligned} \\\\
-                  \\text{Since } v + w,\\ cv \\in V\\text{, we have } x + y \\in R(T) \\text{ and } cx \\in R(T). \\\\
-                  \\text{Hence, } R(T) \\text{ is a subspace of } W \\text{ by }[[theorem 5|Theorem 1.3]]\\text{.} \\ \\ \\blacksquare`,
+                  \\text{Since } v + w,\\ cv \\in V\\text{,} \\\\
+                  \\text{we have } x + y \\in R(T) \\text{ and } cx \\in R(T). \\\\
+                  \\text{Hence, } R(T) \\text{ is a subspace of } W\\\\
+                  \\text{by }[[theorem 5|Theorem 1.3]]\\text{.} \\ \\ \\blacksquare`,
       },
     ],
   },
@@ -330,7 +361,8 @@ export const theorems: Theorem[] = [
     chapter: 2,
     section: 1,
     title: "The Range is Spanned by the Image of a Basis (Thm 2.2)",
-    statement: `\\text{Let } V \\text{ and } W \\text{ be vector spaces and } T: V \\to W \\text{ be linear.} \\\\
+    statement: `\\text{Let } V \\text{ and } W \\text{ be vector spaces} \\\\
+                \\text{and } T: V \\to W \\text{ be linear.} \\\\
                 \\text{If } \\beta = \\{v_1, \\dots, v_n\\} \\text{ is a basis for } V\\text{, then} \\\\[0.5em]
                 R(T) = \\operatorname{span}(T(\\beta)) = \\operatorname{span}(\\{T(v_1), \\dots, T(v_n)\\}).`,
     proof: [
@@ -347,10 +379,12 @@ export const theorems: Theorem[] = [
                   \\operatorname{span}(T(\\beta)) = \\operatorname{span}(\\{T(v_1), \\dots, T(v_n)\\}) \\subseteq R(T) \\\\
                   \\text{by Theorem 1.5.} \\\\[0.5em]
                   \\text{Now suppose } w \\in R(T)\\text{. Then } w = T(v) \\text{ for some } v \\in V. \\\\
-                  \\text{Because } \\beta \\text{ is a basis for } V\\text{, we have } v = \\sum_{i=1}^n a_i v_i \\text{ for some } a_1, \\dots, a_n \\in \\mathbb{F}. \\\\
+                  \\text{Because } \\beta \\text{ is a basis for } V\\text{, we have} \\\\
+                  v = \\sum_{i=1}^n a_i v_i \\text{ for some } a_1, \\dots, a_n \\in \\mathbb{F}. \\\\
                   \\text{Since } T \\text{ is linear, by }[[theorem 7|Proposition 7]]\\text{ (iv),} \\\\
                   w = T(v) = \\sum_{i=1}^n a_i T(v_i) \\in \\operatorname{span}(T(\\beta)). \\\\
-                  \\text{So } R(T) \\subseteq \\operatorname{span}(\\{T(v_1), \\dots, T(v_n)\\}) = \\operatorname{span}(T(\\beta)). \\\\[0.5em]
+                  \\text{So } R(T) \\subseteq \\operatorname{span}(\\{T(v_1), \\dots, T(v_n)\\}) \\\\
+                  \\phantom{\\text{So } R(T)} = \\operatorname{span}(T(\\beta)). \\\\[0.5em]
                   \\text{Hence, } R(T) = \\operatorname{span}(T(\\beta)). \\ \\ \\blacksquare`,
       },
     ],
@@ -360,24 +394,33 @@ export const theorems: Theorem[] = [
         content: `\\text{Define } T: P_2(\\mathbb{R}) \\to M_{2 \\times 2}(\\mathbb{R}) \\text{ by} \\\\
                   T(f(x)) = \\begin{pmatrix} f(1) - f(2) & 0 \\\\ 0 & f(0) \\end{pmatrix}. \\\\[0.5em]
                   \\text{Find a basis for the range of } T. \\\\
-                  \\text{Since } \\beta = \\{1, x, x^2\\} \\text{ is a basis for } P_2(\\mathbb{R})\\text{, by }[[theorem 9|Theorem 2.2]]\\text{ we have} \\\\
+                  \\text{Since } \\beta = \\{1, x, x^2\\} \\text{ is a basis for } P_2(\\mathbb{R})\\text{,} \\\\
+                  \\text{by }[[theorem 9|Theorem 2.2]]\\text{ we have} \\\\
                   \\begin{aligned}
-                    R(T) &= \\operatorname{span}(T(\\beta)) = \\operatorname{span}(\\{T(1), T(x), T(x^2)\\}) \\\\
+                    R(T) &= \\operatorname{span}(T(\\beta)) \\\\
+                    &= \\operatorname{span}(\\{T(1), T(x), T(x^2)\\}) \\\\
                     &= \\operatorname{span}\\left(\\left\\{ \\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}, \\begin{pmatrix} -1 & 0 \\\\ 0 & 0 \\end{pmatrix}, \\begin{pmatrix} -3 & 0 \\\\ 0 & 0 \\end{pmatrix} \\right\\}\\right) \\\\
                     &= \\operatorname{span}\\left(\\left\\{ \\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}, \\begin{pmatrix} -1 & 0 \\\\ 0 & 0 \\end{pmatrix} \\right\\}\\right)\\text{,}
                   \\end{aligned} \\\\
-                  \\text{since } T(x^2) = 3T(x)\\text{. These two matrices are linearly independent, so} \\\\
-                  \\left\\{ \\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}, \\begin{pmatrix} -1 & 0 \\\\ 0 & 0 \\end{pmatrix} \\right\\} \\text{ is a basis for } R(T)\\text{, and } \\dim R(T) = 2. \\\\[1em]
+                  \\text{since } T(x^2) = 3T(x)\\text{.} \\\\
+                  \\text{These two matrices are linearly independent, so} \\\\
+                  \\left\\{ \\begin{pmatrix} 0 & 0 \\\\ 0 & 1 \\end{pmatrix}, \\begin{pmatrix} -1 & 0 \\\\ 0 & 0 \\end{pmatrix} \\right\\} \\text{ is a basis for } R(T)\\text{,} \\\\
+                  \\text{and } \\dim R(T) = 2. \\\\[1em]
                   \\text{Now we want to find a basis for } N(T)\\text{. Note} \\\\
                   f(x) \\in N(T) \\text{ iff } \\begin{pmatrix} f(1) - f(2) & 0 \\\\ 0 & f(0) \\end{pmatrix} = \\begin{pmatrix} 0 & 0 \\\\ 0 & 0 \\end{pmatrix}. \\\\[0.5em]
                   \\text{Let } f(x) = a + bx + cx^2\\text{. Then} \\\\
                   \\begin{aligned}
-                    0 &= f(1) - f(2) = (a + b + c) - (a + 2b + 4c) = -b - 3c \\implies b = -3c, \\\\
+                    0 &= f(1) - f(2) \\\\
+                    &= (a + b + c) - (a + 2b + 4c) \\\\
+                    &= -b - 3c \\implies b = -3c, \\\\
                     0 &= f(0) = a.
                   \\end{aligned} \\\\
-                  \\text{Hence } f(x) = a + bx + cx^2 = -3cx + cx^2 = c(-3x + x^2)\\text{,} \\\\
-                  \\text{so } N(T) = \\operatorname{span}(\\{-3x + x^2\\})\\text{. Since } {-3x + x^2} \\neq 0\\text{, this set is linearly independent.} \\\\
-                  \\text{Therefore } \\{-3x + x^2\\} \\text{ is a basis for } N(T)\\text{, and } \\dim N(T) = 1.`,
+                  \\text{Hence} \\\\
+                  f(x) = a + bx + cx^2 = -3cx + cx^2 = c(-3x + x^2)\\text{,} \\\\
+                  \\text{so } N(T) = \\operatorname{span}(\\{-3x + x^2\\})\\text{.} \\\\
+                  \\text{Since } {-3x + x^2} \\neq 0\\text{, this set is linearly independent.} \\\\
+                  \\text{Therefore } \\{-3x + x^2\\} \\text{ is a basis for } N(T)\\text{,} \\\\
+                  \\text{and } \\dim N(T) = 1.`,
       },
     ],
   },

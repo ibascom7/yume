@@ -104,14 +104,17 @@ export const definitions: Definition[] = [
       },
       {
         title: "Linear combinations in P₃(ℝ)",
-        content: `\\text{Consider } S = \\{x^3 - 2x^2 - 5x - 3, \\ 3x^3 - 5x^2 - 4x - 9\\} \\subseteq P_3(\\mathbb{R}). \\\\
+        content: `\\text{Consider} \\\\
+                  S = \\{x^3 - 2x^2 - 5x - 3, \\ 3x^3 - 5x^2 - 4x - 9\\} \\subseteq P_3(\\mathbb{R}). \\\\
                   \\text{Show } 2x^3 - 2x^2 + 12x - 6 \\text{ is a linear combination of } S\\text{,} \\\\
                   \\text{but that } 3x^3 - 2x^2 + 7x + 8 \\text{ is not.} \\\\[1em]
                   \\textit{Proof.} \\\\
                   \\text{First, WTS } \\exists\\, a, b \\in \\mathbb{R} \\text{ s.t.} \\\\
                   \\begin{aligned}
-                    2x^3 - 2x^2 + 12x - 6 &= a(x^3 - 2x^2 - 5x - 3) + b(3x^3 - 5x^2 - 4x - 9) \\\\
-                    &= (a + 3b)x^3 + (-2a - 5b)x^2 + (-5a - 4b)x + (-3a - 9b).
+                    2x^3 - 2x^2 + 12x - 6 &= a(x^3 - 2x^2 - 5x - 3) \\\\
+                    &\\quad + b(3x^3 - 5x^2 - 4x - 9) \\\\
+                    &= (a + 3b)x^3 + (-2a - 5b)x^2 \\\\
+                    &\\quad + (-5a - 4b)x + (-3a - 9b).
                   \\end{aligned} \\\\
                   \\text{So we have the system of equations,} \\\\
                   \\begin{aligned}
@@ -132,11 +135,16 @@ export const definitions: Definition[] = [
                     0b &= 0,
                   \\end{aligned} \\\\
                   \\text{which implies } a = -4 \\text{ and } b = 2\\text{. Hence,} \\\\
-                  2x^3 - 2x^2 + 12x - 6 = -4(x^3 - 2x^2 - 5x - 3) + 2(3x^3 - 5x^2 - 4x - 9). \\\\[1em]
+                  \\begin{aligned}
+                    2x^3 - 2x^2 + 12x - 6 &= -4(x^3 - 2x^2 - 5x - 3) \\\\
+                    &\\quad + 2(3x^3 - 5x^2 - 4x - 9).
+                  \\end{aligned} \\\\[1em]
                   \\text{Now WTS } \\nexists\\, a, b \\in \\mathbb{R} \\text{ s.t.} \\\\
                   \\begin{aligned}
-                    3x^3 - 2x^2 + 7x + 8 &= a(x^3 - 2x^2 - 5x - 3) + b(3x^3 - 5x^2 - 4x - 9) \\\\
-                    &= (a + 3b)x^3 + (-2a - 5b)x^2 + (-5a - 4b)x + (-3a - 9b).
+                    3x^3 - 2x^2 + 7x + 8 &= a(x^3 - 2x^2 - 5x - 3) \\\\
+                    &\\quad + b(3x^3 - 5x^2 - 4x - 9) \\\\
+                    &= (a + 3b)x^3 + (-2a - 5b)x^2 \\\\
+                    &\\quad + (-5a - 4b)x + (-3a - 9b).
                   \\end{aligned} \\\\
                   \\text{So we have,} \\\\
                   \\left(\\begin{array}{cc|c} 1 & 3 & 3 \\\\ -2 & -5 & -2 \\\\ -5 & -4 & 7 \\\\ -3 & -9 & 8 \\end{array}\\right)
@@ -150,7 +158,8 @@ export const definitions: Definition[] = [
                     0b &= 17.
                   \\end{aligned} \\\\
                   \\text{Since } 0b = 0 \\neq 17\\text{, the system has no solution,} \\\\
-                  \\text{so } 3x^3 - 2x^2 + 7x + 8 \\text{ is not a linear combination of } S. \\ \\ \\blacksquare`,
+                  \\text{so } 3x^3 - 2x^2 + 7x + 8 \\\\
+                  \\text{is not a linear combination of } S. \\ \\ \\blacksquare`,
       },
     ],
   },
@@ -200,10 +209,13 @@ export const definitions: Definition[] = [
     chapter: 2,
     section: 1,
     term: "Null Space and Range",
-    definition: `\\text{Let } V \\text{ and } W \\text{ be vector spaces and } T: V \\to W \\text{ be linear.} \\\\[1em]
+    definition: `\\text{Let } V \\text{ and } W \\text{ be vector spaces} \\\\
+                 \\text{and } T: V \\to W \\text{ be linear.} \\\\[1em]
                  \\begin{array}{ll}
-                   \\text{(a)} & \\text{The } \\textbf{null space} \\text{ (}\\textbf{kernel}\\text{) of } T \\text{ is } N(T) = \\{x \\in V : T(x) = 0\\}. \\\\[0.6em]
-                   \\text{(b)} & \\text{The } \\textbf{range} \\text{ (}\\textbf{image}\\text{) of } T \\text{ is } R(T) = \\{T(x) : x \\in V\\}.
+                   \\text{(a)} & \\text{The } \\textbf{null space} \\text{ (}\\textbf{kernel}\\text{) of } T \\text{ is} \\\\
+                               & N(T) = \\{x \\in V : T(x) = 0\\}. \\\\[0.6em]
+                   \\text{(b)} & \\text{The } \\textbf{range} \\text{ (}\\textbf{image}\\text{) of } T \\text{ is} \\\\
+                               & R(T) = \\{T(x) : x \\in V\\}.
                  \\end{array}`,
   },
 ];
