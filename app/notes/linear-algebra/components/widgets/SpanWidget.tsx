@@ -217,7 +217,7 @@ function SpanPicture({ vs, basis, ortho }: { vs: Vec[]; basis: number[]; ortho: 
         if (!drag.current) return;
         const [dx, dy] = [e.clientX - drag.current.x, e.clientY - drag.current.y];
         drag.current = { x: e.clientX, y: e.clientY };
-        setView((v) => ({ yaw: v.yaw - dx * 0.01, pitch: Math.max(-1.5, Math.min(1.5, v.pitch + dy * 0.01)) }));
+        setView((v) => ({ yaw: v.yaw + dx * 0.01, pitch: Math.max(-1.5, Math.min(1.5, v.pitch - dy * 0.01)) }));
       }}
       onPointerUp={() => (drag.current = null)}
       onPointerCancel={() => (drag.current = null)}
