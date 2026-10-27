@@ -48,14 +48,17 @@ export default function TheoremCard({
       : proof
     : [];
   const hasProof = proofs.length > 0;
+  const hasExamples = !!examples && examples.length > 0;
+  // The card's dropdown holds the proof and the list of examples
+  const hasDropdown = hasProof || hasExamples;
 
   return (
     <div id={id} className="border border-gray-300 rounded-lg p-3 sm:p-4 mb-3 sm:mb-4 bg-white shadow-sm scroll-mt-4">
       <div className="flex items-start justify-between gap-2 sm:gap-4">
         <div className="flex-1 min-w-0">
           <div
-            className={`flex flex-wrap items-center gap-x-2 gap-y-1 mb-2 sm:mb-3 text-sm sm:text-base ${hasProof ? 'cursor-pointer hover:opacity-75 transition-opacity' : ''}`}
-            onClick={() => hasProof && setIsProofOpen(!isProofOpen)}
+            className={`flex flex-wrap items-center gap-x-2 gap-y-1 mb-2 sm:mb-3 text-sm sm:text-base ${hasDropdown ? 'cursor-pointer hover:opacity-75 transition-opacity' : ''}`}
+            onClick={() => hasDropdown && setIsProofOpen(!isProofOpen)}
           >
             <div>
               <span className="font-bold text-green-600">{kind} {number}. </span>
@@ -64,12 +67,17 @@ export default function TheoremCard({
             <LocationBadges chapter={chapter} section={section} />
           </div>
         </div>
-        {hasProof && (
+        {hasDropdown && (
           <button
             onClick={() => setIsProofOpen(!isProofOpen)}
             className="flex-shrink-0 flex items-center gap-1 text-gray-600 hover:text-black transition-all cursor-pointer"
-            aria-label={isProofOpen ? "Hide proof" : "Show proof"}
+            aria-label={isProofOpen ? "Hide proof and examples" : "Show proof and examples"}
           >
+            {hasExamples && (
+              <span className="text-xs sm:text-sm">
+                {examples.length} {examples.length === 1 ? "example" : "examples"}
+              </span>
+            )}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -91,31 +99,35 @@ export default function TheoremCard({
         <p>{description}</p>
       </div>
 
-      {hasProof && isProofOpen && (
-        <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-200">
-          {proofs.map((p, index) => (
-            <div key={index} className={index > 0 ? "mt-4 pt-4 border-t border-gray-100" : ""}>
-              <div className="font-semibold mb-2 text-gray-700 text-sm sm:text-base">
-                {p.title ? `${p.title}:` : proofs.length > 1 ? `Proof ${index + 1}:` : "Proof:"}
-              </div>
-              <div className="text-black text-sm sm:text-base ml-0 sm:ml-[3.5em]" style={{ lineHeight: "2" }}>
-                <TrustedBlockMath math={processLatexLinks(p.content)} />
-              </div>
+      {hasDropdown && isProofOpen && (
+        <>
+          {hasProof && (
+            <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-200">
+              {proofs.map((p, index) => (
+                <div key={index} className={index > 0 ? "mt-4 pt-4 border-t border-gray-100" : ""}>
+                  <div className="font-semibold mb-2 text-gray-700 text-sm sm:text-base">
+                    {p.title ? `${p.title}:` : proofs.length > 1 ? `Proof ${index + 1}:` : "Proof:"}
+                  </div>
+                  <div className="text-black text-sm sm:text-base ml-0 sm:ml-[3.5em]" style={{ lineHeight: "2" }}>
+                    <TrustedBlockMath math={processLatexLinks(p.content)} />
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          )}
+          <ExampleList
+            items={(examples ?? []).map((e) => ({
+              title: e.title,
+              body: (
+                <>
+                  <TrustedBlockMath math={processLatexLinks(e.content)} />
+                  <ExampleWidget name={e.widget} />
+                </>
+              ),
+            }))}
+          />
+        </>
       )}
-      <ExampleList
-        items={(examples ?? []).map((e) => ({
-          title: e.title,
-          body: (
-            <>
-              <TrustedBlockMath math={processLatexLinks(e.content)} />
-              <ExampleWidget name={e.widget} />
-            </>
-          ),
-        }))}
-      />
     </div>
   );
 }
