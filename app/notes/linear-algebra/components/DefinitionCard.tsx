@@ -6,10 +6,18 @@ import { processLatexLinks } from "./latexLinkHelper";
 import TrustedBlockMath from "@/app/components/TrustedBlockMath";
 import LocationBadges from "@/app/components/LocationBadges";
 import type { ChapterRef } from "@/app/components/notesFilter";
+import { widgets, type WidgetName } from "./widgets";
 
 export interface Example {
   title?: string;
   content: string;
+  widget?: WidgetName; // interactive piece shown under the content
+}
+
+export function ExampleWidget({ name }: { name?: WidgetName }) {
+  if (!name) return null;
+  const Widget = widgets[name];
+  return <Widget />;
 }
 
 export interface Figure {
@@ -95,6 +103,7 @@ export default function DefinitionCard({ number, term, definition, examples, fig
               </div>
               <div className="text-black text-sm sm:text-base ml-0 sm:ml-[3.5em]" style={{ lineHeight: "2" }}>
                 <TrustedBlockMath math={processLatexLinks(e.content)} />
+                <ExampleWidget name={e.widget} />
               </div>
             </div>
           ))}

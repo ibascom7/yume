@@ -241,7 +241,7 @@ export const theorems: Theorem[] = [
     proof: [
       {
         title: "Recall",
-        content: `\\text{1) } [[definition 5|Linear Transformation]] \\text{ [[LT a]], [[LT b]]} \\\\
+        content: `\\text{1) } [[definition 7|Linear Transformation]] \\text{ [[LT a]], [[LT b]]} \\\\
                   \\text{2) } [[theorem 1|Cancellation Law]] \\\\
                   \\text{3) } [[theorem 4|Properties of Scalar Multiplication]] \\\\
                   \\text{4) } [[definition 1|Vector Space]] \\text{ (VS 5)}`,
@@ -294,8 +294,8 @@ export const theorems: Theorem[] = [
       {
         title: "Recall",
         content: `\\text{1) } [[definition 2|Subspace]] \\\\
-                  \\text{2) } [[definition 5|Linear Transformation]] \\text{ [[LT a]], [[LT b]]} \\\\
-                  \\text{3) } [[definition 6|Null Space and Range]] \\\\
+                  \\text{2) } [[definition 7|Linear Transformation]] \\text{ [[LT a]], [[LT b]]} \\\\
+                  \\text{3) } [[definition 8|Null Space and Range]] \\\\
                   \\text{4) } [[theorem 4|Properties of Scalar Multiplication]] \\\\
                   \\text{5) } [[theorem 7|Properties of Linear Transformations]] \\
                   \\text{6) } [[theorem 5|Subspace Test]]`,
@@ -336,13 +336,13 @@ export const theorems: Theorem[] = [
     proof: [
       {
         title: "Recall",
-        content: `\\text{1) } [[definition 6|Null Space and Range]] \\\\
+        content: `\\text{1) } [[definition 8|Null Space and Range]] \\\\
                   \\text{2) } [[theorem 7|Properties of Linear Transformations]] \\\\
                   \\text{3) } [[theorem 8|Null Space and Range are Subspaces]]`,
       },
       {
         title: "Proof",
-        content: `\\text{By def of }[[definition 6|range]]\\text{, } T(v_i) \\in R(T) \\ \\ \\forall i \\in \\{1, \\dots, n\\}. \\\\
+        content: `\\text{By def of }[[definition 8|range]]\\text{, } T(v_i) \\in R(T) \\ \\ \\forall i \\in \\{1, \\dots, n\\}. \\\\
                   \\text{Because } R(T) \\text{ is a subspace (}[[theorem 8|Theorem 2.1]]\\text{),} \\\\
                   \\operatorname{span}(T(\\beta)) = \\operatorname{span}(\\{T(v_1), \\dots, T(v_n)\\}) \\subseteq R(T) \\\\
                   \\text{by Theorem 1.5.} \\\\[0.5em]

@@ -87,6 +87,104 @@ export const definitions: Definition[] = [
   },
   {
     number: 5,
+    chapter: 1,
+    section: 4,
+    term: "Linear Combination",
+    definition: `\\text{Let } V \\text{ be a vector space and } S \\subseteq V \\text{ where } S \\neq \\varnothing. \\\\
+                 v \\in V \\text{ is a } \\textbf{linear combination} \\text{ of vectors of } S \\text{ if} \\\\
+                 \\exists\\, u_1, u_2, \\dots, u_n \\in S \\text{ and } a_1, \\dots, a_n \\in \\mathbb{F} \\text{ s.t.} \\\\[0.5em]
+                 v = a_1 u_1 + a_2 u_2 + \\dots + a_n u_n. \\\\[0.5em]
+                 \\text{In this case we say } v \\text{ is a linear combination of } u_1, \\dots, u_n \\\\
+                 \\text{and call } a_1, \\dots, a_n \\text{ the } \\textbf{coefficients} \\text{ of the linear combination.}`,
+    examples: [
+      {
+        title: "The zero vector",
+        content: `0 \\text{ is a linear combination of any nonempty subset of } V\\text{,} \\\\
+                  \\text{since } 0v = 0 \\text{ whenever } v \\in V \\text{ by }[[theorem 4|Theorem 1.2]]\\text{ (a).}`,
+      },
+      {
+        title: "Linear combinations in P₃(ℝ)",
+        content: `\\text{Consider } S = \\{x^3 - 2x^2 - 5x - 3, \\ 3x^3 - 5x^2 - 4x - 9\\} \\subseteq P_3(\\mathbb{R}). \\\\
+                  \\text{Show } 2x^3 - 2x^2 + 12x - 6 \\text{ is a linear combination of } S\\text{,} \\\\
+                  \\text{but that } 3x^3 - 2x^2 + 7x + 8 \\text{ is not.} \\\\[1em]
+                  \\textit{Proof.} \\\\
+                  \\text{First, WTS } \\exists\\, a, b \\in \\mathbb{R} \\text{ s.t.} \\\\
+                  \\begin{aligned}
+                    2x^3 - 2x^2 + 12x - 6 &= a(x^3 - 2x^2 - 5x - 3) + b(3x^3 - 5x^2 - 4x - 9) \\\\
+                    &= (a + 3b)x^3 + (-2a - 5b)x^2 + (-5a - 4b)x + (-3a - 9b).
+                  \\end{aligned} \\\\
+                  \\text{So we have the system of equations,} \\\\
+                  \\begin{aligned}
+                    a + 3b &= 2 \\\\
+                    -2a - 5b &= -2 \\\\
+                    -5a - 4b &= 12 \\\\
+                    -3a - 9b &= -6.
+                  \\end{aligned} \\\\
+                  \\text{In matrix form we have,} \\\\
+                  \\left(\\begin{array}{cc|c} 1 & 3 & 2 \\\\ -2 & -5 & -2 \\\\ -5 & -4 & 12 \\\\ -3 & -9 & -6 \\end{array}\\right)
+                  \\to
+                  \\left(\\begin{array}{cc|c} 1 & 3 & 2 \\\\ 0 & 1 & 2 \\\\ 0 & 11 & 22 \\\\ 0 & 0 & 0 \\end{array}\\right). \\\\
+                  \\text{So we have} \\\\
+                  \\begin{aligned}
+                    a + 3b &= 2 \\\\
+                    b &= 2 \\\\
+                    11b &= 22 \\\\
+                    0b &= 0,
+                  \\end{aligned} \\\\
+                  \\text{which implies } a = -4 \\text{ and } b = 2\\text{. Hence,} \\\\
+                  2x^3 - 2x^2 + 12x - 6 = -4(x^3 - 2x^2 - 5x - 3) + 2(3x^3 - 5x^2 - 4x - 9). \\\\[1em]
+                  \\text{Now WTS } \\nexists\\, a, b \\in \\mathbb{R} \\text{ s.t.} \\\\
+                  \\begin{aligned}
+                    3x^3 - 2x^2 + 7x + 8 &= a(x^3 - 2x^2 - 5x - 3) + b(3x^3 - 5x^2 - 4x - 9) \\\\
+                    &= (a + 3b)x^3 + (-2a - 5b)x^2 + (-5a - 4b)x + (-3a - 9b).
+                  \\end{aligned} \\\\
+                  \\text{So we have,} \\\\
+                  \\left(\\begin{array}{cc|c} 1 & 3 & 3 \\\\ -2 & -5 & -2 \\\\ -5 & -4 & 7 \\\\ -3 & -9 & 8 \\end{array}\\right)
+                  \\to
+                  \\left(\\begin{array}{cc|c} 1 & 3 & 3 \\\\ 0 & 1 & 4 \\\\ 0 & 11 & 22 \\\\ 0 & 0 & 17 \\end{array}\\right)\\text{,} \\\\
+                  \\text{which implies} \\\\
+                  \\begin{aligned}
+                    a + 3b &= 3 \\\\
+                    b &= 4 \\\\
+                    11b &= 22 \\\\
+                    0b &= 17.
+                  \\end{aligned} \\\\
+                  \\text{Since } 0b = 0 \\neq 17\\text{, the system has no solution,} \\\\
+                  \\text{so } 3x^3 - 2x^2 + 7x + 8 \\text{ is not a linear combination of } S. \\ \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 6,
+    chapter: 1,
+    section: 4,
+    term: "Span",
+    definition: `\\text{Let } S \\subseteq V \\text{ with } S \\neq \\varnothing. \\\\
+                 \\text{The } \\textbf{span} \\text{ of } S\\text{, denoted } \\operatorname{span}(S)\\text{,} \\\\
+                 \\text{is the set of all }[[definition 5|linear combinations]] \\\\
+                 \\text{of the vectors in } S. \\\\[0.5em]
+                 \\text{By convention, we define } \\operatorname{span}(\\varnothing) = \\{0\\}.`,
+    examples: [
+      {
+        title: "The xy-plane in ℝ³",
+        content: `\\text{In } \\mathbb{R}^3\\text{,} \\\\
+                  \\begin{aligned}
+                    \\operatorname{span}\\left\\{ \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix} \\right\\}
+                    &= \\left\\{ a\\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix} + b\\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix} : a, b \\in \\mathbb{R} \\right\\} \\\\
+                    &= \\left\\{ \\begin{pmatrix} a \\\\ b \\\\ 0 \\end{pmatrix} : a, b \\in \\mathbb{R} \\right\\}.
+                  \\end{aligned} \\\\
+                  \\text{So } \\operatorname{span}\\left\\{ \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix} \\right\\} \\text{ is the } xy\\text{-plane.}`,
+      },
+      {
+        title: "Explore spans in ℝ³",
+        content: `\\text{Build a set } S \\subseteq \\mathbb{R}^3 \\text{ below to see } \\operatorname{span}(S)\\text{.} \\\\
+                  \\text{Drag the picture to rotate it.}`,
+        widget: "span-r3",
+      },
+    ],
+  },
+  {
+    number: 7,
     chapter: 2,
     section: 1,
     term: "Linear Transformation",
@@ -98,7 +196,7 @@ export const definitions: Definition[] = [
                  \\end{array}`,
   },
   {
-    number: 6,
+    number: 8,
     chapter: 2,
     section: 1,
     term: "Null Space and Range",
