@@ -20,6 +20,27 @@ const MAPS: { id: MapId; label: string; tex: string; f: (p: P2) => P2 }[] = [
 const s = makeScale(4);
 const pt = (p: P2) => (p.every(Number.isFinite) ? `(${fmt(p[0])}, ${fmt(p[1])})` : "\\text{undefined}");
 
+/** Names the arrows, so their labels don't pile up when arrows overlap */
+function Legend({ items }: { items: { swatch: "thick" | "dashed" | "thin"; tex: string }[] }) {
+  const style = {
+    thick: { stroke: ACCENT, strokeWidth: 5 },
+    dashed: { stroke: BLUE, strokeWidth: 2.5, strokeDasharray: "5 4" },
+    thin: { stroke: GREY, strokeWidth: 1.5 },
+  };
+  return (
+    <div className="flex flex-wrap gap-x-4 gap-y-1">
+      {items.map((item) => (
+        <span key={item.tex} className="flex items-center gap-1.5">
+          <svg width={28} height={10} aria-hidden>
+            <line x1={2} y1={5} x2={26} y2={5} {...style[item.swatch]} />
+          </svg>
+          <M>{item.tex}</M>
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export default function LinearityWidget() {
   const [mapId, setMapId] = useState<MapId>("fold");
   const [test, setTest] = useState<"add" | "scale">("add");
@@ -77,25 +98,40 @@ export default function LinearityWidget() {
           <Axes s={s} />
           {test === "add" ? (
             <>
-              <Arrow s={s} to={mapThenSum} color={ACCENT} width={5} label="T(u)+T(v)" />
-              <Arrow s={s} to={sumThenMap} color={BLUE} dashed label="T(u+v)" />
-              <Arrow s={s} to={T.f(u)} color={GREY} width={1.5} label="T(u)" />
-              <Arrow s={s} to={T.f(v)} color={GREY} width={1.5} label="T(v)" />
+              <Arrow s={s} to={mapThenSum} color={ACCENT} width={5} />
+              <Arrow s={s} to={sumThenMap} color={BLUE} dashed />
+              <Arrow s={s} to={T.f(u)} color={GREY} width={1.5} />
+              <Arrow s={s} to={T.f(v)} color={GREY} width={1.5} />
               <DragPoint s={s} p={u} onChange={setU} label="u" />
               <DragPoint s={s} p={v} onChange={setV} label="v" />
             </>
           ) : (
             <>
-              <Arrow s={s} to={mapThenScale} color={ACCENT} width={5} label="cT(v)" />
-              <Arrow s={s} to={scaleThenMap} color={BLUE} dashed label="T(cv)" />
-              <Arrow s={s} to={T.f(v)} color={GREY} width={1.5} label="T(v)" />
+              <Arrow s={s} to={mapThenScale} color={ACCENT} width={5} />
+              <Arrow s={s} to={scaleThenMap} color={BLUE} dashed />
+              <Arrow s={s} to={T.f(v)} color={GREY} width={1.5} />
               <DragPoint s={s} p={v} onChange={setV} label="v" />
             </>
           )}
         </Plot>
         <div className="space-y-2 text-sm">
+          <Legend
+            items={
+              test === "add"
+                ? [
+                    { swatch: "thick", tex: "T(u) + T(v)" },
+                    { swatch: "dashed", tex: "T(u + v)" },
+                    { swatch: "thin", tex: "T(u), \\ T(v)" },
+                  ]
+                : [
+                    { swatch: "thick", tex: "cT(v)" },
+                    { swatch: "dashed", tex: "T(cv)" },
+                    { swatch: "thin", tex: "T(v)" },
+                  ]
+            }
+          />
           <p className="text-gray-600">
-            Drag the dark points. The thick colored arrow and the dashed blue arrow land in the same place exactly when the condition holds.
+            Drag u and v. The thick and dashed arrows land in the same place exactly when the condition holds.
           </p>
           {test === "scale" && (
             <label className="flex items-center gap-2">

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import TrustedBlockMath from "@/app/components/TrustedBlockMath";
 import { Check, M } from "@/app/components/widgets/plot2d";
+import MatrixInput from "@/app/components/widgets/MatrixInput";
 
 // Exact rational arithmetic, so row reduction never picks up rounding errors
 interface Frac { n: number; d: number }
@@ -76,16 +77,16 @@ function analyze(A: Matrix, augmented: boolean): { ok: boolean; text: string } {
     : { ok: true, text: `In row echelon form and consistent, with ${coeffs - pivots} free variable(s): infinitely many solutions.` };
 }
 
-const DEFAULT = "1 3 2\n-2 -5 -2\n-5 -4 12\n-3 -9 -6";
+// The first system from the Linear Combination example
+const DEFAULT = [["1", "3", "2"], ["-2", "-5", "-2"], ["-5", "-4", "12"], ["-3", "-9", "-6"]];
 
-function parseMatrix(text: string): Matrix | null {
-  const rows = text.trim().split("\n").map((line) => line.trim().split(/[\s,]+/).map(parseFrac));
-  if (rows.length === 0 || rows.some((r) => r.length !== rows[0].length || r.some((a) => a === null))) return null;
-  return rows as Matrix;
+function parseMatrix(entries: string[][]): Matrix | null {
+  const rows = entries.map((r) => r.map(parseFrac));
+  return rows.some((r) => r.some((a) => a === null)) ? null : (rows as Matrix);
 }
 
 export default function RowReduceWidget() {
-  const [source, setSource] = useState(DEFAULT);
+  const [entries, setEntries] = useState(DEFAULT);
   const [augmented, setAugmented] = useState(true);
   const [history, setHistory] = useState<{ A: Matrix; op?: Op }[]>(() => [{ A: parseMatrix(DEFAULT)! }]);
   const [kind, setKind] = useState<Op["kind"]>("add");
@@ -107,10 +108,12 @@ export default function RowReduceWidget() {
   const result = op ? apply(A, op) : null;
   const status = analyze(A, augmented);
 
-  const load = () => {
-    const parsed = parseMatrix(source);
-    if (!parsed) return;
-    setHistory([{ A: parsed }]);
+  // Editing the starting matrix starts the reduction over
+  const edit = (next: string[][]) => {
+    setEntries(next);
+    const parsed = parseMatrix(next);
+    if (parsed) setHistory([{ A: parsed }]);
+    setGuess([]);
     setFeedback(null);
   };
   const commit = () => {
@@ -134,21 +137,27 @@ export default function RowReduceWidget() {
     <div className="mt-2 space-y-3 text-sm" style={{ lineHeight: "normal" }}>
       <details className="rounded-lg border border-gray-200 p-2">
         <summary className="cursor-pointer text-gray-700">Enter your own matrix</summary>
-        <p className="text-gray-600 mt-2">One row per line, entries separated by spaces. Fractions like 1/2 are fine.</p>
-        <textarea value={source} onChange={(e) => setSource(e.target.value)} rows={5} className="mt-2 w-full max-w-xs font-mono border border-gray-300 rounded p-2" />
-        <div className="flex items-center gap-4 mt-1">
+        <div className="mt-2 space-y-2">
+          <p className="text-gray-600">Fractions like 1/2 are fine. Changing the matrix starts the reduction over.</p>
+          <MatrixInput entries={entries} onChange={edit} isValid={(t) => parseFrac(t) !== null} augmented={augmented} />
           <label className="flex items-center gap-1">
-            <input type="checkbox" checked={augmented} onChange={(e) => setAugmented(e.target.checked)} className="accent-[var(--accent)]" />
+            <input
+              type="checkbox"
+              checked={augmented}
+              onChange={(e) => {
+                // A lone column can't be split into coefficients and a right-hand side
+                if (e.target.checked && entries[0].length < 2) edit(entries.map((r) => [...r, "0"]));
+                setAugmented(e.target.checked);
+              }}
+              className="accent-[var(--accent)]"
+            />
             Last column is augmented
           </label>
-          <button onClick={load} disabled={!parseMatrix(source)} className="text-[var(--accent)] hover:text-[var(--accent-dark)] disabled:text-gray-400 cursor-pointer">
-            Load
-          </button>
         </div>
       </details>
 
       <div className="overflow-x-auto">
-        <TrustedBlockMath math={history.map((h, k) => (k === 0 ? "" : `\\xrightarrow{${opTex(h.op!)}} \\\\ `) + matrixTex(h.A, augmented)).join(" ")} />
+        <TrustedBlockMath math={history.map((h, k) => (k === 0 ? "" : `\\xrightarrow{${opTex(h.op!)}} \\\\[0.8em] `) + matrixTex(h.A, augmented)).join(" ")} />
       </div>
       <Check ok={status.ok}>{status.text}</Check>
 
