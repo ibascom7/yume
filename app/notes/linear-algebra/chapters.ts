@@ -27,4 +27,15 @@ export const chapters: Chapter[] = [
       { number: 6, title: "Dual Spaces" },
     ],
   },
+  {
+    number: 4,
+    title: "Determinants",
+    sections: [
+      { number: 1, title: "Determinants of Order 2" },
+      { number: 2, title: "Determinants of Order n" },
+      { number: 3, title: "Properties of Determinants" },
+      { number: 4, title: "Summary—Important Facts about Determinants" },
+      { number: 5, title: "A Characterization of the Determinant" },
+    ],
+  },
 ];

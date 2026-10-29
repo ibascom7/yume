@@ -242,8 +242,109 @@ export const theorems: Theorem[] = [
     ],
   },
   {
-    kind: "Proposition",
+    kind: "Theorem",
     number: 7,
+    chapter: 1,
+    section: 4,
+    title: "The Span is the Smallest Subspace Containing S (Thm 1.5)",
+    statement: `\\text{Let } S \\subseteq V\\text{. Then } \\operatorname{span}(S) \\text{ is a subspace of } V \\\\
+                \\text{that contains } S\\text{.} \\\\[0.5em]
+                \\text{Moreover, any subspace of } V \\text{ that contains } S \\\\
+                \\text{must also contain } \\operatorname{span}(S)\\text{.}`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 1|Vector Space]] \\text{ (VS 5)} \\\\
+                  \\text{2) } [[definition 2|Subspace]] \\\\
+                  \\text{3) } [[definition 5|Linear Combination]] \\\\
+                  \\text{4) } [[definition 6|Span]] \\\\
+                  \\text{5) } [[theorem 4|Properties of Scalar Multiplication]] \\\\
+                  \\text{6) } [[theorem 5|Subspace Test]]`,
+      },
+      {
+        title: "Proof",
+        content: `\\text{If } S = \\varnothing\\text{, then } \\operatorname{span}(S) = \\{0\\} \\text{ by def, which is a} \\\\
+                  \\text{subspace of } V \\text{ that contains } S \\text{ and is contained} \\\\
+                  \\text{in any subspace of } V \\text{ (each contains } 0 \\text{ by }[[theorem 5|Theorem 1.3]]\\text{).} \\\\[0.5em]
+                  \\text{Now suppose } S \\neq \\varnothing \\text{ and let } z \\in S. \\\\
+                  \\text{WTS } \\operatorname{span}(S) \\text{ is a subspace of } V. \\\\
+                  \\text{Let } x, y \\in \\operatorname{span}(S)\\text{. Then } \\exists\\, u_1, \\dots, u_m, v_1, \\dots, v_n \\in S \\\\
+                  \\text{and } a_1, \\dots, a_m, b_1, \\dots, b_n \\in \\mathbb{F} \\text{ s.t.} \\\\
+                  \\begin{aligned}
+                    x &= a_1 u_1 + \\dots + a_m u_m, \\\\
+                    y &= b_1 v_1 + \\dots + b_n v_n.
+                  \\end{aligned} \\\\
+                  \\text{Then} \\\\
+                  x + y = a_1 u_1 + \\dots + a_m u_m + b_1 v_1 + \\dots + b_n v_n\\text{,} \\\\
+                  \\text{so } x + y \\in \\operatorname{span}(S). \\\\
+                  \\text{Let } c \\in \\mathbb{F}\\text{. Then} \\\\
+                  cx = (ca_1)u_1 + \\dots + (ca_m)u_m\\text{,} \\\\
+                  \\text{so } cx \\in \\operatorname{span}(S). \\\\
+                  \\text{Finally, } 0z = 0 \\text{ by }[[theorem 4|Theorem 1.2]]\\text{ (a), so } 0 \\in \\operatorname{span}(S). \\\\
+                  \\text{Thus } \\operatorname{span}(S) \\text{ is a subspace of } V \\text{ by }[[theorem 5|Theorem 1.3]]\\text{.} \\\\[0.5em]
+                  \\text{Furthermore, if } v \\in S\\text{, then } v = 1 \\cdot v \\in \\operatorname{span}(S) \\\\
+                  \\text{by (VS 5), so } S \\subseteq \\operatorname{span}(S). \\\\[0.5em]
+                  \\text{Now WTS any subspace } W \\text{ of } V \\text{ where } S \\subseteq W \\\\
+                  \\text{also satisfies } \\operatorname{span}(S) \\subseteq W. \\\\
+                  \\text{Let } w \\in \\operatorname{span}(S)\\text{. Then } \\exists\\, w_1, \\dots, w_k \\in S \\\\
+                  \\text{and } c_1, \\dots, c_k \\in \\mathbb{F} \\text{ s.t. } w = c_1 w_1 + \\dots + c_k w_k. \\\\
+                  \\text{Since } S \\subseteq W\\text{, } w_1, \\dots, w_k \\in W. \\\\
+                  \\text{Since } W \\text{ is closed under addition and scalar} \\\\
+                  \\text{multiplication, } c_1 w_1 + \\dots + c_k w_k = w \\in W. \\\\
+                  \\text{Since our choice of } w \\in \\operatorname{span}(S) \\text{ was arbitrary,} \\\\
+                  \\text{it follows that } \\operatorname{span}(S) \\subseteq W. \\ \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Proposition",
+    number: 8,
+    chapter: 1,
+    section: 5,
+    title: "Basic Facts about Linear Independence (Section 1.5)",
+    statement: `\\text{Let } V \\text{ be a vector space. Then the following hold:} \\\\[0.5em]
+                \\text{(i) } \\varnothing \\text{ is linearly independent.} \\\\[0.5em]
+                \\text{(ii) If } S = \\{v\\} \\subseteq V \\text{ with } v \\neq 0\\text{,} \\\\
+                \\qquad \\text{then } S \\text{ is linearly independent.} \\\\[0.5em]
+                \\text{(iii) } S \\subseteq V \\text{ is linearly independent iff} \\\\
+                \\qquad \\text{for all distinct } u_1, \\dots, u_n \\in S \\text{ and } a_1, \\dots, a_n \\in \\mathbb{F}\\text{,} \\\\
+                \\qquad a_1 u_1 + \\dots + a_n u_n = 0 \\implies a_1 = \\dots = a_n = 0.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 1|Vector Space]] \\text{ (VS 5), (VS 6)} \\\\
+                  \\text{2) } [[definition 8|Linear Dependence]] \\\\
+                  \\text{3) } [[definition 9|Linear Independence]] \\\\
+                  \\text{4) } [[theorem 4|Properties of Scalar Multiplication]]`,
+      },
+      {
+        title: "Proof of (i)",
+        content: `\\nexists\\, u \\in \\varnothing\\text{, so } \\varnothing \\text{ is not linearly dependent.} \\\\
+                  \\text{Therefore } \\varnothing \\text{ is linearly independent.} \\ \\ \\blacksquare`,
+      },
+      {
+        title: "Proof of (ii)",
+        content: `\\text{BWOC suppose } S = \\{v\\} \\subseteq V \\text{ with } v \\neq 0 \\\\
+                  \\text{is linearly dependent.} \\\\
+                  \\text{Then } \\exists\\, a \\in \\mathbb{F} \\text{ nonzero s.t. } av = 0\\text{. But} \\\\
+                  v = 1v = (a^{-1}a)v = a^{-1}(av) = a^{-1}0 = 0 \\\\
+                  \\text{by (VS 5), (VS 6), and }[[theorem 4|Theorem 1.2]]\\text{ (c),} \\\\
+                  \\text{which contradicts } v \\neq 0. \\ \\ \\blacksquare`,
+      },
+      {
+        title: "Proof of (iii)",
+        content: `S \\subseteq V \\text{ is linearly independent} \\\\
+                  \\text{iff } S \\text{ is not linearly dependent} \\\\
+                  \\text{iff } \\nexists \\text{ distinct } u_1, \\dots, u_n \\in S \\text{ and } a_1, \\dots, a_n \\in \\mathbb{F} \\\\
+                  \\qquad \\text{with some } a_i \\neq 0 \\text{ s.t. } a_1 u_1 + \\dots + a_n u_n = 0 \\\\
+                  \\text{iff for all distinct } u_1, \\dots, u_n \\in S \\text{ and } a_1, \\dots, a_n \\in \\mathbb{F}\\text{,} \\\\
+                  \\qquad a_1 u_1 + \\dots + a_n u_n = 0 \\implies a_1 = \\dots = a_n = 0. \\ \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Proposition",
+    number: 9,
     chapter: 2,
     section: 1,
     title: "Properties of Linear Transformations (Section 2.1)",
@@ -259,7 +360,7 @@ export const theorems: Theorem[] = [
     proof: [
       {
         title: "Recall",
-        content: `\\text{1) } [[definition 7|Linear Transformation]] \\text{ [[LT a]], [[LT b]]} \\\\
+        content: `\\text{1) } [[definition 10|Linear Transformation]] \\text{ [[LT a]], [[LT b]]} \\\\
                   \\text{2) } [[theorem 1|Cancellation Law]] \\\\
                   \\text{3) } [[theorem 4|Properties of Scalar Multiplication]] \\\\
                   \\text{4) } [[definition 1|Vector Space]] \\text{ (VS 5)}`,
@@ -314,7 +415,7 @@ export const theorems: Theorem[] = [
   },
   {
     kind: "Theorem",
-    number: 8,
+    number: 10,
     chapter: 2,
     section: 1,
     title: "Null Space and Range are Subspaces (Thm 2.1)",
@@ -326,16 +427,16 @@ export const theorems: Theorem[] = [
       {
         title: "Recall",
         content: `\\text{1) } [[definition 2|Subspace]] \\\\
-                  \\text{2) } [[definition 7|Linear Transformation]] \\text{ [[LT a]], [[LT b]]} \\\\
-                  \\text{3) } [[definition 8|Null Space and Range]] \\\\
+                  \\text{2) } [[definition 10|Linear Transformation]] \\text{ [[LT a]], [[LT b]]} \\\\
+                  \\text{3) } [[definition 11|Null Space and Range]] \\\\
                   \\text{4) } [[theorem 4|Properties of Scalar Multiplication]] \\\\
-                  \\text{5) } [[theorem 7|Properties of Linear Transformations]] \\\\
+                  \\text{5) } [[theorem 9|Properties of Linear Transformations]] \\\\
                   \\text{6) } [[theorem 5|Subspace Test]]`,
       },
       {
         title: "Proof",
         content: `\\text{WTS } N(T) \\text{ is a subspace of } V. \\\\
-                  \\text{Since } T(0_V) = 0_W \\text{ by }[[theorem 7|Proposition 7]]\\text{ (i),} \\\\
+                  \\text{Since } T(0_V) = 0_W \\text{ by }[[theorem 9|Proposition 9]]\\text{ (i),} \\\\
                   \\text{we have } 0_V \\in N(T). \\\\
                   \\text{Let } x, y \\in N(T) \\text{ and } c \\in \\mathbb{F}\\text{. Then} \\\\
                   \\begin{aligned}
@@ -362,7 +463,7 @@ export const theorems: Theorem[] = [
   },
   {
     kind: "Theorem",
-    number: 9,
+    number: 11,
     chapter: 2,
     section: 1,
     title: "The Range is Spanned by the Image of a Basis (Thm 2.2)",
@@ -373,20 +474,21 @@ export const theorems: Theorem[] = [
     proof: [
       {
         title: "Recall",
-        content: `\\text{1) } [[definition 8|Null Space and Range]] \\\\
-                  \\text{2) } [[theorem 7|Properties of Linear Transformations]] \\\\
-                  \\text{3) } [[theorem 8|Null Space and Range are Subspaces]]`,
+        content: `\\text{1) } [[definition 11|Null Space and Range]] \\\\
+                  \\text{2) } [[theorem 9|Properties of Linear Transformations]] \\\\
+                  \\text{3) } [[theorem 10|Null Space and Range are Subspaces]] \\\\
+                  \\text{4) } [[theorem 7|The Span is the Smallest Subspace Containing S]]`,
       },
       {
         title: "Proof",
-        content: `\\text{By def of }[[definition 8|range]]\\text{, } T(v_i) \\in R(T) \\ \\ \\forall i \\in \\{1, \\dots, n\\}. \\\\
-                  \\text{Because } R(T) \\text{ is a subspace (}[[theorem 8|Theorem 2.1]]\\text{),} \\\\
+        content: `\\text{By def of }[[definition 11|range]]\\text{, } T(v_i) \\in R(T) \\ \\ \\forall i \\in \\{1, \\dots, n\\}. \\\\
+                  \\text{Because } R(T) \\text{ is a subspace (}[[theorem 10|Theorem 2.1]]\\text{),} \\\\
                   \\operatorname{span}(T(\\beta)) = \\operatorname{span}(\\{T(v_1), \\dots, T(v_n)\\}) \\subseteq R(T) \\\\
-                  \\text{by Theorem 1.5.} \\\\[0.5em]
+                  \\text{by }[[theorem 7|Theorem 1.5]]\\text{.} \\\\[0.5em]
                   \\text{Now suppose } w \\in R(T)\\text{. Then } w = T(v) \\text{ for some } v \\in V. \\\\
                   \\text{Because } \\beta \\text{ is a basis for } V\\text{, we have} \\\\
                   v = \\sum_{i=1}^n a_i v_i \\text{ for some } a_1, \\dots, a_n \\in \\mathbb{F}. \\\\
-                  \\text{Since } T \\text{ is linear, by }[[theorem 7|Proposition 7]]\\text{ (iv),} \\\\
+                  \\text{Since } T \\text{ is linear, by }[[theorem 9|Proposition 9]]\\text{ (iv),} \\\\
                   w = T(v) = \\sum_{i=1}^n a_i T(v_i) \\in \\operatorname{span}(T(\\beta)). \\\\
                   \\text{So } R(T) \\subseteq \\operatorname{span}(\\{T(v_1), \\dots, T(v_n)\\}) \\\\
                   \\phantom{\\text{So } R(T)} = \\operatorname{span}(T(\\beta)). \\\\[0.5em]
@@ -400,7 +502,7 @@ export const theorems: Theorem[] = [
                   T(f(x)) = \\begin{pmatrix} f(1) - f(2) & 0 \\\\ 0 & f(0) \\end{pmatrix}. \\\\[0.5em]
                   \\text{Find a basis for the range of } T. \\\\
                   \\text{Since } \\beta = \\{1, x, x^2\\} \\text{ is a basis for } P_2(\\mathbb{R})\\text{,} \\\\
-                  \\text{by }[[theorem 9|Theorem 2.2]]\\text{ we have} \\\\
+                  \\text{by }[[theorem 11|Theorem 2.2]]\\text{ we have} \\\\
                   \\begin{aligned}
                     R(T) &= \\operatorname{span}(T(\\beta)) \\\\
                     &= \\operatorname{span}(\\{T(1), T(x), T(x^2)\\}) \\\\
@@ -432,6 +534,81 @@ export const theorems: Theorem[] = [
         content: `\\text{Enter a matrix } A \\text{ for } T(x) = Ax\\text{. The range is the span of} \\\\
                   \\text{the images of the standard basis, as the theorem says.}`,
         widget: "linear-map",
+      },
+    ],
+  },
+  {
+    kind: "Theorem",
+    number: 12,
+    chapter: 4,
+    section: 1,
+    title: "The Determinant is Linear in Each Row (Thm 4.1)",
+    statement: `\\det: M_{2 \\times 2}(\\mathbb{F}) \\to \\mathbb{F} \\text{ is a linear function of each row} \\\\
+                \\text{of a } 2 \\times 2 \\text{ matrix when the other row is held fixed.} \\\\
+                \\text{That is, if } u, v, w \\in \\mathbb{F}^2 \\text{ and } k \\in \\mathbb{F}\\text{, then} \\\\[0.5em]
+                \\det\\begin{pmatrix} u + kv \\\\ w \\end{pmatrix} = \\det\\begin{pmatrix} u \\\\ w \\end{pmatrix} + k\\det\\begin{pmatrix} v \\\\ w \\end{pmatrix} \\\\[0.5em]
+                \\text{and} \\\\[0.5em]
+                \\det\\begin{pmatrix} w \\\\ u + kv \\end{pmatrix} = \\det\\begin{pmatrix} w \\\\ u \\end{pmatrix} + k\\det\\begin{pmatrix} w \\\\ v \\end{pmatrix}.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 12|Determinant of a 2 × 2 Matrix]]`,
+      },
+      {
+        title: "Proof",
+        content: `\\text{Let } u = (a_1, a_2),\\ v = (b_1, b_2),\\ w = (c_1, c_2) \\in \\mathbb{F}^2 \\\\
+                  \\text{and } k \\in \\mathbb{F}\\text{. Then} \\\\
+                  \\begin{aligned}
+                    &\\det\\begin{pmatrix} u \\\\ w \\end{pmatrix} + k\\det\\begin{pmatrix} v \\\\ w \\end{pmatrix} \\\\
+                    &= \\det\\begin{pmatrix} a_1 & a_2 \\\\ c_1 & c_2 \\end{pmatrix} + k\\det\\begin{pmatrix} b_1 & b_2 \\\\ c_1 & c_2 \\end{pmatrix} \\\\
+                    &= (a_1c_2 - a_2c_1) + k(b_1c_2 - b_2c_1) \\\\
+                    &= (a_1 + kb_1)c_2 - (a_2 + kb_2)c_1 \\\\
+                    &= \\det\\begin{pmatrix} a_1 + kb_1 & a_2 + kb_2 \\\\ c_1 & c_2 \\end{pmatrix} \\\\
+                    &= \\det\\begin{pmatrix} u + kv \\\\ w \\end{pmatrix}.
+                  \\end{aligned} \\\\
+                  \\text{Similarly, we can check} \\\\
+                  \\det\\begin{pmatrix} w \\\\ u + kv \\end{pmatrix} = \\det\\begin{pmatrix} w \\\\ u \\end{pmatrix} + k\\det\\begin{pmatrix} w \\\\ v \\end{pmatrix}. \\\\
+                  \\text{This completes the proof.} \\ \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Theorem",
+    number: 13,
+    chapter: 4,
+    section: 1,
+    title: "Invertibility of 2 × 2 Matrices (Thm 4.2)",
+    statement: `\\text{Let } A \\in M_{2 \\times 2}(\\mathbb{F})\\text{.} \\\\
+                \\text{Then } \\det(A) \\neq 0 \\text{ iff } A \\text{ is invertible.} \\\\
+                \\text{Moreover, if } A \\text{ is invertible, then} \\\\[0.5em]
+                A^{-1} = \\frac{1}{\\det(A)}\\begin{pmatrix} A_{22} & -A_{12} \\\\ -A_{21} & A_{11} \\end{pmatrix}.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 12|Determinant of a 2 × 2 Matrix]]`,
+      },
+      {
+        title: "Proof",
+        content: `(\\Rightarrow) \\text{ Let } \\det(A) \\neq 0\\text{. Then we can define} \\\\[0.5em]
+                  M = \\frac{1}{\\det(A)}\\begin{pmatrix} A_{22} & -A_{12} \\\\ -A_{21} & A_{11} \\end{pmatrix}. \\\\[0.5em]
+                  \\text{Multiplying out, } AM = MA = I\\text{,} \\\\
+                  \\text{so } A \\text{ is invertible and } M = A^{-1}. \\\\[0.5em]
+                  (\\Leftarrow) \\text{ Conversely, suppose } A \\text{ is invertible.} \\\\
+                  \\text{So } \\operatorname{rank}(A) = 2. \\\\
+                  \\text{Hence the first column of } A \\text{ is nonzero,} \\\\
+                  \\text{so } A_{11} \\neq 0 \\text{ or } A_{21} \\neq 0. \\\\
+                  \\text{If } A_{11} \\neq 0\\text{, add } -A_{21}/A_{11} \\text{ times row 1 of } A \\\\
+                  \\text{to row 2 to obtain the matrix} \\\\[0.5em]
+                  \\begin{pmatrix} A_{11} & A_{12} \\\\ 0 & A_{22} - \\frac{A_{12}A_{21}}{A_{11}} \\end{pmatrix}. \\\\[0.5em]
+                  \\text{Since elementary row operations are rank preserving,} \\\\
+                  \\text{this matrix has rank 2, so it follows that} \\\\
+                  A_{22} - \\frac{A_{12}A_{21}}{A_{11}} \\neq 0. \\\\
+                  \\text{Multiplying by } A_{11} \\neq 0\\text{,} \\\\
+                  \\det(A) = A_{11}A_{22} - A_{12}A_{21} \\neq 0. \\\\[0.5em]
+                  \\text{OTOH if } A_{21} \\neq 0\\text{, we have } \\det(A) \\neq 0 \\text{ by adding} \\\\
+                  -A_{11}/A_{21} \\text{ times row 2 of } A \\text{ to row 1} \\\\
+                  \\text{and applying a similar argument.} \\\\
+                  \\text{Thus in either case, } \\det(A) \\neq 0. \\ \\ \\blacksquare`,
       },
     ],
   },

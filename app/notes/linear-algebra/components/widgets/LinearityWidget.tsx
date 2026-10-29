@@ -151,7 +151,7 @@ export default function LinearityWidget() {
           )}
           <Check ok={near2(zero, [0, 0])}>
             <M>{`T(0) = ${pt(zero)}`}</M>
-            {near2(zero, [0, 0]) ? ", which every linear map needs, but it isn't enough on its own." : ", so T can't be linear (Proposition 7 (i))."}
+            {near2(zero, [0, 0]) ? ", which every linear map needs, but it isn't enough on its own." : ", so T can't be linear (Proposition 9 (i))."}
           </Check>
           <p className="text-gray-600" style={{ color: DARK }}>
             One example where they agree doesn't prove linearity; one where they don't disproves it.
