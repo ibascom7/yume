@@ -336,6 +336,102 @@ export const definitions: Definition[] = [
                  \\forall \\varepsilon > 0,\\ \\exists r > 0 \\text{ such that } \\lVert f(\\mathbf{x}) - \\mathbf{v} \\rVert < \\varepsilon \\\\
                  \\text{whenever } 0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\text{ and } \\mathbf{x} \\in S. \\\\
                  \\text{We write } \\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = \\mathbf{v}.`,
+    examples: [
+      {
+        title: "The Heaviside function has no limit at 0",
+        content: `\\text{The Heaviside function } H(x) = \\begin{cases} 0, & x < 0 \\\\ 1, & x \\geq 0. \\end{cases} \\\\
+                  \\lim_{x \\to 0} H(x) \\text{ DNE.} \\\\[1em]
+                  \\text{\\textit{Sol.}} \\\\
+                  \\text{WTS the def of limit does not hold for $\\lim_{x \\to 0} H(x)$.} \\\\
+                  \\text{That is, we WTS} \\\\
+                  \\forall L \\in \\mathbb{R}\\ \\exists \\varepsilon > 0,\\ \\forall r > 0,\\ \\exists x \\in \\mathbb{R} \\text{ s.t.} \\\\
+                  0 < |x - 0| < r \\text{ and } |H(x) - L| \\geq \\varepsilon, \\\\
+                  \\text{or WTS BWOC $\\nexists L \\in \\mathbb{R}$ that satisfies the definition.} \\\\
+                  \\text{In this example we proceed BWOC.} \\\\
+                  \\text{Suppose $\\lim_{x \\to 0} H(x) = L$ for some $L \\in \\mathbb{R}$. Then} \\\\
+                  \\forall \\varepsilon > 0,\\ \\exists r > 0,\\ \\forall x,\\ 0 < |x - 0| < r \\implies |H(x) - L| < \\varepsilon. \\\\
+                  \\text{Visually we can see $H(x)$ goes from $0$ to $1$ across the origin.} \\\\
+                  \\text{So we want an $\\varepsilon \\in (0, 1)$ for our contradiction.} \\\\
+                  \\text{In particular, for $\\varepsilon = \\frac{1}{2}$, $\\exists r > 0$, $\\forall x$, $0 < |x - 0| < r$ we} \\\\
+                  \\text{have $|H(x) - L| < \\frac{1}{2}$.} \\\\
+                  \\text{Now we pick two points one on the lower leg $x_1$ and one on} \\\\
+                  \\text{the upper leg $x_2$. Specifically, take $x_1 = -\\frac{r}{2}$ and $x_2 = \\frac{r}{2}$.} \\\\
+                  \\text{So $|H(x_1) - L| < \\frac{1}{2}$ and $|H(x_2) - L| < \\frac{1}{2}$} \\\\
+                  \\begin{aligned}
+                  &\\iff |0 - L| < \\tfrac{1}{2} \\text{ and } |1 - L| < \\tfrac{1}{2} \\\\
+                  &\\iff -\\tfrac{1}{2} < L < \\tfrac{1}{2} \\text{ and } -\\tfrac{1}{2} < L - 1 < \\tfrac{1}{2} \\\\
+                  &\\iff -\\tfrac{1}{2} < L < \\tfrac{1}{2} \\text{ and } \\tfrac{1}{2} < L < \\tfrac{3}{2}.
+                  \\end{aligned} \\\\
+                  \\text{So $L \\in (-\\frac{1}{2}, \\frac{1}{2}) \\cap (\\frac{1}{2}, \\frac{3}{2}) = \\emptyset$, a contradiction!} \\ \\blacksquare \\\\[1em]
+                  \\text{\\textit{Another Solution.}} \\\\
+                  \\text{WTS $\\lim_{x \\to 0} H(x)$ DNE.} \\\\
+                  \\text{BWOC suppose $\\exists L \\in \\mathbb{R}$ s.t. $\\lim_{x \\to 0} H(x) = L$. So} \\\\
+                  \\forall \\varepsilon > 0,\\ \\exists r > 0,\\ \\forall x \\in \\mathbb{R},\\ 0 < |x - 0| < r \\implies |H(x) - L| < \\varepsilon. \\\\
+                  \\text{Since $H(x)$ jumps from $0$ to $1$ we want our $\\varepsilon$ ball to be} \\\\
+                  \\text{between $0$ and $1$.} \\\\
+                  \\text{In particular, for $\\varepsilon = \\frac{1}{2}$, $\\exists r > 0$, $\\forall x \\in \\mathbb{R}$,} \\\\
+                  0 < |x - 0| < r \\implies |H(x) - L| < \\tfrac{1}{2}. \\\\
+                  \\text{Now take $x_1 = -\\frac{r}{2}$ and $x_2 = \\frac{r}{2}$.} \\\\
+                  \\text{So $|H(x_1) - L| < \\frac{1}{2}$ and $|H(x_2) - L| < \\frac{1}{2}$} \\\\
+                  \\iff |0 - L| < \\tfrac{1}{2} \\text{ and } |1 - L| < \\tfrac{1}{2}. \\\\
+                  \\text{But by [[theorem 3|triangle inequality]],} \\\\
+                  \\begin{aligned}
+                  1 = |1 - 0| = |1 - L + L - 0| &\\leq |1 - L| + |L - 0| \\\\
+                  &= |H(x_2) - L| + |L - H(x_1)| \\\\
+                  &< \\tfrac{1}{2} + \\tfrac{1}{2} = 1.
+                  \\end{aligned} \\\\
+                  \\text{Thus, $\\lim_{x \\to 0} H(x)$ DNE.} \\ \\blacksquare`,
+      },
+      {
+        title: "x²/(x² + y²)",
+        content: `\\text{Consider $f : \\mathbb{R}^2 \\to \\mathbb{R}$ defined by} \\\\
+                  f(x, y) = \\begin{cases} \\dfrac{x^2}{x^2 + y^2} & \\text{if } (x, y) \\neq (0, 0) \\\\ 0 & \\text{if } (x, y) = (0, 0). \\end{cases} \\\\
+                  \\text{1. Show $f$ is cts on $\\mathbb{R}^2 \\setminus \\{\\mathbf{0}\\}$.} \\\\
+                  \\text{2. Show $\\lim_{\\mathbf{x} \\to \\mathbf{0}} f(\\mathbf{x})$ DNE.} \\\\[1em]
+                  \\text{\\textit{Proof of (1).}} \\\\
+                  \\text{Let $\\mathbf{a} = (p, q) \\in \\mathbb{R}^2 \\setminus \\{\\mathbf{0}\\}$. WTS $\\forall \\varepsilon > 0$, $\\exists r > 0$,} \\\\
+                  \\text{$\\forall \\mathbf{x} = (y, z) \\in \\mathbb{R}^2 \\setminus \\{\\mathbf{0}\\}$ with $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$, we have} \\\\
+                  \\text{$|f(\\mathbf{x}) - f(\\mathbf{a})| < \\varepsilon$.} \\\\[0.5em]
+                  \\text{[Scratch.} \\\\
+                  \\begin{aligned}
+                  |f(\\mathbf{x}) - f(\\mathbf{a})| &= \\left| \\frac{y^2}{y^2 + z^2} - \\frac{p^2}{p^2 + q^2} \\right| \\\\
+                  &= \\left| \\frac{y^2(p^2 + q^2) - p^2(y^2 + z^2)}{(y^2 + z^2)(p^2 + q^2)} \\right| \\\\
+                  &= \\frac{|y^2 q^2 - z^2 p^2|}{\\lVert \\mathbf{x} \\rVert^2 \\lVert \\mathbf{a} \\rVert^2}.
+                  \\end{aligned} \\\\
+                  \\text{Since $\\mathbf{a}$ fixed and $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$,} \\\\
+                  \\lVert \\mathbf{a} \\rVert \\leq \\lVert \\mathbf{x} - \\mathbf{a} \\rVert + \\lVert \\mathbf{x} \\rVert < r + \\lVert \\mathbf{x} \\rVert \\implies \\lVert \\mathbf{a} \\rVert - r < \\lVert \\mathbf{x} \\rVert. \\\\
+                  \\text{So for $r < \\frac{\\lVert \\mathbf{a} \\rVert}{2}$ we have} \\\\
+                  \\lVert \\mathbf{a} \\rVert - r > \\lVert \\mathbf{a} \\rVert - \\frac{\\lVert \\mathbf{a} \\rVert}{2} = \\frac{\\lVert \\mathbf{a} \\rVert}{2}, \\text{ so } \\frac{\\lVert \\mathbf{a} \\rVert}{2} < \\lVert \\mathbf{x} \\rVert. \\\\
+                  \\text{Also since $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$, $|y - p| < r$ and $|z - q| < r$, because} \\\\
+                  \\text{this is analogous to saying the distance between vectors} \\\\
+                  \\text{being bounded implies their corresponding components} \\\\
+                  \\text{have bounded distance.} \\\\
+                  \\text{Then $y^2 q^2 - z^2 p^2 = (y^2 - p^2) q^2 - (z^2 - q^2) p^2$, and} \\\\
+                  |y^2 - p^2| = |y - p| \\, |y + p| < r(r + 2\\lVert \\mathbf{a} \\rVert), \\\\
+                  \\text{using $|y + p| \\leq |y - p| + 2|p|$ and $|p| \\leq \\lVert \\mathbf{a} \\rVert$.} \\\\
+                  \\text{Same for $|z^2 - q^2|$. So for $r \\leq 1$,} \\\\
+                  |y^2 q^2 - z^2 p^2| < r(1 + 2\\lVert \\mathbf{a} \\rVert) \\lVert \\mathbf{a} \\rVert^2, \\text{ and} \\\\
+                  |f(\\mathbf{x}) - f(\\mathbf{a})| < \\frac{4(1 + 2\\lVert \\mathbf{a} \\rVert)}{\\lVert \\mathbf{a} \\rVert^2} r.] \\\\[0.5em]
+                  \\text{Choose } r = \\min\\left\\{ 1, \\frac{\\lVert \\mathbf{a} \\rVert}{2}, \\frac{\\varepsilon \\lVert \\mathbf{a} \\rVert^2}{4(1 + 2\\lVert \\mathbf{a} \\rVert)} \\right\\}. \\\\
+                  \\text{Then for $\\mathbf{x} \\neq \\mathbf{0}$ with $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$, by the scratch work} \\\\
+                  |f(\\mathbf{x}) - f(\\mathbf{a})| < \\frac{4(1 + 2\\lVert \\mathbf{a} \\rVert)}{\\lVert \\mathbf{a} \\rVert^2} r \\leq \\varepsilon. \\\\
+                  \\text{So $f$ is cts on $\\mathbb{R}^2 \\setminus \\{\\mathbf{0}\\}$.} \\ \\blacksquare \\\\[1em]
+                  \\text{\\textit{Proof of (2).}} \\\\
+                  \\text{Note $f(x, 0) = 1$ for $x \\neq 0$ and $f(0, y) = 0$ for $y \\neq 0$: the} \\\\
+                  \\text{function is $1$ along the $x$-axis and $0$ along the $y$-axis, the} \\\\
+                  \\text{same jump as the [[definition 22|Heaviside function]].} \\\\[0.5em]
+                  \\text{Suppose $\\lim_{\\mathbf{x} \\to \\mathbf{0}} f(\\mathbf{x}) = L$. With $\\varepsilon = \\frac{1}{2}$, there is $r > 0$} \\\\
+                  \\text{such that $0 < \\lVert \\mathbf{x} \\rVert < r \\implies |f(\\mathbf{x}) - L| < \\frac{1}{2}$.} \\\\
+                  \\text{Take $\\mathbf{x}_1 = (\\frac{r}{2}, 0)$ and $\\mathbf{x}_2 = (0, \\frac{r}{2})$. Both satisfy $0 < \\lVert \\mathbf{x} \\rVert < r$,} \\\\
+                  \\text{and $f(\\mathbf{x}_1) = 1$, $f(\\mathbf{x}_2) = 0$. Then} \\\\
+                  \\begin{aligned}
+                  1 = |1 - 0| &\\leq |1 - L| + |L - 0| \\\\
+                  &= |f(\\mathbf{x}_1) - L| + |L - f(\\mathbf{x}_2)| \\\\
+                  &< \\tfrac{1}{2} + \\tfrac{1}{2} = 1,
+                  \\end{aligned} \\\\
+                  \\text{a contradiction. So $\\lim_{\\mathbf{x} \\to \\mathbf{0}} f(\\mathbf{x})$ DNE.} \\ \\blacksquare`,
+      },
+    ],
   },
   {
     number: 23,
@@ -356,6 +452,58 @@ export const definitions: Definition[] = [
                  \\text{$f$ is continuous on $S$ if} \\\\
                  \\forall \\mathbf{a} \\in S,\\ \\forall \\varepsilon > 0,\\ \\exists r > 0,\\ \\forall \\mathbf{x} \\in S, \\\\
                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\implies \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert < \\varepsilon.`,
+    examples: [
+      {
+        title: "1/‖x‖ is continuous",
+        content: `\\text{Define $f : \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\} \\to \\mathbb{R}$ by $f(\\mathbf{x}) = \\frac{1}{\\lVert \\mathbf{x} \\rVert}$.} \\\\
+                  \\text{Show $f$ cts on its domain.} \\\\[1em]
+                  \\text{\\textit{Goal.}} \\\\
+                  \\text{WTS } \\forall \\mathbf{a} \\in \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\},\\ \\forall \\varepsilon > 0,\\ \\exists r > 0,\\ \\forall \\mathbf{x} \\in \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\}, \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\implies |f(\\mathbf{x}) - f(\\mathbf{a})| < \\varepsilon. \\\\
+                  \\text{Take $\\mathbf{a} \\in \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\}$ and $\\varepsilon > 0$ arbitrary. Goal is to choose} \\\\
+                  \\text{$r > 0$ s.t. $\\forall \\mathbf{x} \\in \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\}$,} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\implies |f(\\mathbf{x}) - f(\\mathbf{a})| < \\varepsilon. \\\\[1em]
+                  \\text{\\textit{Scratch.}} \\\\
+                  \\begin{aligned}
+                  |f(\\mathbf{x}) - f(\\mathbf{a})| &= \\left| \\frac{1}{\\lVert \\mathbf{x} \\rVert} - \\frac{1}{\\lVert \\mathbf{a} \\rVert} \\right| = \\frac{\\big| \\lVert \\mathbf{a} \\rVert - \\lVert \\mathbf{x} \\rVert \\big|}{\\lVert \\mathbf{x} \\rVert \\lVert \\mathbf{a} \\rVert} \\\\
+                  &\\leq \\frac{\\lVert \\mathbf{x} - \\mathbf{a} \\rVert}{\\lVert \\mathbf{x} \\rVert \\lVert \\mathbf{a} \\rVert} \\quad \\text{([[exercise 3|reverse triangle inequality]])}.
+                  \\end{aligned} \\\\
+                  \\text{Need a lower bound on $\\lVert \\mathbf{x} \\rVert$: $\\lVert \\mathbf{x} \\rVert \\geq \\lVert \\mathbf{a} \\rVert - \\lVert \\mathbf{x} - \\mathbf{a} \\rVert$, so if} \\\\
+                  \\text{$r \\leq \\frac{\\lVert \\mathbf{a} \\rVert}{2}$ then $\\lVert \\mathbf{x} \\rVert > \\frac{\\lVert \\mathbf{a} \\rVert}{2}$ and} \\\\
+                  |f(\\mathbf{x}) - f(\\mathbf{a})| < \\frac{2r}{\\lVert \\mathbf{a} \\rVert^2}, \\\\
+                  \\text{which is $\\leq \\varepsilon$ when $r \\leq \\frac{\\varepsilon \\lVert \\mathbf{a} \\rVert^2}{2}$.} \\\\[1em]
+                  \\text{\\textit{Proof.}} \\\\
+                  \\text{Choose } r = \\min\\left\\{ \\frac{\\lVert \\mathbf{a} \\rVert}{2}, \\frac{\\varepsilon \\lVert \\mathbf{a} \\rVert^2}{2} \\right\\} > 0. \\\\
+                  \\text{Let $\\mathbf{x} \\in \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\}$ with $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$. Then} \\\\
+                  \\text{$\\lVert \\mathbf{x} \\rVert \\geq \\lVert \\mathbf{a} \\rVert - \\lVert \\mathbf{x} - \\mathbf{a} \\rVert > \\frac{\\lVert \\mathbf{a} \\rVert}{2}$, so} \\\\
+                  |f(\\mathbf{x}) - f(\\mathbf{a})| \\leq \\frac{\\lVert \\mathbf{x} - \\mathbf{a} \\rVert}{\\lVert \\mathbf{x} \\rVert \\lVert \\mathbf{a} \\rVert} < \\frac{2r}{\\lVert \\mathbf{a} \\rVert^2} \\leq \\varepsilon. \\\\
+                  \\text{Hence $f$ is cts on $\\mathbb{R}^n \\setminus \\{\\mathbf{0}\\}$.} \\ \\blacksquare`,
+      },
+      {
+        title: "e^(−1/x) is continuous",
+        content: `\\text{Show that } f(x) = \\begin{cases} 0 & x \\leq 0 \\\\ e^{-1/x} & x > 0 \\end{cases} \\text{ is cts on $\\mathbb{R}$.} \\\\[1em]
+                  \\text{\\textit{Case 1: a < 0.}} \\\\
+                  \\text{Let $\\varepsilon > 0$.} \\\\
+                  \\text{[Scratch. $|f(x) - f(a)| = |0 - 0| = 0$ as long as $x < 0$, so we need} \\\\
+                  \\text{$r$ small enough that $|x - a| < r$ forces $x < 0$.]} \\\\
+                  \\text{Choose $r = |a|$. If $|x - a| < r$, then $x < a + |a| = 0$, so} \\\\
+                  |f(x) - f(a)| = |0 - 0| = 0 < \\varepsilon. \\\\[1em]
+                  \\text{\\textit{Case 2: a > 0.}} \\\\
+                  \\text{For $x > 0$, $f = g \\circ h$ with $h(x) = -\\frac{1}{x}$ and $g(t) = e^t$, which} \\\\
+                  \\text{are both cts ($h$ as in the [[definition 24|previous example]] with $n = 1$).} \\\\
+                  \\text{By composition, $f$ is cts at $a$ (and $(0, \\infty)$ contains a ball} \\\\
+                  \\text{around $a$, so the values for $x \\leq 0$ don't matter).} \\\\[1em]
+                  \\text{\\textit{Case 3: a = 0.}} \\\\
+                  \\text{Let $\\varepsilon > 0$. Since $0 \\leq f(x) < 1$, if $\\varepsilon \\geq 1$ any $r$ works, so} \\\\
+                  \\text{assume $0 < \\varepsilon < 1$.} \\\\
+                  \\text{[Scratch. For $x > 0$: } e^{-1/x} < \\varepsilon \\iff -\\frac{1}{x} < \\ln \\varepsilon \\iff x < -\\frac{1}{\\ln \\varepsilon}.] \\\\
+                  \\text{Choose $r = -\\frac{1}{\\ln \\varepsilon} > 0$ and let $|x| < r$.} \\\\
+                  \\text{If $x \\leq 0$, $|f(x) - f(0)| = 0 < \\varepsilon$.} \\\\
+                  \\text{If $x > 0$, then $-\\frac{1}{x} < \\ln \\varepsilon$, so} \\\\
+                  |f(x) - f(0)| = e^{-1/x} < e^{\\ln \\varepsilon} = \\varepsilon. \\\\[0.5em]
+                  \\text{Hence $f$ is cts on $\\mathbb{R}$.} \\ \\blacksquare`,
+      },
+    ],
   },
   {
     number: 25,
@@ -367,6 +515,57 @@ export const definitions: Definition[] = [
                  \\text{That is,} \\\\
                  \\exists \\varepsilon > 0,\\ \\forall r > 0,\\ \\exists \\mathbf{x} \\in S \\text{ such that} \\\\
                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\text{ and } \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert \\geq \\varepsilon.`,
+    examples: [
+      {
+        title: "Characteristic functions",
+        content: `\\text{For any $A \\subseteq \\mathbb{R}^n$, the characteristic function of $A$ is} \\\\
+                  \\chi_A : \\mathbb{R}^n \\to \\mathbb{R}, \\quad \\chi_A(\\mathbf{x}) = \\begin{cases} 1, & \\mathbf{x} \\in A \\\\ 0, & \\mathbf{x} \\notin A. \\end{cases} \\\\
+                  \\text{Show that $\\chi_A$ is cts on $\\operatorname{int}(A)$ and $\\operatorname{int}(A^c)$ but discts} \\\\
+                  \\text{on $\\partial A = \\overline{A} \\cap \\overline{A^c}$.} \\\\[1em]
+                  \\text{\\textit{Cts on $\\operatorname{int}(A)$.}} \\\\
+                  \\text{First, WTS $\\chi_A$ is cts on $\\operatorname{int}(A)$. That is, WTS} \\\\
+                  \\forall \\mathbf{a} \\in \\operatorname{int}(A),\\ \\forall \\varepsilon > 0,\\ \\exists r > 0,\\ \\forall \\mathbf{x} \\in \\mathbb{R}^n, \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\implies |\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| < \\varepsilon. \\\\
+                  \\text{Let $\\mathbf{a} \\in \\operatorname{int}(A)$ and $\\varepsilon > 0$. Since $\\operatorname{int}(A)$ is open, $\\exists r > 0$} \\\\
+                  \\text{s.t. $B_r(\\mathbf{a}) \\subseteq \\operatorname{int}(A)$.} \\\\
+                  \\text{So $\\forall \\mathbf{x} \\in \\mathbb{R}^n$ with $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$, we have $\\mathbf{x} \\in \\operatorname{int}(A) \\subseteq A$.} \\\\
+                  \\text{So $|\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| = |1 - 1| = 0 < \\varepsilon$.} \\\\
+                  \\text{Hence, $\\chi_A$ is cts on $\\operatorname{int}(A)$.} \\\\[1em]
+                  \\text{\\textit{Cts on $\\operatorname{int}(A^c)$.}} \\\\
+                  \\text{Now WTS $\\chi_A$ is cts on $\\operatorname{int}(A^c)$. That is, WTS} \\\\
+                  \\forall \\mathbf{a} \\in \\operatorname{int}(A^c),\\ \\forall \\varepsilon > 0,\\ \\exists r > 0,\\ \\forall \\mathbf{x} \\in \\mathbb{R}^n \\text{ with } \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r, \\\\
+                  \\text{we have } |\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| < \\varepsilon. \\\\
+                  \\text{Let $\\mathbf{a} \\in \\operatorname{int}(A^c)$ and $\\varepsilon > 0$. Since $\\operatorname{int}(A^c)$ is open, $\\exists r > 0$} \\\\
+                  \\text{s.t. $B_r(\\mathbf{a}) \\subseteq \\operatorname{int}(A^c)$.} \\\\
+                  \\text{So $\\forall \\mathbf{x} \\in \\mathbb{R}^n$ with $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$, we have $\\mathbf{x} \\in \\operatorname{int}(A^c) \\subseteq A^c$.} \\\\
+                  \\text{So $|\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| = |0 - 0| = 0 < \\varepsilon$.} \\\\
+                  \\text{Hence $\\chi_A$ is cts on $\\operatorname{int}(A^c)$.} \\\\[1em]
+                  \\text{\\textit{Discts on $\\partial A$.}} \\\\
+                  \\text{Now we proceed to show $\\chi_A$ is discts on $\\partial A = \\overline{A} \\cap \\overline{A^c}$.} \\\\
+                  \\text{WTS $\\forall \\mathbf{a} \\in \\partial A = \\overline{A} \\cap \\overline{A^c}$, $\\exists \\varepsilon > 0$, $\\forall r > 0$, $\\exists \\mathbf{x} \\in \\mathbb{R}^n$ s.t.} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\text{ and } |\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| \\geq \\varepsilon. \\\\
+                  \\text{Similarly to [[definition 22|past example]], our function maps to $0$ and $1$, so} \\\\
+                  \\text{we will use an $\\varepsilon$ smaller than $1$ to show the jump.} \\\\
+                  \\text{Let $\\mathbf{a} \\in \\partial A$ and let $\\varepsilon = \\frac{1}{2}$. Let $r > 0$ be arbitrary.} \\\\[0.5em]
+                  \\text{We claim $B_r(\\mathbf{a})$ has points in $A$ and points in $A^c$.} \\\\
+                  \\text{Since $\\mathbf{a} \\in \\overline{A}$, $\\exists (\\mathbf{x}_k) \\subseteq A$, $\\mathbf{x}_k \\to \\mathbf{a}$. So $\\exists N \\in \\mathbb{N}$, $\\forall k \\geq N$,} \\\\
+                  \\text{$\\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert < r$. That is, $\\exists N \\in \\mathbb{N}$, $\\forall k \\geq N$, $\\mathbf{x}_k \\in B_r(\\mathbf{a})$.} \\\\
+                  \\text{Similarly, $\\mathbf{a} \\in \\overline{A^c}$, so $\\exists (\\mathbf{y}_k) \\subseteq A^c$, $\\mathbf{y}_k \\to \\mathbf{a}$. So $\\exists N \\in \\mathbb{N}$,} \\\\
+                  \\text{$\\forall k \\geq N$, $\\lVert \\mathbf{y}_k - \\mathbf{a} \\rVert < r$.} \\\\
+                  \\text{In particular, $\\exists N \\in \\mathbb{N}$, $\\forall k \\geq N$, $\\mathbf{y}_k \\in B_r(\\mathbf{a})$.} \\\\
+                  \\text{Therefore, $B_r(\\mathbf{a})$ has points in $A$ and points in $A^c$.} \\\\
+                  \\text{Now we check the def of discts on both cases.} \\\\[0.5em]
+                  \\text{\\textit{Case 1: $\\mathbf{a} \\in A$.} Then since $\\mathbf{a} \\in \\partial A = \\overline{A} \\cap \\overline{A^c}$, $\\mathbf{a} \\in \\overline{A^c}$.} \\\\
+                  \\text{So by the claim $\\exists \\mathbf{y} \\in B_r(\\mathbf{a})$ with $\\mathbf{y} \\in A^c$.} \\\\
+                  \\text{Therefore, $|\\chi_A(\\mathbf{y}) - \\chi_A(\\mathbf{a})| = |0 - 1| = 1 \\geq \\frac{1}{2}$.} \\\\[0.5em]
+                  \\text{\\textit{Case 2: $\\mathbf{a} \\in A^c$.} Then since $\\mathbf{a} \\in \\partial A$, $\\mathbf{a} \\in \\overline{A}$.} \\\\
+                  \\text{By our claim, $\\exists \\mathbf{x} \\in B_r(\\mathbf{a})$ with $\\mathbf{x} \\in A$.} \\\\
+                  \\text{So $|\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| = |1 - 0| = 1 \\geq \\frac{1}{2}$.} \\\\[0.5em]
+                  \\text{Hence, $\\forall \\mathbf{a} \\in \\partial A$, $\\exists \\varepsilon > 0$, $\\forall r > 0$, $\\exists \\mathbf{x} \\in B_r(\\mathbf{a})$,} \\\\
+                  |\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| \\geq \\varepsilon. \\\\
+                  \\text{So $\\chi_A$ is discts at $\\partial A$.} \\ \\blacksquare`,
+      },
+    ],
   },
   {
     number: 26,
@@ -475,7 +674,7 @@ export const definitions: Definition[] = [
       {
         title: "1/‖x‖ → +∞ at 0",
         content: `\\text{$f : \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\} \\to \\mathbb{R}$, $f(\\mathbf{x}) = \\frac{1}{\\lVert \\mathbf{x} \\rVert}$.} \\\\
-                  \\text{In a [[exercise 28|previous example]] we showed $f$ is cts on $\\mathbb{R}^n \\setminus \\{\\mathbf{0}\\}$.} \\\\
+                  \\text{In a [[definition 24|previous example]] we showed $f$ is cts on $\\mathbb{R}^n \\setminus \\{\\mathbf{0}\\}$.} \\\\
                   \\text{Now we show $\\lim_{\\mathbf{x} \\to \\mathbf{0}} f(\\mathbf{x}) = +\\infty$.} \\\\[0.5em]
                   \\text{\\textit{Proof.} Let $R > 0$.} \\\\
                   \\text{[Scratch. We want to conclude with $\\frac{1}{\\lVert \\mathbf{x} \\rVert} > R$, or equivalently,} \\\\
