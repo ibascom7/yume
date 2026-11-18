@@ -48,9 +48,8 @@ export default function TheoremCard({
       : proof
     : [];
   const hasProof = proofs.length > 0;
-  const hasExamples = !!examples && examples.length > 0;
-  // The card's dropdown holds the proof and the list of examples
-  const hasDropdown = hasProof || hasExamples;
+  // The card's dropdown holds the proof; examples are always listed below it
+  const hasDropdown = hasProof;
 
   return (
     <div id={id} className="border border-gray-300 rounded-lg p-3 sm:p-4 mb-3 sm:mb-4 bg-white shadow-sm scroll-mt-4">
@@ -71,13 +70,8 @@ export default function TheoremCard({
           <button
             onClick={() => setIsProofOpen(!isProofOpen)}
             className="flex-shrink-0 flex items-center gap-1 text-gray-600 hover:text-black transition-all cursor-pointer"
-            aria-label={isProofOpen ? "Hide proof and examples" : "Show proof and examples"}
+            aria-label={isProofOpen ? "Hide proof" : "Show proof"}
           >
-            {hasExamples && (
-              <span className="text-xs sm:text-sm">
-                {examples.length} {examples.length === 1 ? "example" : "examples"}
-              </span>
-            )}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -99,36 +93,32 @@ export default function TheoremCard({
         <p>{description}</p>
       </div>
 
-      {hasDropdown && isProofOpen && (
-        <>
-          {hasProof && (
-            <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-200">
-              {proofs.map((p, index) => (
-                <div key={index} className={index > 0 ? "mt-4 pt-4 border-t border-gray-100" : ""}>
-                  <div className="font-semibold mb-2 text-gray-700 text-sm sm:text-base">
-                    {p.title ? `${p.title}:` : proofs.length > 1 ? `Proof ${index + 1}:` : "Proof:"}
-                  </div>
-                  <div className="text-black text-sm sm:text-base ml-0 sm:ml-[3.5em]" style={{ lineHeight: "2" }}>
-                    <TrustedBlockMath math={processLatexLinks(p.content)} />
-                  </div>
-                </div>
-              ))}
+      {isProofOpen && (
+        <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-200">
+          {proofs.map((p, index) => (
+            <div key={index} className={index > 0 ? "mt-4 pt-4 border-t border-gray-100" : ""}>
+              <div className="font-semibold mb-2 text-gray-700 text-sm sm:text-base">
+                {p.title ? `${p.title}:` : proofs.length > 1 ? `Proof ${index + 1}:` : "Proof:"}
+              </div>
+              <div className="text-black text-sm sm:text-base ml-0 sm:ml-[3.5em]" style={{ lineHeight: "2" }}>
+                <TrustedBlockMath math={processLatexLinks(p.content)} />
+              </div>
             </div>
-          )}
-          <ExampleList
-            items={(examples ?? []).map((e) => ({
-              title: e.title,
-              body: (
-                <>
-                  <TrustedBlockMath math={processLatexLinks(e.content)} />
-                  <ExampleWidget name={e.widget} />
-                  <FigureImage figure={e.figure} />
-                </>
-              ),
-            }))}
-          />
-        </>
+          ))}
+        </div>
       )}
+      <ExampleList
+        items={(examples ?? []).map((e) => ({
+          title: e.title,
+          body: (
+            <>
+              <TrustedBlockMath math={processLatexLinks(e.content)} />
+              <ExampleWidget name={e.widget} />
+              <FigureImage figure={e.figure} />
+            </>
+          ),
+        }))}
+      />
     </div>
   );
 }
