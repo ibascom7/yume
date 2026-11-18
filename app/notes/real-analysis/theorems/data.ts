@@ -869,8 +869,9 @@ export const theorems: Theorem[] = [
       {
         title: "Coordinate functions",
         content: `\\pi_j : \\mathbb{R}^n \\to \\mathbb{R}, \\text{ for } j = 1, \\ldots, n, \\quad \\pi_j(x_1, \\ldots, x_n) = x_j. \\\\
-                  \\text{Coordinate functions are Lipschitz, and thus, cts.} \\\\[0.5em]
-                  \\text{\\textit{Proof.} Set $C = 1$. Let $\\mathbf{x}, \\mathbf{y} \\in \\mathbb{R}^n$. Observe} \\\\
+                  \\text{Coordinate functions are Lipschitz, and thus, cts.} \\\\[1em]
+                  \\text{\\textit{Proof.}} \\\\
+                  \\text{Set $C = 1$. Let $\\mathbf{x}, \\mathbf{y} \\in \\mathbb{R}^n$. Observe} \\\\
                   |\\pi_j(\\mathbf{x}) - \\pi_j(\\mathbf{y})| = |x_j - y_j| \\leq \\Big( \\sum_{i=1}^n (x_i - y_i)^2 \\Big)^{1/2} = \\lVert \\mathbf{x} - \\mathbf{y} \\rVert. \\ \\blacksquare`,
       },
     ],

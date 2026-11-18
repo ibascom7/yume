@@ -253,7 +253,7 @@ export const definitions: Definition[] = [
                   \\text{in $\\mathbb{R}^n$.} \\\\[0.5em]
                   \\text{\\textit{Sketch.} For $\\mathbf{x} \\in B_R(\\mathbf{a})$, the distance from $\\mathbf{x}$ to the edge of the} \\\\
                   \\text{ball is $R - \\lVert \\mathbf{x} - \\mathbf{a} \\rVert > 0$. A ball of that radius around $\\mathbf{x}$ fits} \\\\
-                  \\text{inside $B_R(\\mathbf{a})$.} \\\\[0.5em]
+                  \\text{inside $B_R(\\mathbf{a})$.} \\\\[1em]
                   \\text{\\textit{Proof.}} \\\\
                   \\text{Let $\\mathbf{x} \\in B_R(\\mathbf{a})$ and set $r = R - \\lVert \\mathbf{x} - \\mathbf{a} \\rVert$. Since $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < R$,} \\\\
                   \\text{$r > 0$. Let $\\mathbf{y} \\in B_r(\\mathbf{x})$. By the [[theorem 3|triangle inequality]],} \\\\
@@ -595,8 +595,9 @@ export const definitions: Definition[] = [
     examples: [
       {
         title: "A one-point spike",
-        content: `\\text{$f : \\mathbb{R} \\to \\mathbb{R}$, $f(0) = 1$ and $f(x) = 0$ for $x \\neq 0$.} \\\\[0.5em]
-                  \\text{\\textit{Sol.} This is discts because $\\lim_{x \\to 0} f(x) = 0 \\neq f(0)$.} \\\\[0.5em]
+        content: `\\text{$f : \\mathbb{R} \\to \\mathbb{R}$, $f(0) = 1$ and $f(x) = 0$ for $x \\neq 0$.} \\\\[1em]
+                  \\text{\\textit{Sol.}} \\\\
+                  \\text{This is discts because $\\lim_{x \\to 0} f(x) = 0 \\neq f(0)$.} \\\\[0.5em]
                   \\text{How to show $\\lim_{x \\to 0} f(x) = 0$?} \\\\
                   \\text{[[definition 22|Def of lim]]:} \\\\
                   \\forall \\varepsilon > 0,\\ \\exists r > 0,\\ \\forall x \\in \\mathbb{R},\\ 0 < |x - 0| < r \\implies |f(x) - 0| < \\varepsilon. \\\\
@@ -675,8 +676,9 @@ export const definitions: Definition[] = [
         title: "1/‖x‖ → +∞ at 0",
         content: `\\text{$f : \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\} \\to \\mathbb{R}$, $f(\\mathbf{x}) = \\frac{1}{\\lVert \\mathbf{x} \\rVert}$.} \\\\
                   \\text{In a [[definition 24|previous example]] we showed $f$ is cts on $\\mathbb{R}^n \\setminus \\{\\mathbf{0}\\}$.} \\\\
-                  \\text{Now we show $\\lim_{\\mathbf{x} \\to \\mathbf{0}} f(\\mathbf{x}) = +\\infty$.} \\\\[0.5em]
-                  \\text{\\textit{Proof.} Let $R > 0$.} \\\\
+                  \\text{Now we show $\\lim_{\\mathbf{x} \\to \\mathbf{0}} f(\\mathbf{x}) = +\\infty$.} \\\\[1em]
+                  \\text{\\textit{Proof.}} \\\\
+                  \\text{Let $R > 0$.} \\\\
                   \\text{[Scratch. We want to conclude with $\\frac{1}{\\lVert \\mathbf{x} \\rVert} > R$, or equivalently,} \\\\
                   \\text{$\\lVert \\mathbf{x} \\rVert < \\frac{1}{R}$.]} \\\\
                   \\text{Let $r = \\frac{1}{R}$. Then for $\\mathbf{x} \\in S$ s.t. $0 < \\lVert \\mathbf{x} - \\mathbf{0} \\rVert < r$, we have} \\\\
