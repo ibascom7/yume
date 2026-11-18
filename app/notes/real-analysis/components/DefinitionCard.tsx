@@ -13,6 +13,7 @@ export interface Example {
   title?: string;
   content: string;
   widget?: WidgetName; // interactive piece shown under the content
+  figure?: Figure; // image shown under the content
 }
 
 export function ExampleWidget({ name }: { name?: WidgetName }) {
@@ -21,12 +22,28 @@ export function ExampleWidget({ name }: { name?: WidgetName }) {
   return <Widget />;
 }
 
+export function FigureImage({ figure }: { figure?: Figure }) {
+  if (!figure) return null;
+  return (
+    <Image
+      src={figure.src}
+      alt={figure.alt}
+      width={figure.width}
+      height={figure.height}
+      sizes="(max-width: 640px) 100vw, 480px"
+      className={`mt-3 w-full max-w-[480px] h-auto rounded-lg ${figure.invert ? "invert" : ""}`}
+      style={figure.maxWidth ? { maxWidth: figure.maxWidth } : undefined}
+    />
+  );
+}
+
 export interface Figure {
   src: string;
   alt: string;
   width: number;
   height: number;
   invert?: boolean; // for drawings in white on black, so they read as ink on the white card
+  maxWidth?: number; // px; defaults to 480
 }
 
 interface DefinitionCardProps extends ChapterRef {
@@ -82,16 +99,7 @@ export default function DefinitionCard({ number, term, definition, examples, fig
       </div>
       <div className="text-black text-sm sm:text-base ml-0 sm:ml-[6em]">
         <TrustedBlockMath math={processLatexLinks(definition)} />
-        {figure && (
-          <Image
-            src={figure.src}
-            alt={figure.alt}
-            width={figure.width}
-            height={figure.height}
-            sizes="(max-width: 640px) 100vw, 480px"
-            className={`mt-3 w-full max-w-[480px] h-auto rounded-lg ${figure.invert ? "invert" : ""}`}
-          />
-        )}
+        <FigureImage figure={figure} />
       </div>
 
       {isExamplesOpen && (
@@ -102,6 +110,7 @@ export default function DefinitionCard({ number, term, definition, examples, fig
               <>
                 <TrustedBlockMath math={processLatexLinks(e.content)} />
                 <ExampleWidget name={e.widget} />
+                <FigureImage figure={e.figure} />
               </>
             ),
           }))}

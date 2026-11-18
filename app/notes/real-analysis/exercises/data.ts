@@ -794,6 +794,718 @@ export const exercises: Exercise[] = [
       },
     ],
   },
+  {
+    number: 16,
+    chapter: 4,
+    section: 3,
+    homework: 3,
+    title: "Question 4.3.D",
+    problem: `\\text{If $A$ is a bounded subset of $\\mathbb{R}$, show that $\\sup A$ and $\\inf A$} \\\\
+              \\text{belong to $\\overline{A}$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 14|Closure]] \\\\
+                  \\text{2) } [[definition 12|Limit point]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Suppose $A$ is a nonempty bounded subset of $\\mathbb{R}$.} \\\\
+                  \\text{So $\\exists M > 0$ s.t. $|x| \\leq M$ for all $x \\in A$.} \\\\
+                  \\text{By definition, $-M \\leq \\inf(A) \\leq x \\leq \\sup(A) \\leq M$ for all $x \\in A$.} \\\\[0.5em]
+                  \\text{\\textit{Case 1:} $\\inf(A), \\sup(A) \\in A$.} \\\\
+                  \\text{Then $\\inf(A), \\sup(A) \\in \\overline{A}$ by definition of [[definition 14|closure]].} \\\\[0.5em]
+                  \\text{\\textit{Case 2:} $\\inf(A), \\sup(A) \\notin A$.} \\\\
+                  \\text{Let $n \\in \\mathbb{N}$. Since $\\sup(A) - \\frac{1}{n}$ is not an upper bound of $A$,} \\\\
+                  \\text{by definition of supremum there exists $a_n \\in A$ s.t.} \\\\
+                  \\sup(A) - \\frac{1}{n} < a_n < \\sup(A), \\\\
+                  \\text{where the second inequality is strict since $\\sup(A) \\notin A$.} \\\\
+                  \\text{Since $\\lim_{n \\to \\infty} \\left( \\sup(A) - \\frac{1}{n} \\right) = \\sup(A)$, we get} \\\\
+                  \\text{$\\lim_{n \\to \\infty} a_n = \\sup(A)$ by the Squeeze Theorem.} \\\\
+                  \\text{Similarly, since $\\inf(A) + \\frac{1}{n}$ is not a lower bound of $A$, by} \\\\
+                  \\text{definition of infimum there exists $b_n \\in A$ s.t.} \\\\
+                  \\inf(A) < b_n < \\inf(A) + \\frac{1}{n}. \\\\
+                  \\text{Since $\\lim_{n \\to \\infty} \\left( \\inf(A) + \\frac{1}{n} \\right) = \\inf(A)$, we get} \\\\
+                  \\text{$\\lim_{n \\to \\infty} b_n = \\inf(A)$ by the Squeeze Theorem.} \\\\
+                  \\text{Thus $(a_n) \\subseteq A$ and $(b_n) \\subseteq A$ converge to $\\sup(A)$ and $\\inf(A)$} \\\\
+                  \\text{respectively, so $\\sup(A), \\inf(A) \\in \\overline{A}$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 17,
+    chapter: 4,
+    section: 3,
+    homework: 3,
+    title: "Question 4.3.E",
+    problem: `\\text{Show that the interior satisfies $\\operatorname{int} A = (\\overline{A'})'$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 18|Interior]] \\\\
+                  \\text{2) } [[definition 17|Open]] \\\\
+                  \\text{3) } [[definition 14|Closure]] \\\\
+                  \\text{4) } [[definition 12|Limit point]]`,
+      },
+      {
+        title: "Claim",
+        content: `\\text{For $S \\subseteq \\mathbb{R}^n$, $x \\in \\overline{S}$ if and only if every open set $U$} \\\\
+                  \\text{containing $x$ satisfies $U \\cap S \\neq \\emptyset$.} \\\\[0.5em]
+                  \\text{\\textit{Proof of claim.} ($\\Rightarrow$) Suppose $x \\in \\overline{S}$ and let $U$ be open} \\\\
+                  \\text{with $x \\in U$. If $x \\in S$, then $x \\in U \\cap S$. Otherwise $x$ is a limit} \\\\
+                  \\text{point of $S$, so $U$ contains a point of $S$ other than $x$. Either} \\\\
+                  \\text{way, $U \\cap S \\neq \\emptyset$.} \\\\
+                  \\text{($\\Leftarrow$) Suppose every open $U \\ni x$ meets $S$. If $x \\in S$, then} \\\\
+                  \\text{$x \\in \\overline{S}$. If $x \\notin S$, then for each open $U \\ni x$, any point of} \\\\
+                  \\text{$U \\cap S$ is necessarily different from $x$, so $x$ is a limit point} \\\\
+                  \\text{of $S$ and hence $x \\in \\overline{S}$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $A \\subseteq \\mathbb{R}^n$, and let $A'$ denote the complement of $A$.} \\\\
+                  \\text{Let $x \\in \\mathbb{R}^n$. As shown above, $x \\in \\overline{S}$ if and only if every} \\\\
+                  \\text{open set $U$ containing $x$ satisfies $U \\cap S \\neq \\emptyset$. Negating this} \\\\
+                  \\text{with $S = A'$, we have} \\\\
+                  \\begin{aligned}
+                    x \\in (\\overline{A'})' &\\iff x \\notin \\overline{A'} \\\\
+                    &\\iff \\exists \\text{ an open set } U \\text{ s.t. } x \\in U \\text{ and } U \\cap A' = \\emptyset \\\\
+                    &\\iff \\exists \\text{ an open set } U \\text{ s.t. } x \\in U \\subseteq A \\\\
+                    &\\iff x \\in \\operatorname{int} A,
+                  \\end{aligned} \\\\
+                  \\text{where the last equivalence is the definition of [[definition 18|interior]].} \\\\
+                  \\text{Hence $\\operatorname{int} A = (\\overline{A'})'$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 18,
+    chapter: 4,
+    section: 3,
+    homework: 3,
+    title: "Question 4.3.H",
+    problem: `\\text{Show that a subset of $\\mathbb{R}^n$ is complete if and only if it is} \\\\
+              \\text{closed.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 11|Complete]] \\\\
+                  \\text{2) } [[definition 13|Closed]] \\\\
+                  \\text{3) } [[theorem 6|Convergent sequences are Cauchy]] \\\\
+                  \\text{4) } [[theorem 7|Completeness of $\\mathbb{R}^n$]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $A \\subseteq \\mathbb{R}^n$. Recall that $A$ is closed if and only if the} \\\\
+                  \\text{limit of every convergent sequence in $A$ belongs to $A$.} \\\\[0.5em]
+                  \\text{($\\Rightarrow$) Suppose $A$ is complete, and let $(\\mathbf{x}_k) \\subseteq A$ be a} \\\\
+                  \\text{sequence with $\\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{x} \\in \\mathbb{R}^n$.} \\\\
+                  \\text{Since $(\\mathbf{x}_k)$ is convergent, it is [[theorem 6|Cauchy]]. Since $A$ is complete,} \\\\
+                  \\text{$(\\mathbf{x}_k)$ converges to some $\\mathbf{a} \\in A$.} \\\\
+                  \\text{Since limits of sequences are unique, $\\mathbf{x} = \\mathbf{a} \\in A$.} \\\\
+                  \\text{So the limit of every convergent sequence in $A$ belongs to} \\\\
+                  \\text{$A$, and hence $A$ is closed.} \\\\[0.5em]
+                  \\text{($\\Leftarrow$) Suppose $A$ is closed, and let $(\\mathbf{x}_k) \\subseteq A$ be a Cauchy} \\\\
+                  \\text{sequence. Since $\\mathbb{R}^n$ is [[theorem 7|complete]], $(\\mathbf{x}_k)$ converges to some} \\\\
+                  \\text{$\\mathbf{x} \\in \\mathbb{R}^n$.} \\\\
+                  \\text{Since $(\\mathbf{x}_k) \\subseteq A$ is convergent and $A$ is closed, $\\mathbf{x} \\in A$.} \\\\
+                  \\text{So every Cauchy sequence in $A$ converges to a limit in $A$,} \\\\
+                  \\text{and hence $A$ is complete.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 19,
+    chapter: 4,
+    section: 3,
+    homework: 3,
+    title: "Question 4.3.I",
+    problem: `\\text{Prove Proposition 4.3.9 using Theorem 4.3.8 and} \\\\
+              \\text{Proposition 4.3.3.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 17|Open]] \\\\
+                  \\text{2) } [[theorem 10|Theorem 4.3.8]] \\\\
+                  \\text{3) } [[theorem 8|Proposition 4.3.3]]`,
+      },
+      {
+        title: "Intersection of two sets",
+        content: `\\text{Let $U, V \\subseteq \\mathbb{R}^n$ be open.} \\\\
+                  \\text{By Theorem 4.3.8, $U'$ and $V'$ are closed.} \\\\
+                  \\text{By [[theorem 8|Proposition 4.3.3]], $U' \\cup V'$ is closed.} \\\\
+                  \\text{By De Morgan's law, $U' \\cup V' = (U \\cap V)'$, so $(U \\cap V)'$ is closed.} \\\\
+                  \\text{Hence by Theorem 4.3.8, $U \\cap V$ is open.} \\ \\blacksquare`,
+      },
+      {
+        title: "Arbitrary unions",
+        content: `\\text{Let $\\{U_i : i \\in I\\}$ be a family of open subsets of $\\mathbb{R}^n$.} \\\\
+                  \\text{By Theorem 4.3.8, $U_i' = \\mathbb{R}^n \\setminus U_i$ is closed for each $i \\in I$.} \\\\
+                  \\text{By [[theorem 8|Proposition 4.3.3]], $\\bigcap_{i \\in I} U_i'$ is closed.} \\\\
+                  \\text{By De Morgan's law,} \\\\
+                  \\begin{aligned}
+                    \\bigcap_{i \\in I} U_i' &= \\bigcap_{i \\in I} \\left( \\mathbb{R}^n \\setminus U_i \\right) \\\\
+                    &= \\mathbb{R}^n \\setminus \\left( \\bigcup_{i \\in I} U_i \\right) = \\left( \\bigcup_{i \\in I} U_i \\right)',
+                  \\end{aligned} \\\\
+                  \\text{so $\\left( \\bigcup_{i \\in I} U_i \\right)'$ is closed.} \\\\
+                  \\text{Hence by Theorem 4.3.8, $\\bigcup_{i \\in I} U_i$ is open.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 20,
+    chapter: 4,
+    section: 3,
+    homework: 3,
+    title: "Question 4.3.J",
+    problem: `\\text{Show that if $U$ is open and $A$ is closed, then} \\\\
+              U \\setminus A = \\{ \\mathbf{x} \\in U : \\mathbf{x} \\notin A \\} \\text{ is open.} \\\\
+              \\text{What can be said about $A \\setminus U$?}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 17|Open]] \\\\
+                  \\text{2) } [[definition 13|Closed]] \\\\
+                  \\text{3) } [[theorem 10|Theorem 4.3.8]] \\\\
+                  \\text{4) } [[theorem 8|Proposition 4.3.3]] \\\\
+                  \\text{5) } [[theorem 11|Proposition 4.3.9]]`,
+      },
+      {
+        title: "U \\ A is open",
+        content: `\\text{Suppose $U \\subseteq \\mathbb{R}^n$ is open and $A \\subseteq \\mathbb{R}^n$ is closed.} \\\\
+                  \\text{By Theorem 4.3.8, $A'$ is open. Observe that} \\\\
+                  U \\setminus A = \\{ \\mathbf{x} \\in \\mathbb{R}^n : \\mathbf{x} \\in U \\text{ and } \\mathbf{x} \\notin A \\} = U \\cap A'. \\\\
+                  \\text{Since $U$ and $A'$ are both open, $U \\cap A'$ is open by} \\\\
+                  \\text{[[theorem 11|Proposition 4.3.9]]. Hence $U \\setminus A$ is open.} \\ \\blacksquare`,
+      },
+      {
+        title: "A \\ U is closed",
+        content: `\\text{By Theorem 4.3.8, $U'$ is closed. Observe that} \\\\
+                  A \\setminus U = \\{ \\mathbf{x} \\in \\mathbb{R}^n : \\mathbf{x} \\in A \\text{ and } \\mathbf{x} \\notin U \\} = A \\cap U'. \\\\
+                  \\text{Since $A$ and $U'$ are both closed, $A \\cap U'$ is closed by} \\\\
+                  \\text{[[theorem 8|Proposition 4.3.3]]. Hence $A \\setminus U$ is closed.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 21,
+    chapter: 4,
+    section: 3,
+    homework: 3,
+    title: "Question 4.3.M",
+    problem: `\\text{Suppose that $A$ is a dense subset of $\\mathbb{R}^n$.} \\\\
+              \\text{(a) Show that if $U$ is open in $\\mathbb{R}^n$, then $A \\cap U$ is dense in $U$.} \\\\
+              \\text{(b) Show by example that this may fail for sets that are} \\\\
+              \\text{not open.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 15|Dense]] \\\\
+                  \\text{2) } [[definition 14|Closure]] \\\\
+                  \\text{3) } [[definition 17|Open]]`,
+      },
+      {
+        title: "Part (a)",
+        content: `\\text{Recall that $A$ is dense in $\\mathbb{R}^n$ means $\\overline{A} = \\mathbb{R}^n$, i.e. every} \\\\
+                  \\text{$\\mathbf{x} \\in \\mathbb{R}^n$ is the limit of a sequence in $A$.} \\\\
+                  \\text{Suppose $U \\subseteq \\mathbb{R}^n$ is open. To show $A \\cap U$ is dense in $U$, we} \\\\
+                  \\text{show $U \\subseteq \\overline{A \\cap U}$.} \\\\
+                  \\text{Let $\\mathbf{x} \\in U$. Since $A$ is dense, there is a sequence $(\\mathbf{a}_k) \\subseteq A$} \\\\
+                  \\text{with $\\lim_{k \\to \\infty} \\mathbf{a}_k = \\mathbf{x}$.} \\\\
+                  \\text{Since $U$ is open, $\\exists r > 0$ s.t. $B_r(\\mathbf{x}) \\subseteq U$.} \\\\
+                  \\text{Since $\\mathbf{a}_k \\to \\mathbf{x}$, $\\exists N \\in \\mathbb{N}$ s.t. $\\forall k \\geq N$, $\\lVert \\mathbf{a}_k - \\mathbf{x} \\rVert < r$,} \\\\
+                  \\text{so $\\mathbf{a}_k \\in B_r(\\mathbf{x}) \\subseteq U$.} \\\\
+                  \\text{Then $(\\mathbf{a}_k)_{k \\geq N} \\subseteq A \\cap U$ and $\\lim_{k \\to \\infty} \\mathbf{a}_k = \\mathbf{x}$, so} \\\\
+                  \\text{$\\mathbf{x} \\in \\overline{A \\cap U}$.} \\\\
+                  \\text{Since $\\mathbf{x} \\in U$ was arbitrary, $A \\cap U$ is dense in $U$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Part (b)",
+        content: `\\text{Let $A = \\mathbb{Q}^n$ and $U = \\mathbb{R}^n \\setminus \\mathbb{Q}^n$.} \\\\[0.5em]
+                  \\text{\\textit{$A$ is dense in $\\mathbb{R}^n$:} given $\\mathbf{x} = (x_1, \\ldots, x_n) \\in \\mathbb{R}^n$, choose} \\\\
+                  \\text{$q_{i,k} \\in \\mathbb{Q}$ with $|q_{i,k} - x_i| < \\frac{1}{k}$ for each $i$, and set} \\\\
+                  \\text{$\\mathbf{q}_k = (q_{1,k}, \\ldots, q_{n,k}) \\in \\mathbb{Q}^n$. Then} \\\\
+                  \\lVert \\mathbf{q}_k - \\mathbf{x} \\rVert < \\frac{\\sqrt{n}}{k} \\to 0, \\\\
+                  \\text{so $\\mathbf{x} \\in \\overline{A}$.} \\\\[0.5em]
+                  \\text{\\textit{$U$ is not open:} $U \\neq \\emptyset$ (e.g. $(\\sqrt{2}, \\ldots, \\sqrt{2}) \\in U$), and by the} \\\\
+                  \\text{argument above every point of $U$ is a limit of points of} \\\\
+                  \\text{$\\mathbb{Q}^n$, so every ball around a point of $U$ contains a point} \\\\
+                  \\text{of $\\mathbb{Q}^n$ and hence is not contained in $U$.} \\\\[0.5em]
+                  \\text{However, $A \\cap U = \\emptyset$, and the empty set has no sequences,} \\\\
+                  \\text{so $\\overline{A \\cap U} = \\emptyset$.} \\\\
+                  \\text{Since $U \\neq \\emptyset$, we get $U \\not\\subseteq \\overline{A \\cap U}$, so $A \\cap U$ is not} \\\\
+                  \\text{dense in $U$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 22,
+    chapter: 4,
+    section: 4,
+    homework: 4,
+    title: "Question 4.4.B",
+    problem: `\\text{Example where CIT isn't true because cpt sets are replaced} \\\\
+              \\text{by closed sets.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[theorem 18|Cantor's Intersection Theorem]] \\\\
+                  \\text{2) } [[definition 13|Closed]] \\\\
+                  \\text{3) } [[definition 19|Compact]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Take $(A_k) \\subseteq \\mathbb{R}$ where $\\forall k \\in \\mathbb{N}$, $A_k = [k, \\infty)$.} \\\\
+                  \\text{This is decreasing because $A_{k+1} \\subseteq A_k$} \\\\
+                  \\text{(and $k \\in A_k$ but $k \\notin A_{k+1}$).} \\\\
+                  \\text{Each $A_k$ is nonempty because $k \\in A_k$.} \\\\
+                  \\text{Each $A_k$ is closed because $A_k^c = (-\\infty, k)$ is open.} \\\\
+                  \\text{However, if $x \\in \\bigcap_{k \\geq 1} A_k$, then $x \\geq k$ $\\forall k \\in \\mathbb{N}$,} \\\\
+                  \\text{which isn't possible by the archimedean property.} \\\\
+                  \\text{Hence $\\bigcap_{k \\geq 1} A_k = \\emptyset$.} \\ \\blacksquare \\\\[1em]
+                  \\text{Remember this picture:} \\\\
+                  [1, \\infty) \\supseteq [2, \\infty) \\supseteq [3, \\infty) \\supseteq \\cdots \\\\
+                  \\text{on the number line.}`,
+      },
+    ],
+  },
+  {
+    number: 23,
+    chapter: 4,
+    section: 4,
+    homework: 4,
+    title: "Question 4.4.C",
+    problem: `\\text{The union of finitely many cpt sets is cpt.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[theorem 17|Heine–Borel]] \\\\
+                  \\text{2) } [[definition 20|Bounded]] \\\\
+                  \\text{3) } [[theorem 8|Unions of closed sets]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $A_1, \\ldots, A_m \\subseteq \\mathbb{R}^n$ be cpt.} \\\\
+                  \\text{By [[theorem 17|Heine–Borel]] $A_1, \\ldots, A_m$ are closed and bounded.} \\\\
+                  \\text{In particular, $\\forall i \\in \\{1, \\ldots, m\\}$, $\\exists r_i > 0$ s.t.} \\\\
+                  \\text{$A_i \\subseteq B_{r_i}(\\mathbf{0})$. Choose $R = \\max\\{r_1, \\ldots, r_m\\}$.} \\\\
+                  \\text{Then $\\bigcup_{i=1}^m A_i \\subseteq B_R(\\mathbf{0})$.} \\\\
+                  \\text{$\\forall i \\in \\{1, \\ldots, m\\}$, $A_i$ is closed by Heine–Borel.} \\\\
+                  \\text{Since finite unions of closed sets are closed,} \\\\
+                  \\text{$\\bigcup_{i=1}^m A_i$ is closed.} \\\\
+                  \\text{By Heine–Borel, $\\bigcup_{i=1}^m A_i$ is compact.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 24,
+    chapter: 4,
+    section: 4,
+    homework: 4,
+    title: "Question 4.4.D",
+    problem: `\\text{Intersection of a family of cpt sets is cpt.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[theorem 17|Heine–Borel]] \\\\
+                  \\text{2) } [[definition 20|Bounded]] \\\\
+                  \\text{3) } [[theorem 8|Intersections of closed sets]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $A_i \\subseteq \\mathbb{R}^n$ be cpt $\\forall i \\in I$,} \\\\
+                  \\text{where $I$ is some (nonempty) index set.} \\\\
+                  \\text{By [[theorem 17|Heine–Borel]], $\\forall i \\in I$ $A_i$ is closed and bounded.} \\\\
+                  \\text{That is, $\\forall i \\in I$ $\\exists r_i > 0$ s.t. $A_i \\subseteq B_{r_i}(\\mathbf{0})$.} \\\\
+                  \\text{Fix any $i_0 \\in I$.} \\\\
+                  \\text{Then $\\bigcap_{i \\in I} A_i \\subseteq A_{i_0} \\subseteq B_{r_{i_0}}(\\mathbf{0})$.} \\\\
+                  \\text{Since $\\forall i \\in I$ $A_i$ closed and} \\\\
+                  \\text{closed sets are closed under arbitrary intersections,} \\\\
+                  \\text{$\\bigcap_{i \\in I} A_i$ is closed.} \\\\
+                  \\text{Hence $\\bigcap_{i \\in I} A_i$ is cpt by Heine–Borel.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 25,
+    chapter: 4,
+    section: 4,
+    homework: 4,
+    title: "Question 4.4.E(a)",
+    problem: `\\text{Show that the sum of a closed subset and a cpt subset of} \\\\
+              \\text{$\\mathbb{R}^n$ is closed. Recall} \\\\
+              A + B = \\{ a + b : a \\in A \\text{ and } b \\in B \\}.`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 13|Closed]] \\\\
+                  \\text{2) } [[definition 14|Closure]] \\\\
+                  \\text{3) } [[definition 19|Compact]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $A \\subseteq \\mathbb{R}^n$ closed and $B \\subseteq \\mathbb{R}^n$ cpt.} \\\\
+                  \\text{WTS $A + B = \\{a + b : a \\in A, b \\in B\\}$ closed.} \\\\
+                  \\text{That is, WTS $\\overline{A + B} \\subseteq A + B$.} \\\\
+                  \\text{Let $x \\in \\overline{A + B}$. Then we can take $(x_k) \\subseteq A + B$,} \\\\
+                  \\text{$(a_k) \\subseteq A$, $(b_k) \\subseteq B$ with $x_k = a_k + b_k$ s.t. $x_k \\to x$.} \\\\
+                  \\text{Since $B$ cpt, $\\exists (b_{k_j}) \\subseteq B$ s.t. $b_{k_j} \\to b \\in B$.} \\\\
+                  \\text{Since $x_k \\to x$, every subsequence $x_{k_j}$ converges to $x$.} \\\\
+                  \\text{So can rewrite $x_k$ as $a_{k_j} = x_{k_j} - b_{k_j}$} \\\\
+                  \\text{with $a_{k_j} \\to x - b$.} \\\\
+                  \\text{Since $(a_{k_j}) \\subseteq A$ and $A$ closed, $x - b \\in A$.} \\\\
+                  \\text{Call $x - b = a$.} \\\\
+                  \\text{So $x = a + b \\in A + B$ for some $a \\in A$ and $b \\in B$.} \\\\
+                  \\text{Hence, $\\overline{A + B} \\subseteq A + B$, and thus, $A + B$ closed.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 26,
+    chapter: 4,
+    section: 4,
+    homework: 4,
+    title: "Question 4.4.F",
+    problem: `\\text{Let $(x_k)_{k=1}^\\infty \\subseteq A$ with $A \\subseteq \\mathbb{R}^n$ cpt s.t. $(x_k)$ is not} \\\\
+              \\text{convergent. Show there are two subsequences that are} \\\\
+              \\text{convergent to different limit points.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 19|Compact]] \\\\
+                  \\text{2) } [[definition 9|Convergence]] \\\\
+                  \\text{3) } [[theorem 3|Triangle inequality]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Since $A \\subseteq \\mathbb{R}^n$ is cpt, $\\exists (x_{k_j})$ s.t. $x_{k_j} \\to x_1 \\in A$.} \\\\
+                  \\text{Since $(x_k) \\subseteq A$ is not convergent, $x_k \\not\\to x_1$. That is,} \\\\
+                  \\exists \\varepsilon > 0 \\text{ s.t. } \\forall N \\in \\mathbb{N}\\ \\exists i \\geq N \\text{ s.t. } \\lVert x_i - x_1 \\rVert \\geq \\varepsilon. \\\\
+                  \\text{For $N = 1$, $\\exists i_1 \\geq N$ s.t. $\\lVert x_{i_1} - x_1 \\rVert \\geq \\varepsilon$.} \\\\
+                  \\text{For $N = i_1 + 1$, $\\exists i_2 \\geq i_1 + 1$ s.t. $\\lVert x_{i_2} - x_1 \\rVert \\geq \\varepsilon$.} \\\\
+                  \\text{Continuing inductively, we get a subsequence $(x_{i_m})$} \\\\
+                  \\text{with $\\lVert x_{i_m} - x_1 \\rVert \\geq \\varepsilon$ $\\forall m \\in \\mathbb{N}$.} \\\\
+                  \\text{Since $A$ cpt and $(x_{i_m}) \\subseteq A$, $\\exists (x_{i_{m_l}})$} \\\\
+                  \\text{s.t. $x_{i_{m_l}} \\to x_2 \\in A$.} \\\\
+                  \\text{Since $\\lVert x_{i_{m_l}} - x_1 \\rVert \\geq \\varepsilon$ $\\forall l \\in \\mathbb{N}$,} \\\\
+                  \\text{we have $\\lVert x_2 - x_1 \\rVert \\geq \\varepsilon > 0$:} \\\\
+                  \\text{otherwise $\\delta = \\varepsilon - \\lVert x_2 - x_1 \\rVert > 0$, and for $l$ large} \\\\
+                  \\text{$\\lVert x_{i_{m_l}} - x_2 \\rVert < \\delta$, so} \\\\
+                  \\begin{aligned}
+                    \\lVert x_{i_{m_l}} - x_1 \\rVert &\\leq \\lVert x_{i_{m_l}} - x_2 \\rVert + \\lVert x_2 - x_1 \\rVert \\\\
+                    &< \\delta + \\lVert x_2 - x_1 \\rVert = \\varepsilon,
+                  \\end{aligned} \\\\
+                  \\text{a contradiction. Therefore $x_1 \\neq x_2$.} \\\\
+                  \\text{Hence, $(x_{k_j})$ and $(x_{i_{m_l}})$ are two subsequences} \\\\
+                  \\text{that converge to different limits.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 27,
+    chapter: 4,
+    section: 4,
+    homework: 4,
+    title: "Question 4.4.I(a)",
+    problem: `\\text{Let $A$ and $B$ be disjoint closed subsets of $\\mathbb{R}^n$. Define} \\\\
+              d(A, B) = \\inf \\{ \\lVert a - b \\rVert : a \\in A, b \\in B \\}. \\\\
+              \\text{If $A = \\{a\\}$ is a singleton, show that $d(A, B) > 0$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 13|Closed]] \\\\
+                  \\text{2) } [[definition 14|Closure]] \\\\
+                  \\text{3) } [[theorem 4|Convergence via Norms]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Remember it's by contradiction.} \\\\[0.5em]
+                  \\text{Since $A \\cap B = \\emptyset$, $a \\notin B$.} \\\\
+                  \\text{BWOC spse $d(\\{a\\}, B) = \\inf\\{\\lVert a - b \\rVert : b \\in B\\} = 0$.} \\\\
+                  \\text{By def of infimum, $\\forall k \\in \\mathbb{N}$ $\\exists b_k \\in B$ s.t. $\\lVert a - b_k \\rVert < \\frac{1}{k}$.} \\\\
+                  \\text{(Tricky step)} \\\\
+                  \\text{This gives a sequence $(b_k) \\subseteq B$} \\\\
+                  \\text{with $0 \\leq \\lVert b_k - a \\rVert < \\frac{1}{k}$ $\\forall k \\in \\mathbb{N}$.} \\\\
+                  \\text{By squeeze theorem, $\\lVert b_k - a \\rVert \\to 0$. That is, $b_k \\to a$.} \\\\
+                  \\text{Since $B$ is closed, $\\overline{B} \\subseteq B$, so $a \\in B$.} \\\\
+                  \\text{This contradicts $A \\cap B = \\emptyset$.} \\\\
+                  \\text{Hence $d(\\{a\\}, B) > 0$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 28,
+    chapter: 5,
+    section: 1,
+    title: "Example: 1/‖x‖ is Continuous",
+    problem: `\\text{Define $f : \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\} \\to \\mathbb{R}$ by $f(\\mathbf{x}) = \\frac{1}{\\lVert \\mathbf{x} \\rVert}$.} \\\\
+              \\text{Show $f$ cts on its domain.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 23|Continuity at a point]]\\text{, } [[definition 24|on a set]] \\\\
+                  \\text{2) } [[theorem 3|Triangle inequality]] \\\\
+                  \\text{3) } [[exercise 3|Reverse triangle inequality]]`,
+      },
+      {
+        title: "Goal",
+        content: `\\text{WTS } \\forall \\mathbf{a} \\in \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\},\\ \\forall \\varepsilon > 0,\\ \\exists r > 0,\\ \\forall \\mathbf{x} \\in \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\}, \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\implies |f(\\mathbf{x}) - f(\\mathbf{a})| < \\varepsilon. \\\\
+                  \\text{Take $\\mathbf{a} \\in \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\}$ and $\\varepsilon > 0$ arbitrary. Goal is to choose} \\\\
+                  \\text{$r > 0$ s.t. $\\forall \\mathbf{x} \\in \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\}$,} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\implies |f(\\mathbf{x}) - f(\\mathbf{a})| < \\varepsilon.`,
+      },
+      {
+        title: "Scratch",
+        content: `\\begin{aligned}
+                    |f(\\mathbf{x}) - f(\\mathbf{a})| &= \\left| \\frac{1}{\\lVert \\mathbf{x} \\rVert} - \\frac{1}{\\lVert \\mathbf{a} \\rVert} \\right| = \\frac{\\big| \\lVert \\mathbf{a} \\rVert - \\lVert \\mathbf{x} \\rVert \\big|}{\\lVert \\mathbf{x} \\rVert \\lVert \\mathbf{a} \\rVert} \\\\
+                    &\\leq \\frac{\\lVert \\mathbf{x} - \\mathbf{a} \\rVert}{\\lVert \\mathbf{x} \\rVert \\lVert \\mathbf{a} \\rVert} \\quad \\text{([[exercise 3|reverse triangle inequality]])}.
+                  \\end{aligned} \\\\
+                  \\text{Need a lower bound on $\\lVert \\mathbf{x} \\rVert$: $\\lVert \\mathbf{x} \\rVert \\geq \\lVert \\mathbf{a} \\rVert - \\lVert \\mathbf{x} - \\mathbf{a} \\rVert$, so if} \\\\
+                  \\text{$r \\leq \\frac{\\lVert \\mathbf{a} \\rVert}{2}$ then $\\lVert \\mathbf{x} \\rVert > \\frac{\\lVert \\mathbf{a} \\rVert}{2}$ and} \\\\
+                  |f(\\mathbf{x}) - f(\\mathbf{a})| < \\frac{2r}{\\lVert \\mathbf{a} \\rVert^2}, \\\\
+                  \\text{which is $\\leq \\varepsilon$ when $r \\leq \\frac{\\varepsilon \\lVert \\mathbf{a} \\rVert^2}{2}$.}`,
+      },
+      {
+        title: "Proof",
+        content: `\\text{Choose } r = \\min\\left\\{ \\frac{\\lVert \\mathbf{a} \\rVert}{2}, \\frac{\\varepsilon \\lVert \\mathbf{a} \\rVert^2}{2} \\right\\} > 0. \\\\
+                  \\text{Let $\\mathbf{x} \\in \\mathbb{R}^n \\setminus \\{\\mathbf{0}\\}$ with $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$. Then} \\\\
+                  \\text{$\\lVert \\mathbf{x} \\rVert \\geq \\lVert \\mathbf{a} \\rVert - \\lVert \\mathbf{x} - \\mathbf{a} \\rVert > \\frac{\\lVert \\mathbf{a} \\rVert}{2}$, so} \\\\
+                  |f(\\mathbf{x}) - f(\\mathbf{a})| \\leq \\frac{\\lVert \\mathbf{x} - \\mathbf{a} \\rVert}{\\lVert \\mathbf{x} \\rVert \\lVert \\mathbf{a} \\rVert} < \\frac{2r}{\\lVert \\mathbf{a} \\rVert^2} \\leq \\varepsilon. \\\\
+                  \\text{Hence $f$ is cts on $\\mathbb{R}^n \\setminus \\{\\mathbf{0}\\}$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 29,
+    chapter: 5,
+    section: 1,
+    title: "Example: e^(−1/x) is Continuous",
+    problem: `\\text{Show that } f(x) = \\begin{cases} 0 & x \\leq 0 \\\\ e^{-1/x} & x > 0 \\end{cases} \\text{ is cts on $\\mathbb{R}$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 23|Continuity at a point]]\\text{, } [[definition 24|on a set]] \\\\
+                  \\text{2) } [[exercise 28|$1/\\lVert \\mathbf{x} \\rVert$ is continuous]]`,
+      },
+      {
+        title: "Case 1: a < 0",
+        content: `\\text{Let $\\varepsilon > 0$.} \\\\
+                  \\text{[Scratch. $|f(x) - f(a)| = |0 - 0| = 0$ as long as $x < 0$, so we need} \\\\
+                  \\text{$r$ small enough that $|x - a| < r$ forces $x < 0$.]} \\\\
+                  \\text{Choose $r = |a|$. If $|x - a| < r$, then $x < a + |a| = 0$, so} \\\\
+                  |f(x) - f(a)| = |0 - 0| = 0 < \\varepsilon.`,
+      },
+      {
+        title: "Case 2: a > 0",
+        content: `\\text{For $x > 0$, $f = g \\circ h$ with $h(x) = -\\frac{1}{x}$ and $g(t) = e^t$, which} \\\\
+                  \\text{are both cts ($h$ as in the [[exercise 28|previous example]] with $n = 1$).} \\\\
+                  \\text{By composition, $f$ is cts at $a$ (and $(0, \\infty)$ contains a ball} \\\\
+                  \\text{around $a$, so the values for $x \\leq 0$ don't matter).}`,
+      },
+      {
+        title: "Case 3: a = 0",
+        content: `\\text{Let $\\varepsilon > 0$. Since $0 \\leq f(x) < 1$, if $\\varepsilon \\geq 1$ any $r$ works, so} \\\\
+                  \\text{assume $0 < \\varepsilon < 1$.} \\\\
+                  \\text{[Scratch. For $x > 0$: } e^{-1/x} < \\varepsilon \\iff -\\frac{1}{x} < \\ln \\varepsilon \\iff x < -\\frac{1}{\\ln \\varepsilon}.] \\\\
+                  \\text{Choose $r = -\\frac{1}{\\ln \\varepsilon} > 0$ and let $|x| < r$.} \\\\
+                  \\text{If $x \\leq 0$, $|f(x) - f(0)| = 0 < \\varepsilon$.} \\\\
+                  \\text{If $x > 0$, then $-\\frac{1}{x} < \\ln \\varepsilon$, so} \\\\
+                  |f(x) - f(0)| = e^{-1/x} < e^{\\ln \\varepsilon} = \\varepsilon. \\\\[0.5em]
+                  \\text{Hence $f$ is cts on $\\mathbb{R}$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 30,
+    chapter: 5,
+    section: 2,
+    title: "Example: The Heaviside Function Has No Limit at 0",
+    problem: `\\text{The Heaviside function } H(x) = \\begin{cases} 0, & x < 0 \\\\ 1, & x \\geq 0. \\end{cases} \\\\
+              \\lim_{x \\to 0} H(x) \\text{ DNE.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 22|Limit of a function]] \\\\
+                  \\text{2) } [[theorem 3|Triangle inequality]]`,
+      },
+      {
+        title: "Sol",
+        content: `\\text{WTS the def of limit does not hold for $\\lim_{x \\to 0} H(x)$.} \\\\
+                  \\text{That is, we WTS} \\\\
+                  \\forall L \\in \\mathbb{R}\\ \\exists \\varepsilon > 0,\\ \\forall r > 0,\\ \\exists x \\in \\mathbb{R} \\text{ s.t.} \\\\
+                  0 < |x - 0| < r \\text{ and } |H(x) - L| \\geq \\varepsilon, \\\\
+                  \\text{or WTS BWOC $\\nexists L \\in \\mathbb{R}$ that satisfies the definition.} \\\\
+                  \\text{In this example we proceed BWOC.} \\\\
+                  \\text{Suppose $\\lim_{x \\to 0} H(x) = L$ for some $L \\in \\mathbb{R}$. Then} \\\\
+                  \\forall \\varepsilon > 0,\\ \\exists r > 0,\\ \\forall x,\\ 0 < |x - 0| < r \\implies |H(x) - L| < \\varepsilon. \\\\
+                  \\text{Visually we can see $H(x)$ goes from $0$ to $1$ across the origin.} \\\\
+                  \\text{So we want an $\\varepsilon \\in (0, 1)$ for our contradiction.} \\\\
+                  \\text{In particular, for $\\varepsilon = \\frac{1}{2}$, $\\exists r > 0$, $\\forall x$, $0 < |x - 0| < r$ we} \\\\
+                  \\text{have $|H(x) - L| < \\frac{1}{2}$.} \\\\
+                  \\text{Now we pick two points one on the lower leg $x_1$ and one on} \\\\
+                  \\text{the upper leg $x_2$. Specifically, take $x_1 = -\\frac{r}{2}$ and $x_2 = \\frac{r}{2}$.} \\\\
+                  \\text{So $|H(x_1) - L| < \\frac{1}{2}$ and $|H(x_2) - L| < \\frac{1}{2}$} \\\\
+                  \\begin{aligned}
+                    &\\iff |0 - L| < \\tfrac{1}{2} \\text{ and } |1 - L| < \\tfrac{1}{2} \\\\
+                    &\\iff -\\tfrac{1}{2} < L < \\tfrac{1}{2} \\text{ and } -\\tfrac{1}{2} < L - 1 < \\tfrac{1}{2} \\\\
+                    &\\iff -\\tfrac{1}{2} < L < \\tfrac{1}{2} \\text{ and } \\tfrac{1}{2} < L < \\tfrac{3}{2}.
+                  \\end{aligned} \\\\
+                  \\text{So $L \\in (-\\frac{1}{2}, \\frac{1}{2}) \\cap (\\frac{1}{2}, \\frac{3}{2}) = \\emptyset$, a contradiction!} \\ \\blacksquare`,
+      },
+      {
+        title: "Another Solution",
+        content: `\\text{WTS $\\lim_{x \\to 0} H(x)$ DNE.} \\\\
+                  \\text{BWOC suppose $\\exists L \\in \\mathbb{R}$ s.t. $\\lim_{x \\to 0} H(x) = L$. So} \\\\
+                  \\forall \\varepsilon > 0,\\ \\exists r > 0,\\ \\forall x \\in \\mathbb{R},\\ 0 < |x - 0| < r \\implies |H(x) - L| < \\varepsilon. \\\\
+                  \\text{Since $H(x)$ jumps from $0$ to $1$ we want our $\\varepsilon$ ball to be} \\\\
+                  \\text{between $0$ and $1$.} \\\\
+                  \\text{In particular, for $\\varepsilon = \\frac{1}{2}$, $\\exists r > 0$, $\\forall x \\in \\mathbb{R}$,} \\\\
+                  0 < |x - 0| < r \\implies |H(x) - L| < \\tfrac{1}{2}. \\\\
+                  \\text{Now take $x_1 = -\\frac{r}{2}$ and $x_2 = \\frac{r}{2}$.} \\\\
+                  \\text{So $|H(x_1) - L| < \\frac{1}{2}$ and $|H(x_2) - L| < \\frac{1}{2}$} \\\\
+                  \\iff |0 - L| < \\tfrac{1}{2} \\text{ and } |1 - L| < \\tfrac{1}{2}. \\\\
+                  \\text{But by [[theorem 3|triangle inequality]],} \\\\
+                  \\begin{aligned}
+                    1 = |1 - 0| = |1 - L + L - 0| &\\leq |1 - L| + |L - 0| \\\\
+                    &= |H(x_2) - L| + |L - H(x_1)| \\\\
+                    &< \\tfrac{1}{2} + \\tfrac{1}{2} = 1.
+                  \\end{aligned} \\\\
+                  \\text{Thus, $\\lim_{x \\to 0} H(x)$ DNE.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 31,
+    chapter: 5,
+    section: 2,
+    title: "Example: x²/(x² + y²)",
+    problem: `\\text{Consider $f : \\mathbb{R}^2 \\to \\mathbb{R}$ defined by} \\\\
+              f(x, y) = \\begin{cases} \\dfrac{x^2}{x^2 + y^2} & \\text{if } (x, y) \\neq (0, 0) \\\\ 0 & \\text{if } (x, y) = (0, 0). \\end{cases} \\\\
+              \\text{1. Show $f$ is cts on $\\mathbb{R}^2 \\setminus \\{\\mathbf{0}\\}$.} \\\\
+              \\text{2. Show $\\lim_{\\mathbf{x} \\to \\mathbf{0}} f(\\mathbf{x})$ DNE.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 23|Continuity at a point]]\\text{, } [[definition 24|on a set]] \\\\
+                  \\text{2) } [[definition 22|Limit of a function]] \\\\
+                  \\text{3) } [[theorem 3|Triangle inequality]] \\\\
+                  \\text{4) } [[exercise 30|Heaviside function]]`,
+      },
+      {
+        title: "Proof of (1)",
+        content: `\\text{Let $\\mathbf{a} = (p, q) \\in \\mathbb{R}^2 \\setminus \\{\\mathbf{0}\\}$. WTS $\\forall \\varepsilon > 0$, $\\exists r > 0$,} \\\\
+                  \\text{$\\forall \\mathbf{x} = (y, z) \\in \\mathbb{R}^2 \\setminus \\{\\mathbf{0}\\}$ with $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$, we have} \\\\
+                  \\text{$|f(\\mathbf{x}) - f(\\mathbf{a})| < \\varepsilon$.} \\\\[0.5em]
+                  \\text{[Scratch.} \\\\
+                  \\begin{aligned}
+                    |f(\\mathbf{x}) - f(\\mathbf{a})| &= \\left| \\frac{y^2}{y^2 + z^2} - \\frac{p^2}{p^2 + q^2} \\right| \\\\
+                    &= \\left| \\frac{y^2(p^2 + q^2) - p^2(y^2 + z^2)}{(y^2 + z^2)(p^2 + q^2)} \\right| \\\\
+                    &= \\frac{|y^2 q^2 - z^2 p^2|}{\\lVert \\mathbf{x} \\rVert^2 \\lVert \\mathbf{a} \\rVert^2}.
+                  \\end{aligned} \\\\
+                  \\text{Since $\\mathbf{a}$ fixed and $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$,} \\\\
+                  \\lVert \\mathbf{a} \\rVert \\leq \\lVert \\mathbf{x} - \\mathbf{a} \\rVert + \\lVert \\mathbf{x} \\rVert < r + \\lVert \\mathbf{x} \\rVert \\implies \\lVert \\mathbf{a} \\rVert - r < \\lVert \\mathbf{x} \\rVert. \\\\
+                  \\text{So for $r < \\frac{\\lVert \\mathbf{a} \\rVert}{2}$ we have} \\\\
+                  \\lVert \\mathbf{a} \\rVert - r > \\lVert \\mathbf{a} \\rVert - \\frac{\\lVert \\mathbf{a} \\rVert}{2} = \\frac{\\lVert \\mathbf{a} \\rVert}{2}, \\text{ so } \\frac{\\lVert \\mathbf{a} \\rVert}{2} < \\lVert \\mathbf{x} \\rVert. \\\\
+                  \\text{Also since $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$, $|y - p| < r$ and $|z - q| < r$, because} \\\\
+                  \\text{this is analogous to saying the distance between vectors} \\\\
+                  \\text{being bounded implies their corresponding components} \\\\
+                  \\text{have bounded distance.} \\\\
+                  \\text{Then $y^2 q^2 - z^2 p^2 = (y^2 - p^2) q^2 - (z^2 - q^2) p^2$, and} \\\\
+                  |y^2 - p^2| = |y - p| \\, |y + p| < r(r + 2\\lVert \\mathbf{a} \\rVert), \\\\
+                  \\text{using $|y + p| \\leq |y - p| + 2|p|$ and $|p| \\leq \\lVert \\mathbf{a} \\rVert$.} \\\\
+                  \\text{Same for $|z^2 - q^2|$. So for $r \\leq 1$,} \\\\
+                  |y^2 q^2 - z^2 p^2| < r(1 + 2\\lVert \\mathbf{a} \\rVert) \\lVert \\mathbf{a} \\rVert^2, \\text{ and} \\\\
+                  |f(\\mathbf{x}) - f(\\mathbf{a})| < \\frac{4(1 + 2\\lVert \\mathbf{a} \\rVert)}{\\lVert \\mathbf{a} \\rVert^2} r.] \\\\[0.5em]
+                  \\text{Choose } r = \\min\\left\\{ 1, \\frac{\\lVert \\mathbf{a} \\rVert}{2}, \\frac{\\varepsilon \\lVert \\mathbf{a} \\rVert^2}{4(1 + 2\\lVert \\mathbf{a} \\rVert)} \\right\\}. \\\\
+                  \\text{Then for $\\mathbf{x} \\neq \\mathbf{0}$ with $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$, by the scratch work} \\\\
+                  |f(\\mathbf{x}) - f(\\mathbf{a})| < \\frac{4(1 + 2\\lVert \\mathbf{a} \\rVert)}{\\lVert \\mathbf{a} \\rVert^2} r \\leq \\varepsilon. \\\\
+                  \\text{So $f$ is cts on $\\mathbb{R}^2 \\setminus \\{\\mathbf{0}\\}$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Proof of (2)",
+        content: `\\text{Note $f(x, 0) = 1$ for $x \\neq 0$ and $f(0, y) = 0$ for $y \\neq 0$: the} \\\\
+                  \\text{function is $1$ along the $x$-axis and $0$ along the $y$-axis, the} \\\\
+                  \\text{same jump as the [[exercise 30|Heaviside function]].} \\\\[0.5em]
+                  \\text{Suppose $\\lim_{\\mathbf{x} \\to \\mathbf{0}} f(\\mathbf{x}) = L$. With $\\varepsilon = \\frac{1}{2}$, there is $r > 0$} \\\\
+                  \\text{such that $0 < \\lVert \\mathbf{x} \\rVert < r \\implies |f(\\mathbf{x}) - L| < \\frac{1}{2}$.} \\\\
+                  \\text{Take $\\mathbf{x}_1 = (\\frac{r}{2}, 0)$ and $\\mathbf{x}_2 = (0, \\frac{r}{2})$. Both satisfy $0 < \\lVert \\mathbf{x} \\rVert < r$,} \\\\
+                  \\text{and $f(\\mathbf{x}_1) = 1$, $f(\\mathbf{x}_2) = 0$. Then} \\\\
+                  \\begin{aligned}
+                    1 = |1 - 0| &\\leq |1 - L| + |L - 0| \\\\
+                    &= |f(\\mathbf{x}_1) - L| + |L - f(\\mathbf{x}_2)| \\\\
+                    &< \\tfrac{1}{2} + \\tfrac{1}{2} = 1,
+                  \\end{aligned} \\\\
+                  \\text{a contradiction. So $\\lim_{\\mathbf{x} \\to \\mathbf{0}} f(\\mathbf{x})$ DNE.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 32,
+    chapter: 5,
+    section: 2,
+    title: "Example: Characteristic Functions",
+    problem: `\\text{For any $A \\subseteq \\mathbb{R}^n$, the characteristic function of $A$ is} \\\\
+              \\chi_A : \\mathbb{R}^n \\to \\mathbb{R}, \\quad \\chi_A(\\mathbf{x}) = \\begin{cases} 1, & \\mathbf{x} \\in A \\\\ 0, & \\mathbf{x} \\notin A. \\end{cases} \\\\
+              \\text{Show that $\\chi_A$ is cts on $\\operatorname{int}(A)$ and $\\operatorname{int}(A^c)$ but discts} \\\\
+              \\text{on $\\partial A = \\overline{A} \\cap \\overline{A^c}$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 23|Continuity at a point]]\\text{, } [[definition 24|on a set]]\\text{, } [[definition 25|discontinuity]] \\\\
+                  \\text{2) } [[definition 18|Interior]] \\\\
+                  \\text{3) } [[definition 17|Open]] \\\\
+                  \\text{4) } [[definition 14|Closure]]`,
+      },
+      {
+        title: "Cts on int(A)",
+        content: `\\text{First, WTS $\\chi_A$ is cts on $\\operatorname{int}(A)$. That is, WTS} \\\\
+                  \\forall \\mathbf{a} \\in \\operatorname{int}(A),\\ \\forall \\varepsilon > 0,\\ \\exists r > 0,\\ \\forall \\mathbf{x} \\in \\mathbb{R}^n, \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\implies |\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| < \\varepsilon. \\\\
+                  \\text{Let $\\mathbf{a} \\in \\operatorname{int}(A)$ and $\\varepsilon > 0$. Since $\\operatorname{int}(A)$ is open, $\\exists r > 0$} \\\\
+                  \\text{s.t. $B_r(\\mathbf{a}) \\subseteq \\operatorname{int}(A)$.} \\\\
+                  \\text{So $\\forall \\mathbf{x} \\in \\mathbb{R}^n$ with $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$, we have $\\mathbf{x} \\in \\operatorname{int}(A) \\subseteq A$.} \\\\
+                  \\text{So $|\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| = |1 - 1| = 0 < \\varepsilon$.} \\\\
+                  \\text{Hence, $\\chi_A$ is cts on $\\operatorname{int}(A)$.}`,
+      },
+      {
+        title: "Cts on int(Aᶜ)",
+        content: `\\text{Now WTS $\\chi_A$ is cts on $\\operatorname{int}(A^c)$. That is, WTS} \\\\
+                  \\forall \\mathbf{a} \\in \\operatorname{int}(A^c),\\ \\forall \\varepsilon > 0,\\ \\exists r > 0,\\ \\forall \\mathbf{x} \\in \\mathbb{R}^n \\text{ with } \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r, \\\\
+                  \\text{we have } |\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| < \\varepsilon. \\\\
+                  \\text{Let $\\mathbf{a} \\in \\operatorname{int}(A^c)$ and $\\varepsilon > 0$. Since $\\operatorname{int}(A^c)$ is open, $\\exists r > 0$} \\\\
+                  \\text{s.t. $B_r(\\mathbf{a}) \\subseteq \\operatorname{int}(A^c)$.} \\\\
+                  \\text{So $\\forall \\mathbf{x} \\in \\mathbb{R}^n$ with $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$, we have $\\mathbf{x} \\in \\operatorname{int}(A^c) \\subseteq A^c$.} \\\\
+                  \\text{So $|\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| = |0 - 0| = 0 < \\varepsilon$.} \\\\
+                  \\text{Hence $\\chi_A$ is cts on $\\operatorname{int}(A^c)$.}`,
+      },
+      {
+        title: "Discts on ∂A",
+        content: `\\text{Now we proceed to show $\\chi_A$ is discts on $\\partial A = \\overline{A} \\cap \\overline{A^c}$.} \\\\
+                  \\text{WTS $\\forall \\mathbf{a} \\in \\partial A = \\overline{A} \\cap \\overline{A^c}$, $\\exists \\varepsilon > 0$, $\\forall r > 0$, $\\exists \\mathbf{x} \\in \\mathbb{R}^n$ s.t.} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\text{ and } |\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| \\geq \\varepsilon. \\\\
+                  \\text{Similarly to [[exercise 30|past example]], our function maps to $0$ and $1$, so} \\\\
+                  \\text{we will use an $\\varepsilon$ smaller than $1$ to show the jump.} \\\\
+                  \\text{Let $\\mathbf{a} \\in \\partial A$ and let $\\varepsilon = \\frac{1}{2}$. Let $r > 0$ be arbitrary.} \\\\[0.5em]
+                  \\text{We claim $B_r(\\mathbf{a})$ has points in $A$ and points in $A^c$.} \\\\
+                  \\text{Since $\\mathbf{a} \\in \\overline{A}$, $\\exists (\\mathbf{x}_k) \\subseteq A$, $\\mathbf{x}_k \\to \\mathbf{a}$. So $\\exists N \\in \\mathbb{N}$, $\\forall k \\geq N$,} \\\\
+                  \\text{$\\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert < r$. That is, $\\exists N \\in \\mathbb{N}$, $\\forall k \\geq N$, $\\mathbf{x}_k \\in B_r(\\mathbf{a})$.} \\\\
+                  \\text{Similarly, $\\mathbf{a} \\in \\overline{A^c}$, so $\\exists (\\mathbf{y}_k) \\subseteq A^c$, $\\mathbf{y}_k \\to \\mathbf{a}$. So $\\exists N \\in \\mathbb{N}$,} \\\\
+                  \\text{$\\forall k \\geq N$, $\\lVert \\mathbf{y}_k - \\mathbf{a} \\rVert < r$.} \\\\
+                  \\text{In particular, $\\exists N \\in \\mathbb{N}$, $\\forall k \\geq N$, $\\mathbf{y}_k \\in B_r(\\mathbf{a})$.} \\\\
+                  \\text{Therefore, $B_r(\\mathbf{a})$ has points in $A$ and points in $A^c$.} \\\\
+                  \\text{Now we check the def of discts on both cases.} \\\\[0.5em]
+                  \\text{\\textit{Case 1: $\\mathbf{a} \\in A$.} Then since $\\mathbf{a} \\in \\partial A = \\overline{A} \\cap \\overline{A^c}$, $\\mathbf{a} \\in \\overline{A^c}$.} \\\\
+                  \\text{So by the claim $\\exists \\mathbf{y} \\in B_r(\\mathbf{a})$ with $\\mathbf{y} \\in A^c$.} \\\\
+                  \\text{Therefore, $|\\chi_A(\\mathbf{y}) - \\chi_A(\\mathbf{a})| = |0 - 1| = 1 \\geq \\frac{1}{2}$.} \\\\[0.5em]
+                  \\text{\\textit{Case 2: $\\mathbf{a} \\in A^c$.} Then since $\\mathbf{a} \\in \\partial A$, $\\mathbf{a} \\in \\overline{A}$.} \\\\
+                  \\text{By our claim, $\\exists \\mathbf{x} \\in B_r(\\mathbf{a})$ with $\\mathbf{x} \\in A$.} \\\\
+                  \\text{So $|\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| = |1 - 0| = 1 \\geq \\frac{1}{2}$.} \\\\[0.5em]
+                  \\text{Hence, $\\forall \\mathbf{a} \\in \\partial A$, $\\exists \\varepsilon > 0$, $\\forall r > 0$, $\\exists \\mathbf{x} \\in B_r(\\mathbf{a})$,} \\\\
+                  |\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| \\geq \\varepsilon. \\\\
+                  \\text{So $\\chi_A$ is discts at $\\partial A$.} \\ \\blacksquare`,
+      },
+    ],
+  },
   // Template:
   // {
   //   number: 1,

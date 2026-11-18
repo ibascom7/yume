@@ -10,6 +10,15 @@ export const chapters: Chapter[] = [
       { number: 1, title: "n-Dimensional Space" },
       { number: 2, title: "Convergence and Completeness in ℝⁿ" },
       { number: 3, title: "Closed and Open Subsets of ℝⁿ" },
+      { number: 4, title: "Compact Sets" },
+    ],
+  },
+  {
+    number: 5,
+    title: "Functions",
+    sections: [
+      { number: 1, title: "Limits and Continuity" },
+      { number: 2, title: "Discontinuous Functions" },
     ],
   },
 ];

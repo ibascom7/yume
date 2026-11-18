@@ -5,7 +5,7 @@ import { processLatexLinks } from "./latexLinkHelper";
 import TrustedBlockMath from "@/app/components/TrustedBlockMath";
 import LocationBadges from "@/app/components/LocationBadges";
 import type { ChapterRef } from "@/app/components/notesFilter";
-import { ExampleWidget, type Example } from "./DefinitionCard";
+import { ExampleWidget, FigureImage, type Example } from "./DefinitionCard";
 import ExampleList from "@/app/components/ExampleList";
 
 // What the card is labeled as; all kinds share one numbering, like most textbooks
@@ -122,6 +122,7 @@ export default function TheoremCard({
                 <>
                   <TrustedBlockMath math={processLatexLinks(e.content)} />
                   <ExampleWidget name={e.widget} />
+                  <FigureImage figure={e.figure} />
                 </>
               ),
             }))}
