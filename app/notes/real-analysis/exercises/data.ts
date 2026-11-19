@@ -1,8 +1,10 @@
 import type { ChapterRef, HomeworkRef } from "@/app/components/notesFilter";
+import type { Figure } from "../components/DefinitionCard";
 
 interface Solution {
   title?: string;
   content: string;
+  figure?: Figure;
 }
 
 interface Exercise extends ChapterRef, HomeworkRef {
@@ -1229,6 +1231,894 @@ export const exercises: Exercise[] = [
                   \\text{Since $B$ is closed, $\\overline{B} \\subseteq B$, so $a \\in B$.} \\\\
                   \\text{This contradicts $A \\cap B = \\emptyset$.} \\\\
                   \\text{Hence $d(\\{a\\}, B) > 0$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 28,
+    chapter: 5,
+    section: 1,
+    homework: 5,
+    title: "Question 5.1.A",
+    problem: `\\text{Use the $\\varepsilon$–$r$ definition of the limit of a function to show} \\\\
+              \\lim_{x \\to 2} x^2 = 4.`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 22|Limit of a function]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $\\varepsilon > 0$. Define $r = \\min\\{1, \\frac{\\varepsilon}{5}\\}$.} \\\\
+                  \\text{Suppose $0 < |x - 2| < r$. Since $r \\leq 1$, we have $|x - 2| < 1$, so} \\\\
+                  \\text{$1 < x < 3$.} \\\\
+                  \\text{Then $3 < x + 2 < 5$, so $|x + 2| < 5$. So} \\\\
+                  |x^2 - 4| = |x - 2||x + 2| < 5|x - 2| < 5r \\leq 5 \\cdot \\frac{\\varepsilon}{5} = \\varepsilon. \\\\
+                  \\text{Since $\\varepsilon$ was arbitrary, $\\lim_{x \\to 2} x^2 = 4$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 29,
+    chapter: 5,
+    section: 1,
+    homework: 5,
+    title: "Question 5.1.B",
+    problem: `\\text{Show that the function} \\\\
+              f(x) = \\begin{cases} \\dfrac{x}{\\sin x} & \\text{if } 0 < |x| < \\pi/2 \\\\ 1 & \\text{if } x = 0 \\end{cases} \\\\
+              \\text{is continuous at 0. Find an $r > 0$ such that $|f(x) - 1| < 10^{-6}$} \\\\
+              \\text{for all $|x| < r$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 23|Continuity at a point]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{From Example 2.4.7, for $0 < x < \\pi/2$ we have $\\sin x < x < \\tan x$.} \\\\
+                  \\text{Dividing by $\\sin x > 0$ gives $1 < \\frac{x}{\\sin x} < \\frac{1}{\\cos x}$ for $0 < x < \\pi/2$.} \\\\
+                  \\text{Since $\\frac{x}{\\sin x}$ and $\\cos x$ are both even, this also holds for} \\\\
+                  \\text{$0 < |x| < \\pi/2$. So for $0 < |x| < \\pi/2$,} \\\\
+                  |f(x) - 1| = \\frac{x}{\\sin x} - 1 < \\frac{1}{\\cos x} - 1 = \\frac{1 - \\cos x}{\\cos x}. \\\\
+                  \\text{Using $1 - \\cos x = 2\\sin^2(x/2)$ and $|\\sin t| \\leq |t|$, we get} \\\\
+                  1 - \\cos x \\leq 2\\left(\\frac{x}{2}\\right)^2 = \\frac{x^2}{2}. \\\\
+                  \\text{If also $|x| < \\pi/3$, then $\\cos x > \\cos(\\pi/3) = \\frac{1}{2}$.} \\\\
+                  \\text{So for $0 < |x| < \\pi/3$,} \\\\
+                  |f(x) - 1| < \\frac{x^2/2}{1/2} = x^2. \\\\
+                  \\text{At $x = 0$, $|f(0) - 1| = 0$.} \\\\[0.5em]
+                  \\text{\\textit{Continuity.} Let $\\varepsilon > 0$ and define $r = \\min\\{\\frac{\\pi}{3}, \\sqrt{\\varepsilon}\\}$.} \\\\
+                  \\text{If $|x| < r$, then either $x = 0$ and $|f(x) - 1| = 0 < \\varepsilon$, or} \\\\
+                  \\text{$0 < |x| < \\pi/3$ and $|f(x) - 1| < x^2 < r^2 \\leq \\varepsilon$.} \\\\
+                  \\text{So $f$ is continuous at 0.} \\\\[0.5em]
+                  \\text{\\textit{Explicit $r$.} Take $\\varepsilon = 10^{-6}$. Then $\\sqrt{\\varepsilon} = 10^{-3} < \\pi/3$, so} \\\\
+                  \\text{$r = 10^{-3}$ works.} \\\\
+                  \\text{That is, $|f(x) - 1| < 10^{-6}$ for all $|x| < 10^{-3}$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 30,
+    chapter: 5,
+    section: 1,
+    homework: 5,
+    title: "Question 5.1.C",
+    problem: `\\text{Show that the sawtooth function} \\\\
+              f(x) = \\begin{cases} x - 2n & \\text{if } 2n \\leq x \\leq 2n + 1, \\ n \\in \\mathbb{Z} \\\\ 2n - x & \\text{if } 2n - 1 \\leq x \\leq 2n, \\ n \\in \\mathbb{Z} \\end{cases} \\\\
+              \\text{is continuous.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 23|Continuity at a point]]\\text{, } [[definition 24|on a set]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{First, $f$ is well-defined (the two formulas agree where they overlap):} \\\\
+                  \\text{At $x = 2n$, we have $x - 2n = 0 = 2n - x$.} \\\\
+                  \\text{At $x = 2n + 1$, $(2n + 1) - 2n = 1$, and since} \\\\
+                  \\text{$2(n + 1) - 1 \\leq x \\leq 2(n + 1)$, we also have $2(n + 1) - (2n + 1) = 1$.} \\\\[0.5em]
+                  \\text{Now let $a \\in \\mathbb{R}$ and $\\varepsilon > 0$.} \\\\[0.5em]
+                  \\text{\\textit{Case 1: $a$ is on a line segment, i.e. $a \\notin \\mathbb{Z}$.}} \\\\
+                  \\text{Then $a$ lies in an open interval $(k, k + 1)$ for some $k \\in \\mathbb{Z}$.} \\\\
+                  \\text{Define $r = \\min\\{a - k, \\ k + 1 - a, \\ \\varepsilon\\} > 0$.} \\\\
+                  \\text{If $|x - a| < r$, then $x \\in (k, k + 1)$, so $x$ and $a$ are on the same} \\\\
+                  \\text{segment.} \\\\
+                  \\text{If $k = 2n$, then $f(x) - f(a) = (x - 2n) - (a - 2n) = x - a$.} \\\\
+                  \\text{If $k = 2n - 1$, then $f(x) - f(a) = (2n - x) - (2n - a) = a - x$.} \\\\
+                  \\text{Either way, $|f(x) - f(a)| = |x - a| < r \\leq \\varepsilon$.} \\\\[0.5em]
+                  \\text{\\textit{Case 2: $a$ is a cusp at an even integer, $a = 2n$.}} \\\\
+                  \\text{Define $r = \\min\\{1, \\varepsilon\\}$, and let $|x - 2n| < r$. Then} \\\\
+                  \\text{$2n - 1 < x < 2n + 1$.} \\\\
+                  \\text{If $2n \\leq x < 2n + 1$, then $f(x) = x - 2n = |x - 2n|$.} \\\\
+                  \\text{If $2n - 1 < x \\leq 2n$, then $f(x) = 2n - x = |x - 2n|$.} \\\\
+                  \\text{Since $f(2n) = 0$, $|f(x) - f(2n)| = |x - 2n| < r \\leq \\varepsilon$.} \\\\[0.5em]
+                  \\text{\\textit{Case 3: $a$ is a cusp at an odd integer, $a = 2n + 1$.}} \\\\
+                  \\text{Define $r = \\min\\{1, \\varepsilon\\}$, and let $|x - (2n + 1)| < r$. Then} \\\\
+                  \\text{$2n < x < 2n + 2$.} \\\\
+                  \\text{If $2n < x \\leq 2n + 1$, then} \\\\
+                  f(x) = x - 2n = 1 - \\big((2n + 1) - x\\big) = 1 - |x - (2n + 1)|. \\\\
+                  \\text{If $2n + 1 \\leq x < 2n + 2$, then} \\\\
+                  f(x) = 2(n + 1) - x = 1 - \\big(x - (2n + 1)\\big) = 1 - |x - (2n + 1)|. \\\\
+                  \\text{Since $f(2n + 1) = 1$,} \\\\
+                  |f(x) - f(2n + 1)| = |x - (2n + 1)| < r \\leq \\varepsilon. \\\\[0.5em]
+                  \\text{In every case, $\\exists r > 0$ s.t. $|x - a| < r \\implies |f(x) - f(a)| < \\varepsilon$.} \\\\
+                  \\text{So $f$ is continuous at every $a \\in \\mathbb{R}$, i.e. $f$ is continuous.} \\ \\blacksquare`,
+        figure: {
+          src: "/sawtooth.png",
+          alt: "Desmos graph of the sawtooth function: straight segments rising from 0 at even integers to 1 at odd integers and back down, from x = -2 to x = 6",
+          width: 1996,
+          height: 413,
+        },
+      },
+    ],
+  },
+  {
+    number: 31,
+    chapter: 5,
+    section: 1,
+    homework: 5,
+    title: "Question 5.1.F",
+    problem: `\\text{(a) Show that the definition of limit can be reformulated using} \\\\
+              \\text{open balls instead of norms as follows: A function $f$ mapping} \\\\
+              \\text{a subset $S \\subset \\mathbb{R}^n$ into $\\mathbb{R}^m$ has limit $\\mathbf{v}$ as $\\mathbf{x}$ approaches $\\mathbf{a}$} \\\\
+              \\text{provided that for every $\\varepsilon > 0$, there is an $r > 0$ such that} \\\\
+              f(B_r(\\mathbf{a}) \\cap S \\setminus \\{\\mathbf{a}\\}) \\subset B_\\varepsilon(\\mathbf{v}). \\\\
+              \\text{(b) Provide a similar reformulation of the statement that $f$ is} \\\\
+              \\text{continuous at $\\mathbf{a}$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 22|Limit of a function]] \\\\
+                  \\text{2) } [[definition 23|Continuity at a point]] \\\\
+                  \\text{3) } [[definition 16|Ball]]`,
+      },
+      {
+        title: "Part (a)",
+        content: `\\text{By definition, $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = \\mathbf{v}$ means} \\\\
+                  \\forall \\varepsilon > 0,\\ \\exists r > 0 \\text{ s.t. } \\mathbf{x} \\in S,\\ 0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\implies \\lVert f(\\mathbf{x}) - \\mathbf{v} \\rVert < \\varepsilon. \\\\
+                  \\text{Note that $\\mathbf{x} \\in B_r(\\mathbf{a}) \\cap S \\setminus \\{\\mathbf{a}\\}$ iff $\\mathbf{x} \\in S$ and $0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$.} \\\\
+                  \\text{Also $f(\\mathbf{x}) \\in B_\\varepsilon(\\mathbf{v})$ iff $\\lVert f(\\mathbf{x}) - \\mathbf{v} \\rVert < \\varepsilon$.} \\\\
+                  \\text{So for fixed $\\varepsilon$ and $r$, the implication above holding for all $\\mathbf{x}$} \\\\
+                  \\text{says exactly that every $\\mathbf{x} \\in B_r(\\mathbf{a}) \\cap S \\setminus \\{\\mathbf{a}\\}$ has} \\\\
+                  \\text{$f(\\mathbf{x}) \\in B_\\varepsilon(\\mathbf{v})$, i.e.} \\\\
+                  f(B_r(\\mathbf{a}) \\cap S \\setminus \\{\\mathbf{a}\\}) \\subset B_\\varepsilon(\\mathbf{v}). \\\\
+                  \\text{Hence the two definitions are equivalent.} \\ \\blacksquare`,
+      },
+      {
+        title: "Part (b)",
+        content: `\\text{Let $\\mathbf{a} \\in S$. By definition, $f$ is continuous at $\\mathbf{a}$ means} \\\\
+                  \\forall \\varepsilon > 0,\\ \\exists r > 0 \\text{ s.t. } \\mathbf{x} \\in S,\\ \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\implies \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert < \\varepsilon. \\\\
+                  \\text{As in (a), $\\mathbf{x} \\in B_r(\\mathbf{a}) \\cap S$ iff $\\mathbf{x} \\in S$ and $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$, and} \\\\
+                  \\text{$f(\\mathbf{x}) \\in B_\\varepsilon(f(\\mathbf{a}))$ iff $\\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert < \\varepsilon$.} \\\\
+                  \\text{So $f$ is continuous at $\\mathbf{a}$ iff for every $\\varepsilon > 0$, there is an $r > 0$} \\\\
+                  \\text{such that} \\\\
+                  f(B_r(\\mathbf{a}) \\cap S) \\subset B_\\varepsilon(f(\\mathbf{a})). \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 32,
+    chapter: 5,
+    section: 1,
+    homework: 5,
+    title: "Question 5.1.G",
+    problem: `\\text{Suppose that functions $f, g, h$ mapping $S \\subset \\mathbb{R}^n$ into $\\mathbb{R}$ satisfy} \\\\
+              \\text{$f(\\mathbf{x}) \\leq g(\\mathbf{x}) \\leq h(\\mathbf{x})$ for $\\mathbf{x} \\in S$. Suppose that $\\mathbf{c}$ is a limit point of} \\\\
+              \\text{$S$ and $\\lim_{\\mathbf{x} \\to \\mathbf{c}} f(\\mathbf{x}) = \\lim_{\\mathbf{x} \\to \\mathbf{c}} h(\\mathbf{x}) = L$.} \\\\
+              \\text{Show that $\\lim_{\\mathbf{x} \\to \\mathbf{c}} g(\\mathbf{x}) = L$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 22|Limit of a function]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $\\varepsilon > 0$.} \\\\
+                  \\text{Since $f(\\mathbf{x}) \\to L$, $\\exists r_1 > 0$ s.t. $\\mathbf{x} \\in S$, $0 < \\lVert \\mathbf{x} - \\mathbf{c} \\rVert < r_1$} \\\\
+                  \\text{$\\implies |f(\\mathbf{x}) - L| < \\varepsilon$. In particular, $L - \\varepsilon < f(\\mathbf{x})$.} \\\\
+                  \\text{Since $h(\\mathbf{x}) \\to L$, $\\exists r_2 > 0$ s.t. $\\mathbf{x} \\in S$, $0 < \\lVert \\mathbf{x} - \\mathbf{c} \\rVert < r_2$} \\\\
+                  \\text{$\\implies |h(\\mathbf{x}) - L| < \\varepsilon$. In particular, $h(\\mathbf{x}) < L + \\varepsilon$.} \\\\
+                  \\text{Define $r = \\min\\{r_1, r_2\\}$. If $\\mathbf{x} \\in S$ and $0 < \\lVert \\mathbf{x} - \\mathbf{c} \\rVert < r$, then} \\\\
+                  L - \\varepsilon < f(\\mathbf{x}) \\leq g(\\mathbf{x}) \\leq h(\\mathbf{x}) < L + \\varepsilon, \\\\
+                  \\text{so $|g(\\mathbf{x}) - L| < \\varepsilon$.} \\\\
+                  \\text{Since $\\varepsilon$ was arbitrary, $\\lim_{\\mathbf{x} \\to \\mathbf{c}} g(\\mathbf{x}) = L$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 33,
+    chapter: 5,
+    section: 1,
+    homework: 5,
+    title: "Question 5.1.H",
+    problem: `\\text{Define a function on the set $S = \\{0\\} \\cup \\{\\frac{1}{n} : n \\geq 1\\}$ by} \\\\
+              \\text{$f(\\frac{1}{n}) = a_n$ and $f(0) = L$. Prove that $f$ is continuous on $S$} \\\\
+              \\text{if and only if $\\lim_{n \\to \\infty} a_n = L$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 23|Continuity at a point]]\\text{, } [[definition 24|on a set]] \\\\
+                  \\text{2) } [[definition 26|Isolated point]]`,
+      },
+      {
+        title: "Proof of (⇒)",
+        content: `\\text{Suppose $f$ is continuous on $S$. Let $\\varepsilon > 0$.} \\\\
+                  \\text{Since $f$ is continuous at $0$, $\\exists r > 0$ s.t. $x \\in S$,} \\\\
+                  |x| < r \\implies |f(x) - L| < \\varepsilon. \\\\
+                  \\text{By the Archimedean property, $\\exists N \\in \\mathbb{N}$ s.t. $\\frac{1}{N} < r$.} \\\\
+                  \\text{For $n \\geq N$, $|\\frac{1}{n}| \\leq \\frac{1}{N} < r$, so $|a_n - L| = |f(\\frac{1}{n}) - L| < \\varepsilon$.} \\\\
+                  \\text{Hence $\\lim_{n \\to \\infty} a_n = L$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Proof of (⇐)",
+        content: `\\text{Suppose $\\lim_{n \\to \\infty} a_n = L$. Let $\\varepsilon > 0$.} \\\\[0.5em]
+                  \\text{\\textit{At $x = 0$:} $\\exists N \\in \\mathbb{N}$ s.t. $n \\geq N \\implies |a_n - L| < \\varepsilon$.} \\\\
+                  \\text{Define $r = \\frac{1}{N}$, and let $x \\in S$ with $|x| < r$.} \\\\
+                  \\text{If $x = 0$, then $|f(x) - L| = 0 < \\varepsilon$.} \\\\
+                  \\text{If $x = \\frac{1}{n}$, then $\\frac{1}{n} < \\frac{1}{N}$, so $n > N$, so $|f(x) - L| = |a_n - L| < \\varepsilon$.} \\\\
+                  \\text{So $f$ is continuous at $0$.} \\\\[0.5em]
+                  \\text{\\textit{At $x = \\frac{1}{n}$:} Define $r = \\frac{1}{n} - \\frac{1}{n+1} = \\frac{1}{n(n+1)} > 0$.} \\\\
+                  \\text{If $m > n$, then $|\\frac{1}{n} - \\frac{1}{m}| = \\frac{1}{n} - \\frac{1}{m} \\geq \\frac{1}{n} - \\frac{1}{n+1} = r$.} \\\\
+                  \\text{If $m < n$, then $|\\frac{1}{m} - \\frac{1}{n}| \\geq \\frac{1}{n-1} - \\frac{1}{n} = \\frac{1}{n(n-1)} > r$.} \\\\
+                  \\text{Also $|\\frac{1}{n} - 0| = \\frac{1}{n} > r$.} \\\\
+                  \\text{So the only $x \\in S$ with $|x - \\frac{1}{n}| < r$ is $x = \\frac{1}{n}$, and then} \\\\
+                  \\text{$|f(x) - f(\\frac{1}{n})| = 0 < \\varepsilon$.} \\\\
+                  \\text{So $f$ is continuous at each $\\frac{1}{n}$.} \\\\[0.5em]
+                  \\text{Hence $f$ is continuous on $S$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 34,
+    chapter: 5,
+    section: 1,
+    homework: 5,
+    title: "Question 5.1.K",
+    problem: `\\text{Here $\\pi_j : \\mathbb{R}^n \\to \\mathbb{R}$ is $\\pi_j(\\mathbf{x}) = x_j$, and $\\epsilon_i : \\mathbb{R} \\to \\mathbb{R}^m$ is} \\\\
+              \\text{$\\epsilon_i(t) = t\\mathbf{e}_i$, so $\\epsilon_i \\pi_j(\\mathbf{x}) = x_j \\mathbf{e}_i$.} \\\\
+              \\text{(a) Show that a linear transformation $A : \\mathbb{R}^n \\to \\mathbb{R}^m$ with} \\\\
+              \\text{$m \\times n$ matrix $[a_{ij}]$ can be written as} \\\\
+              A = \\sum_{i=1}^{m} \\sum_{j=1}^{n} a_{ij} \\epsilon_i \\pi_j. \\\\
+              \\text{(b) Show that $\\epsilon_i \\pi_j$ is Lipschitz with constant 1.} \\\\
+              \\text{(c) Hence deduce that $A$ is Lipschitz with constant} \\\\
+              \\textstyle\\sum_{i=1}^{m} \\sum_{j=1}^{n} |a_{ij}|.`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 27|Lipschitz]] \\\\
+                  \\text{2) } [[theorem 3|Triangle inequality]] \\\\
+                  \\text{3) } [[theorem 20|Coordinate functions]]`,
+      },
+      {
+        title: "Part (a)",
+        content: `\\text{Let $\\mathbf{x} \\in \\mathbb{R}^n$. The $i$th entry of $A\\mathbf{x}$ is $\\sum_{j=1}^{n} a_{ij} x_j$. So} \\\\
+                  \\begin{aligned}
+                    A\\mathbf{x} &= \\sum_{i=1}^{m} \\left( \\sum_{j=1}^{n} a_{ij} x_j \\right) \\mathbf{e}_i \\\\
+                    &= \\sum_{i=1}^{m} \\sum_{j=1}^{n} a_{ij} x_j \\mathbf{e}_i \\\\
+                    &= \\sum_{i=1}^{m} \\sum_{j=1}^{n} a_{ij} \\epsilon_i \\pi_j(\\mathbf{x}).
+                  \\end{aligned} \\\\
+                  \\text{Since this holds for all $\\mathbf{x}$, $A = \\sum_{i=1}^{m} \\sum_{j=1}^{n} a_{ij} \\epsilon_i \\pi_j$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Part (b)",
+        content: `\\text{Let $\\mathbf{x}, \\mathbf{y} \\in \\mathbb{R}^n$. Then} \\\\
+                  \\lVert \\epsilon_i \\pi_j(\\mathbf{x}) - \\epsilon_i \\pi_j(\\mathbf{y}) \\rVert = \\lVert (x_j - y_j)\\mathbf{e}_i \\rVert = |x_j - y_j|. \\\\
+                  \\text{Since $|x_j - y_j|^2 \\leq \\sum_{k=1}^{n} (x_k - y_k)^2 = \\lVert \\mathbf{x} - \\mathbf{y} \\rVert^2$, we get} \\\\
+                  \\text{$|x_j - y_j| \\leq \\lVert \\mathbf{x} - \\mathbf{y} \\rVert$. So} \\\\
+                  \\lVert \\epsilon_i \\pi_j(\\mathbf{x}) - \\epsilon_i \\pi_j(\\mathbf{y}) \\rVert \\leq \\lVert \\mathbf{x} - \\mathbf{y} \\rVert, \\\\
+                  \\text{i.e. $\\epsilon_i \\pi_j$ is Lipschitz with constant 1.} \\ \\blacksquare`,
+      },
+      {
+        title: "Part (c)",
+        content: `\\text{Let $\\mathbf{x}, \\mathbf{y} \\in \\mathbb{R}^n$. By (a), the [[theorem 3|triangle inequality]], and (b),} \\\\
+                  \\begin{aligned}
+                    \\lVert A\\mathbf{x} - A\\mathbf{y} \\rVert &= \\left\\lVert \\sum_{i=1}^{m} \\sum_{j=1}^{n} a_{ij} \\left( \\epsilon_i \\pi_j(\\mathbf{x}) - \\epsilon_i \\pi_j(\\mathbf{y}) \\right) \\right\\rVert \\\\
+                    &\\leq \\sum_{i=1}^{m} \\sum_{j=1}^{n} |a_{ij}| \\, \\lVert \\epsilon_i \\pi_j(\\mathbf{x}) - \\epsilon_i \\pi_j(\\mathbf{y}) \\rVert \\\\
+                    &\\leq \\left( \\sum_{i=1}^{m} \\sum_{j=1}^{n} |a_{ij}| \\right) \\lVert \\mathbf{x} - \\mathbf{y} \\rVert.
+                  \\end{aligned} \\\\
+                  \\text{So $A$ is Lipschitz with constant $\\sum_{i=1}^{m} \\sum_{j=1}^{n} |a_{ij}|$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 35,
+    chapter: 5,
+    section: 1,
+    homework: 5,
+    title: "Question 5.1.L",
+    problem: `\\text{Consider the linear transformation on $\\mathbb{R}^4$ given by the matrix} \\\\
+              A = \\begin{bmatrix}
+                \\frac{1}{2} & \\frac{1}{2} & \\frac{1}{2} & \\frac{1}{2} \\\\
+                \\frac{1}{2} & -\\frac{1}{2} & \\frac{1}{2} & -\\frac{1}{2} \\\\
+                \\frac{1}{2} & \\frac{1}{2} & -\\frac{1}{2} & -\\frac{1}{2} \\\\
+                \\frac{1}{2} & -\\frac{1}{2} & -\\frac{1}{2} & \\frac{1}{2}
+              \\end{bmatrix}. \\\\
+              \\text{(a) Compute the Lipschitz constant obtained in Corollary 5.1.7.} \\\\
+              \\text{(b) Show that $\\lVert A\\mathbf{x} \\rVert = \\lVert \\mathbf{x} \\rVert$ for all $\\mathbf{x} \\in \\mathbb{R}^4$. Hence deduce} \\\\
+              \\text{that the optimal Lipschitz constant is 1.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 27|Lipschitz]] \\\\
+                  \\text{2) } [[theorem 21|Corollary 5.1.7]] \\\\
+                  \\text{3) } [[definition 5|Orthonormal]] \\\\
+                  \\text{4) } [[theorem 1|Cauchy-Schwarz]]`,
+      },
+      {
+        title: "Part (a)",
+        content: `\\text{[[theorem 21|Corollary 5.1.7]] gives the Lipschitz constant} \\\\
+                  \\text{$\\left( \\sum_{i=1}^{4} \\sum_{j=1}^{4} a_{ij}^2 \\right)^{1/2}$, which comes from the Schwarz inequality:} \\\\
+                  \\begin{aligned}
+                    \\lVert A\\mathbf{x} \\rVert^2 &= \\sum_{i=1}^{4} \\left( \\sum_{j=1}^{4} a_{ij} x_j \\right)^2 \\\\
+                    &\\leq \\sum_{i=1}^{4} \\left( \\sum_{j=1}^{4} a_{ij}^2 \\right) \\left( \\sum_{j=1}^{4} x_j^2 \\right) \\\\
+                    &= \\left( \\sum_{i=1}^{4} \\sum_{j=1}^{4} a_{ij}^2 \\right) \\lVert \\mathbf{x} \\rVert^2.
+                  \\end{aligned} \\\\
+                  \\text{Every entry has $a_{ij}^2 = \\frac{1}{4}$, and there are 16 entries, so} \\\\
+                  \\left( \\sum_{i=1}^{4} \\sum_{j=1}^{4} a_{ij}^2 \\right)^{1/2} = \\left( 16 \\cdot \\frac{1}{4} \\right)^{1/2} = \\sqrt{4} = 2. \\\\
+                  \\text{So Corollary 5.1.7 gives Lipschitz constant 2.} \\ \\blacksquare`,
+      },
+      {
+        title: "Part (b)",
+        content: `\\text{Let $\\mathbf{c}_1, \\ldots, \\mathbf{c}_4$ be the columns of $A$:} \\\\
+                  \\mathbf{c}_1 = \\tfrac{1}{2}(1, 1, 1, 1), \\quad \\mathbf{c}_2 = \\tfrac{1}{2}(1, -1, 1, -1), \\\\
+                  \\mathbf{c}_3 = \\tfrac{1}{2}(1, 1, -1, -1), \\quad \\mathbf{c}_4 = \\tfrac{1}{2}(1, -1, -1, 1). \\\\
+                  \\text{Each $\\lVert \\mathbf{c}_j \\rVert^2 = 4 \\cdot \\frac{1}{4} = 1$.} \\\\
+                  \\text{For $j \\neq k$, each pair of columns agrees in sign in exactly 2} \\\\
+                  \\text{entries and disagrees in 2, so} \\\\
+                  \\langle \\mathbf{c}_j, \\mathbf{c}_k \\rangle = \\tfrac{1}{4}(1 + 1 - 1 - 1) = 0. \\\\
+                  \\text{So $\\langle \\mathbf{c}_j, \\mathbf{c}_k \\rangle = \\delta_{jk}$, i.e. the columns are [[definition 5|orthonormal]].} \\\\
+                  \\text{Let $\\mathbf{x} \\in \\mathbb{R}^4$. Then $A\\mathbf{x} = \\sum_{j=1}^{4} x_j \\mathbf{c}_j$, so} \\\\
+                  \\begin{aligned}
+                    \\lVert A\\mathbf{x} \\rVert^2 &= \\left\\langle \\sum_{j=1}^{4} x_j \\mathbf{c}_j, \\sum_{k=1}^{4} x_k \\mathbf{c}_k \\right\\rangle \\\\
+                    &= \\sum_{j=1}^{4} \\sum_{k=1}^{4} x_j x_k \\langle \\mathbf{c}_j, \\mathbf{c}_k \\rangle \\\\
+                    &= \\sum_{j=1}^{4} x_j^2 = \\lVert \\mathbf{x} \\rVert^2.
+                  \\end{aligned} \\\\
+                  \\text{So $\\lVert A\\mathbf{x} \\rVert = \\lVert \\mathbf{x} \\rVert$.} \\\\[0.5em]
+                  \\text{\\textit{Optimal constant.} For $\\mathbf{x}, \\mathbf{y} \\in \\mathbb{R}^4$, by linearity} \\\\
+                  \\lVert A\\mathbf{x} - A\\mathbf{y} \\rVert = \\lVert A(\\mathbf{x} - \\mathbf{y}) \\rVert = \\lVert \\mathbf{x} - \\mathbf{y} \\rVert, \\\\
+                  \\text{so $A$ is Lipschitz with constant 1.} \\\\
+                  \\text{Suppose $A$ were Lipschitz with some constant $C < 1$. Take} \\\\
+                  \\text{$\\mathbf{x} = \\mathbf{e}_1$, $\\mathbf{y} = \\mathbf{0}$. Then} \\\\
+                  1 = \\lVert \\mathbf{e}_1 \\rVert = \\lVert A\\mathbf{e}_1 - A\\mathbf{0} \\rVert \\leq C\\lVert \\mathbf{e}_1 - \\mathbf{0} \\rVert = C < 1, \\\\
+                  \\text{a contradiction. Hence the optimal Lipschitz constant is 1.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 36,
+    chapter: 5,
+    section: 2,
+    homework: 6,
+    title: "Question 5.2.A",
+    problem: `\\text{Let $A$ be a subset of $\\mathbb{R}^n$. Show that the characteristic} \\\\
+              \\text{function $\\chi_A$ is continuous on the interior of $A$ and on the} \\\\
+              \\text{interior of its complement $A'$ but is discontinuous on the} \\\\
+              \\text{boundary $\\partial A = \\overline{A} \\cap \\overline{A'}$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 23|Continuity at a point]]\\text{, } [[definition 25|discontinuity]] \\\\
+                  \\text{2) } [[definition 18|Interior]] \\\\
+                  \\text{3) } [[definition 14|Closure]] \\\\
+                  \\text{4) } [[theorem 12|Ball characterization of closure]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{\\textit{Interior of $A$.} Let $\\mathbf{a} \\in \\operatorname{int} A$ and $\\varepsilon > 0$.} \\\\
+                  \\text{Then $\\exists r > 0$ s.t. $B_r(\\mathbf{a}) \\subset A$.} \\\\
+                  \\text{If $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$, then $\\mathbf{x} \\in A$, so} \\\\
+                  |\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| = |1 - 1| = 0 < \\varepsilon. \\\\
+                  \\text{So $\\chi_A$ is continuous at $\\mathbf{a}$.} \\\\[0.5em]
+                  \\text{\\textit{Interior of $A'$.} Let $\\mathbf{a} \\in \\operatorname{int} A'$ and $\\varepsilon > 0$.} \\\\
+                  \\text{Then $\\exists r > 0$ s.t. $B_r(\\mathbf{a}) \\subset A'$.} \\\\
+                  \\text{If $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$, then $\\mathbf{x} \\notin A$, so} \\\\
+                  |\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| = |0 - 0| = 0 < \\varepsilon. \\\\
+                  \\text{So $\\chi_A$ is continuous at $\\mathbf{a}$.} \\\\[0.5em]
+                  \\text{\\textit{Boundary.} Let $\\mathbf{a} \\in \\partial A = \\overline{A} \\cap \\overline{A'}$, and take $\\varepsilon = \\frac{1}{2}$.} \\\\
+                  \\text{Let $r > 0$.} \\\\
+                  \\text{Since $\\mathbf{a} \\in \\overline{A}$, there is a sequence in $A$ converging to $\\mathbf{a}$, so} \\\\
+                  \\text{$B_r(\\mathbf{a}) \\cap A \\neq \\emptyset$.} \\\\
+                  \\text{Similarly, since $\\mathbf{a} \\in \\overline{A'}$, $B_r(\\mathbf{a}) \\cap A' \\neq \\emptyset$.} \\\\
+                  \\text{If $\\mathbf{a} \\in A$, pick $\\mathbf{x} \\in B_r(\\mathbf{a}) \\cap A'$. Then} \\\\
+                  |\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| = |0 - 1| = 1 \\geq \\varepsilon. \\\\
+                  \\text{If $\\mathbf{a} \\in A'$, pick $\\mathbf{x} \\in B_r(\\mathbf{a}) \\cap A$. Then} \\\\
+                  |\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| = |1 - 0| = 1 \\geq \\varepsilon. \\\\
+                  \\text{So for every $r > 0$, $\\exists \\mathbf{x}$ with $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$ and} \\\\
+                  \\text{$|\\chi_A(\\mathbf{x}) - \\chi_A(\\mathbf{a})| \\geq \\varepsilon$.} \\\\
+                  \\text{Hence $\\chi_A$ is discontinuous at every point of $\\partial A$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 37,
+    chapter: 5,
+    section: 2,
+    homework: 6,
+    title: "Question 5.2.F",
+    problem: `\\text{Prove that $L = \\lim_{x \\to a} f(x)$ if and only if both} \\\\
+              \\lim_{x \\to a^-} f(x) = L \\text{ and } \\lim_{x \\to a^+} f(x) = L.`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 22|Limit of a function]] \\\\
+                  \\text{2) } [[definition 29|One-sided limits]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $f$ be defined on $S \\subset \\mathbb{R}$. Recall $\\lim_{x \\to a^-} f(x) = L$ means} \\\\
+                  \\forall \\varepsilon > 0,\\ \\exists r > 0 \\text{ s.t. } x \\in S,\\ a - r < x < a \\implies |f(x) - L| < \\varepsilon, \\\\
+                  \\text{and $\\lim_{x \\to a^+} f(x) = L$ is the same with $a < x < a + r$.} \\\\[0.5em]
+                  \\text{($\\Rightarrow$) Suppose $\\lim_{x \\to a} f(x) = L$. Let $\\varepsilon > 0$.} \\\\
+                  \\text{Then $\\exists r > 0$ s.t. $x \\in S$, $0 < |x - a| < r \\implies |f(x) - L| < \\varepsilon$.} \\\\
+                  \\text{If $a - r < x < a$, then $0 < |x - a| < r$, so $|f(x) - L| < \\varepsilon$.} \\\\
+                  \\text{So $\\lim_{x \\to a^-} f(x) = L$.} \\\\
+                  \\text{If $a < x < a + r$, then $0 < |x - a| < r$, so $|f(x) - L| < \\varepsilon$.} \\\\
+                  \\text{So $\\lim_{x \\to a^+} f(x) = L$.} \\\\[0.5em]
+                  \\text{($\\Leftarrow$) Suppose both one-sided limits equal $L$. Let $\\varepsilon > 0$.} \\\\
+                  \\text{$\\exists r_1 > 0$ s.t. $x \\in S$, $a - r_1 < x < a \\implies |f(x) - L| < \\varepsilon$.} \\\\
+                  \\text{$\\exists r_2 > 0$ s.t. $x \\in S$, $a < x < a + r_2 \\implies |f(x) - L| < \\varepsilon$.} \\\\
+                  \\text{Define $r = \\min\\{r_1, r_2\\}$, and let $x \\in S$ with $0 < |x - a| < r$.} \\\\
+                  \\text{Then either $a - r_1 \\leq a - r < x < a$ or $a < x < a + r \\leq a + r_2$.} \\\\
+                  \\text{In either case $|f(x) - L| < \\varepsilon$.} \\\\
+                  \\text{Hence $\\lim_{x \\to a} f(x) = L$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 38,
+    chapter: 5,
+    section: 2,
+    homework: 6,
+    title: "Question 5.2.G",
+    problem: `\\text{(A monotone convergence test for functions.) Suppose that $f$} \\\\
+              \\text{is an increasing function on $(a, b)$ that is bounded above.} \\\\
+              \\text{Prove that the one-sided limit $\\lim_{x \\to b^-} f(x)$ exists.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 29|One-sided limits]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{The set $\\{f(x) : a < x < b\\}$ is nonempty and bounded above, so} \\\\
+                  \\text{by the Least Upper Bound Principle} \\\\
+                  L = \\sup\\{f(x) : a < x < b\\} \\\\
+                  \\text{exists. We show $\\lim_{x \\to b^-} f(x) = L$.} \\\\[0.5em]
+                  \\text{Let $\\varepsilon > 0$. Since $L - \\varepsilon < L$, $L - \\varepsilon$ is not an upper bound, so} \\\\
+                  \\text{$\\exists x_0 \\in (a, b)$ s.t. $f(x_0) > L - \\varepsilon$.} \\\\
+                  \\text{Define $r = b - x_0 > 0$, and let $b - r < x < b$, i.e. $x_0 < x < b$.} \\\\
+                  \\text{Since $f$ is increasing, $f(x) \\geq f(x_0) > L - \\varepsilon$.} \\\\
+                  \\text{Since $L$ is an upper bound, $f(x) \\leq L < L + \\varepsilon$.} \\\\
+                  \\text{So $|f(x) - L| < \\varepsilon$.} \\\\
+                  \\text{Hence $\\lim_{x \\to b^-} f(x) = L$ exists.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 39,
+    chapter: 5,
+    section: 3,
+    homework: 6,
+    title: "Question 5.3.B",
+    problem: `\\text{Use Lemma 4.2.3 and the sequential characterization of} \\\\
+              \\text{continuity to give a second proof for Example 5.3.6.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[theorem 5|Lemma 4.2.3]] \\\\
+                  \\text{2) } [[theorem 22|Theorem 5.3.1]] \\\\
+                  \\text{3) } [[theorem 25|Example 5.3.6 (component functions)]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $f = (f_1, \\ldots, f_m)$ map $S \\subset \\mathbb{R}^n$ into $\\mathbb{R}^m$ and let $\\mathbf{a} \\in S$.} \\\\
+                  \\text{We show $f$ is continuous at $\\mathbf{a}$ iff each $f_i$ is continuous at $\\mathbf{a}$.} \\\\
+                  \\text{[[theorem 5|Lemma 4.2.3]] says a sequence in $\\mathbb{R}^m$ converges to $\\mathbf{y}$ iff each} \\\\
+                  \\text{coordinate converges to the corresponding coordinate of $\\mathbf{y}$.} \\\\[0.5em]
+                  \\text{($\\Rightarrow$) Suppose $f$ is continuous at $\\mathbf{a}$. Let $(\\mathbf{x}_k) \\subset S$ with} \\\\
+                  \\text{$\\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}$.} \\\\
+                  \\text{By the sequential characterization, $\\lim_{k \\to \\infty} f(\\mathbf{x}_k) = f(\\mathbf{a})$.} \\\\
+                  \\text{By Lemma 4.2.3, $\\lim_{k \\to \\infty} f_i(\\mathbf{x}_k) = f_i(\\mathbf{a})$ for each $i$.} \\\\
+                  \\text{Since $(\\mathbf{x}_k)$ was arbitrary, each $f_i$ is continuous at $\\mathbf{a}$ by the} \\\\
+                  \\text{sequential characterization.} \\\\[0.5em]
+                  \\text{($\\Leftarrow$) Suppose each $f_i$ is continuous at $\\mathbf{a}$. Let $(\\mathbf{x}_k) \\subset S$ with} \\\\
+                  \\text{$\\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}$.} \\\\
+                  \\text{By the sequential characterization, $\\lim_{k \\to \\infty} f_i(\\mathbf{x}_k) = f_i(\\mathbf{a})$ for each $i$.} \\\\
+                  \\text{By Lemma 4.2.3,} \\\\
+                  \\lim_{k \\to \\infty} f(\\mathbf{x}_k) = \\lim_{k \\to \\infty} (f_1(\\mathbf{x}_k), \\ldots, f_m(\\mathbf{x}_k)) = f(\\mathbf{a}). \\\\
+                  \\text{Since $(\\mathbf{x}_k)$ was arbitrary, $f$ is continuous at $\\mathbf{a}$ by the sequential} \\\\
+                  \\text{characterization.} \\\\[0.5em]
+                  \\text{Since $\\mathbf{a} \\in S$ was arbitrary, $f$ is continuous if and only if each $f_i$} \\\\
+                  \\text{is continuous for $1 \\leq i \\leq m$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 40,
+    chapter: 5,
+    section: 3,
+    homework: 6,
+    title: "Question 5.3.C",
+    problem: `\\text{Consider $f$ mapping $S \\subset \\mathbb{R}^n$ into $\\mathbb{R}^m$ and two points: $\\mathbf{a}$ a limit} \\\\
+              \\text{point of $S \\setminus \\{\\mathbf{a}\\}$ and $\\mathbf{v} \\in \\mathbb{R}^m$. Show that $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = \\mathbf{v}$ if and only} \\\\
+              \\text{if for each sequence $(\\mathbf{x}_k) \\in S \\setminus \\{\\mathbf{a}\\}$ with $\\lim_{k \\to \\infty} \\mathbf{x}_k = \\mathbf{a}$, we} \\\\
+              \\text{have $\\lim_{k \\to \\infty} f(\\mathbf{x}_k) = \\mathbf{v}$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 22|Limit of a function]] \\\\
+                  \\text{2) } [[definition 9|Convergence]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{($\\Rightarrow$) Suppose $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = \\mathbf{v}$, and let $(\\mathbf{x}_k) \\subset S \\setminus \\{\\mathbf{a}\\}$ with} \\\\
+                  \\text{$\\mathbf{x}_k \\to \\mathbf{a}$. Let $\\varepsilon > 0$.} \\\\
+                  \\text{$\\exists r > 0$ s.t. $\\mathbf{x} \\in S$, $0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\implies \\lVert f(\\mathbf{x}) - \\mathbf{v} \\rVert < \\varepsilon$.} \\\\
+                  \\text{Since $\\mathbf{x}_k \\to \\mathbf{a}$, $\\exists N$ s.t. $k \\geq N \\implies \\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert < r$.} \\\\
+                  \\text{Since $\\mathbf{x}_k \\neq \\mathbf{a}$, for $k \\geq N$ we have $0 < \\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert < r$, so} \\\\
+                  \\text{$\\lVert f(\\mathbf{x}_k) - \\mathbf{v} \\rVert < \\varepsilon$.} \\\\
+                  \\text{Hence $\\lim_{k \\to \\infty} f(\\mathbf{x}_k) = \\mathbf{v}$.} \\\\[0.5em]
+                  \\text{($\\Leftarrow$) We prove the contrapositive. Suppose $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) \\neq \\mathbf{v}$. Then} \\\\
+                  \\exists \\varepsilon > 0 \\text{ s.t. } \\forall r > 0,\\ \\exists \\mathbf{x} \\in S \\text{ with } 0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\\\
+                  \\text{and } \\lVert f(\\mathbf{x}) - \\mathbf{v} \\rVert \\geq \\varepsilon. \\\\
+                  \\text{For each $k \\in \\mathbb{N}$, take $r = \\frac{1}{k}$ to get $\\mathbf{x}_k \\in S$ with} \\\\
+                  0 < \\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert < \\tfrac{1}{k} \\text{ and } \\lVert f(\\mathbf{x}_k) - \\mathbf{v} \\rVert \\geq \\varepsilon. \\\\
+                  \\text{Then $(\\mathbf{x}_k) \\subset S \\setminus \\{\\mathbf{a}\\}$ and $\\mathbf{x}_k \\to \\mathbf{a}$, but $\\lVert f(\\mathbf{x}_k) - \\mathbf{v} \\rVert \\geq \\varepsilon$} \\\\
+                  \\text{for all $k$, so $f(\\mathbf{x}_k) \\not\\to \\mathbf{v}$.} \\\\
+                  \\text{So the sequence condition fails. Hence the sequence condition} \\\\
+                  \\text{implies $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = \\mathbf{v}$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 41,
+    chapter: 5,
+    section: 3,
+    homework: 6,
+    title: "Question 5.3.D",
+    problem: `\\text{Suppose that $f$ mapping $S \\subset \\mathbb{R}^n$ into $\\mathbb{R}^m$ is given by} \\\\
+              \\text{$f(\\mathbf{x}) = (f_1(\\mathbf{x}), \\ldots, f_m(\\mathbf{x}))$ with $f_i : S \\to \\mathbb{R}$ for each $i$. Show} \\\\
+              \\text{that $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = (u_1, \\ldots, u_m)$ if and only if} \\\\
+              \\text{$\\lim_{\\mathbf{x} \\to \\mathbf{a}} f_i(\\mathbf{x}) = u_i$ for each $i$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[exercise 40|Question 5.3.C]] \\\\
+                  \\text{2) } [[theorem 5|Lemma 4.2.3]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $\\mathbf{a}$ be a limit point of $S \\setminus \\{\\mathbf{a}\\}$ and $\\mathbf{u} = (u_1, \\ldots, u_m)$.} \\\\
+                  \\text{By [[exercise 40|Question C]],} \\\\
+                  \\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = \\mathbf{u} \\iff \\text{for every } (\\mathbf{x}_k) \\subset S \\setminus \\{\\mathbf{a}\\} \\\\
+                  \\text{with } \\mathbf{x}_k \\to \\mathbf{a}, \\ f(\\mathbf{x}_k) \\to \\mathbf{u}. \\\\
+                  \\text{By [[theorem 5|Lemma 4.2.3]], $f(\\mathbf{x}_k) \\to \\mathbf{u}$ iff $f_i(\\mathbf{x}_k) \\to u_i$ for each $i$. So the} \\\\
+                  \\text{right side holds iff} \\\\
+                  \\text{for each } i, \\text{ for every } (\\mathbf{x}_k) \\subset S \\setminus \\{\\mathbf{a}\\} \\text{ with } \\mathbf{x}_k \\to \\mathbf{a}, \\ f_i(\\mathbf{x}_k) \\to u_i. \\\\
+                  \\text{By Question C applied to each $f_i : S \\to \\mathbb{R}$ (the case $m = 1$),} \\\\
+                  \\text{this holds iff $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f_i(\\mathbf{x}) = u_i$ for each $i$.} \\\\
+                  \\text{Hence $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = \\mathbf{u}$ iff $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f_i(\\mathbf{x}) = u_i$ for each $i$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 42,
+    chapter: 5,
+    section: 3,
+    homework: 6,
+    title: "Question 5.3.E",
+    problem: `\\text{Let $f$ and $g$ be continuous mappings of $S \\subset \\mathbb{R}^n$ into $\\mathbb{R}^m$. Show} \\\\
+              \\text{that the inner product $h(\\mathbf{x}) = \\langle f(\\mathbf{x}), g(\\mathbf{x}) \\rangle$ is continuous.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[theorem 22|Theorem 5.3.1]] \\\\
+                  \\text{2) } [[theorem 5|Lemma 4.2.3]] \\\\
+                  \\text{3) } [[definition 3|Inner product]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Write $f = (f_1, \\ldots, f_m)$ and $g = (g_1, \\ldots, g_m)$, so} \\\\
+                  h(\\mathbf{x}) = \\sum_{i=1}^{m} f_i(\\mathbf{x}) g_i(\\mathbf{x}). \\\\
+                  \\text{Let $\\mathbf{a} \\in S$ and $(\\mathbf{x}_k) \\subset S$ with $\\mathbf{x}_k \\to \\mathbf{a}$.} \\\\
+                  \\text{Since $f$ and $g$ are continuous, by the sequential characterization} \\\\
+                  \\text{$f(\\mathbf{x}_k) \\to f(\\mathbf{a})$ and $g(\\mathbf{x}_k) \\to g(\\mathbf{a})$.} \\\\
+                  \\text{By Lemma 4.2.3, $f_i(\\mathbf{x}_k) \\to f_i(\\mathbf{a})$ and $g_i(\\mathbf{x}_k) \\to g_i(\\mathbf{a})$ for each $i$.} \\\\
+                  \\text{By the limit laws for real sequences (products),} \\\\
+                  \\text{$f_i(\\mathbf{x}_k) g_i(\\mathbf{x}_k) \\to f_i(\\mathbf{a}) g_i(\\mathbf{a})$ for each $i$.} \\\\
+                  \\text{By the limit laws for real sequences (finite sums),} \\\\
+                  h(\\mathbf{x}_k) = \\sum_{i=1}^{m} f_i(\\mathbf{x}_k) g_i(\\mathbf{x}_k) \\to \\sum_{i=1}^{m} f_i(\\mathbf{a}) g_i(\\mathbf{a}) = h(\\mathbf{a}). \\\\
+                  \\text{Since $(\\mathbf{x}_k)$ was arbitrary, $h$ is continuous at $\\mathbf{a}$ by the} \\\\
+                  \\text{sequential characterization.} \\\\
+                  \\text{Since $\\mathbf{a} \\in S$ was arbitrary, $h$ is continuous.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 43,
+    chapter: 5,
+    section: 3,
+    homework: 7,
+    title: "Question 5.3.H",
+    problem: `\\text{Let $f$ be a continuous real-valued function defined on an open} \\\\
+              \\text{subset $U$ of $\\mathbb{R}^n$. Show that} \\\\
+              \\{ (\\mathbf{x}, y) : \\mathbf{x} \\in U, \\ y > f(\\mathbf{x}) \\} \\\\
+              \\text{is an open subset of $\\mathbb{R}^{n+1}$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 17|Open]] \\\\
+                  \\text{2) } [[definition 23|Continuity at a point]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $V = \\{(\\mathbf{x}, y) : \\mathbf{x} \\in U, \\ y > f(\\mathbf{x})\\}$ and let $(\\mathbf{a}, b) \\in V$.} \\\\
+                  \\text{Define $\\varepsilon = \\frac{b - f(\\mathbf{a})}{2} > 0$, so that $b - \\varepsilon = f(\\mathbf{a}) + \\varepsilon$.} \\\\
+                  \\text{Since $U$ is open, $\\exists r_1 > 0$ s.t. $B_{r_1}(\\mathbf{a}) \\subset U$, and since $f$ is} \\\\
+                  \\text{continuous at $\\mathbf{a}$, $\\exists \\delta > 0$ s.t. $\\mathbf{x} \\in U$,} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < \\delta \\implies |f(\\mathbf{x}) - f(\\mathbf{a})| < \\varepsilon. \\\\
+                  \\text{Define $r = \\min\\{r_1, \\delta, \\varepsilon\\}$, and let $\\lVert (\\mathbf{x}, y) - (\\mathbf{a}, b) \\rVert < r$.} \\\\
+                  \\text{Then $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$ and $|y - b| < r$. Since $r \\leq r_1$, $\\mathbf{x} \\in U$, and} \\\\
+                  \\text{since $r \\leq \\delta$, $f(\\mathbf{x}) < f(\\mathbf{a}) + \\varepsilon$. Since $r \\leq \\varepsilon$,} \\\\
+                  y > b - \\varepsilon = f(\\mathbf{a}) + \\varepsilon > f(\\mathbf{x}). \\\\
+                  \\text{So $(\\mathbf{x}, y) \\in V$, i.e. $B_r((\\mathbf{a}, b)) \\subset V$. Since $(\\mathbf{a}, b) \\in V$ was} \\\\
+                  \\text{arbitrary, $V$ is open in $\\mathbb{R}^{n+1}$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 44,
+    chapter: 5,
+    section: 3,
+    homework: 7,
+    title: "Question 5.3.I",
+    problem: `\\text{(a) Show that $m(x, y) = \\max\\{x, y\\}$ is continuous on $\\mathbb{R}^2$.} \\\\
+              \\text{(b) Hence show that if $f$ and $g$ are continuous real-valued} \\\\
+              \\text{functions on a set $S \\subset \\mathbb{R}^n$, then $h(\\mathbf{x}) = \\max\\{f(\\mathbf{x}), g(\\mathbf{x})\\}$} \\\\
+              \\text{is continuous on $S$.} \\\\
+              \\text{(c) Use induction to show that if $f_i$ are continuous real-valued} \\\\
+              \\text{functions on $S$ for $1 \\leq i \\leq k$, then $h(\\mathbf{x}) = \\max_{1 \\leq i \\leq k} f_i(\\mathbf{x})$} \\\\
+              \\text{is continuous.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 24|Continuous on a set]] \\\\
+                  \\text{2) } [[theorem 22|Theorem 5.3.1]] \\\\
+                  \\text{3) } [[theorem 5|Lemma 4.2.3]]`,
+      },
+      {
+        title: "Part (a)",
+        content: `\\text{Let $(a, b), (x, y) \\in \\mathbb{R}^2$ and $M = \\max\\{|x - a|, |y - b|\\}$. Then} \\\\
+                  x \\leq a + |x - a| \\leq \\max\\{a, b\\} + M \\\\
+                  \\text{and} \\\\
+                  y \\leq b + |y - b| \\leq \\max\\{a, b\\} + M, \\\\
+                  \\text{so $m(x, y) \\leq m(a, b) + M$.} \\\\
+                  \\text{Swapping the roles of $(x, y)$ and $(a, b)$ gives $m(a, b) \\leq m(x, y) + M$,} \\\\
+                  \\text{so} \\\\
+                  |m(x, y) - m(a, b)| \\leq M \\leq \\lVert (x, y) - (a, b) \\rVert. \\\\
+                  \\text{Given $\\varepsilon > 0$, take $\\delta = \\varepsilon$. Then} \\\\
+                  \\lVert (x, y) - (a, b) \\rVert < \\delta \\implies |m(x, y) - m(a, b)| < \\varepsilon, \\\\
+                  \\text{so $m$ is continuous on $\\mathbb{R}^2$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Part (b)",
+        content: `\\text{Note $h(\\mathbf{x}) = m(f(\\mathbf{x}), g(\\mathbf{x}))$. Let $\\mathbf{a} \\in S$ and $(\\mathbf{x}_k) \\subset S$ with} \\\\
+                  \\text{$\\mathbf{x}_k \\to \\mathbf{a}$. By continuity of $f$ and $g$, $f(\\mathbf{x}_k) \\to f(\\mathbf{a})$ and} \\\\
+                  \\text{$g(\\mathbf{x}_k) \\to g(\\mathbf{a})$, so by [[theorem 5|Lemma 4.2.3]]} \\\\
+                  (f(\\mathbf{x}_k), g(\\mathbf{x}_k)) \\to (f(\\mathbf{a}), g(\\mathbf{a})). \\\\
+                  \\text{Since $m$ is continuous by (a),} \\\\
+                  h(\\mathbf{x}_k) = m(f(\\mathbf{x}_k), g(\\mathbf{x}_k)) \\to m(f(\\mathbf{a}), g(\\mathbf{a})) = h(\\mathbf{a}). \\\\
+                  \\text{So $h$ is continuous on $S$ by the [[theorem 22|sequential characterization]].} \\ \\blacksquare`,
+      },
+      {
+        title: "Part (c)",
+        content: `\\text{Let $h_k(\\mathbf{x}) = \\max_{1 \\leq i \\leq k} f_i(\\mathbf{x})$. We induct on $k$.} \\\\
+                  \\text{For $k = 1$, $h_1 = f_1$ is continuous.} \\\\
+                  \\text{Suppose $h_k$ is continuous for any continuous $f_1, \\ldots, f_k$, and let} \\\\
+                  \\text{$f_1, \\ldots, f_{k+1}$ be continuous.} \\\\
+                  \\text{The largest of $f_1(\\mathbf{x}), \\ldots, f_{k+1}(\\mathbf{x})$ is either the largest of the first} \\\\
+                  \\text{$k$ or $f_{k+1}(\\mathbf{x})$, so} \\\\
+                  h_{k+1}(\\mathbf{x}) = \\max\\{h_k(\\mathbf{x}), f_{k+1}(\\mathbf{x})\\}. \\\\
+                  \\text{By the inductive hypothesis $h_k$ is continuous, so by (b) $h_{k+1}$} \\\\
+                  \\text{is continuous. Hence by induction $h$ is continuous for all $k \\geq 1$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 45,
+    chapter: 5,
+    section: 3,
+    homework: 7,
+    title: "Question 5.3.L",
+    problem: `\\text{Give example of a continuous function $f$ and an open set $U$} \\\\
+              \\text{such that $f(U)$ is not open.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 17|Open]] \\\\
+                  \\text{2) } [[theorem 24|Algebra of Continuous Functions]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Let $f : \\mathbb{R} \\to \\mathbb{R}$, $f(x) = x^2$, which is continuous as a product of} \\\\
+                  \\text{continuous functions, and let $U = (-1, 1)$, which is open.} \\\\
+                  \\text{For $x \\in (-1, 1)$, $0 \\leq x^2 < 1$, and for $0 \\leq y < 1$, $y = f(\\sqrt{y})$} \\\\
+                  \\text{with $\\sqrt{y} \\in (-1, 1)$. So $f(U) = [0, 1)$.} \\\\
+                  \\text{Now $0 \\in f(U)$, but for any $r > 0$, $-\\frac{r}{2} \\in B_r(0)$ and $-\\frac{r}{2} \\notin f(U)$,} \\\\
+                  \\text{so $B_r(0) \\not\\subset f(U)$.} \\\\
+                  \\text{Hence $f(U) = [0, 1)$ is not open, even though $f$ is continuous} \\\\
+                  \\text{and $U$ is open.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 46,
+    chapter: 5,
+    section: 4,
+    homework: 7,
+    title: "Question 5.4.A",
+    problem: `\\text{If $A$ is a noncompact subset of $\\mathbb{R}^n$, show that there is a} \\\\
+              \\text{bounded continuous real-valued function on $A$ that does not} \\\\
+              \\text{attain its maximum.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[theorem 17|Heine–Borel]] \\\\
+                  \\text{2) } [[theorem 27|Extreme Value Theorem]] \\\\
+                  \\text{3) } [[theorem 24|Algebra of Continuous Functions]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Since $A$ is not compact, by the [[theorem 17|Heine–Borel Theorem]] $A$ is either} \\\\
+                  \\text{not closed or not bounded.} \\\\
+                  \\text{Recall $\\mathbf{x} \\mapsto \\lVert \\mathbf{x} - \\mathbf{a} \\rVert$ is continuous, since} \\\\
+                  \\big| \\lVert \\mathbf{x} - \\mathbf{a} \\rVert - \\lVert \\mathbf{y} - \\mathbf{a} \\rVert \\big| \\leq \\lVert \\mathbf{x} - \\mathbf{y} \\rVert. \\\\[0.5em]
+                  \\text{\\textit{Case 1: $A$ is not closed.} Then $\\exists \\mathbf{a} \\in \\overline{A} \\setminus A$, so $\\exists (\\mathbf{x}_k) \\subset A$} \\\\
+                  \\text{with $\\mathbf{x}_k \\to \\mathbf{a}$. Define} \\\\
+                  f(\\mathbf{x}) = \\frac{1}{1 + \\lVert \\mathbf{x} - \\mathbf{a} \\rVert}, \\quad \\mathbf{x} \\in A. \\\\
+                  \\text{$f$ is continuous as a quotient of continuous functions with} \\\\
+                  \\text{nonzero denominator, and $0 < f \\leq 1$, so $f$ is bounded.} \\\\
+                  \\text{Since $\\mathbf{a} \\notin A$, $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert > 0$ for $\\mathbf{x} \\in A$, so $f(\\mathbf{x}) < 1$.} \\\\
+                  \\text{But $f(\\mathbf{x}_k) \\to 1$, so $\\sup_A f = 1$ is never attained.} \\\\[0.5em]
+                  \\text{\\textit{Case 2: $A$ is not bounded.} Then for each $k \\in \\mathbb{N}$, $\\exists \\mathbf{x}_k \\in A$} \\\\
+                  \\text{with $\\lVert \\mathbf{x}_k \\rVert \\geq k$. Define} \\\\
+                  f(\\mathbf{x}) = \\frac{\\lVert \\mathbf{x} \\rVert}{1 + \\lVert \\mathbf{x} \\rVert} = 1 - \\frac{1}{1 + \\lVert \\mathbf{x} \\rVert}, \\quad \\mathbf{x} \\in A. \\\\
+                  \\text{$f$ is continuous as a quotient of continuous functions with} \\\\
+                  \\text{nonzero denominator, and $0 \\leq f < 1$, so $f$ is bounded.} \\\\
+                  \\text{Since $1 > f(\\mathbf{x}_k) \\geq 1 - \\frac{1}{1 + k}$, $f(\\mathbf{x}_k) \\to 1$, so $\\sup_A f = 1$ is} \\\\
+                  \\text{never attained.} \\\\[0.5em]
+                  \\text{In either case there is a bounded continuous function on $A$} \\\\
+                  \\text{that does not attain its maximum.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 47,
+    chapter: 5,
+    section: 4,
+    homework: 7,
+    title: "Question 5.4.B",
+    problem: `\\text{Find a \\textit{discontinuous} function on $[0, 1]$ that is bounded but does} \\\\
+              \\text{not achieve its supremum.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[theorem 27|Extreme Value Theorem]] \\\\
+                  \\text{2) } [[definition 25|Discontinuous at a point]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Define $f : [0, 1] \\to \\mathbb{R}$ by} \\\\
+                  f(x) = \\begin{cases} x & 0 \\leq x < 1 \\\\ 0 & x = 1. \\end{cases} \\\\
+                  \\text{Then $0 \\leq f(x) < 1$ for all $x \\in [0, 1]$, so $f$ is bounded and never} \\\\
+                  \\text{achieves $1$.} \\\\
+                  \\text{But $f(1 - \\frac{1}{k}) = 1 - \\frac{1}{k} \\to 1$, so $\\sup_{[0,1]} f = 1$, which is not} \\\\
+                  \\text{achieved.} \\\\
+                  \\text{$f$ is discontinuous at $1$: $x_k = 1 - \\frac{1}{k} \\to 1$, but} \\\\
+                  \\text{$f(x_k) \\to 1 \\neq 0 = f(1)$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 48,
+    chapter: 5,
+    section: 4,
+    homework: 7,
+    title: "Question 5.4.E",
+    problem: `\\text{Show that a function $f$ mapping a \\textit{compact} set $S \\subset \\mathbb{R}^n$ into $\\mathbb{R}^m$} \\\\
+              \\text{is continuous if and only if its graph} \\\\
+              G(f) = \\{ (\\mathbf{x}, f(\\mathbf{x})) : \\mathbf{x} \\in S \\} \\\\
+              \\text{is compact.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 19|Compact]] \\\\
+                  \\text{2) } [[theorem 22|Theorem 5.3.1]] \\\\
+                  \\text{3) } [[theorem 26|Theorem 5.4.3]] \\\\
+                  \\text{4) } [[theorem 5|Lemma 4.2.3]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{($\\Rightarrow$) Suppose $f$ is continuous. Define $F : S \\to \\mathbb{R}^{n+m}$ by} \\\\
+                  \\text{$F(\\mathbf{x}) = (\\mathbf{x}, f(\\mathbf{x}))$, so $G(f) = F(S)$.} \\\\
+                  \\text{If $(\\mathbf{x}_k) \\subset S$ with $\\mathbf{x}_k \\to \\mathbf{a} \\in S$, then $f(\\mathbf{x}_k) \\to f(\\mathbf{a})$, so by} \\\\
+                  \\text{[[theorem 5|Lemma 4.2.3]] $F(\\mathbf{x}_k) \\to F(\\mathbf{a})$. So $F$ is continuous, and by} \\\\
+                  \\text{[[theorem 26|Theorem 5.4.3]] $G(f) = F(S)$ is compact.} \\\\[0.5em]
+                  \\text{($\\Leftarrow$) Suppose $G(f)$ is compact. We use [[theorem 22|Theorem 5.3.1(2)]].} \\\\
+                  \\text{Let $(\\mathbf{x}_k) \\subset S$ with $\\mathbf{x}_k \\to \\mathbf{a} \\in S$, and suppose for contradiction} \\\\
+                  \\text{that $f(\\mathbf{x}_k) \\not\\to f(\\mathbf{a})$.} \\\\
+                  \\text{Then $\\exists \\varepsilon > 0$ and a subsequence $(\\mathbf{x}_{k_j})$ with} \\\\
+                  \\text{$\\lVert f(\\mathbf{x}_{k_j}) - f(\\mathbf{a}) \\rVert \\geq \\varepsilon$ for all $j$.} \\\\
+                  \\text{Since $(\\mathbf{x}_{k_j}, f(\\mathbf{x}_{k_j})) \\in G(f)$ and $G(f)$ is compact, a further} \\\\
+                  \\text{subsequence converges to some $(\\mathbf{b}, f(\\mathbf{b})) \\in G(f)$.} \\\\
+                  \\text{By Lemma 4.2.3, $\\mathbf{x}_{k_{j_l}} \\to \\mathbf{b}$ and $f(\\mathbf{x}_{k_{j_l}}) \\to f(\\mathbf{b})$.} \\\\
+                  \\text{But $\\mathbf{x}_{k_{j_l}} \\to \\mathbf{a}$, so $\\mathbf{b} = \\mathbf{a}$ by uniqueness of limits, and thus} \\\\
+                  \\text{$f(\\mathbf{x}_{k_{j_l}}) \\to f(\\mathbf{a})$, contradicting $\\lVert f(\\mathbf{x}_{k_{j_l}}) - f(\\mathbf{a}) \\rVert \\geq \\varepsilon$.} \\\\
+                  \\text{Hence $f(\\mathbf{x}_k) \\to f(\\mathbf{a})$, and by Theorem 5.3.1(2), $f$ is continuous.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 49,
+    chapter: 5,
+    section: 4,
+    homework: 7,
+    title: "Question 5.4.G",
+    problem: `\\text{Suppose that $f$ is a \\textit{positive} continuous function on $\\mathbb{R}^n$ such that} \\\\
+              \\lim_{\\lVert \\mathbf{x} \\rVert \\to \\infty} f(\\mathbf{x}) = 0 \\\\
+              \\text{[i.e., for all $\\varepsilon > 0$, there is an $N$ so that $|f(\\mathbf{x})| < \\varepsilon$ for all} \\\\
+              \\text{$\\mathbf{x}$ with $\\lVert \\mathbf{x} \\rVert > N$]. Show that $f$ attains its maximum.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[theorem 17|Heine–Borel]] \\\\
+                  \\text{2) } [[theorem 27|Extreme Value Theorem]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{Take $\\varepsilon = f(\\mathbf{0}) > 0$. Then $\\exists N$ s.t. $\\lVert \\mathbf{x} \\rVert > N \\implies f(\\mathbf{x}) < f(\\mathbf{0})$.} \\\\
+                  \\text{Let $K = \\{\\mathbf{x} \\in \\mathbb{R}^n : \\lVert \\mathbf{x} \\rVert \\leq N\\}$, which contains $\\mathbf{0}$ and is bounded.} \\\\
+                  \\text{$K$ is closed: if $(\\mathbf{x}_k) \\subset K$ with $\\mathbf{x}_k \\to \\mathbf{x}$, then} \\\\
+                  \\lVert \\mathbf{x} \\rVert = \\lim_{k \\to \\infty} \\lVert \\mathbf{x}_k \\rVert \\leq N. \\\\
+                  \\text{So $K$ is compact by the [[theorem 17|Heine–Borel Theorem]].} \\\\[0.5em]
+                  \\text{By the [[theorem 27|Extreme Value Theorem]], $\\exists \\mathbf{x}_0 \\in K$ s.t.} \\\\
+                  \\text{$f(\\mathbf{x}) \\leq f(\\mathbf{x}_0)$ for all $\\mathbf{x} \\in K$.} \\\\
+                  \\text{If $\\mathbf{x} \\notin K$, then $\\lVert \\mathbf{x} \\rVert > N$, so $f(\\mathbf{x}) < f(\\mathbf{0}) \\leq f(\\mathbf{x}_0)$ since $\\mathbf{0} \\in K$.} \\\\
+                  \\text{So $f(\\mathbf{x}) \\leq f(\\mathbf{x}_0)$ for all $\\mathbf{x} \\in \\mathbb{R}^n$, i.e. $f$ attains its maximum} \\\\
+                  \\text{at $\\mathbf{x}_0$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    number: 50,
+    chapter: 5,
+    section: 4,
+    homework: 7,
+    title: "Question 5.4.H",
+    problem: `\\text{Let $f$ be a periodic function on $\\mathbb{R}$, meaning that there is $d > 0$} \\\\
+              \\text{with $f(x + d) = f(x)$ for all $x \\in \\mathbb{R}$. (We call $d$ the period of $f$} \\\\
+              \\text{if it is the least positive number with this property and say} \\\\
+              \\text{that $f$ is d-periodic.) Show that if $f$ is continuous, then $f$} \\\\
+              \\text{attains its maximum and minimum on $\\mathbb{R}$.}`,
+    solution: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[theorem 17|Heine–Borel]] \\\\
+                  \\text{2) } [[theorem 27|Extreme Value Theorem]]`,
+      },
+      {
+        title: "Solution",
+        content: `\\text{First, $f(t + kd) = f(t)$ for all $t \\in \\mathbb{R}$, $k \\in \\mathbb{Z}$.} \\\\
+                  \\text{For $k \\geq 0$ this follows by induction, since} \\\\
+                  f(t + (k+1)d) = f((t + kd) + d) = f(t + kd). \\\\
+                  \\text{For $k = -j < 0$, $f(t) = f((t - jd) + jd) = f(t - jd)$ by the case $j \\geq 0$.} \\\\[0.5em]
+                  \\text{$[0, d]$ is compact by the [[theorem 17|Heine–Borel Theorem]], so by the} \\\\
+                  \\text{[[theorem 27|Extreme Value Theorem]] $\\exists x_{\\min}, x_{\\max} \\in [0, d]$ s.t.} \\\\
+                  \\text{$f(x_{\\min}) \\leq f(t) \\leq f(x_{\\max})$ for all $t \\in [0, d]$.} \\\\
+                  \\text{Let $x \\in \\mathbb{R}$, $k = \\lfloor x/d \\rfloor$, and $t = x - kd$. Since $k \\leq x/d < k + 1$,} \\\\
+                  \\text{$t \\in [0, d)$, so} \\\\
+                  f(x_{\\min}) \\leq f(t) = f(t + kd) = f(x) \\leq f(x_{\\max}). \\\\
+                  \\text{Since $x$ was arbitrary, $f$ attains its maximum at $x_{\\max}$ and its} \\\\
+                  \\text{minimum at $x_{\\min}$ on $\\mathbb{R}$.} \\ \\blacksquare`,
       },
     ],
   },

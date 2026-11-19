@@ -5,10 +5,12 @@ import { processLatexLinks } from "./latexLinkHelper";
 import TrustedBlockMath from "@/app/components/TrustedBlockMath";
 import LocationBadges from "@/app/components/LocationBadges";
 import type { ChapterRef, HomeworkRef } from "@/app/components/notesFilter";
+import { FigureImage, type Figure } from "./DefinitionCard";
 
 interface Solution {
   title?: string;
   content: string;
+  figure?: Figure; // image shown under the section
 }
 
 interface ExerciseCardProps extends ChapterRef, HomeworkRef {
@@ -85,6 +87,7 @@ export default function ExerciseCard({
               </div>
               <div className="text-black text-sm sm:text-base ml-0 sm:ml-[3.5em]" style={{ lineHeight: "2" }}>
                 <TrustedBlockMath math={processLatexLinks(s.content)} />
+                <FigureImage figure={s.figure} />
               </div>
             </div>
           ))}
