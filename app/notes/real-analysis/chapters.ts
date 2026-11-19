@@ -19,6 +19,8 @@ export const chapters: Chapter[] = [
     sections: [
       { number: 1, title: "Limits and Continuity" },
       { number: 2, title: "Discontinuous Functions" },
+      { number: 3, title: "Properties of Continuous Functions" },
+      { number: 4, title: "Compactness and Extreme Values" },
     ],
   },
 ];

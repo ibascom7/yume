@@ -694,6 +694,37 @@ export const definitions: Definition[] = [
       },
     ],
   },
+  {
+    number: 33,
+    chapter: 5,
+    section: 3,
+    term: "Relatively Open",
+    definition: `\\text{A subset $V \\subseteq \\mathbb{R}^n$ is open in $S$ if there exists an [[definition 17|open]]} \\\\
+                 \\text{set $U \\subseteq \\mathbb{R}^n$ such that $U \\cap S = V$.}`,
+    examples: [
+      {
+        title: "(0, 1] is open in [−1, 1]",
+        content: `\\text{$V = (0, 1]$ is not open in $\\mathbb{R}^2$, but $V$ is open in $[-1, 1]$.} \\\\
+                  \\text{We can take $B_1(1) \\subseteq \\mathbb{R}^2$ to get} \\\\
+                  B_1(1) \\cap [-1, 1] = (0, 1].`,
+      },
+      {
+        title: "(0, 1) is open in ℝ",
+        content: `\\text{$V = (0, 1)$ is not open in $\\mathbb{R}^2$, but $V$ is open in $\\mathbb{R}$.} \\\\
+                  \\text{We can take $B_{1/2}(\\frac{1}{2})$ to get} \\\\
+                  B_{1/2}(\\tfrac{1}{2}) \\cap \\mathbb{R} = (0, 1).`,
+      },
+    ],
+  },
+  {
+    number: 34,
+    chapter: 5,
+    section: 3,
+    term: "Composition",
+    definition: `\\text{Let $S \\subseteq \\mathbb{R}^n$, $T \\subseteq \\mathbb{R}^m$, $f : S \\to T$, $g : T \\to \\mathbb{R}^\\ell$.} \\\\
+                 \\text{The composition $g \\circ f$ is the function} \\\\
+                 g \\circ f : S \\to \\mathbb{R}^\\ell, \\quad (g \\circ f)(\\mathbf{x}) = g(f(\\mathbf{x})).`,
+  },
   // Template:
   // {
   //   number: 1,

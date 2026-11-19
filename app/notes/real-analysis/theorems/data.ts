@@ -917,6 +917,460 @@ export const theorems: Theorem[] = [
       },
     ],
   },
+  {
+    kind: "Theorem",
+    number: 22,
+    chapter: 5,
+    section: 3,
+    title: "Characterizations of Continuity",
+    statement: `\\text{Let } S \\subseteq \\mathbb{R}^n, \\ f : S \\to \\mathbb{R}^m. \\text{ Then the following are equivalent:} \\\\
+                \\text{(a) } f \\text{ is continuous on } S. \\\\
+                \\text{(b) For all } (\\mathbf{x}_k) \\subseteq S \\text{ with } \\mathbf{x}_k \\to \\mathbf{a} \\in S, \\text{ we have } f(\\mathbf{x}_k) \\to f(\\mathbf{a}). \\\\
+                \\text{(c) For all open } U \\subseteq \\mathbb{R}^m, \\\\
+                \\qquad f^{-1}(U) := \\{ \\mathbf{x} \\in S : f(\\mathbf{x}) \\in U \\} \\text{ is open in } S.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 23|Continuity at a point]]\\text{, } [[definition 24|on a set]]\\text{, } [[definition 25|discontinuity]] \\\\
+                  \\text{2) } [[definition 9|Convergence]] \\\\
+                  \\text{3) } [[definition 17|Open]] \\\\
+                  \\text{4) } [[definition 33|Relatively open]] \\\\
+                  \\text{5) } [[theorem 4|Convergence via Norms]]`,
+      },
+      {
+        title: "Proof of (a) ⇒ (b)",
+        content: `\\text{Let $(\\mathbf{x}_k) \\subseteq S$ with $\\mathbf{x}_k \\to \\mathbf{a} \\in S$.} \\\\
+                  \\text{Let $\\varepsilon > 0$. Since $f$ is cts,} \\\\
+                  \\exists r > 0,\\ \\forall \\mathbf{x} \\in S,\\ \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\Rightarrow \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert < \\varepsilon. \\\\
+                  \\text{Since $(\\mathbf{x}_k)$ converges, $\\exists N \\in \\mathbb{N}$ s.t. $\\forall k \\geq N$, $\\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert < r$.} \\\\
+                  \\text{By continuity of $f$, $\\forall k \\geq N$,} \\\\
+                  \\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert < r \\Rightarrow \\lVert f(\\mathbf{x}_k) - f(\\mathbf{a}) \\rVert < \\varepsilon. \\\\
+                  \\text{Therefore, $f(\\mathbf{x}_k) \\to f(\\mathbf{a})$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Proof of (b) ⇒ (a)",
+        content: `\\text{By way of contraposition, suppose $f$ is not cts on $S$. That is,} \\\\
+                  \\exists \\mathbf{a} \\in S,\\ \\exists \\varepsilon > 0,\\ \\forall r > 0,\\ \\exists \\mathbf{x} \\in S \\\\
+                  \\text{where } \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\text{ and } \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert \\geq \\varepsilon. \\\\
+                  \\text{Let $r = \\frac{1}{k}$ for $k \\in \\mathbb{N}$. So $\\forall k \\in \\mathbb{N}$ $\\exists \\mathbf{x}_k \\in S$ s.t.} \\\\
+                  \\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert < \\tfrac{1}{k} \\text{ and } \\lVert f(\\mathbf{x}_k) - f(\\mathbf{a}) \\rVert \\geq \\varepsilon. \\\\
+                  \\text{By squeeze theorem, $\\lVert \\mathbf{x}_k - \\mathbf{a} \\rVert \\to 0$, and by [[theorem 4|lemma]], $\\mathbf{x}_k \\to \\mathbf{a}$.} \\\\
+                  \\text{However, by assumption, $\\lVert f(\\mathbf{x}_k) - f(\\mathbf{a}) \\rVert \\geq \\varepsilon$ for all $k$, so} \\\\
+                  \\text{$f(\\mathbf{x}_k) \\not\\to f(\\mathbf{a})$, and (b) fails.} \\ \\blacksquare`,
+      },
+      {
+        title: "Proof of (a) ⇒ (c)",
+        content: `\\text{Suppose $f$ cts on $S$. WTS} \\\\
+                  \\forall \\text{ open } U \\subseteq \\mathbb{R}^m,\\ \\forall \\mathbf{a} \\in f^{-1}(U),\\ \\exists r > 0,\\ B_r(\\mathbf{a}) \\cap S \\subseteq f^{-1}(U). \\\\
+                  \\text{Let $U$ be open in $\\mathbb{R}^m$ and let $\\mathbf{a} \\in f^{-1}(U)$.} \\\\
+                  \\text{Then $f(\\mathbf{a}) \\in U$, and since $U$ is open,} \\\\
+                  \\text{$\\exists \\varepsilon > 0$ s.t. $B_\\varepsilon(f(\\mathbf{a})) \\subseteq U$.} \\\\
+                  \\text{Since $f$ is cts at $\\mathbf{a}$, $\\exists r > 0$, $\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\Rightarrow \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert < \\varepsilon. \\\\
+                  \\text{That is, $\\exists r > 0$, $\\forall \\mathbf{x} \\in S$, if $\\mathbf{x} \\in B_r(\\mathbf{a}) \\cap S$, then} \\\\
+                  \\text{$f(\\mathbf{x}) \\in B_\\varepsilon(f(\\mathbf{a}))$. So} \\\\
+                  \\begin{aligned}
+                    & f(B_r(\\mathbf{a}) \\cap S) \\subseteq B_\\varepsilon(f(\\mathbf{a})) \\subseteq U \\\\
+                    \\Rightarrow\\ & B_r(\\mathbf{a}) \\cap S \\subseteq f^{-1}(B_\\varepsilon(f(\\mathbf{a}))) \\subseteq f^{-1}(U).
+                  \\end{aligned} \\\\
+                  \\text{Thus, $f^{-1}(U)$ is open in $S$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Proof of (c) ⇒ (a)",
+        content: `\\text{Let $\\mathbf{a} \\in S$. Let $\\varepsilon > 0$. WTS} \\\\
+                  \\exists r > 0,\\ \\forall \\mathbf{x} \\in S,\\ \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\Rightarrow \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert < \\varepsilon. \\\\
+                  \\text{Equivalently, WTS} \\\\
+                  \\exists r > 0,\\ \\forall \\mathbf{x} \\in S,\\ \\mathbf{x} \\in B_r(\\mathbf{a}) \\Rightarrow f(\\mathbf{x}) \\in B_\\varepsilon(f(\\mathbf{a})). \\\\
+                  \\text{Let $U := B_\\varepsilon(f(\\mathbf{a}))$. Since $f^{-1}(U)$ is open in $S$,} \\\\
+                  \\text{$\\exists r > 0$ s.t. $B_r(\\mathbf{a}) \\cap S \\subseteq f^{-1}(U)$.} \\\\
+                  \\text{So for $\\mathbf{x} \\in B_r(\\mathbf{a}) \\cap S$, we have $\\mathbf{x} \\in f^{-1}(U)$. Note} \\\\
+                  \\mathbf{x} \\in B_r(\\mathbf{a}) \\cap S \\Rightarrow \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r, \\\\
+                  \\text{and} \\\\
+                  \\mathbf{x} \\in f^{-1}(U) \\Rightarrow f(\\mathbf{x}) \\in U = B_\\varepsilon(f(\\mathbf{a})) \\Rightarrow \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert < \\varepsilon. \\\\
+                  \\text{Hence, $f$ is cts on $S$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Theorem",
+    number: 23,
+    chapter: 5,
+    section: 3,
+    title: "Algebra of Limits",
+    statement: `\\text{Let } f, g : S \\to \\mathbb{R}^m, \\ S \\subseteq \\mathbb{R}^n \\text{ and } \\mathbf{a} \\in S \\text{ such that} \\\\
+                \\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = \\mathbf{u} \\in \\mathbb{R}^m \\text{ and } \\lim_{\\mathbf{x} \\to \\mathbf{a}} g(\\mathbf{x}) = \\mathbf{v} \\in \\mathbb{R}^m. \\text{ Then} \\\\
+                \\text{(a) } \\lim_{\\mathbf{x} \\to \\mathbf{a}} (f(\\mathbf{x}) + g(\\mathbf{x})) = \\mathbf{u} + \\mathbf{v}. \\\\
+                \\text{(b) For all } \\alpha \\in \\mathbb{R}, \\ \\lim_{\\mathbf{x} \\to \\mathbf{a}} (\\alpha f(\\mathbf{x})) = \\alpha \\mathbf{u}. \\\\[0.5em]
+                \\text{For } m = 1 \\ (f, g : S \\to \\mathbb{R}), \\\\
+                \\text{(c) } \\lim_{\\mathbf{x} \\to \\mathbf{a}} (f(\\mathbf{x}) g(\\mathbf{x})) = uv. \\\\
+                \\text{(d) If } v \\neq 0, \\ \\lim_{\\mathbf{x} \\to \\mathbf{a}} \\left( \\frac{f(\\mathbf{x})}{g(\\mathbf{x})} \\right) = \\frac{u}{v}.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 22|Limit of a function]] \\\\
+                  \\text{2) } [[theorem 3|Triangle inequality]]`,
+      },
+      {
+        title: "Proof of (a)",
+        content: `\\text{By def of limit, $\\forall \\varepsilon > 0$, $\\exists r_1 > 0$, $\\forall \\mathbf{x} \\in S$,} \\\\
+                  0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_1 \\Rightarrow \\lVert f(\\mathbf{x}) - \\mathbf{u} \\rVert < \\tfrac{\\varepsilon}{2}. \\\\
+                  \\text{Similarly, $\\forall \\varepsilon > 0$, $\\exists r_2 > 0$, $\\forall \\mathbf{x} \\in S$,} \\\\
+                  0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_2 \\Rightarrow \\lVert g(\\mathbf{x}) - \\mathbf{v} \\rVert < \\tfrac{\\varepsilon}{2}. \\\\
+                  \\text{Let $\\varepsilon > 0$. Choose $r = \\min\\{r_1, r_2\\}$.} \\\\
+                  \\text{Suppose $\\mathbf{x} \\in S$ s.t. $0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$. Then} \\\\
+                  \\text{$\\lVert f(\\mathbf{x}) - \\mathbf{u} \\rVert < \\frac{\\varepsilon}{2}$ and $\\lVert g(\\mathbf{x}) - \\mathbf{v} \\rVert < \\frac{\\varepsilon}{2}$. So} \\\\
+                  \\begin{aligned}
+                    \\lVert f(\\mathbf{x}) + g(\\mathbf{x}) - (\\mathbf{u} + \\mathbf{v}) \\rVert &\\leq \\lVert f(\\mathbf{x}) - \\mathbf{u} \\rVert + \\lVert g(\\mathbf{x}) - \\mathbf{v} \\rVert \\\\
+                    &< \\tfrac{\\varepsilon}{2} + \\tfrac{\\varepsilon}{2} = \\varepsilon.
+                  \\end{aligned} \\\\
+                  \\text{Thus, $\\lim_{\\mathbf{x} \\to \\mathbf{a}} (f(\\mathbf{x}) + g(\\mathbf{x})) = \\mathbf{u} + \\mathbf{v}$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Proof of (b)",
+        content: `\\text{Let $\\varepsilon > 0$. Since $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = \\mathbf{u}$, $\\exists r > 0$, $\\forall \\mathbf{x} \\in S$,} \\\\
+                  0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\Rightarrow \\lVert f(\\mathbf{x}) - \\mathbf{u} \\rVert < \\frac{\\varepsilon}{|\\alpha| + 1}. \\\\
+                  \\text{Let $\\mathbf{x} \\in S$ s.t. $0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$. Then} \\\\
+                  \\lVert \\alpha f(\\mathbf{x}) - \\alpha \\mathbf{u} \\rVert = |\\alpha| \\lVert f(\\mathbf{x}) - \\mathbf{u} \\rVert < \\frac{|\\alpha| \\varepsilon}{|\\alpha| + 1} < \\varepsilon. \\\\
+                  \\text{Thus, $\\lim_{\\mathbf{x} \\to \\mathbf{a}} (\\alpha f(\\mathbf{x})) = \\alpha \\mathbf{u}$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Proof of (c)",
+        content: `\\text{Suppose $m = 1$ and let $\\varepsilon > 0$.} \\\\[0.5em]
+                  \\text{[Scratch.} \\\\
+                  \\begin{aligned}
+                    |f(\\mathbf{x}) g(\\mathbf{x}) - uv| &= |f(\\mathbf{x}) g(\\mathbf{x}) - f(\\mathbf{x}) v + f(\\mathbf{x}) v - uv| \\\\
+                    &\\leq |f(\\mathbf{x})(g(\\mathbf{x}) - v)| + |v(f(\\mathbf{x}) - u)| \\\\
+                    &= |f(\\mathbf{x})| \\, |g(\\mathbf{x}) - v| + |v| \\, |f(\\mathbf{x}) - u|.
+                  \\end{aligned} \\\\
+                  \\text{Need to cap $|f(\\mathbf{x})|$ first. If $|f(\\mathbf{x}) - u| < 1$, then} \\\\
+                  |f(\\mathbf{x})| \\leq |f(\\mathbf{x}) - u| + |u| < 1 + |u|. \\\\
+                  \\text{We need $(|u| + 1) |g(\\mathbf{x}) - v| < \\frac{\\varepsilon}{2}$, so ask for} \\\\
+                  \\text{$|g(\\mathbf{x}) - v| < \\frac{\\varepsilon}{2(|u| + 1)}$.} \\\\
+                  \\text{We also need $|v| \\, |f(\\mathbf{x}) - u| < \\frac{\\varepsilon}{2}$, so ask for} \\\\
+                  \\text{$|f(\\mathbf{x}) - u| < \\frac{\\varepsilon}{2(|v| + 1)}$.]} \\\\[0.5em]
+                  \\text{Since $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = u$ and $\\lim_{\\mathbf{x} \\to \\mathbf{a}} g(\\mathbf{x}) = v$, $\\exists r_1, r_2, r_3 > 0$ s.t.} \\\\
+                  \\text{$\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\begin{aligned}
+                    0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_1 &\\Rightarrow |f(\\mathbf{x}) - u| < 1, \\\\
+                    0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_2 &\\Rightarrow |f(\\mathbf{x}) - u| < \\tfrac{\\varepsilon}{2(|v| + 1)}, \\text{ and} \\\\
+                    0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_3 &\\Rightarrow |g(\\mathbf{x}) - v| < \\tfrac{\\varepsilon}{2(|u| + 1)}.
+                  \\end{aligned} \\\\
+                  \\text{Choose $r = \\min\\{r_1, r_2, r_3\\}$. Let $\\mathbf{x} \\in S$ s.t. $0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$.} \\\\
+                  \\text{Note $|f(\\mathbf{x})| \\leq |f(\\mathbf{x}) - u| + |u| < 1 + |u|$. Then} \\\\
+                  \\begin{aligned}
+                    |f(\\mathbf{x}) g(\\mathbf{x}) - uv| &= |f(\\mathbf{x})(g(\\mathbf{x}) - v) + v(f(\\mathbf{x}) - u)| \\\\
+                    &\\leq |f(\\mathbf{x})| \\, |g(\\mathbf{x}) - v| + |v| \\, |f(\\mathbf{x}) - u| \\\\
+                    &< (|u| + 1) \\left( \\tfrac{\\varepsilon}{2(|u| + 1)} \\right) + |v| \\left( \\tfrac{\\varepsilon}{2(|v| + 1)} \\right) \\\\
+                    &< \\tfrac{\\varepsilon}{2} + \\tfrac{\\varepsilon}{2} = \\varepsilon.
+                  \\end{aligned} \\\\
+                  \\text{Thus, $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) g(\\mathbf{x}) = uv$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Proof of (d)",
+        content: `\\text{Suppose $m = 1$, $v \\neq 0$, and let $\\varepsilon > 0$.} \\\\[0.5em]
+                  \\text{[Scratch.} \\\\
+                  \\begin{aligned}
+                    \\left| \\frac{f(\\mathbf{x})}{g(\\mathbf{x})} - \\frac{u}{v} \\right| &= \\left| \\frac{f(\\mathbf{x}) v - g(\\mathbf{x}) u}{g(\\mathbf{x}) v} \\right| \\\\
+                    &= \\left| \\frac{f(\\mathbf{x}) v - uv + uv - g(\\mathbf{x}) u}{g(\\mathbf{x}) v} \\right| \\\\
+                    &= \\left| \\frac{v(f(\\mathbf{x}) - u) - u(g(\\mathbf{x}) - v)}{g(\\mathbf{x}) v} \\right|.
+                  \\end{aligned} \\\\
+                  \\text{$|g(\\mathbf{x})|$ depends on $\\mathbf{x}$ and could be near $0$, so bound below by} \\\\
+                  \\text{asking for $|g(\\mathbf{x}) - v| < \\frac{|v|}{2}$. Then} \\\\
+                  |g(\\mathbf{x})| \\geq |v| - |g(\\mathbf{x}) - v| > |v| - \\tfrac{|v|}{2} = \\tfrac{|v|}{2}, \\\\
+                  \\text{so $\\frac{1}{|g(\\mathbf{x})| \\, |v|} < \\frac{2}{|v|^2}$. Now} \\\\
+                  \\begin{aligned}
+                    \\left| \\frac{f(\\mathbf{x})}{g(\\mathbf{x})} - \\frac{u}{v} \\right| &< \\frac{2}{|v|^2} \\big( |v| \\, |f(\\mathbf{x}) - u| + |u| \\, |g(\\mathbf{x}) - v| \\big) \\\\
+                    &= \\frac{2}{|v|} |f(\\mathbf{x}) - u| + \\frac{2|u|}{|v|^2} |g(\\mathbf{x}) - v|.
+                  \\end{aligned} \\\\
+                  \\text{To get $\\frac{2}{|v|} |f(\\mathbf{x}) - u| < \\frac{\\varepsilon}{2}$, ask for $|f(\\mathbf{x}) - u| < \\frac{\\varepsilon |v|}{4}$.} \\\\
+                  \\text{To get $\\frac{2|u|}{|v|^2} |g(\\mathbf{x}) - v| < \\frac{\\varepsilon}{2}$, ask for} \\\\
+                  \\text{$|g(\\mathbf{x}) - v| < \\frac{\\varepsilon |v|^2}{4(|u| + 1)}$.]} \\\\[0.5em]
+                  \\text{Since $v \\neq 0$, $\\frac{|v|}{2}, \\frac{\\varepsilon |v|}{4}, \\frac{\\varepsilon |v|^2}{4(|u| + 1)} > 0$.} \\\\
+                  \\text{Since $\\lim_{\\mathbf{x} \\to \\mathbf{a}} f(\\mathbf{x}) = u$ and $\\lim_{\\mathbf{x} \\to \\mathbf{a}} g(\\mathbf{x}) = v$, $\\exists r_1, r_2, r_3 > 0$ s.t.} \\\\
+                  \\text{$\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\begin{aligned}
+                    0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_1 &\\Rightarrow |g(\\mathbf{x}) - v| < \\tfrac{|v|}{2}, \\\\
+                    0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_2 &\\Rightarrow |f(\\mathbf{x}) - u| < \\tfrac{\\varepsilon |v|}{4}, \\\\
+                    0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_3 &\\Rightarrow |g(\\mathbf{x}) - v| < \\tfrac{\\varepsilon |v|^2}{4(|u| + 1)}.
+                  \\end{aligned} \\\\
+                  \\text{Let $r = \\min\\{r_1, r_2, r_3\\}$. Let $\\mathbf{x} \\in S$ s.t. $0 < \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$.} \\\\
+                  \\text{Since $|g(\\mathbf{x}) - v| < \\frac{|v|}{2}$,} \\\\
+                  |g(\\mathbf{x})| \\geq |v| - |g(\\mathbf{x}) - v| > |v| - \\tfrac{|v|}{2} = \\tfrac{|v|}{2} > 0. \\\\
+                  \\text{So $g(\\mathbf{x}) \\neq 0$ and $\\frac{1}{|g(\\mathbf{x})|} < \\frac{2}{|v|}$. Then} \\\\
+                  \\begin{aligned}
+                    \\left| \\frac{f(\\mathbf{x})}{g(\\mathbf{x})} - \\frac{u}{v} \\right| &= \\frac{|v(f(\\mathbf{x}) - u) - u(g(\\mathbf{x}) - v)|}{|g(\\mathbf{x})| \\, |v|} \\\\
+                    &< \\frac{2}{|v|^2} \\big( |v| \\, |f(\\mathbf{x}) - u| + |u| \\, |g(\\mathbf{x}) - v| \\big) \\\\
+                    &< \\frac{2}{|v|^2} \\left( |v| \\frac{\\varepsilon |v|}{4} + |u| \\frac{\\varepsilon |v|^2}{4(|u| + 1)} \\right) \\\\
+                    &= \\frac{\\varepsilon}{2} + \\frac{\\varepsilon}{2} \\left( \\frac{|u|}{|u| + 1} \\right) \\\\
+                    &< \\frac{\\varepsilon}{2} + \\frac{\\varepsilon}{2} = \\varepsilon.
+                  \\end{aligned} \\\\
+                  \\text{Hence, $\\lim_{\\mathbf{x} \\to \\mathbf{a}} \\left( \\frac{f(\\mathbf{x})}{g(\\mathbf{x})} \\right) = \\frac{u}{v}$ whenever $v \\neq 0$.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Theorem",
+    number: 24,
+    chapter: 5,
+    section: 3,
+    title: "Algebra of Continuous Functions",
+    statement: `\\text{Let } f, g : S \\to \\mathbb{R}^m, \\ S \\subseteq \\mathbb{R}^n \\text{ be continuous at } \\mathbf{a} \\in S. \\text{ Then} \\\\
+                \\text{(a) } f + g \\text{ is continuous at } \\mathbf{a}. \\\\
+                \\text{(b) For all } \\alpha \\in \\mathbb{R}, \\ \\alpha f \\text{ is continuous at } \\mathbf{a}. \\\\[0.5em]
+                \\text{For } m = 1, \\\\
+                \\text{(c) } fg \\text{ is continuous at } \\mathbf{a}. \\\\
+                \\text{(d) If } g(\\mathbf{a}) \\neq 0, \\ \\tfrac{f}{g} \\text{ is continuous at } \\mathbf{a}.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 23|Continuity at a point]] \\\\
+                  \\text{2) } [[theorem 3|Triangle inequality]] \\\\
+                  \\text{3) } [[theorem 23|Algebra of Limits]]`,
+      },
+      {
+        title: "Proof of (a)",
+        content: `\\text{WTS $\\forall \\varepsilon > 0$, $\\exists r > 0$, $\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\Rightarrow \\lVert f(\\mathbf{x}) + g(\\mathbf{x}) - (f(\\mathbf{a}) + g(\\mathbf{a})) \\rVert < \\varepsilon. \\\\
+                  \\text{Let $\\varepsilon > 0$. Since $f$ is cts at $\\mathbf{a}$, $\\exists r_1 > 0$ s.t. $\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_1 \\Rightarrow \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert < \\tfrac{\\varepsilon}{2}. \\\\
+                  \\text{Since $g$ is cts at $\\mathbf{a}$, $\\exists r_2 > 0$ s.t. $\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_2 \\Rightarrow \\lVert g(\\mathbf{x}) - g(\\mathbf{a}) \\rVert < \\tfrac{\\varepsilon}{2}. \\\\
+                  \\text{Choose $r = \\min\\{r_1, r_2\\}$. Let $\\mathbf{x} \\in S$ s.t. $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$. Then} \\\\
+                  \\begin{aligned}
+                    \\lVert (f + g)(\\mathbf{x}) - (f + g)(\\mathbf{a}) \\rVert &= \\lVert (f(\\mathbf{x}) - f(\\mathbf{a})) + (g(\\mathbf{x}) - g(\\mathbf{a})) \\rVert \\\\
+                    &\\leq \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert + \\lVert g(\\mathbf{x}) - g(\\mathbf{a}) \\rVert \\\\
+                    &< \\tfrac{\\varepsilon}{2} + \\tfrac{\\varepsilon}{2} = \\varepsilon.
+                  \\end{aligned} \\ \\blacksquare`,
+      },
+      {
+        title: "Proof of (b)",
+        content: `\\text{Let $\\varepsilon > 0$ and $\\alpha \\in \\mathbb{R}$. WTS $\\exists r > 0$, $\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\Rightarrow \\lVert \\alpha f(\\mathbf{x}) - \\alpha f(\\mathbf{a}) \\rVert < \\varepsilon. \\\\[0.5em]
+                  \\text{[Scratch. $\\lVert \\alpha f(\\mathbf{x}) - \\alpha f(\\mathbf{a}) \\rVert = |\\alpha| \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert$.} \\\\
+                  \\text{Need to ask for $\\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert < \\frac{\\varepsilon}{|\\alpha| + 1}$.]} \\\\[0.5em]
+                  \\text{Since $f$ is cts at $\\mathbf{a}$, $\\exists r > 0$ s.t. $\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\Rightarrow \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert < \\frac{\\varepsilon}{|\\alpha| + 1}. \\\\
+                  \\text{Let $\\mathbf{x} \\in S$ s.t. $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$. Then} \\\\
+                  \\lVert \\alpha f(\\mathbf{x}) - \\alpha f(\\mathbf{a}) \\rVert = |\\alpha| \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert < \\frac{\\varepsilon}{|\\alpha| + 1} |\\alpha| < \\varepsilon. \\ \\blacksquare`,
+      },
+      {
+        title: "Proof of (c)",
+        content: `\\text{Suppose $m = 1$ and let $\\varepsilon > 0$. WTS $\\exists r > 0$ s.t. $\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\Rightarrow |f(\\mathbf{x}) g(\\mathbf{x}) - f(\\mathbf{a}) g(\\mathbf{a})| < \\varepsilon. \\\\[0.5em]
+                  \\text{[Scratch.} \\\\
+                  \\begin{aligned}
+                    &|f(\\mathbf{x}) g(\\mathbf{x}) - f(\\mathbf{x}) g(\\mathbf{a}) + f(\\mathbf{x}) g(\\mathbf{a}) - f(\\mathbf{a}) g(\\mathbf{a})| \\\\
+                    &= |f(\\mathbf{x})(g(\\mathbf{x}) - g(\\mathbf{a})) + g(\\mathbf{a})(f(\\mathbf{x}) - f(\\mathbf{a}))| \\\\
+                    &\\leq |f(\\mathbf{x})| \\, |g(\\mathbf{x}) - g(\\mathbf{a})| + |g(\\mathbf{a})| \\, |f(\\mathbf{x}) - f(\\mathbf{a})|.
+                  \\end{aligned} \\\\
+                  \\text{Need to bound $|f(\\mathbf{x})|$. Need to ask for $|f(\\mathbf{x}) - f(\\mathbf{a})| < 1$} \\\\
+                  \\Rightarrow |f(\\mathbf{x})| \\leq |f(\\mathbf{x}) - f(\\mathbf{a})| + |f(\\mathbf{a})| < 1 + |f(\\mathbf{a})|. \\\\
+                  \\text{Now need $(1 + |f(\\mathbf{a})|) |g(\\mathbf{x}) - g(\\mathbf{a})| < \\frac{\\varepsilon}{2}$, so ask for} \\\\
+                  \\text{$|g(\\mathbf{x}) - g(\\mathbf{a})| < \\frac{\\varepsilon}{2(1 + |f(\\mathbf{a})|)}$.} \\\\
+                  \\text{Also need $|g(\\mathbf{a})| \\, |f(\\mathbf{x}) - f(\\mathbf{a})| < \\frac{\\varepsilon}{2}$, so ask for} \\\\
+                  \\text{$|f(\\mathbf{x}) - f(\\mathbf{a})| < \\frac{\\varepsilon}{2(|g(\\mathbf{a})| + 1)}$.]} \\\\[0.5em]
+                  \\text{Since $f$ and $g$ are cts at $\\mathbf{a}$, $\\exists r_1, r_2, r_3 > 0$ s.t. $\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\begin{aligned}
+                    \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_1 &\\Rightarrow |f(\\mathbf{x}) - f(\\mathbf{a})| < 1, \\\\
+                    \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_2 &\\Rightarrow |g(\\mathbf{x}) - g(\\mathbf{a})| < \\tfrac{\\varepsilon}{2(|f(\\mathbf{a})| + 1)}, \\\\
+                    \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_3 &\\Rightarrow |f(\\mathbf{x}) - f(\\mathbf{a})| < \\tfrac{\\varepsilon}{2(|g(\\mathbf{a})| + 1)}.
+                  \\end{aligned} \\\\
+                  \\text{Set $r = \\min\\{r_1, r_2, r_3\\}$. Let $\\mathbf{x} \\in S$ s.t. $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$.} \\\\
+                  \\text{Since $|f(\\mathbf{x}) - f(\\mathbf{a})| < 1$, $|f(\\mathbf{x})| < 1 + |f(\\mathbf{a})|$. Therefore,} \\\\
+                  \\begin{aligned}
+                    |f(\\mathbf{x}) g(\\mathbf{x}) - f(\\mathbf{a}) g(\\mathbf{a})| &\\leq |f(\\mathbf{x})| \\, |g(\\mathbf{x}) - g(\\mathbf{a})| + |g(\\mathbf{a})| \\, |f(\\mathbf{x}) - f(\\mathbf{a})| \\\\
+                    &\\leq (1 + |f(\\mathbf{a})|) |g(\\mathbf{x}) - g(\\mathbf{a})| + |g(\\mathbf{a})| \\, |f(\\mathbf{x}) - f(\\mathbf{a})| \\\\
+                    &< (1 + |f(\\mathbf{a})|) \\tfrac{\\varepsilon}{2(1 + |f(\\mathbf{a})|)} + |g(\\mathbf{a})| \\tfrac{\\varepsilon}{2(|g(\\mathbf{a})| + 1)} \\\\
+                    &< \\tfrac{\\varepsilon}{2} + \\tfrac{\\varepsilon}{2} \\\\
+                    &= \\varepsilon.
+                  \\end{aligned} \\ \\blacksquare`,
+      },
+      {
+        title: "Proof of (d)",
+        content: `\\text{Suppose $m = 1$, $g(\\mathbf{a}) \\neq 0$, and let $\\varepsilon > 0$. WTS $\\exists r > 0$, $\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\Rightarrow \\left| \\frac{f(\\mathbf{x})}{g(\\mathbf{x})} - \\frac{f(\\mathbf{a})}{g(\\mathbf{a})} \\right| < \\varepsilon. \\\\[0.5em]
+                  \\text{[Scratch.} \\\\
+                  \\begin{aligned}
+                    \\left| \\frac{f(\\mathbf{x})}{g(\\mathbf{x})} - \\frac{f(\\mathbf{a})}{g(\\mathbf{a})} \\right| &= \\left| \\frac{f(\\mathbf{x}) g(\\mathbf{a}) - f(\\mathbf{a}) g(\\mathbf{x})}{g(\\mathbf{x}) g(\\mathbf{a})} \\right| \\\\
+                    &= \\left| \\frac{f(\\mathbf{x}) g(\\mathbf{a}) - f(\\mathbf{a}) g(\\mathbf{a}) + f(\\mathbf{a}) g(\\mathbf{a}) - f(\\mathbf{a}) g(\\mathbf{x})}{g(\\mathbf{x}) g(\\mathbf{a})} \\right| \\\\
+                    &= \\left| \\frac{g(\\mathbf{a})(f(\\mathbf{x}) - f(\\mathbf{a})) + f(\\mathbf{a})(g(\\mathbf{a}) - g(\\mathbf{x}))}{g(\\mathbf{x}) g(\\mathbf{a})} \\right| \\\\
+                    &= \\left| \\frac{g(\\mathbf{a})(f(\\mathbf{x}) - f(\\mathbf{a})) - f(\\mathbf{a})(g(\\mathbf{x}) - g(\\mathbf{a}))}{g(\\mathbf{x}) g(\\mathbf{a})} \\right|.
+                  \\end{aligned} \\\\
+                  \\text{Want a lower bound for $g(\\mathbf{x}) g(\\mathbf{a})$.} \\\\
+                  |g(\\mathbf{a})| \\leq |g(\\mathbf{a}) - g(\\mathbf{x})| + |g(\\mathbf{x})| \\Rightarrow |g(\\mathbf{x})| \\geq |g(\\mathbf{a})| - |g(\\mathbf{x}) - g(\\mathbf{a})|. \\\\
+                  \\text{So ask for $|g(\\mathbf{x}) - g(\\mathbf{a})| < \\frac{|g(\\mathbf{a})|}{2}$. Then} \\\\
+                  |g(\\mathbf{x})| > |g(\\mathbf{a})| - \\tfrac{|g(\\mathbf{a})|}{2} = \\tfrac{|g(\\mathbf{a})|}{2}. \\\\
+                  \\text{So $\\frac{1}{|g(\\mathbf{x})| \\, |g(\\mathbf{a})|} < \\frac{2}{|g(\\mathbf{a})|^2}$. So we have} \\\\
+                  \\left| \\frac{f(\\mathbf{x})}{g(\\mathbf{x})} - \\frac{f(\\mathbf{a})}{g(\\mathbf{a})} \\right| < \\frac{2}{|g(\\mathbf{a})|^2} \\big( |g(\\mathbf{a})| \\, |f(\\mathbf{x}) - f(\\mathbf{a})| + |f(\\mathbf{a})| \\, |g(\\mathbf{x}) - g(\\mathbf{a})| \\big). \\\\
+                  \\text{Need $\\frac{2}{|g(\\mathbf{a})|} |f(\\mathbf{x}) - f(\\mathbf{a})| < \\frac{\\varepsilon}{2}$, so ask for} \\\\
+                  \\text{$|f(\\mathbf{x}) - f(\\mathbf{a})| < \\frac{\\varepsilon |g(\\mathbf{a})|}{4}$.} \\\\
+                  \\text{Need $\\frac{2|f(\\mathbf{a})|}{|g(\\mathbf{a})|^2} |g(\\mathbf{x}) - g(\\mathbf{a})| < \\frac{\\varepsilon}{2}$, so ask for} \\\\
+                  \\text{$|g(\\mathbf{x}) - g(\\mathbf{a})| < \\frac{\\varepsilon |g(\\mathbf{a})|^2}{4(|f(\\mathbf{a})| + 1)}$.]} \\\\[0.5em]
+                  \\text{Since $f$ and $g$ are cts at $\\mathbf{a}$, $\\exists r_1, r_2, r_3 > 0$, $\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\begin{aligned}
+                    \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_1 &\\Rightarrow |g(\\mathbf{x}) - g(\\mathbf{a})| < \\tfrac{|g(\\mathbf{a})|}{2}, \\\\
+                    \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_2 &\\Rightarrow |f(\\mathbf{x}) - f(\\mathbf{a})| < \\tfrac{\\varepsilon |g(\\mathbf{a})|}{4}, \\\\
+                    \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r_3 &\\Rightarrow |g(\\mathbf{x}) - g(\\mathbf{a})| < \\tfrac{\\varepsilon |g(\\mathbf{a})|^2}{4(|f(\\mathbf{a})| + 1)}.
+                  \\end{aligned} \\\\
+                  \\text{Choose $r = \\min\\{r_1, r_2, r_3\\}$. Let $\\mathbf{x} \\in S$ s.t. $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$.} \\\\
+                  \\text{Note $|g(\\mathbf{x}) - g(\\mathbf{a})| < \\frac{|g(\\mathbf{a})|}{2} \\Rightarrow |g(\\mathbf{x})| > \\frac{|g(\\mathbf{a})|}{2}$.} \\\\
+                  \\text{So since $g(\\mathbf{a}) \\neq 0$, $g(\\mathbf{x}) \\neq 0$. Therefore,} \\\\
+                  \\begin{aligned}
+                    \\left| \\frac{f(\\mathbf{x})}{g(\\mathbf{x})} - \\frac{f(\\mathbf{a})}{g(\\mathbf{a})} \\right| &< \\frac{2}{|g(\\mathbf{a})|^2} \\big( |g(\\mathbf{a})| \\, |f(\\mathbf{x}) - f(\\mathbf{a})| + |f(\\mathbf{a})| \\, |g(\\mathbf{x}) - g(\\mathbf{a})| \\big) \\\\
+                    &< \\frac{2}{|g(\\mathbf{a})|} \\frac{\\varepsilon |g(\\mathbf{a})|}{4} + \\frac{2|f(\\mathbf{a})|}{|g(\\mathbf{a})|^2} \\frac{\\varepsilon |g(\\mathbf{a})|^2}{4(|f(\\mathbf{a})| + 1)} \\\\
+                    &< \\frac{\\varepsilon}{2} + \\frac{\\varepsilon}{2} \\\\
+                    &= \\varepsilon.
+                  \\end{aligned} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Theorem",
+    number: 25,
+    chapter: 5,
+    section: 3,
+    title: "Compositions of Continuous Functions",
+    statement: `\\text{Let } S \\subseteq \\mathbb{R}^n, \\ T \\subseteq \\mathbb{R}^m, \\ f : S \\to T, \\ g : T \\to \\mathbb{R}^\\ell. \\\\
+                \\text{Suppose } f \\text{ is continuous at } \\mathbf{a} \\in S \\text{ and } g \\text{ is continuous at } f(\\mathbf{a}). \\\\
+                \\text{Then } g \\circ f \\text{ is continuous at } \\mathbf{a}.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 34|Composition]] \\\\
+                  \\text{2) } [[definition 23|Continuity at a point]] \\\\
+                  \\text{3) } [[theorem 22|Theorem 5.3.1]]`,
+      },
+      {
+        title: "Proof",
+        content: `\\text{Let $(\\mathbf{x}_k) \\subseteq S$ s.t. $\\mathbf{x}_k \\to \\mathbf{a} \\in S$.} \\\\
+                  \\text{Since $f$ is cts at $\\mathbf{a}$, $f(\\mathbf{x}_k) \\to f(\\mathbf{a})$.} \\\\
+                  \\text{Since $g$ is cts at $f(\\mathbf{a})$ and $(f(\\mathbf{x}_k)) \\subseteq T$, $g(f(\\mathbf{x}_k)) \\to g(f(\\mathbf{a}))$.} \\\\
+                  \\text{Therefore, $(g \\circ f)(\\mathbf{x}_k) \\to (g \\circ f)(\\mathbf{a})$.} \\\\
+                  \\text{So $g \\circ f$ is cts at $\\mathbf{a}$.} \\ \\blacksquare`,
+      },
+      {
+        title: "Another Proof (ε-r)",
+        content: `\\text{Let $\\varepsilon > 0$. WTS $\\exists r > 0$, $\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\Rightarrow \\lVert g(f(\\mathbf{x})) - g(f(\\mathbf{a})) \\rVert < \\varepsilon. \\\\[0.5em]
+                  \\text{[Scratch. Work backwards: $g$ cts at $f(\\mathbf{a})$ tells us how close $f(\\mathbf{x})$} \\\\
+                  \\text{needs to be to $f(\\mathbf{a})$, then $f$ cts at $\\mathbf{a}$ tells us how close $\\mathbf{x}$} \\\\
+                  \\text{needs to be to $\\mathbf{a}$.]} \\\\[0.5em]
+                  \\text{Since $g$ is cts at $f(\\mathbf{a})$, $\\exists \\delta > 0$ s.t. $\\forall \\mathbf{y} \\in T$,} \\\\
+                  \\lVert \\mathbf{y} - f(\\mathbf{a}) \\rVert < \\delta \\Rightarrow \\lVert g(\\mathbf{y}) - g(f(\\mathbf{a})) \\rVert < \\varepsilon. \\\\
+                  \\text{Since $f$ is cts at $\\mathbf{a}$ (using $\\delta$ in place of $\\varepsilon$), $\\exists r > 0$ s.t.} \\\\
+                  \\text{$\\forall \\mathbf{x} \\in S$,} \\\\
+                  \\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r \\Rightarrow \\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert < \\delta. \\\\
+                  \\text{Let $\\mathbf{x} \\in S$ s.t. $\\lVert \\mathbf{x} - \\mathbf{a} \\rVert < r$. Then $\\lVert f(\\mathbf{x}) - f(\\mathbf{a}) \\rVert < \\delta$.} \\\\
+                  \\text{Since $f(\\mathbf{x}) \\in T$, take $\\mathbf{y} = f(\\mathbf{x})$ to get} \\\\
+                  \\lVert g(f(\\mathbf{x})) - g(f(\\mathbf{a})) \\rVert < \\varepsilon. \\\\
+                  \\text{That is, $\\lVert (g \\circ f)(\\mathbf{x}) - (g \\circ f)(\\mathbf{a}) \\rVert < \\varepsilon$.} \\\\
+                  \\text{Hence, $g \\circ f$ is cts at $\\mathbf{a}$.} \\ \\blacksquare`,
+      },
+    ],
+    examples: [
+      {
+        title: "Continuity of component functions",
+        content: `\\text{Let $S \\subseteq \\mathbb{R}^n$, $f : S \\to \\mathbb{R}^m$ given by $f(\\mathbf{x}) = (f_1(\\mathbf{x}), \\ldots, f_m(\\mathbf{x}))$} \\\\
+                  \\text{for $\\mathbf{x} \\in S$. Show $f$ is cts iff $f_j$ is cts for $j = 1, \\ldots, m$.} \\\\[1em]
+                  \\text{\\textit{Proof.}} \\\\
+                  \\text{($\\Rightarrow$). Let $j \\in \\{1, \\ldots, m\\}$. Note $f_j(\\mathbf{x}) = (\\pi_j \\circ f)(\\mathbf{x})$.} \\\\
+                  \\text{So since [[theorem 20|$\\pi_j$]] and $f$ are cts, $f_j$ is cts.} \\\\[0.5em]
+                  \\text{($\\Leftarrow$). Note} \\\\
+                  \\begin{aligned}
+                    f(\\mathbf{x}) = (f_1(\\mathbf{x}), \\ldots, f_m(\\mathbf{x})) &= \\sum_{j=1}^m f_j(\\mathbf{x}) \\mathbf{e}_j \\\\
+                    &= \\sum_{j=1}^m E_j(f_j(\\mathbf{x})) \\\\
+                    &= \\sum_{j=1}^m (E_j \\circ f_j)(\\mathbf{x}),
+                  \\end{aligned} \\\\
+                  \\text{where $E_j : \\mathbb{R} \\to \\mathbb{R}^m$, $E_j(t) = t \\mathbf{e}_j$.} \\\\
+                  \\text{$E_j$ and $f_j$ are cts $\\forall j \\in \\{1, \\ldots, m\\}$, so $f$ is cts, because} \\\\
+                  \\text{compositions of cts functions are cts and [[theorem 24|sums of cts]]} \\\\
+                  \\text{[[theorem 24|functions are cts]].} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Theorem",
+    number: 26,
+    chapter: 5,
+    section: 4,
+    title: "Continuous Image of a Compact Set",
+    statement: `\\text{Let } A \\subseteq \\mathbb{R}^n \\text{ be compact and } f : A \\to \\mathbb{R}^m \\text{ be continuous.} \\\\
+                \\text{Then } f(A) \\text{ is compact.}`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[definition 19|Compact]] \\\\
+                  \\text{2) } [[definition 24|Continuous on a set]] \\\\
+                  \\text{3) } [[theorem 22|Theorem 5.3.1]]`,
+      },
+      {
+        title: "Proof",
+        content: `\\text{Let $(\\mathbf{y}_k) \\subseteq f(A)$.} \\\\
+                  \\text{$\\forall k$ $\\mathbf{y}_k \\in f(A)$ so $\\exists \\mathbf{x}_k \\in A$ s.t. $f(\\mathbf{x}_k) = \\mathbf{y}_k$.} \\\\
+                  \\text{But $(\\mathbf{x}_k) \\subseteq A$ and $A$ is cpt, so $\\exists (\\mathbf{x}_{k_j}) \\subseteq (\\mathbf{x}_k)$ s.t.} \\\\
+                  \\text{$\\mathbf{x}_{k_j} \\to \\mathbf{a} \\in A$.} \\\\
+                  \\text{Since $f$ is cts, $f(\\mathbf{x}_{k_j}) \\to f(\\mathbf{a}) \\in f(A)$ ([[theorem 22|Theorem 5.3.1]]).} \\\\
+                  \\text{Say $\\mathbf{y} = f(\\mathbf{a}) \\in f(A)$.} \\\\
+                  \\text{Then $\\mathbf{y}_{k_j} \\to \\mathbf{y}$, and thus, $f(A)$ is cpt.} \\ \\blacksquare`,
+      },
+    ],
+  },
+  {
+    kind: "Theorem",
+    number: 27,
+    chapter: 5,
+    section: 4,
+    title: "Extreme Value Theorem",
+    statement: `\\text{Let } A \\subseteq \\mathbb{R}^n \\text{ be compact and } f : A \\to \\mathbb{R} \\text{ continuous. Then} \\\\
+                \\exists \\mathbf{a}, \\mathbf{b} \\in A,\\ \\forall \\mathbf{x} \\in A,\\ f(\\mathbf{a}) \\leq f(\\mathbf{x}) \\leq f(\\mathbf{b}). \\\\
+                \\text{That is, } \\mathbf{a}, \\mathbf{b} \\text{ attain the min and max values of } f \\text{ on } A.`,
+    proof: [
+      {
+        title: "Recall",
+        content: `\\text{1) } [[theorem 26|Theorem 5.4.3]] \\\\
+                  \\text{2) } [[theorem 17|Heine–Borel]] \\\\
+                  \\text{3) } [[definition 13|Closed]] \\\\
+                  \\text{4) } [[definition 20|Bounded]]`,
+      },
+      {
+        title: "Proof",
+        content: `\\text{Since $A$ is cpt and $f$ is cts on $A$, $f(A)$ is cpt by [[theorem 26|previous thm]].} \\\\
+                  \\text{By [[theorem 17|Heine–Borel]], $f(A)$ is closed and bounded.} \\\\
+                  \\text{Since $f(A)$ is bounded,} \\\\
+                  \\inf_{\\mathbf{x} \\in A} f(\\mathbf{x}) = m > -\\infty \\text{ and } \\sup_{\\mathbf{x} \\in A} f(\\mathbf{x}) = M < \\infty. \\\\
+                  \\text{Let $\\varepsilon = \\frac{1}{k}$ for $k \\in \\mathbb{N}$.} \\\\
+                  \\text{Then $m + \\frac{1}{k}$ is not a lower bound $\\forall k$, so $\\exists \\mathbf{a}_k \\in A$ s.t.} \\\\
+                  m \\leq f(\\mathbf{a}_k) < m + \\tfrac{1}{k}. \\\\
+                  \\text{By squeeze thm, $f(\\mathbf{a}_k) \\to m$ where $(\\mathbf{a}_k) \\subseteq A$.} \\\\
+                  \\text{Similarly, $M - \\frac{1}{k}$ is not an upper bound $\\forall k$, so $\\exists \\mathbf{b}_k \\in A$ s.t.} \\\\
+                  M - \\tfrac{1}{k} < f(\\mathbf{b}_k) \\leq M. \\\\
+                  \\text{By squeeze thm, $f(\\mathbf{b}_k) \\to M$ where $(\\mathbf{b}_k) \\subseteq A$.} \\\\
+                  \\text{Since $(f(\\mathbf{a}_k)), (f(\\mathbf{b}_k)) \\subseteq f(A)$ and $f(A)$ is closed, $m, M \\in f(A)$.} \\\\
+                  \\text{So $\\exists \\mathbf{a}, \\mathbf{b} \\in A$ s.t. $f(\\mathbf{a}) = m$ and $f(\\mathbf{b}) = M$.} \\\\
+                  \\text{Thus $\\exists \\mathbf{a}, \\mathbf{b} \\in A$ s.t. $\\forall \\mathbf{x} \\in A$, $f(\\mathbf{a}) \\leq f(\\mathbf{x}) \\leq f(\\mathbf{b})$.} \\ \\blacksquare`,
+      },
+    ],
+    examples: [
+      {
+        title: "Domain not closed",
+        content: `\\text{$f(x) = -x$ on $(0, 1]$.} \\\\
+                  \\text{Note $\\sup_{x \\in (0, 1]} f(x) = 0$ but is never attained.} \\\\
+                  \\text{This is because the domain is not [[definition 13|closed]].}`,
+      },
+      {
+        title: "Domain not bounded",
+        content: `\\text{$g(\\mathbf{x}) = \\lVert \\mathbf{x} \\rVert$ on $\\mathbb{R}^n$.} \\\\
+                  \\text{$g$ is unbounded and so max is never attained.} \\\\
+                  \\text{This is because the domain is not [[definition 20|bounded]].}`,
+      },
+      {
+        title: "Function not continuous",
+        content: `f : [-1, 1] \\to \\mathbb{R}, \\quad f(x) = \\begin{cases} -x + 1, & x > 0 \\\\ x, & x \\leq 0. \\end{cases} \\\\
+                  \\text{$\\sup_{x \\in [-1, 1]} f(x) = 1$ but is never attained.} \\\\
+                  \\text{This is because $f$ is not [[definition 24|cts]].}`,
+      },
+    ],
+  },
   // Template:
   // {
   //   kind: "Lemma", // optional: "Theorem" (default), "Lemma", "Corollary", or "Proposition"
